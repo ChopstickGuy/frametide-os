@@ -62,6 +62,28 @@ jobs:
         run: sudo ./build.sh
       - name: ISO size
         run: ls -lh out/*.iso && cat out/*.sha256
+      - name: Install test (unpack exactly like the Calamares installer)
+        continue-on-error: true
+        run: |
+          mkdir -p screenshots
+          sudo mkdir -p /mnt/iso /mnt/sq /mnt/target
+          sudo mount -o loop,ro out/*.iso /mnt/iso
+          sudo mount -t squashfs -o loop,ro /mnt/iso/casper/filesystem.squashfs /mnt/sq
+          truncate -s 40G /tmp/target.img && mkfs.ext4 -q -F /tmp/target.img
+          sudo mount -o loop /tmp/target.img /mnt/target
+          # dieselben Optionen wie Calamares unpackfs (3.3)
+          set +e
+          sudo rsync -aHAXSr --filter='-x trusted.overlay.*' --exclude /proc/ --exclude /sys/ \
+            --exclude /dev/ --exclude /run/ --exclude /run/udev/ --exclude /sys/firmware/efi/efivars/ \
+            /mnt/sq/ /mnt/target/ 2> screenshots/install-test-rsync-errors.txt
+          rc=$?
+          set -e
+          echo "rsync exit code: $rc" | tee screenshots/install-test-result.txt
+          tail -40 screenshots/install-test-rsync-errors.txt | tee -a screenshots/install-test-result.txt
+          df -h /mnt/target | tee -a screenshots/install-test-result.txt
+          ls /mnt/sq/usr/share/calamares/modules /mnt/sq/etc/calamares/modules 2>&1 | tee -a screenshots/install-test-result.txt
+          sudo umount /mnt/target /mnt/sq /mnt/iso
+          [ "$rc" = 0 ]
       - name: Boot test in QEMU (UEFI and BIOS, with screenshots)
         continue-on-error: true
         run: |
@@ -85,6 +107,11 @@ jobs:
             sleep 8;   shot "$mode" "$mode-1-bootmenue"
             sleep 40;  shot "$mode" "$mode-2-start"
             sleep 150; shot "$mode" "$mode-3-desktop"
+            # App-Übersicht: Installer-Fenster schließen (Esc), dann zweimal Super
+            echo "sendkey esc" | socat - "unix-connect:/tmp/mon-$mode" >/dev/null; sleep 3
+            echo "sendkey meta_l" | socat - "unix-connect:/tmp/mon-$mode" >/dev/null; sleep 2
+            echo "sendkey meta_l" | socat - "unix-connect:/tmp/mon-$mode" >/dev/null; sleep 4
+            shot "$mode" "$mode-4-apps"
             kill "$pid" || true
             wait "$pid" 2>/dev/null || true
           done
