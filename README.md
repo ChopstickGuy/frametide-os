@@ -17,11 +17,38 @@ mit GNOME. Die Ziele, nach Priorität:
 | **Kernel** | Ubuntu-HWE-Kernel (7.0, wächst über die LTS-Laufzeit mit, damit auch neue Hardware erkannt wird) mit `preempt=full` |
 | **Start** | Kein sichtbares Bootmenü, kein Warten aufs Netzwerk, keine Textmeldungen. Ohne Snap, Absturzberichte, Telemetrie und Ubuntu-Einrichtungsassistent. Hintergrund-Updates starten erst nach dem Hochfahren und mit niedrigster Priorität |
 | **Installation** | Der Installer öffnet sich im Live-System automatisch. Sechs klare Schritte auf Deutsch, offline und ohne Swap-Partition (zram) |
-| **Speicher/IO** | zram mit zstd, angepasste `vm.*`-Werte, I/O-Scheduler je nach Datenträger |
+| **Speicher/IO** | zram mit zstd, angepasste `vm.*`-Werte, I/O-Scheduler je nach Datenträger, `noatime`, Transparent Hugepages `defer+madvise` |
+| **Proton** | `ntsync` aktiv (schnellere Windows-Synchronisation in Wine/Proton), hohe Dateilimits für esync, NVIDIA-PAT, Energieprofil „Leistung“ auf Desktop-PCs |
 | **Gaming** | Steam, GameMode, MangoHud, Gamescope, Lutris, große Shader-Caches, VRR aktiviert, flache Mausbeschleunigung |
 | **Design** | Dunkles GNOME mit Teal-Akzent, Inter und JetBrains Mono, Papirus-Icons, Dock blendet sich aus, keine Desktop-Symbole |
 | **Klang** | Eigenes Sound-Theme mit 13 weichen, kurzen Tönen (-18 dBFS) statt lauter Systemklänge, kein Tastenklick-Feedback |
 | **Wallpaper** | 7 Motive: Tide (hell/dunkel, passend zum Hell/Dunkel-Modus), Tide mit Logo, Nightwave, Sunset Surge, Frames, OLED Black |
+
+## Frametide Store und Frametide Center
+
+![Store](artwork/previews/store.png)
+
+- **Frametide Store**: Zeigt 95 kuratierte Apps in 7 Kategorien mit echten Logos. Die Suche
+  durchsucht zusätzlich ganz Flathub. Das ArtCraft-Komplettpaket lässt sich mit einem Klick
+  installieren.
+- **Frametide Center** hat vier Bereiche:
+  - **Updates**: System, Flatpak, ArtCraft und Firmware
+  - **Treiber**: GPU-Übersicht und NVIDIA-Versionswahl
+  - **RGB & Lüfter**: Live-Temperaturen und Lüfterdrehzahlen, eine Farbe für alle Geräte über
+    OpenRGB, Lüfterkurven in CoolerControl, Zusatztreiber für ITE/Nuvoton-Chips
+  - **System**: x86-64-v3, AMD-Übertaktung, Mitigations
+- Privilegierte Aktionen laufen über `frametide-helper`. Er wird per Polkit aufgerufen und
+  führt nur geprüfte Befehle aus. ArtCraft-Downloads werden nur installiert, wenn die
+  SHA256-Prüfsumme stimmt.
+- **Sprachen**: 10 Sprachpakete liegen offline auf der ISO. Store, Center und Installer gibt es
+  auf Deutsch und Englisch, die übrigen Sprachen fallen auf Englisch zurück. Übersetzungen
+  liegen in `po/`, geprüft wird mit `tools/i18n.py check`.
+
+## Vorinstalliert
+
+Steam, VS Code, Google Chrome, GitHub Desktop, GitHub CLI, WordCraft, GridCraft, DeckCraft,
+PdfCraft, ArtCraft Launcher, OpenRGB und CoolerControl. Welche ArtCraft-Apps auf der ISO
+landen, steuert `CRAFT_PREINSTALL` in `config/frametide.conf`.
 
 ## Aufbau
 
@@ -92,7 +119,12 @@ Optionen in `/etc/frametide/hwsetup.conf`:
 - Steam-Startoption: `gamemoderun %command%`, mit FPS-Overlay `gamemoderun mangohud %command%`
 - Proton-GE: „ProtonPlus“ aus GNOME Software (Flathub)
 
-## Roadmap
+## Vergleich und Roadmap
+
+Den Vergleich mit CachyOS, SteamOS, Bazzite und Nobara samt Verbesserungsliste findest du in
+[docs/VERGLEICH.md](docs/VERGLEICH.md).
+
+## Roadmap (Basis)
 
 - **1.1**: NVIDIA-Treiber offline auf der ISO, Willkommens-App (GTK4/libadwaita), GDM-Login im Frametide-Design
 - **1.2**: eigenes APT-Repo (neueres Mesa, scx-Scheduler/`sched_ext`), Benchmarks gegen Ubuntu
