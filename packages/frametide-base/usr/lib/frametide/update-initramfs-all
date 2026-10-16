@@ -1,0 +1,7 @@
+#!/bin/sh
+# Erzeugt die Initramfs aller Kernel – mit dracut oder initramfs-tools, je nachdem was installiert ist.
+set -e
+if dpkg-query -W -f='${Status}' dracut 2>/dev/null | grep -q "ok installed"; then
+    exec dracut --regenerate-all --force
+fi
+exec update-initramfs -u -k all

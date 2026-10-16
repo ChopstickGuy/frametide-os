@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Welcome
+Name[de]=Willkommen
+Comment=First steps with Frametide OS
+Comment[de]=Erste Schritte mit Frametide OS
+Exec=frametide-welcome
+Icon=frametide-logo
+Terminal=false
+Categories=GNOME;GTK;Utility;
+StartupNotify=true

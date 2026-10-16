@@ -62,28 +62,29 @@ jobs:
         run: sudo ./build.sh
       - name: ISO size
         run: ls -lh out/*.iso && cat out/*.sha256
-      - name: Install test (unpack exactly like the Calamares installer)
+      - name: Install test (install like Calamares, then boot the installed system)
         continue-on-error: true
         run: |
+          sudo apt-get install -y gdisk qemu-system-x86 ovmf socat imagemagick
+          [ -e /dev/kvm ] && sudo chmod 666 /dev/kvm
           mkdir -p screenshots
-          sudo mkdir -p /mnt/iso /mnt/sq /mnt/target
-          sudo mount -o loop,ro out/*.iso /mnt/iso
-          sudo mount -t squashfs -o loop,ro /mnt/iso/casper/filesystem.squashfs /mnt/sq
-          truncate -s 40G /tmp/target.img && mkfs.ext4 -q -F /tmp/target.img
-          sudo mount -o loop /tmp/target.img /mnt/target
-          # dieselben Optionen wie Calamares unpackfs (3.3)
-          set +e
-          sudo rsync -aHAXSr --filter='-x trusted.overlay.*' --exclude /proc/ --exclude /sys/ \
-            --exclude /dev/ --exclude /run/ --exclude /run/udev/ --exclude /sys/firmware/efi/efivars/ \
-            /mnt/sq/ /mnt/target/ 2> screenshots/install-test-rsync-errors.txt
-          rc=$?
-          set -e
-          echo "rsync exit code: $rc" | tee screenshots/install-test-result.txt
-          tail -40 screenshots/install-test-rsync-errors.txt | tee -a screenshots/install-test-result.txt
-          df -h /mnt/target | tee -a screenshots/install-test-result.txt
-          ls /mnt/sq/usr/share/calamares/modules /mnt/sq/etc/calamares/modules 2>&1 | tee -a screenshots/install-test-result.txt
-          sudo umount /mnt/target /mnt/sq /mnt/iso
-          [ "$rc" = 0 ]
+          sudo tools/ci-install-test.sh out/*.iso /tmp/installed.img 2>&1 | tee screenshots/install-test.log
+          sudo chmod 666 /tmp/installed.img
+          cp /usr/share/OVMF/OVMF_VARS_4M.fd /tmp/vars.fd 2>/dev/null || cp /usr/share/OVMF/OVMF_VARS.fd /tmp/vars.fd
+          code=$(ls /usr/share/OVMF/OVMF_CODE_4M.fd /usr/share/OVMF/OVMF_CODE.fd 2>/dev/null | head -1)
+          args=(-m 6144 -smp 4 -vga virtio -display none -monitor unix:/tmp/mon-installed,server,nowait
+                -drive "if=pflash,format=raw,readonly=on,file=$code" -drive "if=pflash,format=raw,file=/tmp/vars.fd"
+                -drive "file=/tmp/installed.img,if=virtio,format=raw")
+          [ -e /dev/kvm ] && args+=(-enable-kvm -cpu host)
+          qemu-system-x86_64 "${args[@]}" &
+          pid=$!
+          for t in 30 90 150; do
+            sleep $([ $t = 30 ] && echo 30 || echo 60)
+            echo "screendump /tmp/inst-$t.ppm" | socat - unix-connect:/tmp/mon-installed >/dev/null
+            sleep 2 && convert /tmp/inst-$t.ppm screenshots/installed-${t}s.png && echo "Screenshot installed-${t}s"
+          done
+          kill $pid || true
+          grep -q "Installation abgeschlossen" screenshots/install-test.log
       - name: Boot test in QEMU (UEFI and BIOS, with screenshots)
         continue-on-error: true
         run: |
@@ -107,10 +108,8 @@ jobs:
             sleep 8;   shot "$mode" "$mode-1-bootmenue"
             sleep 40;  shot "$mode" "$mode-2-start"
             sleep 150; shot "$mode" "$mode-3-desktop"
-            # App-Übersicht: Installer-Fenster schließen (Esc), dann zweimal Super
-            echo "sendkey esc" | socat - "unix-connect:/tmp/mon-$mode" >/dev/null; sleep 3
-            echo "sendkey meta_l" | socat - "unix-connect:/tmp/mon-$mode" >/dev/null; sleep 2
-            echo "sendkey meta_l" | socat - "unix-connect:/tmp/mon-$mode" >/dev/null; sleep 4
+            # App-Übersicht über Super+A (öffnet sie auch, wenn der Installer im Vordergrund ist)
+            echo "sendkey meta_l-a" | socat - "unix-connect:/tmp/mon-$mode" >/dev/null; sleep 5
             shot "$mode" "$mode-4-apps"
             kill "$pid" || true
             wait "$pid" 2>/dev/null || true

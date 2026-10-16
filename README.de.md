@@ -27,8 +27,9 @@ mit GNOME. Die Ziele, nach Priorität:
 | **Speicher/IO** | zram mit zstd, angepasste `vm.*`-Werte, I/O-Scheduler je nach Datenträger, `noatime`, Transparent Hugepages `defer+madvise` |
 | **Proton** | `ntsync` aktiv (schnellere Windows-Synchronisation in Wine/Proton), hohe Dateilimits für esync, NVIDIA-PAT, Energieprofil „Leistung“ auf Desktop-PCs |
 | **Gaming** | Steam, GameMode, MangoHud, Gamescope, Lutris, große Shader-Caches, VRR (in GNOME 50 pro Monitor unter Einstellungen → Bildschirme), flache Mausbeschleunigung |
-| **Design** | Dunkles GNOME mit Teal-Akzent, Inter und JetBrains Mono, Papirus-Icons, Dock blendet sich aus, keine Desktop-Symbole |
-| **Klang** | Eigenes Sound-Theme mit 13 weichen, kurzen Tönen (-18 dBFS) statt lauter Systemklänge, kein Tastenklick-Feedback |
+| **Design** | Dunkles GNOME mit Teal-Akzent, Inter und JetBrains Mono, Papirus-Icons, festes Dock, keine Desktop-Symbole |
+| **Klang** | Synthwave-Sound-Theme: 13 Systemklänge und ein Startklang im Retro-Synth-Stil (Stereo, Arpeggios, Echo) |
+| **Bedienung** | Klassisches „Anwendungen“-Menü mit Kategorien, festes Dock mit Store und Center, App-Ordner, Willkommen-App beim ersten Anmelden |
 | **Wallpaper** | 7 Motive: Tide (hell/dunkel, passend zum Hell/Dunkel-Modus), Tide mit Logo, Nightwave, Sunset Surge, Frames, OLED Black |
 
 ## Frametide Store und Frametide Center

@@ -1,0 +1,47 @@
+# Frametide OS – App-Übersicht in Ordnern (Namen kommen übersetzt aus gnome-menus)
+[org/gnome/desktop/app-folders]
+folder-children=['Game', 'Office', 'Graphics', 'AudioVideo', 'Network', 'Development', 'System', 'Utilities']
+
+[org/gnome/desktop/app-folders/folders/Game]
+name='Game.directory'
+translate=true
+categories=['Game']
+excluded-apps=['org.frametide.Center.desktop']
+
+[org/gnome/desktop/app-folders/folders/Office]
+name='Office.directory'
+translate=true
+categories=['Office']
+
+[org/gnome/desktop/app-folders/folders/Graphics]
+name='Graphics.directory'
+translate=true
+categories=['Graphics', 'Photography']
+
+[org/gnome/desktop/app-folders/folders/AudioVideo]
+name='AudioVideo.directory'
+translate=true
+categories=['AudioVideo', 'Audio', 'Video']
+
+[org/gnome/desktop/app-folders/folders/Network]
+name='Network.directory'
+translate=true
+categories=['Network', 'WebBrowser', 'Email', 'Chat']
+excluded-apps=['firefox.desktop', 'google-chrome.desktop']
+
+[org/gnome/desktop/app-folders/folders/Development]
+name='Development.directory'
+translate=true
+categories=['Development', 'IDE']
+
+[org/gnome/desktop/app-folders/folders/System]
+name='System.directory'
+translate=true
+categories=['System', 'Settings', 'HardwareSettings', 'PackageManager', 'Monitor']
+excluded-apps=['org.frametide.Store.desktop', 'org.frametide.Center.desktop', 'org.frametide.Welcome.desktop', 'org.gnome.Settings.desktop', 'org.gnome.Ptyxis.desktop']
+
+[org/gnome/desktop/app-folders/folders/Utilities]
+name='Utility.directory'
+translate=true
+categories=['Utility', 'X-GNOME-Utilities', 'Accessibility']
+excluded-apps=['org.gnome.Nautilus.desktop', 'org.gnome.Ptyxis.desktop', 'org.frametide.Migrate.desktop']

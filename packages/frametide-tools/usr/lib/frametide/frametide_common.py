@@ -46,6 +46,8 @@ CSS = """
 .ft-badge.error { background-color: alpha(@error_color, .18); }
 .ft-hero { padding: 28px 32px; border-radius: 18px;
            background-image: linear-gradient(120deg, alpha(#22D3EE,.22), alpha(#A855F7,.22)); }
+.ft-tile { padding: 0; border-radius: 16px; }
+.ft-tile:hover { background-color: alpha(@accent_bg_color, .12); }
 .ft-big-number { font-size: 2.2em; font-weight: 700; font-feature-settings: "tnum"; }
 """
 

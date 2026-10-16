@@ -8,8 +8,10 @@ Depends: frametide-base, gdm3, ubuntu-session, gnome-shell-ubuntu-extensions,
  yaru-theme-gtk, yaru-theme-gnome-shell, papirus-icon-theme,
  fonts-inter-variable, fonts-jetbrains-mono, plymouth-theme-spinner,
  gnome-software, gnome-software-plugin-flatpak, gnome-tweaks,
- gnome-shell-extension-manager, ptyxis, libnotify-bin, firefox
+ gnome-shell-extension-manager, ptyxis, libnotify-bin, firefox,
+ gnome-shell-extension-apps-menu, gnome-menus, dconf-cli, gnome-session-canberra
 Description: Frametide OS – GNOME-Desktop und Design
  Dunkles, modernes GNOME mit Frametide-Akzentfarbe, Inter/JetBrains Mono,
- Papirus-Icons, Dock unten und flacher Mausbeschleunigung
+ Papirus-Icons, festes Dock, klassisches Anwendungsmenü, App-Ordner
+ und flacher Mausbeschleunigung
  für präzises Zielen.

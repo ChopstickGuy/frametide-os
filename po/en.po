@@ -740,3 +740,57 @@ msgstr "Try a different search term."
 msgid "{n} weitere Craft-Apps (Foto, Video, Vektor, Audio, CAD …)"
 msgstr "{n} more Craft apps (photo, video, vector, audio, CAD …)"
 
+msgid "Treiber, Chrome und VS Code werden im Hintergrund eingerichtet, sobald Internet da ist. Du kannst schon loslegen."
+msgstr "Drivers, Chrome and VS Code are set up in the background as soon as you're online. You can start right away."
+
+msgid "Apps & Spiele"
+msgstr "Apps & games"
+
+msgid "Steam, Discord, Office, Kreativ-Apps …"
+msgstr "Steam, Discord, office, creative apps …"
+
+msgid "Updates & Treiber"
+msgstr "Updates & drivers"
+
+msgid "System aktuell halten, Grafiktreiber"
+msgstr "Keep your system up to date, graphics drivers"
+
+msgid "Spiele-Check"
+msgstr "Game check"
+
+msgid "Läuft mein Spiel unter Linux?"
+msgstr "Does my game run on Linux?"
+
+msgid "Von Windows umziehen"
+msgstr "Move from Windows"
+
+msgid "Dateien, Lesezeichen, WLAN, Spiele"
+msgstr "Files, bookmarks, Wi-Fi, games"
+
+msgid "Beleuchtung und Lüfterkurven"
+msgstr "Lighting and fan curves"
+
+msgid "Einstellungen"
+msgstr "Settings"
+
+msgid "Bildschirm, Ton, Konten, Design"
+msgstr "Display, sound, accounts, appearance"
+
+msgid "✓ Treiber eingerichtet · Chrome und VS Code installiert"
+msgstr "✓ Drivers set up · Chrome and VS Code installed"
+
+msgid "Willkommen bei Frametide OS"
+msgstr "Welcome to Frametide OS"
+
+msgid "Einrichtung"
+msgstr "Setup"
+
+msgid "Beim Anmelden anzeigen"
+msgstr "Show at login"
+
+msgid "Los geht's"
+msgstr "Let's go"
+
+msgid "Alles Wichtige ist nur einen Klick entfernt."
+msgstr "Everything important is just one click away."
+

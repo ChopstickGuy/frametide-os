@@ -67,7 +67,9 @@ settings, `ntsync` for Proton, zram and a calm, minimal GNOME desktop.
 | **🕹️ Game check** | Shows for every Steam game whether it runs on Linux (ProtonDB) and whether **anti-cheat blocks it** (AreWeAntiCheatYet). This works for games you don't own yet, too. |
 | **🪟 Move from Windows** | Brings over your documents, photos, bookmarks (Chrome, Edge, Firefox …), Wi-Fi networks and installed Steam games, so they don't need to be downloaded again. Windows itself is only read, never changed. |
 | **📊 Frametide Bench** | A reproducible benchmark for CPU, memory, latency under load, SSD, GPU and boot time. Its JSON results can be compared against any other system. |
-| **⚡ Fast & quiet** | Hidden boot menu, no waiting for the network, no Snap, no telemetry. Updates run with idle priority so they never steal frames. A soft custom sound theme rounds it off. |
+| **🧭 Clear, classic desktop** | GNOME with a classic categorized *Applications* menu, an always-visible dock with your key apps, and app folders instead of an endless icon wall. A welcome screen on first login shows you around. |
+| **⚡ Fast & quiet** | Hidden boot menu, no waiting for the network, no Snap, no telemetry. Updates run with idle priority so they never steal frames. |
+| **🎹 Synthwave sound theme** | Custom retro-modern system sounds and a startup jingle made with analog-style synths, arpeggios and echo. |
 | **🌍 10 languages offline** | German, English, French, Spanish, Italian, Polish, Portuguese, Dutch, Turkish and Russian. |
 
 ## 📸 Screenshots
@@ -92,7 +94,7 @@ settings, `ntsync` for Proton, zram and a calm, minimal GNOME desktop.
 <img src="artwork/previews/overview.png" alt="Logo and seven wallpapers">
 
 The design is a dark GNOME 50 with a teal accent, Inter and JetBrains Mono fonts, Papirus
-icons and an auto-hiding dock. There are seven wallpapers, including a light/dark pair that
+icons, a fixed dock and a classic applications menu. There are seven wallpapers, including a light/dark pair that
 follows the system theme.
 </details>
 

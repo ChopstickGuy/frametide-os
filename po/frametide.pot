@@ -609,7 +609,7 @@ msgstr ""
 msgid "{rpm} U/min"
 msgstr ""
 
-#: frametide_common.py:202
+#: frametide_common.py:204
 msgid "Details anzeigen"
 msgstr ""
 
@@ -983,5 +983,77 @@ msgstr ""
 
 #: store.py:170
 msgid "{n} weitere Craft-Apps (Foto, Video, Vektor, Audio, CAD …)"
+msgstr ""
+
+#: welcome.py:29
+msgid "Treiber, Chrome und VS Code werden im Hintergrund eingerichtet, sobald Internet da ist. Du kannst schon loslegen."
+msgstr ""
+
+#: welcome.py:15
+msgid "Apps & Spiele"
+msgstr ""
+
+#: welcome.py:15
+msgid "Steam, Discord, Office, Kreativ-Apps …"
+msgstr ""
+
+#: welcome.py:16
+msgid "Updates & Treiber"
+msgstr ""
+
+#: welcome.py:16
+msgid "System aktuell halten, Grafiktreiber"
+msgstr ""
+
+#: welcome.py:17
+msgid "Spiele-Check"
+msgstr ""
+
+#: welcome.py:17
+msgid "Läuft mein Spiel unter Linux?"
+msgstr ""
+
+#: welcome.py:18
+msgid "Von Windows umziehen"
+msgstr ""
+
+#: welcome.py:18
+msgid "Dateien, Lesezeichen, WLAN, Spiele"
+msgstr ""
+
+#: welcome.py:19
+msgid "Beleuchtung und Lüfterkurven"
+msgstr ""
+
+#: welcome.py:20
+msgid "Einstellungen"
+msgstr ""
+
+#: welcome.py:20
+msgid "Bildschirm, Ton, Konten, Design"
+msgstr ""
+
+#: welcome.py:28
+msgid "✓ Treiber eingerichtet · Chrome und VS Code installiert"
+msgstr ""
+
+#: welcome.py:48
+msgid "Willkommen bei Frametide OS"
+msgstr ""
+
+#: welcome.py:64
+msgid "Einrichtung"
+msgstr ""
+
+#: welcome.py:71
+msgid "Beim Anmelden anzeigen"
+msgstr ""
+
+#: welcome.py:74
+msgid "Los geht's"
+msgstr ""
+
+#: welcome.py:54
+msgid "Alles Wichtige ist nur einen Klick entfernt."
 msgstr ""
 

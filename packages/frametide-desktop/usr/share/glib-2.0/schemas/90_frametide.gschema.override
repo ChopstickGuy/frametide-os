@@ -43,17 +43,21 @@ experimental-features=['scale-monitor-framebuffer','xwayland-native-scaling']
 check-alive-timeout=uint32 20000
 
 [org.gnome.shell]
-favorite-apps=['google-chrome.desktop','org.gnome.Nautilus.desktop','steam.desktop','code.desktop','ai.storyteller.wordcraft.desktop','org.gnome.Ptyxis.desktop','org.frametide.Store.desktop','org.frametide.Center.desktop']
+favorite-apps=['org.gnome.Nautilus.desktop','google-chrome.desktop','firefox.desktop','steam.desktop','ai.storyteller.wordcraft.desktop','code.desktop','org.gnome.Ptyxis.desktop','org.frametide.Store.desktop','org.frametide.Center.desktop']
+enabled-extensions=['apps-menu@gnome-shell-extensions.gcampax.github.com']
+app-picker-layout=[{'org.frametide.Store.desktop': <{'position': <0>}>, 'org.frametide.Center.desktop': <{'position': <1>}>, 'org.frametide.Welcome.desktop': <{'position': <2>}>, 'org.frametide.Migrate.desktop': <{'position': <3>}>, 'org.gnome.Settings.desktop': <{'position': <4>}>}]
 disabled-extensions=['ding@rastersoft.com','web-search-provider@ubuntu.com','snapd-prompting@canonical.com','snapd-search-provider@canonical.com']
 
 [org.gnome.shell.extensions.dash-to-dock]
 dock-position='BOTTOM'
 extend-height=false
-dock-fixed=false
-autohide=true
-intellihide=true
-dash-max-icon-size=44
-transparency-mode='DYNAMIC'
+dock-fixed=true
+autohide=false
+intellihide=false
+dash-max-icon-size=48
+show-show-apps-button=true
+transparency-mode='FIXED'
+background-opacity=0.85
 running-indicator-style='DOTS'
 show-trash=false
 show-mounts=false
@@ -106,17 +110,21 @@ experimental-features=['scale-monitor-framebuffer','xwayland-native-scaling']
 check-alive-timeout=uint32 20000
 
 [org.gnome.shell:ubuntu]
-favorite-apps=['google-chrome.desktop','org.gnome.Nautilus.desktop','steam.desktop','code.desktop','ai.storyteller.wordcraft.desktop','org.gnome.Ptyxis.desktop','org.frametide.Store.desktop','org.frametide.Center.desktop']
+favorite-apps=['org.gnome.Nautilus.desktop','google-chrome.desktop','firefox.desktop','steam.desktop','ai.storyteller.wordcraft.desktop','code.desktop','org.gnome.Ptyxis.desktop','org.frametide.Store.desktop','org.frametide.Center.desktop']
+enabled-extensions=['apps-menu@gnome-shell-extensions.gcampax.github.com']
+app-picker-layout=[{'org.frametide.Store.desktop': <{'position': <0>}>, 'org.frametide.Center.desktop': <{'position': <1>}>, 'org.frametide.Welcome.desktop': <{'position': <2>}>, 'org.frametide.Migrate.desktop': <{'position': <3>}>, 'org.gnome.Settings.desktop': <{'position': <4>}>}]
 disabled-extensions=['ding@rastersoft.com','web-search-provider@ubuntu.com','snapd-prompting@canonical.com','snapd-search-provider@canonical.com']
 
 [org.gnome.shell.extensions.dash-to-dock:ubuntu]
 dock-position='BOTTOM'
 extend-height=false
-dock-fixed=false
-autohide=true
-intellihide=true
-dash-max-icon-size=44
-transparency-mode='DYNAMIC'
+dock-fixed=true
+autohide=false
+intellihide=false
+dash-max-icon-size=48
+show-show-apps-button=true
+transparency-mode='FIXED'
+background-opacity=0.85
 running-indicator-style='DOTS'
 show-trash=false
 show-mounts=false
