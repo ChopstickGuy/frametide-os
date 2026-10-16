@@ -11,5 +11,5 @@ Depends: frametide-base, gdm3, ubuntu-session, gnome-shell-ubuntu-extensions,
  gnome-shell-extension-manager, ptyxis, libnotify-bin, firefox
 Description: Frametide OS – GNOME-Desktop und Design
  Dunkles, modernes GNOME mit Frametide-Akzentfarbe, Inter/JetBrains Mono,
- Papirus-Icons, Dock unten, VRR aktiviert und flacher Mausbeschleunigung
+ Papirus-Icons, Dock unten und flacher Mausbeschleunigung
  für präzises Zielen.

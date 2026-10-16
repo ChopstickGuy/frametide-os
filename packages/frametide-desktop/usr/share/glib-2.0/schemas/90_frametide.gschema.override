@@ -39,7 +39,7 @@ input-feedback-sounds=false
 show-in-lock-screen=false
 
 [org.gnome.mutter]
-experimental-features=['variable-refresh-rate','scale-monitor-framebuffer','xwayland-native-scaling']
+experimental-features=['scale-monitor-framebuffer','xwayland-native-scaling']
 check-alive-timeout=uint32 20000
 
 [org.gnome.shell]
@@ -102,7 +102,7 @@ input-feedback-sounds=false
 show-in-lock-screen=false
 
 [org.gnome.mutter:ubuntu]
-experimental-features=['variable-refresh-rate','scale-monitor-framebuffer','xwayland-native-scaling']
+experimental-features=['scale-monitor-framebuffer','xwayland-native-scaling']
 check-alive-timeout=uint32 20000
 
 [org.gnome.shell:ubuntu]

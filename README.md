@@ -24,7 +24,7 @@ mit GNOME. Die Ziele, nach Priorität:
 | **Installation** | Der Installer öffnet sich im Live-System automatisch. Sechs klare Schritte auf Deutsch, offline und ohne Swap-Partition (zram) |
 | **Speicher/IO** | zram mit zstd, angepasste `vm.*`-Werte, I/O-Scheduler je nach Datenträger, `noatime`, Transparent Hugepages `defer+madvise` |
 | **Proton** | `ntsync` aktiv (schnellere Windows-Synchronisation in Wine/Proton), hohe Dateilimits für esync, NVIDIA-PAT, Energieprofil „Leistung“ auf Desktop-PCs |
-| **Gaming** | Steam, GameMode, MangoHud, Gamescope, Lutris, große Shader-Caches, VRR aktiviert, flache Mausbeschleunigung |
+| **Gaming** | Steam, GameMode, MangoHud, Gamescope, Lutris, große Shader-Caches, VRR (in GNOME 50 pro Monitor unter Einstellungen → Bildschirme), flache Mausbeschleunigung |
 | **Design** | Dunkles GNOME mit Teal-Akzent, Inter und JetBrains Mono, Papirus-Icons, Dock blendet sich aus, keine Desktop-Symbole |
 | **Klang** | Eigenes Sound-Theme mit 13 weichen, kurzen Tönen (-18 dBFS) statt lauter Systemklänge, kein Tastenklick-Feedback |
 | **Wallpaper** | 7 Motive: Tide (hell/dunkel, passend zum Hell/Dunkel-Modus), Tide mit Logo, Nightwave, Sunset Surge, Frames, OLED Black |
