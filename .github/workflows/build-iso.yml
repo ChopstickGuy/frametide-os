@@ -3,6 +3,7 @@ name: ISO bauen
 on:
   workflow_dispatch:
   push:
+    branches: [main]
     tags: ["v*"]
   pull_request:
 
@@ -13,26 +14,52 @@ jobs:
       - uses: actions/checkout@v4
       - name: Paketverfügbarkeit prüfen
         run: python3 tools/check-packages.py
+      - name: Übersetzungen prüfen
+        run: python3 tools/i18n.py check
+      - name: Python-Code prüfen
+        run: |
+          python3 -m py_compile packages/frametide-tools/usr/lib/frametide/*.py \
+            tools/*.py artwork/*.py
+          python3 -c "import ast,sys; [ast.parse(open(f).read()) for f in sys.argv[1:]]" \
+            packages/frametide-hwsetup/usr/sbin/frametide-hwsetup \
+            packages/frametide-tools/usr/lib/frametide/frametide-helper
+      - name: Shell-Skripte prüfen
+        run: |
+          for f in build.sh scripts/chroot-install.sh packages/build-debs.sh; do bash -n "$f"; done
+          for f in packages/*/DEBIAN/{preinst,postinst,postrm} packages/*/usr/lib/frametide/install-*; do
+            [ -f "$f" ] && sh -n "$f"
+          done
       - name: Hardware-Erkennung testen
         run: python3 packages/frametide-hwsetup/usr/sbin/frametide-hwsetup
+      - name: Pakete bauen
+        run: |
+          sudo apt-get update && sudo apt-get install -y librsvg2-bin
+          ./packages/build-debs.sh
 
   iso:
     needs: check
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-24.04
-    timeout-minutes: 120
+    timeout-minutes: 150
+    env:
+      SF_USER: ${{ secrets.SF_USER }}
+      SF_PROJECT: ${{ secrets.SF_PROJECT }}
     steps:
       - uses: actions/checkout@v4
       - name: Speicherplatz freigeben
         run: |
-          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache /usr/local/share/boost
-          df -h /
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache \
+            /usr/local/share/boost /usr/local/.ghcup /usr/share/swift
+          sudo docker image prune --all --force || true
+          df -h / /mnt
       - name: Build-Werkzeuge
         run: |
           sudo apt-get update
           sudo apt-get install -y debootstrap squashfs-tools xorriso dosfstools mtools curl librsvg2-bin
       - name: ISO bauen
         run: sudo ./build.sh
+      - name: ISO-Größe
+        run: ls -lh out/*.iso && cat out/*.sha256
       - uses: actions/upload-artifact@v4
         with:
           name: frametide-os-iso
@@ -40,10 +67,34 @@ jobs:
             out/*.iso
             out/*.sha256
           compression-level: 0
-      - name: Release (bei Tag)
+          retention-days: 30
+
+      # ISO-Dateien sind größer als die 2-GB-Grenze von GitHub-Releases → SourceForge.
+      # Benötigte Secrets: SF_SSH_KEY (privater Schlüssel), SF_USER, SF_PROJECT
+      - name: Auf SourceForge hochladen (bei Tag)
+        if: startsWith(github.ref, 'refs/tags/v') && env.SF_USER != ''
+        env:
+          SF_SSH_KEY: ${{ secrets.SF_SSH_KEY }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$SF_SSH_KEY" > ~/.ssh/sourceforge && chmod 600 ~/.ssh/sourceforge
+          ssh-keyscan frs.sourceforge.net >> ~/.ssh/known_hosts
+          version="${GITHUB_REF_NAME#v}"
+          rsync -av --progress -e "ssh -i ~/.ssh/sourceforge" out/*.iso out/*.sha256 \
+            "$SF_USER@frs.sourceforge.net:/home/frs/project/$SF_PROJECT/$version/"
+          echo "SF_URL=https://sourceforge.net/projects/$SF_PROJECT/files/$version/" >> "$GITHUB_ENV"
+      - name: GitHub-Release (bei Tag)
         if: startsWith(github.ref, 'refs/tags/v')
         uses: softprops/action-gh-release@v2
         with:
-          files: |
-            out/*.iso
-            out/*.sha256
+          prerelease: true
+          files: out/*.sha256
+          body: |
+            ## Frametide OS ${{ github.ref_name }}
+
+            **Download:** ${{ env.SF_URL || 'als Artefakt dieses Workflow-Laufs (Actions → ISO bauen)' }}
+
+            Die SHA256-Prüfsumme hängt an diesem Release. Bitte nach dem Download prüfen:
+            `sha256sum -c frametide-os-*.iso.sha256`
+
+            ⚠️ Alpha-Version – zuerst in einer VM oder auf einem Testrechner ausprobieren.

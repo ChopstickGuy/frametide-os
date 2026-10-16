@@ -1,0 +1,19 @@
+#!/bin/sh
+# Installiert Hersteller-Apps, die nicht auf der ISO weiterverteilt werden dürfen,
+# direkt aus den offiziellen Quellen (Google, Microsoft). Läuft einmal beim ersten Start.
+set -e
+APPS="google-chrome-stable code"
+STAMP=/var/lib/frametide/vendor-apps.done
+
+# Auf Internet warten (blockiert den Systemstart nicht, läuft im Hintergrund)
+i=0
+until getent hosts dl.google.com >/dev/null 2>&1 && getent hosts packages.microsoft.com >/dev/null 2>&1; do
+    i=$((i + 1)); [ "$i" -gt 180 ] && { echo "Kein Internet – nächster Versuch beim nächsten Start"; exit 1; }
+    sleep 10
+done
+
+export DEBIAN_FRONTEND=noninteractive
+echo "code code/add-microsoft-repo boolean false" | debconf-set-selections
+apt-get -o DPkg::Lock::Timeout=600 update
+apt-get -y -o DPkg::Lock::Timeout=600 -o Dpkg::Options::=--force-confold install $APPS
+mkdir -p "$(dirname "$STAMP")" && touch "$STAMP"

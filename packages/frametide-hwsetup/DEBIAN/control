@@ -1,7 +1,7 @@
 Package: frametide-hwsetup
 Version: @VERSION@
 Architecture: all
-Maintainer: Frametide OS <dev@frametide-os.invalid>
+Maintainer: Frametide OS <205694622+ChopstickGuy@users.noreply.github.com>
 Section: admin
 Priority: optional
 Depends: python3, ubuntu-drivers-common, pciutils, grub-common, initramfs-tools

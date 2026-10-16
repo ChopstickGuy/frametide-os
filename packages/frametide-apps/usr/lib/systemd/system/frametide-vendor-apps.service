@@ -1,0 +1,14 @@
+[Unit]
+Description=Frametide OS: Google Chrome und VS Code aus den offiziellen Quellen installieren
+After=NetworkManager.service
+ConditionPathExists=!/var/lib/frametide/vendor-apps.done
+ConditionKernelCommandLine=!boot=casper
+
+[Service]
+Type=oneshot
+ExecStart=/usr/lib/frametide/install-vendor-apps
+Nice=10
+TimeoutStartSec=45min
+
+[Install]
+WantedBy=multi-user.target

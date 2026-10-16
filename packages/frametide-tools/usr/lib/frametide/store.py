@@ -2,13 +2,15 @@
 """Frametide Store – kuratierte Apps (Ubuntu, Flathub, ArtCraft) mit einem Klick."""
 import json
 import os
+import shlex
+import shutil
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import frametide_common as ft  # noqa: E402
 from frametide_common import Adw, Gio, Gtk, _  # noqa: E402
 
-SOURCE_LABEL = {"apt": "Ubuntu", "flatpak": "Flathub", "craft": "ArtCraft"}
+SOURCE_LABEL = {"apt": "Ubuntu", "flatpak": "Flathub", "craft": "ArtCraft", "devbox": "Container"}
 
 
 class AppCard(Gtk.Box):
@@ -21,18 +23,24 @@ class AppCard(Gtk.Box):
 
         text = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=3, hexpand=True,
                        valign=Gtk.Align.CENTER)
-        text.append(Gtk.Label(label=app["name"], xalign=0, css_classes=["heading"],
-                              ellipsize=3, max_width_chars=18, width_chars=12))
+        text.append(Gtk.Label(label=ft.localized(app, "name"), xalign=0, css_classes=["heading"],
+                              wrap=True, lines=2, ellipsize=3, max_width_chars=15, width_chars=12))
         text.append(Gtk.Label(label=ft.localized(app, "summary"), xalign=0, wrap=True, lines=2,
                               ellipsize=3, css_classes=["dim-label", "caption"],
-                              max_width_chars=20, width_chars=16))
+                              max_width_chars=17, width_chars=16))
         text.append(Gtk.Label(label=SOURCE_LABEL[app["source"]], xalign=0, halign=Gtk.Align.START,
                               css_classes=["ft-badge", "caption"]))
         self.append(text)
 
-        self.button = Gtk.Button(valign=Gtk.Align.CENTER, width_request=104)
+        actions = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=4, valign=Gtk.Align.CENTER)
+        self.button = Gtk.Button(width_request=104)
         self.button.connect("clicked", self.on_clicked)
-        self.append(self.button)
+        actions.append(self.button)
+        # Container: zusätzlich „Entfernen“, weil der Hauptknopf „Öffnen“ ist
+        self.remove_btn = Gtk.Button(label=_("Entfernen"), css_classes=["flat", "caption"], visible=False)
+        self.remove_btn.connect("clicked", lambda _b: self.store.confirm_remove(self.app))
+        actions.append(self.remove_btn)
+        self.append(actions)
         self.update()
 
     def installed(self):
@@ -41,6 +49,8 @@ class AppCard(Gtk.Box):
     def update(self):
         busy = self.store.busy_id == self.app["id"]
         queued = self.app["id"] in self.store.queue_ids()
+        container = self.app["source"] == "devbox"
+        self.remove_btn.set_visible(container and self.installed() and not (busy or queued))
         if busy or queued:
             box = Gtk.Box(spacing=6, halign=Gtk.Align.CENTER)
             box.append(Gtk.Spinner(spinning=busy))
@@ -48,6 +58,11 @@ class AppCard(Gtk.Box):
             self.button.set_child(box)
             self.button.set_sensitive(False)
             self.button.set_css_classes([])
+        elif self.installed() and container:
+            self.button.set_child(None)
+            self.button.set_label(_("Öffnen"))
+            self.button.set_sensitive(True)
+            self.button.set_css_classes(["suggested-action"])
         elif self.installed():
             self.button.set_child(None)
             self.button.set_label(_("Entfernen"))
@@ -60,7 +75,9 @@ class AppCard(Gtk.Box):
             self.button.set_css_classes(["suggested-action"])
 
     def on_clicked(self, _button):
-        if self.installed():
+        if self.installed() and self.app["source"] == "devbox":
+            self.store.open_container(self.app)
+        elif self.installed():
             self.store.confirm_remove(self.app)
         else:
             self.store.enqueue(self.app, "install")
@@ -174,10 +191,14 @@ class StoreWindow(Adw.ApplicationWindow):
         apt = [a["ref"] for a in self.apps if a["source"] in ("apt", "craft")]
         self.apt_installed = ft.apt_installed(apt)
         self.flatpak_installed = ft.flatpak_installed()
+        names = ft.run(["podman", "ps", "-a", "--format", "{{.Names}}"]) if shutil.which("podman") else ""
+        self.containers = set(names.split())
 
     def is_installed(self, app):
         if app["source"] == "flatpak":
             return app["ref"] in self.flatpak_installed
+        if app["source"] == "devbox":
+            return app["ref"] in self.containers
         return app["ref"] in self.apt_installed
 
     def queue_ids(self):
@@ -208,6 +229,14 @@ class StoreWindow(Adw.ApplicationWindow):
         if src == "flatpak":
             argv = (["flatpak", "install", "--system", "-y", "--noninteractive", "flathub", ref]
                     if action == "install" else ["flatpak", "uninstall", "--system", "-y", "--noninteractive", ref])
+        elif src == "devbox" and action == "install":
+            create = ["distrobox", "create", "--yes", "--name", ref, "--image", app["image"]]
+            if app.get("nvidia"):
+                create.append("--nvidia")
+            # Erst anlegen, dann einmal betreten: lädt das Image und richtet den Container vollständig ein
+            argv = ["sh", "-c", f"{shlex.join(create)} && distrobox enter {shlex.quote(ref)} -- true"]
+        elif src == "devbox":
+            argv = ["distrobox", "rm", "--force", ref]
         elif src == "craft" and action == "install":
             argv = ft.helper_argv("craft-install", ref)
         else:
@@ -227,6 +256,15 @@ class StoreWindow(Adw.ApplicationWindow):
             reason = self.last_lines[-1] if self.last_lines else _("Fehlercode {code}").format(code=status)
             self.toasts.add_toast(Adw.Toast(title=f"{app['name']}: {reason}", timeout=6))
         self.next_job()
+
+    def open_container(self, app):
+        for argv in (["xdg-terminal-exec", "distrobox", "enter", app["ref"]],
+                     ["ptyxis", "--new-window", "--", "distrobox", "enter", app["ref"]],
+                     ["gnome-terminal", "--", "distrobox", "enter", app["ref"]]):
+            if shutil.which(argv[0]):
+                Gio.Subprocess.new(argv, Gio.SubprocessFlags.NONE)
+                return
+        self.toasts.add_toast(Adw.Toast(title=_("Kein Terminal gefunden"), timeout=4))
 
     def confirm_remove(self, app):
         dialog = Adw.MessageDialog(transient_for=self, heading=_("{app} entfernen?").format(app=app["name"]),

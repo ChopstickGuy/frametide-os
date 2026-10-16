@@ -1,7 +1,7 @@
 Package: frametide-desktop
 Version: @VERSION@
 Architecture: all
-Maintainer: Frametide OS <dev@frametide-os.invalid>
+Maintainer: Frametide OS <205694622+ChopstickGuy@users.noreply.github.com>
 Section: metapackages
 Priority: optional
 Depends: frametide-base, gdm3, ubuntu-session, gnome-shell-ubuntu-extensions,

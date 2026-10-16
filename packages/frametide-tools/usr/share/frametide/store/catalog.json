@@ -777,6 +777,110 @@
    "name_en": "Development"
   },
   {
+   "id": "devenv",
+   "name": "Entwicklungsumgebungen",
+   "name_en": "Dev environments",
+   "icon": "utilities-terminal-symbolic",
+   "apps": [
+    {
+     "id": "ki-cuda",
+     "name": "Python-KI (NVIDIA CUDA)",
+     "summary": "PyTorch mit CUDA im Container – für NVIDIA-GPUs (ca. 10 GB)",
+     "summary_en": "PyTorch with CUDA in a container – for NVIDIA GPUs (approx. 10 GB)",
+     "icon": "applications-science",
+     "source": "devbox",
+     "ref": "ft-ki-cuda",
+     "image": "docker.io/pytorch/pytorch:latest",
+     "nvidia": true,
+     "featured": true,
+     "name_en": "Python AI (NVIDIA CUDA)"
+    },
+    {
+     "id": "ki-rocm",
+     "name": "Python-KI (AMD ROCm)",
+     "summary": "PyTorch mit ROCm im Container – für AMD-GPUs (ca. 20 GB)",
+     "summary_en": "PyTorch with ROCm in a container – for AMD GPUs (approx. 20 GB)",
+     "icon": "applications-science",
+     "source": "devbox",
+     "ref": "ft-ki-rocm",
+     "image": "docker.io/rocm/pytorch:latest",
+     "name_en": "Python AI (AMD ROCm)"
+    },
+    {
+     "id": "arch",
+     "name": "Arch Linux (mit AUR)",
+     "summary": "Aktuellste Pakete und das AUR – ohne Risiko fürs System",
+     "summary_en": "Latest packages and the AUR – without risking your system",
+     "icon": "distributor-logo-archlinux",
+     "source": "devbox",
+     "ref": "ft-arch",
+     "image": "quay.io/toolbx/arch-toolbox:latest",
+     "name_en": "Arch Linux (with AUR)"
+    },
+    {
+     "id": "fedora",
+     "name": "Fedora",
+     "summary": "Fedora-Werkzeuge und -Pakete im Container",
+     "summary_en": "Fedora tools and packages in a container",
+     "icon": "distributor-logo-fedora",
+     "source": "devbox",
+     "ref": "ft-fedora",
+     "image": "quay.io/fedora/fedora-toolbox:43"
+    },
+    {
+     "id": "ubuntu",
+     "name": "Ubuntu (sauber)",
+     "summary": "Leere Ubuntu-Umgebung zum Experimentieren",
+     "summary_en": "Clean Ubuntu environment for experiments",
+     "icon": "distributor-logo-ubuntu",
+     "source": "devbox",
+     "ref": "ft-ubuntu",
+     "image": "quay.io/toolbx/ubuntu-toolbox:24.04",
+     "name_en": "Ubuntu (clean)"
+    },
+    {
+     "id": "node",
+     "name": "Node.js (LTS)",
+     "summary": "JavaScript/TypeScript mit Node.js, npm und Co.",
+     "summary_en": "JavaScript/TypeScript with Node.js, npm and more",
+     "icon": "nodejs",
+     "source": "devbox",
+     "ref": "ft-node",
+     "image": "docker.io/library/node:lts"
+    },
+    {
+     "id": "rust",
+     "name": "Rust",
+     "summary": "Rust-Compiler und Cargo, immer aktuell",
+     "summary_en": "Rust compiler and Cargo, always up to date",
+     "icon": "rust",
+     "source": "devbox",
+     "ref": "ft-rust",
+     "image": "docker.io/library/rust:latest"
+    },
+    {
+     "id": "go",
+     "name": "Go",
+     "summary": "Go-Compiler und Werkzeuge",
+     "summary_en": "Go compiler and tools",
+     "icon": "golang",
+     "source": "devbox",
+     "ref": "ft-go",
+     "image": "docker.io/library/golang:latest"
+    },
+    {
+     "id": "dotnet",
+     "name": ".NET SDK",
+     "summary": "C# und .NET-Entwicklung",
+     "summary_en": "C# and .NET development",
+     "icon": "dotnet",
+     "source": "devbox",
+     "ref": "ft-dotnet",
+     "image": "mcr.microsoft.com/dotnet/sdk:9.0"
+    }
+   ]
+  },
+  {
    "id": "system",
    "name": "System & Hardware",
    "icon": "preferences-system-symbolic",

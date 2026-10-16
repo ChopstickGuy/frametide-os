@@ -1,12 +1,15 @@
 Package: frametide-tools
 Version: @VERSION@
 Architecture: all
-Maintainer: Frametide OS <dev@frametide-os.invalid>
+Maintainer: Frametide OS <205694622+ChopstickGuy@users.noreply.github.com>
 Section: admin
 Priority: optional
 Depends: python3, python3-gi, gir1.2-gtk-4.0, gir1.2-adw-1, pkexec, flatpak,
- frametide-hwsetup, lm-sensors, fwupd, ubuntu-drivers-common
-Recommends: openrgb, coolercontrol
+ frametide-hwsetup, lm-sensors, fwupd, ubuntu-drivers-common, rsync, udisks2,
+ network-manager, ntfs-3g
+Recommends: openrgb, coolercontrol, distrobox, podman, sysbench, 7zip, stress-ng,
+ fio, zstd, vkmark, glmark2-wayland
 Description: Frametide OS – Store und Center
  Frametide Store: kuratierte Apps aus Ubuntu, Flathub und ArtCraft mit einem Klick.
- Frametide Center: Updates, Grafiktreiber, RGB-Beleuchtung, Lüfter und Systemoptionen.
+ Frametide Center: Updates, Grafiktreiber, Spiele-Check, RGB-Beleuchtung, Lüfter
+ und Systemoptionen. Dazu der Windows-Umzugsassistent und Frametide Bench.

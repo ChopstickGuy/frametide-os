@@ -260,6 +260,108 @@ class DriversPage(Adw.PreferencesPage):
         return False
 
 
+# ======================================================================== Spiele
+
+LEVEL_STYLE = {"good": "success", "ok": "warning", "bad": "error", "unknown": "dim-label"}
+
+
+def verdict_badge(level, text):
+    return Gtk.Label(label=text, valign=Gtk.Align.CENTER, css_classes=["ft-badge", "caption", LEVEL_STYLE[level]])
+
+
+class GamesPage(Adw.PreferencesPage):
+    """Zeigt pro Spiel, wie gut es unter Linux läuft und ob ein Anti-Cheat blockiert."""
+
+    def __init__(self):
+        super().__init__(title=_("Spiele"), icon_name="input-gaming-symbolic")
+        import games
+        self.games = games
+
+        check = group(_("Spiel prüfen"),
+                      _("Läuft mein Spiel unter Linux? Daten von ProtonDB und AreWeAntiCheatYet."))
+        self.entry = Adw.EntryRow(title=_("Spielname, z. B. Elden Ring"), show_apply_button=True)
+        self.entry.connect("apply", self.on_search)
+        self.entry.connect("entry-activated", self.on_search)
+        check.add(self.entry)
+        self.add(check)
+        self.results = group(_("Ergebnis"))
+        self.results.set_visible(False)
+        self.add(self.results)
+
+        self.library = group(_("Deine installierten Steam-Spiele"))
+        self.summary = Adw.ActionRow(title=_("Bibliothek wird gelesen …"))
+        self.library.add(self.summary)
+        self.add(self.library)
+        self.library_rows = []
+        ft.in_thread(self.load_library, self.show_library)
+
+    # -------------------------------------------------------- Bibliothek
+    def load_library(self):
+        installed = self.games.installed_games()
+        anticheats = self.games.anticheat_db()
+        from concurrent.futures import ThreadPoolExecutor
+        with ThreadPoolExecutor(6) as pool:
+            verdicts = list(pool.map(lambda g: self.games.verdict(g[0], anticheats), installed))
+        return list(zip(installed, verdicts))
+
+    def show_library(self, result):
+        if isinstance(result, Exception) or not result:
+            self.summary.set_title(_("Keine installierten Steam-Spiele gefunden"))
+            self.summary.set_subtitle(_("Installiere Spiele in Steam oder prüfe oben ein Spiel nach Namen."))
+            return False
+        counts = {"good": 0, "ok": 0, "bad": 0, "unknown": 0}
+        for (appid, name), (level, text, details) in result:
+            counts[level] += 1
+            row = Adw.ActionRow(title=name, subtitle=details)
+            row.add_suffix(verdict_badge(level, text))
+            self.library.add(row)
+        self.summary.set_title(_("{n} Spiele geprüft").format(n=len(result)))
+        self.summary.set_subtitle(_("{good} laufen gut · {ok} mit Einschränkungen · {bad} blockiert/defekt · "
+                                    "{unknown} unbekannt").format(**counts))
+        return False
+
+    # ------------------------------------------------------------- Suche
+    def on_search(self, _entry):
+        term = self.entry.get_text().strip()
+        if len(term) < 2:
+            return
+        self.results.set_visible(True)
+        self.results.set_title(_("Ergebnis für „{term}“").format(term=term))
+        for row in getattr(self, "_result_rows", []):
+            self.results.remove(row)
+        self._result_rows = [Adw.ActionRow(title=_("Suche läuft …"))]
+        self.results.add(self._result_rows[0])
+
+        def lookup():
+            anticheats = self.games.anticheat_db()
+            found = [(name, self.games.verdict(appid, anticheats)) for appid, name in self.games.search_steam(term)]
+            steam_names = {n.lower() for n, _v in found}
+            found += [(g["name"], self.games.anticheat_verdict(g))
+                      for g in self.games.anticheat_by_name(term) if g["name"].lower() not in steam_names]
+            return found
+        ft.in_thread(lookup, self.show_results)
+
+    def show_results(self, result):
+        for row in self._result_rows:
+            self.results.remove(row)
+        self._result_rows = []
+        if isinstance(result, Exception):
+            result = []
+            rows = [Adw.ActionRow(title=_("Keine Verbindung"), subtitle=_("Für den Spiele-Check wird Internet benötigt."))]
+        else:
+            rows = []
+        for name, (level, text, details) in result:
+            row = Adw.ActionRow(title=name, subtitle=details)
+            row.add_suffix(verdict_badge(level, text))
+            rows.append(row)
+        if not rows:
+            rows = [Adw.ActionRow(title=_("Nichts gefunden"))]
+        for row in rows:
+            self.results.add(row)
+            self._result_rows.append(row)
+        return False
+
+
 # ================================================================= RGB & Lüfter
 
 class HardwarePage(Adw.PreferencesPage):
@@ -469,14 +571,28 @@ class SystemPage(Adw.PreferencesPage):
         perf.add(self.task)
         self.add(perf)
 
+        tools = group(_("Werkzeuge"))
+        bench = Adw.ActionRow(title="Frametide Bench",
+                              subtitle=_("Misst CPU, Speicher, Latenz, SSD und GPU (ca. 4 Minuten). "
+                                         "Ergebnis: ~/.local/share/frametide-bench"))
+        bench.add_suffix(button(_("Starten"), "flat", lambda: self.task.start(
+            _("Benchmark läuft – bitte nichts anderes starten …"), ["frametide-bench"])))
+        tools.add(bench)
+        move = Adw.ActionRow(title=_("Windows-Umzug"),
+                             subtitle=_("Dateien, Lesezeichen, WLAN und Steam-Spiele von Windows übernehmen"))
+        move.add_suffix(button(_("Öffnen"), "flat",
+                               lambda: Gio.Subprocess.new(["frametide-migrate"], Gio.SubprocessFlags.NONE)))
+        tools.add(move)
+        self.add(tools)
+
 
 class CenterWindow(Adw.ApplicationWindow):
     def __init__(self, application, page=None):
         super().__init__(application=application, title="Frametide Center",
-                         default_width=980, default_height=760)
+                         default_width=1040, default_height=780)
         self.toasts = Adw.ToastOverlay()
         stack = Adw.ViewStack()
-        for name, widget in (("updates", UpdatesPage()), ("drivers", DriversPage()),
+        for name, widget in (("updates", UpdatesPage()), ("drivers", DriversPage()), ("games", GamesPage()),
                              ("hardware", HardwarePage(self)), ("system", SystemPage())):
             stack.add_titled_with_icon(widget, name, widget.get_title(), widget.get_icon_name())
         header = Adw.HeaderBar(title_widget=Adw.ViewSwitcher(stack=stack, policy=Adw.ViewSwitcherPolicy.WIDE))

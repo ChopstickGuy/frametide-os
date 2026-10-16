@@ -96,7 +96,8 @@ echo ">>> ArtCraft-Apps (geprüfte .deb aus den GitHub-Releases)"
 apt_install /tmp/frametide/craft/*.deb
 
 echo ">>> Standard-Software"
-apt_install code google-chrome-stable gh github-desktop coolercontrol
+apt_install gh github-desktop coolercontrol
+# Chrome und VS Code: Lizenz verbietet Weitergabe auf der ISO → Installation beim ersten Start (frametide-apps)
 
 echo ">>> Sprachpakete: $LANGUAGES"
 declare -A FIREFOX_L10N=([de]=de [en]=en-gb [fr]=fr [es]=es-es [it]=it [pl]=pl [pt]=pt-pt [nl]=nl [tr]=tr [ru]=ru)

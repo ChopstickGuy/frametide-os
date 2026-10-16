@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Move from Windows
+Name[de]=Windows-Umzug
+Comment=Bring files, bookmarks, Wi-Fi and Steam games over from Windows
+Comment[de]=Dateien, Lesezeichen, WLAN und Steam-Spiele von Windows übernehmen
+Exec=frametide-migrate
+Icon=frametide-logo
+Terminal=false
+Categories=System;Utility;
+Keywords=windows;migration;import;umzug;
+StartupNotify=true

@@ -1,5 +1,4 @@
 """Gemeinsamer Code für Frametide Store und Frametide Center."""
-import gettext
 import json
 import os
 import re
@@ -22,29 +21,9 @@ for _row in (Adw.ActionRow, Adw.SwitchRow, Adw.ExpanderRow):
             getattr(self, f"set_{key}")(value or "")
     _row.__init__ = _plain_init
 
+from frametide_i18n import GERMAN, LANG, _, localized  # noqa: E402,F401
+
 HELPER = "/usr/lib/frametide/frametide-helper"
-LOCALE_DIR = os.environ.get("FRAMETIDE_LOCALE", "/usr/share/locale")
-
-
-def ui_language():
-    for var in ("LANGUAGE", "LC_ALL", "LC_MESSAGES", "LANG"):
-        value = os.environ.get(var, "")
-        if value and value not in ("C", "POSIX") and not value.startswith("C."):
-            return value.split(":")[0].split(".")[0]
-    return "en"
-
-
-LANG = ui_language()
-GERMAN = LANG.startswith("de")
-# Texte im Quellcode sind deutsch; alle anderen Sprachen nutzen ihre Übersetzung
-# oder – falls es (noch) keine gibt – Englisch.
-_ = (lambda s: s) if GERMAN else gettext.translation(
-    "frametide", LOCALE_DIR, languages=[LANG, LANG.split("_")[0], "en"], fallback=True).gettext
-
-
-def localized(entry, key):
-    """Feld aus dem Store-Katalog in der passenden Sprache (z. B. summary / summary_en)."""
-    return entry[key] if GERMAN else entry.get(f"{key}_en", entry[key])
 DATA_DIR = os.environ.get("FRAMETIDE_DATA", "/usr/share/frametide")
 FLATHUB_ICONS = "/var/lib/flatpak/appstream/flathub/x86_64/active/icons/128x128"
 
@@ -62,6 +41,9 @@ CSS = """
 .ft-card:hover { background-color: alpha(currentColor, .04); }
 .ft-badge { font-size: 0.75em; padding: 1px 8px; border-radius: 99px;
             background-color: alpha(currentColor, .08); }
+.ft-badge.success { background-color: alpha(@success_color, .18); }
+.ft-badge.warning { background-color: alpha(@warning_color, .18); }
+.ft-badge.error { background-color: alpha(@error_color, .18); }
 .ft-hero { padding: 28px 32px; border-radius: 18px;
            background-image: linear-gradient(120deg, alpha(#22D3EE,.22), alpha(#A855F7,.22)); }
 .ft-big-number { font-size: 2.2em; font-weight: 700; font-feature-settings: "tnum"; }

@@ -1,7 +1,115 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=UTF-8\n"
 
-#: center.py:321
+#: bench.py:32
+msgid "CPU Single-Core"
+msgstr ""
+
+#: bench.py:33
+msgid "CPU Multi-Core"
+msgstr ""
+
+#: bench.py:34
+msgid "7-Zip (Kompression/Dekompression)"
+msgstr ""
+
+#: bench.py:35
+msgid "Speicherbandbreite"
+msgstr ""
+
+#: bench.py:36
+msgid "zstd Kompression"
+msgstr ""
+
+#: bench.py:37
+msgid "zstd Dekompression"
+msgstr ""
+
+#: bench.py:38
+msgid "Latenz im Leerlauf (Ø)"
+msgstr ""
+
+#: bench.py:39
+msgid "Latenz im Leerlauf (99 %)"
+msgstr ""
+
+#: bench.py:40
+msgid "Latenz unter Volllast (Ø)"
+msgstr ""
+
+#: bench.py:41
+msgid "Latenz unter Volllast (99 %)"
+msgstr ""
+
+#: bench.py:42
+msgid "SSD sequentiell lesen"
+msgstr ""
+
+#: bench.py:43
+msgid "SSD 4K zufällig lesen"
+msgstr ""
+
+#: bench.py:44
+msgid "GPU Vulkan (vkmark)"
+msgstr ""
+
+#: bench.py:45
+msgid "GPU OpenGL (glmark2)"
+msgstr ""
+
+#: bench.py:46
+msgid "Startzeit"
+msgstr ""
+
+#: bench.py:72
+msgid "CPU (sysbench)"
+msgstr ""
+
+#: bench.py:89
+msgid "7-Zip-Benchmark"
+msgstr ""
+
+#: bench.py:99
+msgid "zstd-Kompression"
+msgstr ""
+
+#: bench.py:131
+msgid "Latenz im Leerlauf"
+msgstr ""
+
+#: bench.py:133
+msgid "Latenz unter Volllast (alle Kerne ausgelastet)"
+msgstr ""
+
+#: bench.py:146
+msgid "Datenträger (fio, 1 GB Testdatei)"
+msgstr ""
+
+#: bench.py:162
+msgid "GPU-Tests übersprungen (keine grafische Sitzung)"
+msgstr ""
+
+#: bench.py:220
+msgid "Frametide Bench – Leistungstest"
+msgstr ""
+
+#: bench.py:221
+msgid "ohne GPU- und Datenträgertests"
+msgstr ""
+
+#: bench.py:222
+msgid "zwei Ergebnisse vergleichen"
+msgstr ""
+
+#: bench.py:247
+msgid "Ergebnis gespeichert: {path}"
+msgstr ""
+
+#: bench.py:250
+msgid "Nicht installiert (Tests übersprungen): {tools}"
+msgstr ""
+
+#: center.py:423
 msgid "bei Secure Boot einmalig MOK-Bestätigung"
 msgstr ""
 
@@ -61,44 +169,64 @@ msgstr ""
 msgid "nouveau (offen, eingeschränkt)"
 msgstr ""
 
-#: center.py:272
+#: center.py:280
+msgid "Spiel prüfen"
+msgstr ""
+
+#: center.py:281
+msgid "Läuft mein Spiel unter Linux? Daten von ProtonDB und AreWeAntiCheatYet."
+msgstr ""
+
+#: center.py:287
+msgid "Ergebnis"
+msgstr ""
+
+#: center.py:291
+msgid "Deine installierten Steam-Spiele"
+msgstr ""
+
+#: center.py:374
 msgid "Temperaturen"
 msgstr ""
 
-#: center.py:273
+#: center.py:375
 msgid "Lüfter und Pumpen"
 msgstr ""
 
-#: center.py:274
+#: center.py:376
 msgid "Kurven, Profile und AIO-Kühler stellst du in CoolerControl ein."
 msgstr ""
 
-#: center.py:285
+#: center.py:387
 msgid "RGB-Beleuchtung"
 msgstr ""
 
-#: center.py:286
+#: center.py:388
 msgid "Mainboard, RAM, Grafikkarte, Lüfter, Tastatur und Maus – herstellerübergreifend über OpenRGB."
 msgstr ""
 
-#: center.py:312
+#: center.py:414
 msgid "Erweitert"
 msgstr ""
 
-#: center.py:312
+#: center.py:414
 msgid "Nur nötig, wenn Geräte oder Lüfter oben fehlen."
 msgstr ""
 
-#: center.py:410
+#: center.py:512
 msgid "Suche läuft … (kann einige Sekunden dauern)"
 msgstr ""
 
-#: center.py:445
+#: center.py:547
 msgid "Über dieses System"
 msgstr ""
 
-#: center.py:455
+#: center.py:557
 msgid "Leistung"
+msgstr ""
+
+#: center.py:574
+msgid "Werkzeuge"
 msgstr ""
 
 #: center.py:93
@@ -185,120 +313,156 @@ msgstr ""
 msgid "NVIDIA-Treiber"
 msgstr ""
 
-#: center.py:267
+#: center.py:276
+msgid "Spiele"
+msgstr ""
+
+#: center.py:282
+msgid "Spielname, z. B. Elden Ring"
+msgstr ""
+
+#: center.py:292
+msgid "Bibliothek wird gelesen …"
+msgstr ""
+
+#: center.py:309
+msgid "Keine installierten Steam-Spiele gefunden"
+msgstr ""
+
+#: center.py:310
+msgid "Installiere Spiele in Steam oder prüfe oben ein Spiel nach Namen."
+msgstr ""
+
+#: center.py:369
 msgid "RGB & Lüfter"
 msgstr ""
 
-#: center.py:276
+#: center.py:378
 msgid "Lüfterkurven, Pumpen, AIO-Wasserkühlungen"
 msgstr ""
 
-#: center.py:278
+#: center.py:380
 msgid "Öffnen"
 msgstr ""
 
-#: center.py:293
+#: center.py:395
 msgid "Farbe für alle Geräte"
 msgstr ""
 
-#: center.py:294
+#: center.py:396
 msgid "Statische Farbe auf alle erkannten Geräte"
 msgstr ""
 
-#: center.py:297
+#: center.py:399
 msgid "Anwenden"
 msgstr ""
 
-#: center.py:299
+#: center.py:401
 msgid "Beleuchtung ausschalten"
 msgstr ""
 
-#: center.py:300
+#: center.py:402
 msgid "Aus"
 msgstr ""
 
-#: center.py:303
+#: center.py:405
 msgid "Erkannte Geräte"
 msgstr ""
 
-#: center.py:306
+#: center.py:408
 msgid "Effekte, Zonen, Profile und Geräte im Detail"
 msgstr ""
 
-#: center.py:313
+#: center.py:415
 msgid "Erweiterter SMBus-Zugriff"
 msgstr ""
 
-#: center.py:314
+#: center.py:416
 msgid "Für RGB auf manchen Mainboards und RAM-Riegeln (acpi_enforce_resources=lax). Neustart nötig."
 msgstr ""
 
-#: center.py:322
+#: center.py:424
 msgid "Lüftertreiber für ITE-Chips"
 msgstr ""
 
-#: center.py:323
+#: center.py:425
 msgid "Gigabyte und viele andere Mainboards"
 msgstr ""
 
-#: center.py:324
+#: center.py:426
 msgid "Lüftertreiber für Nuvoton NCT6687"
 msgstr ""
 
-#: center.py:325
+#: center.py:427
 msgid "Viele MSI-Mainboards"
 msgstr ""
 
-#: center.py:330
+#: center.py:432
 msgid "Sensoren neu erkennen"
 msgstr ""
 
-#: center.py:378
+#: center.py:480
 msgid "Keine Temperatursensoren gefunden"
 msgstr ""
 
-#: center.py:379
+#: center.py:481
 msgid "Keine Lüftersensoren gefunden – siehe „Erweitert“"
 msgstr ""
 
-#: center.py:440
+#: center.py:542
 msgid "System"
 msgstr ""
 
-#: center.py:447
+#: center.py:549
 msgid "Basis"
 msgstr ""
 
-#: center.py:449
+#: center.py:551
 msgid "Prozessor"
 msgstr ""
 
-#: center.py:450
+#: center.py:552
 msgid "Arbeitsspeicher"
 msgstr ""
 
-#: center.py:457
+#: center.py:559
 msgid "x86-64-v3-optimierte Pakete"
 msgstr ""
 
-#: center.py:458
+#: center.py:560
 msgid "Schnellere Pakete für CPUs ab Intel Haswell / AMD Zen (experimentell)"
 msgstr ""
 
-#: center.py:459
+#: center.py:561
 msgid "AMD-GPU-Übertaktung freischalten"
 msgstr ""
 
-#: center.py:460
+#: center.py:562
 msgid "Erlaubt Übertakten und Undervolting in CoreCtrl. Neustart nötig."
 msgstr ""
 
-#: center.py:461
+#: center.py:563
 msgid "CPU-Sicherheitsbremsen abschalten"
 msgstr ""
 
-#: center.py:462
+#: center.py:564
 msgid "Mehr Leistung v. a. auf älteren CPUs, aber weniger Schutz vor Spectre & Co. Nur für reine Gaming-PCs. Neustart nötig."
+msgstr ""
+
+#: center.py:576
+msgid "Misst CPU, Speicher, Latenz, SSD und GPU (ca. 4 Minuten). Ergebnis: ~/.local/share/frametide-bench"
+msgstr ""
+
+#: center.py:578
+msgid "Starten"
+msgstr ""
+
+#: center.py:581
+msgid "Windows-Umzug"
+msgstr ""
+
+#: center.py:582
+msgid "Dateien, Lesezeichen, WLAN und Steam-Spiele von Windows übernehmen"
 msgstr ""
 
 #: center.py:79
@@ -314,18 +478,30 @@ msgid "Treiber: {driver}"
 msgstr ""
 
 #: center.py:318
+msgid "{n} Spiele geprüft"
+msgstr ""
+
+#: center.py:319
+msgid "{good} laufen gut · {ok} mit Einschränkungen · {bad} blockiert/defekt · {unknown} unbekannt"
+msgstr ""
+
+#: center.py:329
+msgid "Ergebnis für „{term}“"
+msgstr ""
+
+#: center.py:420
 msgid "Einstellung wird angewendet …"
 msgstr ""
 
-#: center.py:327
+#: center.py:429
 msgid "Installieren"
 msgstr ""
 
-#: center.py:407
+#: center.py:509
 msgid "Farbe #{color} angewendet"
 msgstr ""
 
-#: center.py:424
+#: center.py:526
 msgid "Keine Geräte gefunden – evtl. „Erweiterter SMBus-Zugriff“ aktivieren"
 msgstr ""
 
@@ -377,12 +553,28 @@ msgstr ""
 msgid "Sehr alte Karten laufen mit dem offenen nouveau/NVK-Treiber."
 msgstr ""
 
-#: center.py:301
+#: center.py:350
+msgid "Keine Verbindung"
+msgstr ""
+
+#: center.py:350
+msgid "Für den Spiele-Check wird Internet benötigt."
+msgstr ""
+
+#: center.py:358
+msgid "Nichts gefunden"
+msgstr ""
+
+#: center.py:403
 msgid "Beleuchtung aus"
 msgstr ""
 
-#: center.py:332
+#: center.py:434
 msgid "Sensoren werden erkannt …"
+msgstr ""
+
+#: center.py:579
+msgid "Benchmark läuft – bitte nichts anderes starten …"
 msgstr ""
 
 #: center.py:145
@@ -393,11 +585,11 @@ msgstr ""
 msgid "Primär"
 msgstr ""
 
-#: center.py:423
+#: center.py:525
 msgid "{n} Geräte"
 msgstr ""
 
-#: center.py:433
+#: center.py:535
 msgid "Konnte {app} nicht starten: {error}"
 msgstr ""
 
@@ -409,107 +601,387 @@ msgstr ""
 msgid "{pkg} wird installiert …"
 msgstr ""
 
-#: center.py:367
+#: center.py:469
 msgid "Lüfter"
 msgstr ""
 
-#: center.py:359
+#: center.py:461
 msgid "{rpm} U/min"
 msgstr ""
 
-#: frametide_common.py:210
+#: frametide_common.py:202
 msgid "Details anzeigen"
 msgstr ""
 
-#: store.py:234
+#: games.py:128
+msgid "Native Linux-Version"
+msgstr ""
+
+#: games.py:129
+msgid "Läuft perfekt"
+msgstr ""
+
+#: games.py:130
+msgid "Läuft sehr gut"
+msgstr ""
+
+#: games.py:131
+msgid "Läuft mit kleinen Problemen"
+msgstr ""
+
+#: games.py:132
+msgid "Läuft, aber mit Problemen"
+msgstr ""
+
+#: games.py:133
+msgid "Läuft nicht"
+msgstr ""
+
+#: games.py:147
+msgid "Noch keine Bewertung"
+msgstr ""
+
+#: games.py:142
+msgid "Anti-Cheat blockiert"
+msgstr ""
+
+#: games.py:146
+msgid "Anti-Cheat läuft unter Linux"
+msgstr ""
+
+#: games.py:155
+msgid "vom Hersteller blockiert"
+msgstr ""
+
+#: games.py:155
+msgid "funktioniert nicht unter Linux"
+msgstr ""
+
+#: games.py:162
+msgid "ProtonDB: {n} Berichte"
+msgstr ""
+
+#: games.py:164
+msgid "Anti-Cheat: {names} – unterstützt"
+msgstr ""
+
+#: migrate.py:21
+msgid "Dokumente"
+msgstr ""
+
+#: migrate.py:22
+msgid "Bilder"
+msgstr ""
+
+#: migrate.py:23
+msgid "Musik"
+msgstr ""
+
+#: migrate.py:24
+msgid "Videos"
+msgstr ""
+
+#: migrate.py:25
+msgid "Schreibtisch"
+msgstr ""
+
+#: migrate.py:26
+msgid "Downloads"
+msgstr ""
+
+#: migrate.py:67
+msgid "Partition konnte nicht eingehängt werden"
+msgstr ""
+
+#: migrate.py:190
+msgid "Lesezeichen aus Windows"
+msgstr ""
+
+#: migrate_app.py:84
+msgid "Wird eingehängt …"
+msgstr ""
+
+#: migrate_app.py:281
+msgid "OK"
+msgstr ""
+
+#: migrate_app.py:45
+msgid "Willkommen beim Umzug von Windows"
+msgstr ""
+
+#: migrate_app.py:46
+msgid "Wähle die Windows-Partition aus. Sie wird nur gelesen – an Windows wird nichts verändert."
+msgstr ""
+
+#: migrate_app.py:48
+msgid "Gefundene Windows-Partitionen"
+msgstr ""
+
+#: migrate_app.py:71
+msgid "Tipp"
+msgstr ""
+
+#: migrate_app.py:71
+msgid "Wenn Windows „Schnellstart“ nutzt, ist die Partition gesperrt. Fahre Windows dann einmal über „Neu starten“ herunter oder schalte Schnellstart in den Energieoptionen aus."
+msgstr ""
+
+#: migrate_app.py:75
+msgid "Weiter"
+msgstr ""
+
+#: migrate_app.py:122
+msgid "Kein Benutzerkonto gefunden"
+msgstr ""
+
+#: migrate_app.py:122
+msgid "Unter „Users“ wurden keine Benutzerordner gefunden."
+msgstr ""
+
+#: migrate_app.py:125
+msgid "Windows-Benutzer"
+msgstr ""
+
+#: migrate_app.py:126
+msgid "Benutzer"
+msgstr ""
+
+#: migrate_app.py:134
+msgid "Umzug starten"
+msgstr ""
+
+#: migrate_app.py:136
+msgid "Was soll übernommen werden?"
+msgstr ""
+
+#: migrate_app.py:149
+msgid "Dateien"
+msgstr ""
+
+#: migrate_app.py:149
+msgid "Vorhandene Dateien unter Linux werden nie überschrieben."
+msgstr ""
+
+#: migrate_app.py:161
+msgid "Browser-Lesezeichen"
+msgstr ""
+
+#: migrate_app.py:171
+msgid "WLAN"
+msgstr ""
+
+#: migrate_app.py:171
+msgid "Windows speichert WLAN-Passwörter verschlüsselt. Für die Übernahme vorher in Windows ausführen: netsh wlan export profile key=clear folder=%USERPROFILE%\\Desktop"
+msgstr ""
+
+#: migrate_app.py:183
+msgid "Steam-Spiele"
+msgstr ""
+
+#: migrate_app.py:183
+msgid "Installierte Spiele werden kopiert statt neu heruntergeladen. Steam prüft sie beim nächsten Start."
+msgstr ""
+
+#: migrate_app.py:221
+msgid "Umzug läuft"
+msgstr ""
+
+#: migrate_app.py:275
+msgid "Fertig"
+msgstr ""
+
+#: migrate_app.py:56
+msgid "Mit BitLocker verschlüsselt – bitte in Windows vorher entschlüsseln oder die Dateien auf einen USB-Stick kopieren."
+msgstr ""
+
+#: migrate_app.py:93
+msgid "Partition konnte nicht gelesen werden"
+msgstr ""
+
+#: migrate_app.py:151
+msgid "Größe wird berechnet …"
+msgstr ""
+
+#: migrate_app.py:165
+msgid "Keine gefunden"
+msgstr ""
+
+#: migrate_app.py:176
+msgid "Ohne Export keine Passwörter verfügbar"
+msgstr ""
+
+#: migrate_app.py:206
+msgid "Lesezeichen"
+msgstr ""
+
+#: migrate_app.py:208
+msgid "WLAN-Netzwerke"
+msgstr ""
+
+#: migrate_app.py:263
+msgid "Umzug abgeschlossen"
+msgstr ""
+
+#: migrate_app.py:263
+msgid "Umzug mit Problemen abgeschlossen"
+msgstr ""
+
+#: migrate_app.py:264
+msgid "Willkommen bei Frametide OS!"
+msgstr ""
+
+#: migrate_app.py:264
+msgid "Details siehe unten."
+msgstr ""
+
+#: migrate_app.py:271
+msgid "Lesezeichen importieren"
+msgstr ""
+
+#: migrate_app.py:271
+msgid "Im Browser: Lesezeichen → Lesezeichen importieren → HTML-Datei. Die Datei liegt hier:"
+msgstr ""
+
+#: migrate_app.py:69
+msgid "Keine Windows-Partition gefunden"
+msgstr ""
+
+#: migrate_app.py:70
+msgid "Ist Windows auf einer anderen Festplatte, schließe sie an und starte den Umzug erneut."
+msgstr ""
+
+#: migrate_app.py:95
+msgid "Keine Windows-Installation"
+msgstr ""
+
+#: migrate_app.py:95
+msgid "Auf dieser Partition wurde kein Windows gefunden."
+msgstr ""
+
+#: migrate_app.py:164
+msgid "{n} Lesezeichen"
+msgstr ""
+
+#: migrate_app.py:175
+msgid "{n} WLAN-Netzwerke mit Passwort"
+msgstr ""
+
+#: migrate_app.py:186
+msgid "Steam zuerst einmal starten und anmelden"
+msgstr ""
+
+#: migrate_app.py:187
+msgid "Danach den Umzug erneut öffnen, um Spiele zu übernehmen."
+msgstr ""
+
+#: migrate_app.py:193
+msgid "Keine Steam-Spiele auf dieser Partition"
+msgstr ""
+
+#: migrate_app.py:203
+msgid "Kopiere {name}"
+msgstr ""
+
+#: migrate_app.py:209
+msgid "Kopiere Spiel {name}"
+msgstr ""
+
+#: migrate_app.py:232
+msgid "Schritt {i} von {n}"
+msgstr ""
+
+#: migrate_app.py:253
+msgid "{ok} von {n} WLAN-Netzwerken"
+msgstr ""
+
+#: store.py:272
 msgid "Abbrechen"
 msgstr ""
 
-#: store.py:235
+#: store.py:273
 msgid "Entfernen"
 msgstr ""
 
-#: store.py:253
+#: store.py:291
 msgid "Suche"
 msgstr ""
 
-#: store.py:90
+#: store.py:107
 msgid "Entdecken"
 msgstr ""
 
-#: store.py:92
+#: store.py:109
 msgid "Installiert"
 msgstr ""
 
-#: store.py:105
+#: store.py:122
 msgid "Apps suchen – auch auf ganz Flathub"
 msgstr ""
 
-#: store.py:222
+#: store.py:251
 msgid "{app} wurde installiert"
 msgstr ""
 
-#: store.py:222
+#: store.py:251
 msgid "{app} wurde entfernt"
 msgstr ""
 
-#: store.py:233
+#: store.py:271
 msgid "Deine eigenen Dateien bleiben erhalten."
 msgstr ""
 
-#: store.py:257
+#: store.py:295
 msgid "Im Store"
 msgstr ""
 
-#: store.py:277
+#: store.py:315
 msgid "Weitere Apps von Flathub"
 msgstr ""
 
-#: store.py:166
+#: store.py:183
 msgid "Aus dem Store installierte Apps. Updates gibt es im Frametide Center."
 msgstr ""
 
-#: store.py:144
+#: store.py:267
+msgid "Kein Terminal gefunden"
+msgstr ""
+
+#: store.py:161
 msgid "Willkommen im Frametide Store"
 msgstr ""
 
-#: store.py:146
+#: store.py:163
 msgid "Spiele, Kreativ-Apps, Office und Werkzeuge – geprüft und mit einem Klick installiert."
 msgstr ""
 
-#: store.py:152
+#: store.py:169
 msgid "Komplettes ArtCraft-Paket installieren"
 msgstr ""
 
-#: store.py:156
+#: store.py:173
 msgid "Alle installieren"
 msgstr ""
 
-#: store.py:232
+#: store.py:270
 msgid "{app} entfernen?"
 msgstr ""
 
-#: store.py:47
+#: store.py:57
 msgid "Läuft …"
 msgstr ""
 
-#: store.py:47
+#: store.py:57
 msgid "Wartet"
 msgstr ""
 
-#: store.py:227
+#: store.py:256
 msgid "Fehlercode {code}"
 msgstr ""
 
-#: store.py:265
-msgid "Nichts gefunden"
-msgstr ""
-
-#: store.py:280
+#: store.py:318
 msgid "Versuch einen anderen Suchbegriff."
 msgstr ""
 
-#: store.py:153
+#: store.py:170
 msgid "{n} weitere Craft-Apps (Foto, Video, Vektor, Audio, CAD …)"
 msgstr ""
 

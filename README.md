@@ -1,5 +1,10 @@
 # Frametide OS 1.0 „Ignition“
 
+> **Status: Alpha.** Frametide OS ist ein unabhängiges Community-Projekt und steht in keiner
+> Verbindung zu Canonical (Ubuntu), Valve (Steam), Google, Microsoft oder dem ArtCraft-Team.
+> Alle Marken gehören ihren jeweiligen Inhabern. Bitte zuerst in einer VM oder auf einem
+> Testrechner ausprobieren.
+
 ![Logos und Wallpaper](artwork/previews/overview.png)
 
 Eine Gaming-Distribution auf Basis von **Ubuntu 26.04 LTS** (Updates bis 2031)
@@ -44,10 +49,36 @@ mit GNOME. Die Ziele, nach Priorität:
   auf Deutsch und Englisch, die übrigen Sprachen fallen auf Englisch zurück. Übersetzungen
   liegen in `po/`, geprüft wird mit `tools/i18n.py check`.
 
+## Spiele-Check, Windows-Umzug, Bench und Entwicklungsumgebungen
+
+- **Spiele-Check** (Center → Spiele): Liest die installierten Steam-Spiele und zeigt pro
+  Spiel die ProtonDB-Bewertung und ob ein Anti-Cheat Linux blockiert (Daten von
+  AreWeAntiCheatYet). Über die Namenssuche lassen sich auch Spiele prüfen, die man noch
+  nicht besitzt oder die es nicht auf Steam gibt, etwa Valorant oder Fortnite.
+- **Windows-Umzug** (`frametide-migrate`): Hängt die Windows-Partition nur lesend ein und
+  übernimmt Dokumente, Bilder, Musik, Videos, Schreibtisch und Downloads, ohne vorhandene
+  Dateien zu überschreiben. Dazu kommen:
+  - Lesezeichen aus Chrome, Edge, Brave, Opera und Firefox als importierbare HTML-Datei
+  - WLAN-Netzwerke: Windows verschlüsselt die Passwörter, deshalb werden nur Profile
+    übernommen, die mit `netsh wlan export profile key=clear` exportiert wurden
+  - installierte Steam-Spiele, die kopiert statt neu heruntergeladen werden
+
+  BitLocker-Partitionen werden erkannt, können aber nicht gelesen werden.
+- **Frametide Bench** (`frametide-bench`): Misst CPU (sysbench, 7-Zip), Speicher,
+  zstd-Kompression, Aufwach-Latenz im Leerlauf und unter Volllast, SSD (fio),
+  GPU (vkmark, glmark2) und Startzeit. Das Ergebnis wird als JSON gespeichert,
+  `--compare neu.json alt.json` zeigt die Unterschiede in Prozent.
+- **Entwicklungsumgebungen** (Store → Entwicklungsumgebungen): Fertige Container mit
+  Distrobox und Podman, z. B. Python-KI mit CUDA oder ROCm, Arch mit AUR, Fedora, Node.js,
+  Rust, Go und .NET. Installieren und Öffnen geht mit einem Klick, das Hauptsystem
+  bleibt unberührt.
+
 ## Vorinstalliert
 
-Steam, VS Code, Google Chrome, GitHub Desktop, GitHub CLI, WordCraft, GridCraft, DeckCraft,
-PdfCraft, ArtCraft Launcher, OpenRGB und CoolerControl. Welche ArtCraft-Apps auf der ISO
+Steam, GitHub Desktop, GitHub CLI, WordCraft, GridCraft, DeckCraft,
+PdfCraft, ArtCraft Launcher, OpenRGB und CoolerControl. **Google Chrome und VS Code**
+werden beim ersten Start mit Internet automatisch aus den offiziellen Quellen installiert,
+weil ihre Lizenzen eine Weitergabe auf der ISO nicht erlauben. Welche ArtCraft-Apps auf der ISO
 landen, steuert `CRAFT_PREINSTALL` in `config/frametide.conf`.
 
 ## Aufbau
@@ -86,8 +117,9 @@ python3 tools/check-packages.py     # schneller Vorab-Check
 sudo ./build.sh                     # Ergebnis: out/frametide-os-1.0-ignition-amd64.iso
 ```
 
-Ohne eigenen Build-Rechner: das Repo auf GitHub pushen und unter *Actions* den
-Workflow „ISO bauen“ starten. Die ISO erscheint dann als Download-Artefakt.
+Ohne eigenen Build-Rechner baut GitHub Actions die ISO bei jedem Push auf `main`
+(*Actions → ISO bauen → Artifacts*). Wie Versionen auf SourceForge veröffentlicht
+werden, steht in [docs/RELEASE.md](docs/RELEASE.md).
 
 Testen in einer VM (UEFI):
 
@@ -133,3 +165,10 @@ Den Vergleich mit CachyOS, SteamOS, Bazzite und Nobara samt Verbesserungsliste f
 > Der Name „Frametide“ ergab bei der Recherche keine bestehende Distribution
 > und kein Betriebssystem. Vor einer öffentlichen Veröffentlichung trotzdem
 > bei DPMA/EUIPO auf Markeneinträge prüfen.
+
+## Lizenz
+
+Der Code von Frametide OS (Skripte, Pakete, Store, Center, Artwork) steht unter der
+**GNU GPL v3** (siehe [LICENSE](LICENSE)). Die enthaltenen Programme behalten ihre eigenen
+Lizenzen. Google Chrome und Visual Studio Code liegen deshalb nicht auf der ISO, sondern
+werden beim ersten Start direkt von Google bzw. Microsoft installiert.

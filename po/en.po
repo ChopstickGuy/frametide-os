@@ -2,6 +2,87 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=UTF-8\nLanguage: en\n"
 
+msgid "CPU Single-Core"
+msgstr "CPU single-core"
+
+msgid "CPU Multi-Core"
+msgstr "CPU multi-core"
+
+msgid "7-Zip (Kompression/Dekompression)"
+msgstr "7-Zip (compression/decompression)"
+
+msgid "Speicherbandbreite"
+msgstr "Memory bandwidth"
+
+msgid "zstd Kompression"
+msgstr "zstd compression"
+
+msgid "zstd Dekompression"
+msgstr "zstd decompression"
+
+msgid "Latenz im Leerlauf (Ø)"
+msgstr "Latency idle (avg)"
+
+msgid "Latenz im Leerlauf (99 %)"
+msgstr "Latency idle (99th pct)"
+
+msgid "Latenz unter Volllast (Ø)"
+msgstr "Latency under full load (avg)"
+
+msgid "Latenz unter Volllast (99 %)"
+msgstr "Latency under full load (99th pct)"
+
+msgid "SSD sequentiell lesen"
+msgstr "SSD sequential read"
+
+msgid "SSD 4K zufällig lesen"
+msgstr "SSD 4K random read"
+
+msgid "GPU Vulkan (vkmark)"
+msgstr "GPU Vulkan (vkmark)"
+
+msgid "GPU OpenGL (glmark2)"
+msgstr "GPU OpenGL (glmark2)"
+
+msgid "Startzeit"
+msgstr "Boot time"
+
+msgid "CPU (sysbench)"
+msgstr "CPU (sysbench)"
+
+msgid "7-Zip-Benchmark"
+msgstr "7-Zip benchmark"
+
+msgid "zstd-Kompression"
+msgstr "zstd compression"
+
+msgid "Latenz im Leerlauf"
+msgstr "Latency at idle"
+
+msgid "Latenz unter Volllast (alle Kerne ausgelastet)"
+msgstr "Latency under full load (all cores busy)"
+
+msgid "Datenträger (fio, 1 GB Testdatei)"
+msgstr "Storage (fio, 1 GB test file)"
+
+msgid "GPU-Tests übersprungen (keine grafische Sitzung)"
+msgstr "GPU tests skipped (no graphical session)"
+
+msgid "Frametide Bench – Leistungstest"
+msgstr "Frametide Bench – performance test"
+
+msgid "ohne GPU- und Datenträgertests"
+msgstr "without GPU and storage tests"
+
+msgid "zwei Ergebnisse vergleichen"
+msgstr "compare two results"
+
+msgid "Ergebnis gespeichert: {path}"
+msgstr "Result saved: {path}"
+
+msgid "Nicht installiert (Tests übersprungen): {tools}"
+msgstr "Not installed (tests skipped): {tools}"
+
 msgid "bei Secure Boot einmalig MOK-Bestätigung"
 msgstr "one-time MOK confirmation with Secure Boot"
 
@@ -47,6 +128,18 @@ msgstr "radeon (legacy – Vulkan after setup)"
 msgid "nouveau (offen, eingeschränkt)"
 msgstr "nouveau (open source, limited)"
 
+msgid "Spiel prüfen"
+msgstr "Check a game"
+
+msgid "Läuft mein Spiel unter Linux? Daten von ProtonDB und AreWeAntiCheatYet."
+msgstr "Does my game run on Linux? Data from ProtonDB and AreWeAntiCheatYet."
+
+msgid "Ergebnis"
+msgstr "Result"
+
+msgid "Deine installierten Steam-Spiele"
+msgstr "Your installed Steam games"
+
 msgid "Temperaturen"
 msgstr "Temperatures"
 
@@ -76,6 +169,9 @@ msgstr "About this system"
 
 msgid "Leistung"
 msgstr "Performance"
+
+msgid "Werkzeuge"
+msgstr "Tools"
 
 msgid "Updates"
 msgstr "Updates"
@@ -139,6 +235,21 @@ msgstr "Vulkan 32-bit (Steam)"
 
 msgid "NVIDIA-Treiber"
 msgstr "NVIDIA driver"
+
+msgid "Spiele"
+msgstr "Games"
+
+msgid "Spielname, z. B. Elden Ring"
+msgstr "Game name, e.g. Elden Ring"
+
+msgid "Bibliothek wird gelesen …"
+msgstr "Reading library …"
+
+msgid "Keine installierten Steam-Spiele gefunden"
+msgstr "No installed Steam games found"
+
+msgid "Installiere Spiele in Steam oder prüfe oben ein Spiel nach Namen."
+msgstr "Install games in Steam or check a game by name above."
 
 msgid "RGB & Lüfter"
 msgstr "RGB & Fans"
@@ -227,6 +338,18 @@ msgstr "Disable CPU security mitigations"
 msgid "Mehr Leistung v. a. auf älteren CPUs, aber weniger Schutz vor Spectre & Co. Nur für reine Gaming-PCs. Neustart nötig."
 msgstr "More performance, especially on older CPUs, but less protection against Spectre & co. Only for dedicated gaming PCs. Restart required."
 
+msgid "Misst CPU, Speicher, Latenz, SSD und GPU (ca. 4 Minuten). Ergebnis: ~/.local/share/frametide-bench"
+msgstr "Measures CPU, memory, latency, SSD and GPU (about 4 minutes). Results: ~/.local/share/frametide-bench"
+
+msgid "Starten"
+msgstr "Start"
+
+msgid "Windows-Umzug"
+msgstr "Move from Windows"
+
+msgid "Dateien, Lesezeichen, WLAN und Steam-Spiele von Windows übernehmen"
+msgstr "Bring files, bookmarks, Wi-Fi and Steam games over from Windows"
+
 msgid "Erledigt ✓"
 msgstr "Done ✓"
 
@@ -235,6 +358,15 @@ msgstr "Up to date"
 
 msgid "Treiber: {driver}"
 msgstr "Driver: {driver}"
+
+msgid "{n} Spiele geprüft"
+msgstr "{n} games checked"
+
+msgid "{good} laufen gut · {ok} mit Einschränkungen · {bad} blockiert/defekt · {unknown} unbekannt"
+msgstr "{good} run well · {ok} with issues · {bad} blocked/broken · {unknown} unknown"
+
+msgid "Ergebnis für „{term}“"
+msgstr "Results for “{term}”"
 
 msgid "Einstellung wird angewendet …"
 msgstr "Applying setting …"
@@ -284,11 +416,23 @@ msgstr "No drivers found"
 msgid "Sehr alte Karten laufen mit dem offenen nouveau/NVK-Treiber."
 msgstr "Very old cards run on the open nouveau/NVK driver."
 
+msgid "Keine Verbindung"
+msgstr "No connection"
+
+msgid "Für den Spiele-Check wird Internet benötigt."
+msgstr "The game check needs an internet connection."
+
+msgid "Nichts gefunden"
+msgstr "Nothing found"
+
 msgid "Beleuchtung aus"
 msgstr "Lighting off"
 
 msgid "Sensoren werden erkannt …"
 msgstr "Detecting sensors …"
+
+msgid "Benchmark läuft – bitte nichts anderes starten …"
+msgstr "Benchmark running – please don't start anything else …"
 
 msgid "{n} Updates"
 msgstr "{n} updates"
@@ -316,6 +460,216 @@ msgstr "{rpm} RPM"
 
 msgid "Details anzeigen"
 msgstr "Show details"
+
+msgid "Native Linux-Version"
+msgstr "Native Linux version"
+
+msgid "Läuft perfekt"
+msgstr "Runs perfectly"
+
+msgid "Läuft sehr gut"
+msgstr "Runs very well"
+
+msgid "Läuft mit kleinen Problemen"
+msgstr "Runs with minor issues"
+
+msgid "Läuft, aber mit Problemen"
+msgstr "Runs, but with issues"
+
+msgid "Läuft nicht"
+msgstr "Doesn't run"
+
+msgid "Noch keine Bewertung"
+msgstr "Not rated yet"
+
+msgid "Anti-Cheat blockiert"
+msgstr "Anti-cheat blocks Linux"
+
+msgid "Anti-Cheat läuft unter Linux"
+msgstr "Anti-cheat works on Linux"
+
+msgid "vom Hersteller blockiert"
+msgstr "blocked by the publisher"
+
+msgid "funktioniert nicht unter Linux"
+msgstr "doesn't work on Linux"
+
+msgid "ProtonDB: {n} Berichte"
+msgstr "ProtonDB: {n} reports"
+
+msgid "Anti-Cheat: {names} – unterstützt"
+msgstr "Anti-cheat: {names} – supported"
+
+msgid "Dokumente"
+msgstr "Documents"
+
+msgid "Bilder"
+msgstr "Pictures"
+
+msgid "Musik"
+msgstr "Music"
+
+msgid "Videos"
+msgstr "Videos"
+
+msgid "Schreibtisch"
+msgstr "Desktop"
+
+msgid "Downloads"
+msgstr "Downloads"
+
+msgid "Partition konnte nicht eingehängt werden"
+msgstr "Partition could not be mounted"
+
+msgid "Lesezeichen aus Windows"
+msgstr "Bookmarks from Windows"
+
+msgid "Wird eingehängt …"
+msgstr "Mounting …"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "Willkommen beim Umzug von Windows"
+msgstr "Welcome to moving from Windows"
+
+msgid "Wähle die Windows-Partition aus. Sie wird nur gelesen – an Windows wird nichts verändert."
+msgstr "Choose your Windows partition. It is only read – nothing on Windows is changed."
+
+msgid "Gefundene Windows-Partitionen"
+msgstr "Windows partitions found"
+
+msgid "Tipp"
+msgstr "Tip"
+
+msgid "Wenn Windows „Schnellstart“ nutzt, ist die Partition gesperrt. Fahre Windows dann einmal über „Neu starten“ herunter oder schalte Schnellstart in den Energieoptionen aus."
+msgstr "If Windows uses “Fast Startup”, the partition is locked. Shut Windows down once via “Restart” or turn off Fast Startup in the power options."
+
+msgid "Weiter"
+msgstr "Next"
+
+msgid "Kein Benutzerkonto gefunden"
+msgstr "No user account found"
+
+msgid "Unter „Users“ wurden keine Benutzerordner gefunden."
+msgstr "No user folders were found under “Users”."
+
+msgid "Windows-Benutzer"
+msgstr "Windows user"
+
+msgid "Benutzer"
+msgstr "User"
+
+msgid "Umzug starten"
+msgstr "Start moving"
+
+msgid "Was soll übernommen werden?"
+msgstr "What should be moved?"
+
+msgid "Dateien"
+msgstr "Files"
+
+msgid "Vorhandene Dateien unter Linux werden nie überschrieben."
+msgstr "Existing files on Linux are never overwritten."
+
+msgid "Browser-Lesezeichen"
+msgstr "Browser bookmarks"
+
+msgid "WLAN"
+msgstr "Wi-Fi"
+
+msgid "Windows speichert WLAN-Passwörter verschlüsselt. Für die Übernahme vorher in Windows ausführen: netsh wlan export profile key=clear folder=%USERPROFILE%\\Desktop"
+msgstr "Windows stores Wi-Fi passwords encrypted. To move them, first run in Windows: netsh wlan export profile key=clear folder=%USERPROFILE%\\Desktop"
+
+msgid "Steam-Spiele"
+msgstr "Steam games"
+
+msgid "Installierte Spiele werden kopiert statt neu heruntergeladen. Steam prüft sie beim nächsten Start."
+msgstr "Installed games are copied instead of downloaded again. Steam verifies them on next start."
+
+msgid "Umzug läuft"
+msgstr "Moving"
+
+msgid "Fertig"
+msgstr "Done"
+
+msgid "Mit BitLocker verschlüsselt – bitte in Windows vorher entschlüsseln oder die Dateien auf einen USB-Stick kopieren."
+msgstr "Encrypted with BitLocker – please decrypt it in Windows first or copy your files to a USB drive."
+
+msgid "Partition konnte nicht gelesen werden"
+msgstr "Partition could not be read"
+
+msgid "Größe wird berechnet …"
+msgstr "Calculating size …"
+
+msgid "Keine gefunden"
+msgstr "None found"
+
+msgid "Ohne Export keine Passwörter verfügbar"
+msgstr "No passwords available without export"
+
+msgid "Lesezeichen"
+msgstr "Bookmarks"
+
+msgid "WLAN-Netzwerke"
+msgstr "Wi-Fi networks"
+
+msgid "Umzug abgeschlossen"
+msgstr "Move complete"
+
+msgid "Umzug mit Problemen abgeschlossen"
+msgstr "Move finished with problems"
+
+msgid "Willkommen bei Frametide OS!"
+msgstr "Welcome to Frametide OS!"
+
+msgid "Details siehe unten."
+msgstr "See details below."
+
+msgid "Lesezeichen importieren"
+msgstr "Import bookmarks"
+
+msgid "Im Browser: Lesezeichen → Lesezeichen importieren → HTML-Datei. Die Datei liegt hier:"
+msgstr "In your browser: Bookmarks → Import bookmarks → HTML file. The file is here:"
+
+msgid "Keine Windows-Partition gefunden"
+msgstr "No Windows partition found"
+
+msgid "Ist Windows auf einer anderen Festplatte, schließe sie an und starte den Umzug erneut."
+msgstr "If Windows is on another drive, connect it and start again."
+
+msgid "Keine Windows-Installation"
+msgstr "No Windows installation"
+
+msgid "Auf dieser Partition wurde kein Windows gefunden."
+msgstr "No Windows was found on this partition."
+
+msgid "{n} Lesezeichen"
+msgstr "{n} bookmarks"
+
+msgid "{n} WLAN-Netzwerke mit Passwort"
+msgstr "{n} Wi-Fi networks with password"
+
+msgid "Steam zuerst einmal starten und anmelden"
+msgstr "Start Steam once and sign in first"
+
+msgid "Danach den Umzug erneut öffnen, um Spiele zu übernehmen."
+msgstr "Then open this assistant again to move your games."
+
+msgid "Keine Steam-Spiele auf dieser Partition"
+msgstr "No Steam games on this partition"
+
+msgid "Kopiere {name}"
+msgstr "Copying {name}"
+
+msgid "Kopiere Spiel {name}"
+msgstr "Copying game {name}"
+
+msgid "Schritt {i} von {n}"
+msgstr "Step {i} of {n}"
+
+msgid "{ok} von {n} WLAN-Netzwerken"
+msgstr "{ok} of {n} Wi-Fi networks"
 
 msgid "Abbrechen"
 msgstr "Cancel"
@@ -353,6 +707,9 @@ msgstr "More apps from Flathub"
 msgid "Aus dem Store installierte Apps. Updates gibt es im Frametide Center."
 msgstr "Apps installed from the store. Updates are in Frametide Center."
 
+msgid "Kein Terminal gefunden"
+msgstr "No terminal found"
+
 msgid "Willkommen im Frametide Store"
 msgstr "Welcome to the Frametide Store"
 
@@ -376,9 +733,6 @@ msgstr "Queued"
 
 msgid "Fehlercode {code}"
 msgstr "Error code {code}"
-
-msgid "Nichts gefunden"
-msgstr "Nothing found"
 
 msgid "Versuch einen anderen Suchbegriff."
 msgstr "Try a different search term."

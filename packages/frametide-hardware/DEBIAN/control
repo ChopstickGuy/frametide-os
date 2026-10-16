@@ -1,7 +1,7 @@
 Package: frametide-hardware
 Version: @VERSION@
 Architecture: all
-Maintainer: Frametide OS <dev@frametide-os.invalid>
+Maintainer: Frametide OS <205694622+ChopstickGuy@users.noreply.github.com>
 Section: metapackages
 Priority: optional
 Depends: openrgb, lm-sensors, i2c-tools
