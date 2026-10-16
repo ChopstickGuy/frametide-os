@@ -1,0 +1,12 @@
+Package: vektor-base
+Version: @VERSION@
+Architecture: all
+Maintainer: Vektor OS <dev@vektor-os.invalid>
+Section: metapackages
+Priority: optional
+Depends: linux-generic, linux-firmware, intel-microcode, amd64-microcode,
+ ubuntu-drivers-common, fwupd, systemd-zram-generator, power-profiles-daemon,
+ switcheroo-control, flatpak, ufw, base-files
+Description: Vektor OS – Basissystem und Leistungs-Tuning
+ Kernel, Firmware, Microcode, zram, sysctl- und I/O-Tuning sowie
+ Branding (os-release) für Vektor OS.

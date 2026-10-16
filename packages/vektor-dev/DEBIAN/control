@@ -1,0 +1,11 @@
+Package: vektor-dev
+Version: @VERSION@
+Architecture: all
+Maintainer: Vektor OS <dev@vektor-os.invalid>
+Section: metapackages
+Priority: optional
+Depends: build-essential, clang, cmake, ninja-build, pkg-config, git, git-lfs,
+ curl, wget, python3-venv, pipx, podman, distrobox, ripgrep, fd-find, jq
+Description: Vektor OS – Entwickler-Werkzeuge
+ Compiler, Build-Systeme, Git, Container (Podman/Distrobox) und
+ nützliche Kommandozeilen-Tools.

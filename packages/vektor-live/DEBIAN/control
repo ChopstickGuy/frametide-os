@@ -1,0 +1,9 @@
+Package: vektor-live
+Version: @VERSION@
+Architecture: all
+Maintainer: Vektor OS <dev@vektor-os.invalid>
+Section: admin
+Priority: optional
+Depends: casper, calamares, vektor-desktop
+Description: Vektor OS – Live-System und Installer
+ Calamares-Konfiguration und Branding. Wird bei der Installation entfernt.

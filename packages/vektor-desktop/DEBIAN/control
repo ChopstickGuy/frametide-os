@@ -1,0 +1,15 @@
+Package: vektor-desktop
+Version: @VERSION@
+Architecture: all
+Maintainer: Vektor OS <dev@vektor-os.invalid>
+Section: metapackages
+Priority: optional
+Depends: vektor-base, gdm3, ubuntu-session, gnome-shell-ubuntu-extensions,
+ yaru-theme-gtk, yaru-theme-gnome-shell, papirus-icon-theme,
+ fonts-inter-variable, fonts-jetbrains-mono, plymouth-theme-spinner,
+ gnome-software, gnome-software-plugin-flatpak, gnome-tweaks,
+ gnome-shell-extension-manager, ptyxis, libnotify-bin, firefox
+Description: Vektor OS – GNOME-Desktop und Design
+ Dunkles, modernes GNOME mit Vektor-Akzentfarbe, Inter/JetBrains Mono,
+ Papirus-Icons, Dock unten, VRR aktiviert und flacher Mausbeschleunigung
+ für präzises Zielen.

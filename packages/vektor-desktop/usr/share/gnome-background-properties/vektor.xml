@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE wallpapers SYSTEM "gnome-wp-list.dtd">
+<wallpapers>
+  <wallpaper deleted="false">
+    <name>Vektor</name>
+    <filename>/usr/share/backgrounds/vektor/vektor-default.svg</filename>
+    <filename-dark>/usr/share/backgrounds/vektor/vektor-default.svg</filename-dark>
+    <options>zoom</options>
+    <shade_type>solid</shade_type>
+    <pcolor>#090C14</pcolor>
+    <scolor>#090C14</scolor>
+  </wallpaper>
+</wallpapers>

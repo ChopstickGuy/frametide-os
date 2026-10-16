@@ -1,0 +1,9 @@
+# Nur im Live-System: Installer ganz vorne im Dock
+[org.gnome.shell]
+favorite-apps=['vektor-install.desktop','firefox.desktop','org.gnome.Nautilus.desktop','org.gnome.Ptyxis.desktop','org.gnome.Settings.desktop']
+
+[org.gnome.shell:ubuntu]
+favorite-apps=['vektor-install.desktop','firefox.desktop','org.gnome.Nautilus.desktop','org.gnome.Ptyxis.desktop','org.gnome.Settings.desktop']
+
+[org.gnome.desktop.screensaver:ubuntu]
+lock-enabled=false

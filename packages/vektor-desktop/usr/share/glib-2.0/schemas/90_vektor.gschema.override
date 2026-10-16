@@ -1,0 +1,98 @@
+# Vektor OS – Standard-Design (überschreibt Ubuntu-Vorgaben)
+[org.gnome.desktop.interface]
+color-scheme='prefer-dark'
+accent-color='teal'
+gtk-theme='Yaru-prussiangreen-dark'
+icon-theme='Papirus-Dark'
+font-name='Inter Variable 11'
+document-font-name='Inter Variable 11'
+monospace-font-name='JetBrains Mono 11'
+enable-hot-corners=false
+show-battery-percentage=true
+
+[org.gnome.desktop.wm.preferences]
+button-layout='appmenu:minimize,maximize,close'
+titlebar-font='Inter Variable Bold 11'
+
+[org.gnome.desktop.background]
+picture-uri='file:///usr/share/backgrounds/vektor/vektor-default.svg'
+picture-uri-dark='file:///usr/share/backgrounds/vektor/vektor-default.svg'
+primary-color='#090C14'
+
+[org.gnome.desktop.screensaver]
+picture-uri='file:///usr/share/backgrounds/vektor/vektor-default.svg'
+
+[org.gnome.desktop.peripherals.mouse]
+accel-profile='flat'
+
+[org.gnome.mutter]
+experimental-features=['variable-refresh-rate','scale-monitor-framebuffer','xwayland-native-scaling']
+check-alive-timeout=uint32 20000
+
+[org.gnome.shell]
+favorite-apps=['firefox.desktop','org.gnome.Nautilus.desktop','steam.desktop','net.lutris.Lutris.desktop','org.gnome.Ptyxis.desktop','org.gnome.Software.desktop','org.gnome.Settings.desktop']
+
+[org.gnome.shell.extensions.dash-to-dock]
+dock-position='BOTTOM'
+extend-height=false
+dock-fixed=false
+autohide=true
+intellihide=true
+dash-max-icon-size=44
+transparency-mode='DYNAMIC'
+running-indicator-style='DOTS'
+show-trash=false
+show-mounts=false
+click-action='minimize-or-previews'
+
+[org.gnome.desktop.sound]
+event-sounds=false
+
+[org.gnome.desktop.interface:ubuntu]
+color-scheme='prefer-dark'
+accent-color='teal'
+gtk-theme='Yaru-prussiangreen-dark'
+icon-theme='Papirus-Dark'
+font-name='Inter Variable 11'
+document-font-name='Inter Variable 11'
+monospace-font-name='JetBrains Mono 11'
+enable-hot-corners=false
+show-battery-percentage=true
+
+[org.gnome.desktop.wm.preferences:ubuntu]
+button-layout='appmenu:minimize,maximize,close'
+titlebar-font='Inter Variable Bold 11'
+
+[org.gnome.desktop.background:ubuntu]
+picture-uri='file:///usr/share/backgrounds/vektor/vektor-default.svg'
+picture-uri-dark='file:///usr/share/backgrounds/vektor/vektor-default.svg'
+primary-color='#090C14'
+
+[org.gnome.desktop.screensaver:ubuntu]
+picture-uri='file:///usr/share/backgrounds/vektor/vektor-default.svg'
+
+[org.gnome.desktop.peripherals.mouse:ubuntu]
+accel-profile='flat'
+
+[org.gnome.mutter:ubuntu]
+experimental-features=['variable-refresh-rate','scale-monitor-framebuffer','xwayland-native-scaling']
+check-alive-timeout=uint32 20000
+
+[org.gnome.shell:ubuntu]
+favorite-apps=['firefox.desktop','org.gnome.Nautilus.desktop','steam.desktop','net.lutris.Lutris.desktop','org.gnome.Ptyxis.desktop','org.gnome.Software.desktop','org.gnome.Settings.desktop']
+
+[org.gnome.shell.extensions.dash-to-dock:ubuntu]
+dock-position='BOTTOM'
+extend-height=false
+dock-fixed=false
+autohide=true
+intellihide=true
+dash-max-icon-size=44
+transparency-mode='DYNAMIC'
+running-indicator-style='DOTS'
+show-trash=false
+show-mounts=false
+click-action='minimize-or-previews'
+
+[org.gnome.desktop.sound:ubuntu]
+event-sounds=false

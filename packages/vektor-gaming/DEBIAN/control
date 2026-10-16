@@ -1,0 +1,14 @@
+Package: vektor-gaming
+Version: @VERSION@
+Architecture: all
+Maintainer: Vektor OS <dev@vektor-os.invalid>
+Section: metapackages
+Priority: optional
+Depends: vektor-base, vektor-hwsetup, steam-installer, steam-devices, gamemode,
+ mangohud, gamescope, mesa-vulkan-drivers, mesa-va-drivers, libvulkan1,
+ vulkan-tools, mesa-utils
+Recommends: lutris, goverlay, vkbasalt, corectrl
+Description: Vektor OS – Gaming-Stack
+ Steam, GameMode, MangoHud, Gamescope und Vulkan-Treiber, vorkonfiguriert
+ für maximale Leistung. 32-Bit-Treiber installiert vektor-hwsetup passend
+ zur erkannten Grafikkarte.

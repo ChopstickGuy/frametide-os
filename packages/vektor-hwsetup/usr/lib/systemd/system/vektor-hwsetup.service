@@ -1,0 +1,14 @@
+[Unit]
+Description=Vektor OS Hardware- und Treibereinrichtung (erster Start)
+Wants=network-online.target
+After=network-online.target
+ConditionPathExists=!/var/lib/vektor/hwsetup.done
+ConditionKernelCommandLine=!boot=casper
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/vektor-hwsetup --apply
+TimeoutStartSec=30min
+
+[Install]
+WantedBy=multi-user.target

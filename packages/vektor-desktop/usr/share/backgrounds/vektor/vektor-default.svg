@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3840 2160" width="3840" height="2160">
+  <defs>
+    <radialGradient id="glowA" cx="0.18" cy="0.85" r="0.65">
+      <stop offset="0" stop-color="#19E3D1" stop-opacity=".30"/>
+      <stop offset="1" stop-color="#19E3D1" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowB" cx="0.85" cy="0.15" r="0.7">
+      <stop offset="0" stop-color="#7C5CFF" stop-opacity=".38"/>
+      <stop offset="1" stop-color="#7C5CFF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="beam" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#19E3D1" stop-opacity="0"/>
+      <stop offset=".55" stop-color="#19E3D1" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#7C5CFF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="mark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#19E3D1"/>
+      <stop offset="1" stop-color="#7C5CFF"/>
+    </linearGradient>
+  </defs>
+  <rect width="3840" height="2160" fill="#090C14"/>
+  <rect width="3840" height="2160" fill="url(#glowA)"/>
+  <rect width="3840" height="2160" fill="url(#glowB)"/>
+  <!-- Vektor-Linien -->
+  <g stroke="url(#beam)" fill="none" stroke-linecap="round">
+    <path d="M-200 2000 L2600 -100" stroke-width="5"/>
+    <path d="M200 2300 L3300 0" stroke-width="2.5" opacity=".7"/>
+    <path d="M900 2300 L4000 300" stroke-width="1.5" opacity=".5"/>
+    <path d="M-400 1500 L1900 -200" stroke-width="1.5" opacity=".4"/>
+  </g>
+  <!-- Feines Raster -->
+  <g stroke="#ffffff" stroke-opacity=".035" stroke-width="2">
+    <path d="M0 540 H3840 M0 1080 H3840 M0 1620 H3840 M960 0 V2160 M1920 0 V2160 M2880 0 V2160"/>
+  </g>
+  <!-- Logo-Zeichen, dezent -->
+  <g transform="translate(1920 1080) scale(2.2) translate(-128 -128)" opacity=".9">
+    <path d="M28 44 H84 L128 164 L172 44 H228 L150 224 H106 Z" fill="url(#mark)"/>
+    <path d="M128 164 L172 44 H228 L150 224 Z" fill="#ffffff" fill-opacity=".14"/>
+    <path d="M100 28 H156 L128 92 Z" fill="#ffffff" fill-opacity=".92"/>
+  </g>
+</svg>
