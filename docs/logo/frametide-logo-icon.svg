@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <linearGradient id="ftWave" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#22D3EE"/>
+      <stop offset=".55" stop-color="#6D7CFF"/>
+      <stop offset="1" stop-color="#A855F7"/>
+    </linearGradient>
+  
+    <linearGradient id="ftBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#161B2E"/><stop offset="1" stop-color="#0A0D18"/>
+    </linearGradient>
+  </defs>
+  <rect x="8" y="8" width="240" height="240" rx="56" fill="url(#ftBg)"/>
+  <rect x="8.5" y="8.5" width="239" height="239" rx="55.5" fill="none" stroke="#ffffff" stroke-opacity=".08"/>
+  <g transform="translate(128 128) scale(.72) translate(-128 -128)">
+  <g fill="none" stroke="#E6EAF2" stroke-width="14" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M22 76 V44 Q22 22 44 22 H76"/>
+    <path d="M234 180 V212 Q234 234 212 234 H180"/>
+  </g>
+  <!-- Bewegungslinien -->
+  <g stroke="#22D3EE" stroke-width="10" stroke-linecap="round">
+    <path d="M30 150 H70" opacity=".55"/>
+    <path d="M44 176 H82" opacity=".8"/>
+  </g>
+  <!-- Die Welle: „Tide“ -->
+  <path fill="url(#ftWave)" d="M40 206
+    C86 206 100 176 112 144
+    C128 100 154 62 196 60
+    C232 58 246 92 232 116
+    C220 136 190 134 184 114
+    C180 98 194 88 207 94
+    C184 80 160 98 150 132
+    C138 172 156 200 218 206 Z"/>
+
+  </g>
+</svg>
