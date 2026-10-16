@@ -1,3 +1,5 @@
+<sub>🇬🇧 [English version](COMPARISON.md)</sub>
+
 # Frametide OS im Vergleich (Stand Oktober 2026)
 
 ## Überblick

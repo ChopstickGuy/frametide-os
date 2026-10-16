@@ -1,0 +1,38 @@
+name: 🐞 Bug report
+description: Something doesn't work as expected
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for taking the time! The more details, the faster we can fix it.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you do, what did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options: [Installer, Boot / startup, Drivers / graphics, Gaming / Steam, Frametide Store, Frametide Center, RGB / fans, Move from Windows, Frametide Bench, Desktop / design, Other]
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Frametide version / ISO date
+      placeholder: 1.0 (2026-10-16)
+  - type: textarea
+    id: hardware
+    attributes:
+      label: Hardware
+      description: Paste the output of `frametide-hwsetup` (CPU, GPU, drivers).
+      render: text
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: For driver issues, attach `/var/log/frametide-hwsetup.log`.
+      render: text

@@ -1,174 +1,177 @@
-# Frametide OS 1.0 „Ignition“
+<div align="center">
 
-> **Status: Alpha.** Frametide OS ist ein unabhängiges Community-Projekt und steht in keiner
-> Verbindung zu Canonical (Ubuntu), Valve (Steam), Google, Microsoft oder dem ArtCraft-Team.
-> Alle Marken gehören ihren jeweiligen Inhabern. Bitte zuerst in einer VM oder auf einem
-> Testrechner ausprobieren.
+<img src="docs/banner.png" alt="Frametide OS – Switch from Windows without losing anything." width="100%">
 
-![Logos und Wallpaper](artwork/previews/overview.png)
+[![Build](https://github.com/ChopstickGuy/frametide-os/actions/workflows/build-iso.yml/badge.svg)](https://github.com/ChopstickGuy/frametide-os/actions/workflows/build-iso.yml)
+[![License: GPL v3](https://img.shields.io/badge/license-GPLv3-22D3EE)](LICENSE)
+[![Based on Ubuntu 26.04 LTS](https://img.shields.io/badge/base-Ubuntu%2026.04%20LTS-E95420?logo=ubuntu&logoColor=white)](https://ubuntu.com)
+[![Desktop: GNOME 50](https://img.shields.io/badge/desktop-GNOME%2050-4A86CF?logo=gnome&logoColor=white)](https://www.gnome.org)
+[![Status: Alpha](https://img.shields.io/badge/status-alpha-A855F7)](#-project-status)
+[![Downloads](https://img.shields.io/sourceforge/dt/frametide-os?label=downloads&color=6D7CFF)](https://sourceforge.net/projects/frametide-os/files/)
 
-Eine Gaming-Distribution auf Basis von **Ubuntu 26.04 LTS** (Updates bis 2031)
-mit GNOME. Die Ziele, nach Priorität:
+**A Linux distribution for gamers, creators and developers that just works –<br>
+drivers, RGB and fans included, no terminal required.**
 
-1. **Volle Gaming-Leistung** durch automatisch passend eingerichtete Treiber
-2. **Schneller Start und schnelle, einfache Installation**
-3. **Minimalistisches, ruhiges Design** bei Optik und Klang
+[**Download**](https://sourceforge.net/projects/frametide-os/files/) ·
+[Features](#-features) ·
+[Screenshots](#-screenshots) ·
+[Comparison](docs/COMPARISON.md) ·
+[Build it yourself](#-build-it-yourself) ·
+[Deutsch](README.de.md)
 
-## Was Frametide anders macht als Ubuntu
+</div>
 
-| Bereich | Frametide OS |
+---
+
+## Why Frametide?
+
+Most gaming distros are built for Linux enthusiasts (CachyOS), one specific piece of
+hardware (SteamOS) or pure gaming (Bazzite). **Frametide is built for people who are leaving
+Windows** and want to keep everything working: games, office work and their hardware.
+
+<table>
+<tr>
+<td width="33%" valign="top">
+
+### 🎮 Hardware that just works
+Your graphics driver is set up on first boot: NVIDIA, AMD or Intel, including Secure Boot
+**without MOK enrollment**. RGB lighting and fan curves for almost every vendor are
+managed from one app.
+
+</td>
+<td width="33%" valign="top">
+
+### 🧰 Everything from day one
+Steam, Proton, GameMode and MangoHud are pre-installed. The **ArtCraft** suite gives you
+Word-, Excel-, PowerPoint- and PDF-style apps. Chrome, VS Code and GitHub Desktop are ready
+after the first boot.
+
+</td>
+<td width="33%" valign="top">
+
+### 🛡️ Stable, yet tuned
+Built on Ubuntu 26.04 LTS with **5 years of updates**. On top come low-latency kernel
+settings, `ntsync` for Proton, zram and a calm, minimal GNOME desktop.
+
+</td>
+</tr>
+</table>
+
+## ✨ Features
+
+| | |
 |---|---|
-| **Treiber** | `frametide-hwsetup` erkennt beim ersten Start GPU und CPU und installiert im Hintergrund den passenden Treiber. NVIDIA nutzt die vorsignierten Ubuntu-Module, Secure Boot funktioniert also ohne MOK. Dazu kommen 32-Bit-Bibliotheken für Steam/Proton, Kernel-Parameter, Suspend-Dienste und Hybrid-Grafik-Unterstützung |
-| **Kernel** | Ubuntu-HWE-Kernel (7.0, wächst über die LTS-Laufzeit mit, damit auch neue Hardware erkannt wird) mit `preempt=full` |
-| **Start** | Kein sichtbares Bootmenü, kein Warten aufs Netzwerk, keine Textmeldungen. Ohne Snap, Absturzberichte, Telemetrie und Ubuntu-Einrichtungsassistent. Hintergrund-Updates starten erst nach dem Hochfahren und mit niedrigster Priorität |
-| **Installation** | Der Installer öffnet sich im Live-System automatisch. Sechs klare Schritte auf Deutsch, offline und ohne Swap-Partition (zram) |
-| **Speicher/IO** | zram mit zstd, angepasste `vm.*`-Werte, I/O-Scheduler je nach Datenträger, `noatime`, Transparent Hugepages `defer+madvise` |
-| **Proton** | `ntsync` aktiv (schnellere Windows-Synchronisation in Wine/Proton), hohe Dateilimits für esync, NVIDIA-PAT, Energieprofil „Leistung“ auf Desktop-PCs |
-| **Gaming** | Steam, GameMode, MangoHud, Gamescope, Lutris, große Shader-Caches, VRR (in GNOME 50 pro Monitor unter Einstellungen → Bildschirme), flache Mausbeschleunigung |
-| **Design** | Dunkles GNOME mit Teal-Akzent, Inter und JetBrains Mono, Papirus-Icons, Dock blendet sich aus, keine Desktop-Symbole |
-| **Klang** | Eigenes Sound-Theme mit 13 weichen, kurzen Tönen (-18 dBFS) statt lauter Systemklänge, kein Tastenklick-Feedback |
-| **Wallpaper** | 7 Motive: Tide (hell/dunkel, passend zum Hell/Dunkel-Modus), Tide mit Logo, Nightwave, Sunset Surge, Frames, OLED Black |
+| **🚀 Zero-touch drivers** | `frametide-hwsetup` detects every GPU and installs the right driver, the 32-bit libraries for Steam, kernel parameters and hybrid-graphics support. It runs in the background and never slows down boot. |
+| **🛒 Frametide Store** | 95 hand-picked apps with real logos, a search across all of Flathub, and one-click **dev environments** (Python AI with CUDA/ROCm, Arch with AUR, Node.js, Rust, Go, .NET) in containers. |
+| **🎛️ Frametide Center** | One place for updates (system, Flatpak, ArtCraft, firmware), GPU drivers including the NVIDIA version picker, **RGB & fans** and performance options. |
+| **🕹️ Game check** | Shows for every Steam game whether it runs on Linux (ProtonDB) and whether **anti-cheat blocks it** (AreWeAntiCheatYet). This works for games you don't own yet, too. |
+| **🪟 Move from Windows** | Brings over your documents, photos, bookmarks (Chrome, Edge, Firefox …), Wi-Fi networks and installed Steam games, so they don't need to be downloaded again. Windows itself is only read, never changed. |
+| **📊 Frametide Bench** | A reproducible benchmark for CPU, memory, latency under load, SSD, GPU and boot time. Its JSON results can be compared against any other system. |
+| **⚡ Fast & quiet** | Hidden boot menu, no waiting for the network, no Snap, no telemetry. Updates run with idle priority so they never steal frames. A soft custom sound theme rounds it off. |
+| **🌍 10 languages offline** | German, English, French, Spanish, Italian, Polish, Portuguese, Dutch, Turkish and Russian. |
 
-## Frametide Store und Frametide Center
+## 📸 Screenshots
 
-![Store](artwork/previews/store.png)
+<table>
+<tr>
+<td><img src="docs/screenshots/store.png" alt="Frametide Store"><p align="center"><b>Frametide Store</b></p></td>
+<td><img src="docs/screenshots/center-games.png" alt="Game check"><p align="center"><b>Game check</b></p></td>
+</tr>
+<tr>
+<td><img src="docs/screenshots/center-rgb-fans.png" alt="RGB and fans"><p align="center"><b>RGB &amp; fans</b></p></td>
+<td><img src="docs/screenshots/move-from-windows.png" alt="Move from Windows"><p align="center"><b>Move from Windows</b></p></td>
+</tr>
+<tr>
+<td colspan="2"><img src="docs/screenshots/store-dev-environments.png" alt="Dev environments"><p align="center"><b>One-click dev environments</b></p></td>
+</tr>
+</table>
 
-- **Frametide Store**: Zeigt 95 kuratierte Apps in 7 Kategorien mit echten Logos. Die Suche
-  durchsucht zusätzlich ganz Flathub. Das ArtCraft-Komplettpaket lässt sich mit einem Klick
-  installieren.
-- **Frametide Center** hat vier Bereiche:
-  - **Updates**: System, Flatpak, ArtCraft und Firmware
-  - **Treiber**: GPU-Übersicht und NVIDIA-Versionswahl
-  - **RGB & Lüfter**: Live-Temperaturen und Lüfterdrehzahlen, eine Farbe für alle Geräte über
-    OpenRGB, Lüfterkurven in CoolerControl, Zusatztreiber für ITE/Nuvoton-Chips
-  - **System**: x86-64-v3, AMD-Übertaktung, Mitigations
-- Privilegierte Aktionen laufen über `frametide-helper`. Er wird per Polkit aufgerufen und
-  führt nur geprüfte Befehle aus. ArtCraft-Downloads werden nur installiert, wenn die
-  SHA256-Prüfsumme stimmt.
-- **Sprachen**: 10 Sprachpakete liegen offline auf der ISO. Store, Center und Installer gibt es
-  auf Deutsch und Englisch, die übrigen Sprachen fallen auf Englisch zurück. Übersetzungen
-  liegen in `po/`, geprüft wird mit `tools/i18n.py check`.
+<details>
+<summary><b>Logo, wallpapers and design</b></summary>
+<br>
+<img src="artwork/previews/overview.png" alt="Logo and seven wallpapers">
 
-## Spiele-Check, Windows-Umzug, Bench und Entwicklungsumgebungen
+The design is a dark GNOME 50 with a teal accent, Inter and JetBrains Mono fonts, Papirus
+icons and an auto-hiding dock. There are seven wallpapers, including a light/dark pair that
+follows the system theme.
+</details>
 
-- **Spiele-Check** (Center → Spiele): Liest die installierten Steam-Spiele und zeigt pro
-  Spiel die ProtonDB-Bewertung und ob ein Anti-Cheat Linux blockiert (Daten von
-  AreWeAntiCheatYet). Über die Namenssuche lassen sich auch Spiele prüfen, die man noch
-  nicht besitzt oder die es nicht auf Steam gibt, etwa Valorant oder Fortnite.
-- **Windows-Umzug** (`frametide-migrate`): Hängt die Windows-Partition nur lesend ein und
-  übernimmt Dokumente, Bilder, Musik, Videos, Schreibtisch und Downloads, ohne vorhandene
-  Dateien zu überschreiben. Dazu kommen:
-  - Lesezeichen aus Chrome, Edge, Brave, Opera und Firefox als importierbare HTML-Datei
-  - WLAN-Netzwerke: Windows verschlüsselt die Passwörter, deshalb werden nur Profile
-    übernommen, die mit `netsh wlan export profile key=clear` exportiert wurden
-  - installierte Steam-Spiele, die kopiert statt neu heruntergeladen werden
+## 📦 What's inside
 
-  BitLocker-Partitionen werden erkannt, können aber nicht gelesen werden.
-- **Frametide Bench** (`frametide-bench`): Misst CPU (sysbench, 7-Zip), Speicher,
-  zstd-Kompression, Aufwach-Latenz im Leerlauf und unter Volllast, SSD (fio),
-  GPU (vkmark, glmark2) und Startzeit. Das Ergebnis wird als JSON gespeichert,
-  `--compare neu.json alt.json` zeigt die Unterschiede in Prozent.
-- **Entwicklungsumgebungen** (Store → Entwicklungsumgebungen): Fertige Container mit
-  Distrobox und Podman, z. B. Python-KI mit CUDA oder ROCm, Arch mit AUR, Fedora, Node.js,
-  Rust, Go und .NET. Installieren und Öffnen geht mit einem Klick, das Hauptsystem
-  bleibt unberührt.
+| Area | Details |
+|---|---|
+| **Base** | Ubuntu 26.04 LTS, HWE kernel 7.0 (signed, keeps up with new hardware), GNOME 50, Mesa 26 |
+| **Gaming** | Steam, Proton, GameMode, MangoHud, Gamescope, Lutris, `ntsync`, large shader caches, flat mouse acceleration |
+| **Pre-installed** | ArtCraft (WordCraft, GridCraft, DeckCraft, PdfCraft, Launcher), GitHub Desktop, GitHub CLI, OpenRGB, CoolerControl, Firefox. Chrome and VS Code are installed on first boot from Google and Microsoft. |
+| **Tuning** | zram (zstd), I/O scheduler per drive type, `preempt=full`, `noatime`, THP `defer+madvise`, BBR, higher file limits, "Performance" power profile on desktops |
+| **Installer** | Calamares, six simple steps, works offline, BIOS and UEFI with Secure Boot |
 
-## Vorinstalliert
+## 💿 Try it
 
-Steam, GitHub Desktop, GitHub CLI, WordCraft, GridCraft, DeckCraft,
-PdfCraft, ArtCraft Launcher, OpenRGB und CoolerControl. **Google Chrome und VS Code**
-werden beim ersten Start mit Internet automatisch aus den offiziellen Quellen installiert,
-weil ihre Lizenzen eine Weitergabe auf der ISO nicht erlauben. Welche ArtCraft-Apps auf der ISO
-landen, steuert `CRAFT_PREINSTALL` in `config/frametide.conf`.
+1. Download the ISO from [**SourceForge**](https://sourceforge.net/projects/frametide-os/files/).
+   Builds from `main` are also available under
+   [Actions → Build ISO → Artifacts](https://github.com/ChopstickGuy/frametide-os/actions/workflows/build-iso.yml).
+2. Verify it: `sha256sum -c frametide-os-*.iso.sha256`
+3. Test it in a VM (GNOME Boxes or VirtualBox with **UEFI**, 8 GB RAM, 40 GB disk), or write it to a USB
+   drive with [Ventoy](https://www.ventoy.net) or [Impression](https://flathub.org/apps/io.gitlab.adhami3310.Impression).
 
-## Aufbau
+## 🧪 Project status
 
-```
-config/frametide.conf        Name, Version, Ubuntu-Basis (zentrale Stelle)
-build.sh                     ISO-Build: debootstrap → chroot → squashfs → ISO
-scripts/chroot-install.sh    Paketinstallation im Image
-packages/                    Frametide-Pakete (.deb), gebaut mit build-debs.sh
-  frametide-base             Tuning, Startzeit, zram, sysctl, I/O, Branding
-  frametide-hwsetup          Hardware- und Treiber-Erkennung (Python)
-  frametide-gaming           Gaming-Stack und GameMode-Profil
-  frametide-desktop          GNOME-Design (Wallpaper, Icons, Sounds kommen aus artwork/)
-  frametide-dev              Entwicklerwerkzeuge
-  frametide-live             Live-System und Calamares (wird bei Installation entfernt)
-artwork/                     Logos (SVG), Generatoren für Wallpaper und Sounds
-iso/grub.cfg                 Bootmenü der Live-ISO
-tools/check-packages.py      prüft alle Paketnamen gegen das Ubuntu-Archiv
-.github/workflows/           CI: prüfen, ISO bauen, Release bei Tag v*
-```
+Frametide OS is **alpha software**. Please try it in a VM or on a spare machine first.
+Every build is booted automatically in QEMU (UEFI and BIOS) before it is published.
+Known limitations:
 
-Wallpaper und Sounds werden per Skript erzeugt und sind damit leicht anzupassen:
+- Wi-Fi passwords can only be moved from Windows if they were exported there first
+  (`netsh wlan export profile key=clear`), because Windows stores them encrypted.
+- VRR is switched on per monitor in GNOME 50 under *Settings → Displays*.
+- RGB and fan control cover what OpenRGB and CoolerControl support. That is most of the
+  market, but not every device.
 
-```bash
-python3 artwork/generate-wallpapers.py   # → artwork/wallpapers/*.svg (4K, skalierbar)
-python3 artwork/generate-sounds.py       # → artwork/sounds/
-```
+Planned next: snapshots before every update, a Steam Big Picture "Game Mode" session, and
+`sched_ext` schedulers. See [docs/COMPARISON.md](docs/COMPARISON.md) for the full roadmap.
 
-## ISO bauen
-
-Benötigt Ubuntu/Debian, root und etwa 25 GB freien Speicher:
+## 🔧 Build it yourself
 
 ```bash
 sudo apt install debootstrap squashfs-tools xorriso dosfstools mtools curl librsvg2-bin
-python3 tools/check-packages.py     # schneller Vorab-Check
-sudo ./build.sh                     # Ergebnis: out/frametide-os-1.0-ignition-amd64.iso
+python3 tools/check-packages.py   # checks every package name against the Ubuntu archive
+sudo ./build.sh                   # → out/frametide-os-1.0-ignition-amd64.iso (about 25 GB free space needed)
 ```
 
-Ohne eigenen Build-Rechner baut GitHub Actions die ISO bei jedem Push auf `main`
-(*Actions → ISO bauen → Artifacts*). Wie Versionen auf SourceForge veröffentlicht
-werden, steht in [docs/RELEASE.md](docs/RELEASE.md).
+<details>
+<summary><b>Repository layout</b></summary>
 
-Testen in einer VM (UEFI):
-
-```bash
-qemu-system-x86_64 -enable-kvm -m 8G -smp 4 -cdrom out/frametide-os-*.iso \
-  -bios /usr/share/ovmf/OVMF.fd -vga virtio
-systemd-analyze && systemd-analyze blame | head   # im installierten System: Startzeit prüfen
 ```
-
-## Treiber-Einrichtung
-
-Nach der Installation läuft `frametide-hwsetup` einmalig im Hintergrund, sobald
-Internet verfügbar ist. Danach meldet GNOME „Neustart erforderlich“.
-
-```bash
-frametide-hwsetup                 # erkannte Hardware und geplante Schritte anzeigen
-sudo frametide-hwsetup --apply    # erneut ausführen, z. B. nach GPU-Wechsel
-cat /var/log/frametide-hwsetup.log
+config/frametide.conf        name, version, Ubuntu base, languages, pre-installed ArtCraft apps
+build.sh                     ISO build: debootstrap → chroot → squashfs → ISO (BIOS + UEFI/Secure Boot)
+scripts/chroot-install.sh    package installation inside the image
+packages/                    Frametide packages (.deb), built with build-debs.sh
+  frametide-base             tuning, boot speed, zram, sysctl, I/O, branding
+  frametide-hwsetup          hardware and driver detection
+  frametide-gaming           gaming stack and GameMode profile
+  frametide-desktop          GNOME design, wallpapers, sounds
+  frametide-tools            Store, Center, game check, Move from Windows, Bench
+  frametide-hardware         OpenRGB, CoolerControl, sensors
+  frametide-apps             default apps, Chrome/VS Code on first boot
+  frametide-live             live session and Calamares installer
+artwork/                     logos (SVG), generators for wallpapers and sounds
+po/                          translations (tools/i18n.py)
+tools/                       package check, icon fetcher, ArtCraft downloader, i18n
 ```
+</details>
 
-Optionen in `/etc/frametide/hwsetup.conf`:
+## 🤝 Contributing
 
-- `AMD64V3=yes` aktiviert Ubuntus x86-64-v3-optimierte Pakete, wenn die CPU sie
-  unterstützt. Die Option ist **experimentell**.
-- `AMD_OVERDRIVE=yes` schaltet Übertakten und Undervolting für AMD-GPUs frei.
+Bug reports, ideas and translations are very welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md)
+and use the [issue templates](https://github.com/ChopstickGuy/frametide-os/issues/new/choose).
+Adding a language just takes one file in `po/`.
 
-## Gaming-Tipps
+## 📄 License
 
-- Steam-Startoption: `gamemoderun %command%`, mit FPS-Overlay `gamemoderun mangohud %command%`
-- Proton-GE: „ProtonPlus“ aus GNOME Software (Flathub)
+The Frametide OS code (scripts, packages, Store, Center, artwork) is licensed under the
+**[GNU GPL v3](LICENSE)**. Bundled programs keep their own licenses. For that reason Google
+Chrome and Visual Studio Code are not shipped on the ISO; they are installed on first boot
+directly from Google and Microsoft.
 
-## Vergleich und Roadmap
-
-Den Vergleich mit CachyOS, SteamOS, Bazzite und Nobara samt Verbesserungsliste findest du in
-[docs/VERGLEICH.md](docs/VERGLEICH.md).
-
-## Roadmap (Basis)
-
-- **1.1**: NVIDIA-Treiber offline auf der ISO, Willkommens-App (GTK4/libadwaita), GDM-Login im Frametide-Design
-- **1.2**: eigenes APT-Repo (neueres Mesa, scx-Scheduler/`sched_ext`), Benchmarks gegen Ubuntu
-- **2.0**: optionaler Gaming-Kernel als eigenes, signiertes Paket
-
-> Der Name „Frametide“ ergab bei der Recherche keine bestehende Distribution
-> und kein Betriebssystem. Vor einer öffentlichen Veröffentlichung trotzdem
-> bei DPMA/EUIPO auf Markeneinträge prüfen.
-
-## Lizenz
-
-Der Code von Frametide OS (Skripte, Pakete, Store, Center, Artwork) steht unter der
-**GNU GPL v3** (siehe [LICENSE](LICENSE)). Die enthaltenen Programme behalten ihre eigenen
-Lizenzen. Google Chrome und Visual Studio Code liegen deshalb nicht auf der ISO, sondern
-werden beim ersten Start direkt von Google bzw. Microsoft installiert.
+<sub>Frametide OS is an independent community project. It is not affiliated with Canonical (Ubuntu), Valve (Steam),
+Google, Microsoft or the ArtCraft team. All trademarks belong to their respective owners.</sub>

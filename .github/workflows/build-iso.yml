@@ -1,37 +1,39 @@
-name: ISO bauen
+name: Build ISO
 
 on:
   workflow_dispatch:
   push:
     branches: [main]
     tags: ["v*"]
+    paths-ignore: ["**.md", "docs/**", ".github/ISSUE_TEMPLATE/**"]
   pull_request:
+    paths-ignore: ["**.md", "docs/**", ".github/ISSUE_TEMPLATE/**"]
 
 jobs:
   check:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
-      - name: Paketverfügbarkeit prüfen
+      - name: Check package availability
         run: python3 tools/check-packages.py
-      - name: Übersetzungen prüfen
+      - name: Check translations
         run: python3 tools/i18n.py check
-      - name: Python-Code prüfen
+      - name: Check Python code
         run: |
           python3 -m py_compile packages/frametide-tools/usr/lib/frametide/*.py \
             tools/*.py artwork/*.py
           python3 -c "import ast,sys; [ast.parse(open(f).read()) for f in sys.argv[1:]]" \
             packages/frametide-hwsetup/usr/sbin/frametide-hwsetup \
             packages/frametide-tools/usr/lib/frametide/frametide-helper
-      - name: Shell-Skripte prüfen
+      - name: Check shell scripts
         run: |
           for f in build.sh scripts/chroot-install.sh packages/build-debs.sh; do bash -n "$f"; done
           for f in packages/*/DEBIAN/{preinst,postinst,postrm} packages/*/usr/lib/frametide/install-*; do
             [ -f "$f" ] && sh -n "$f"
           done
-      - name: Hardware-Erkennung testen
+      - name: Test hardware detection
         run: python3 packages/frametide-hwsetup/usr/sbin/frametide-hwsetup
-      - name: Pakete bauen
+      - name: Build packages
         run: |
           sudo apt-get update && sudo apt-get install -y librsvg2-bin
           ./packages/build-debs.sh
@@ -46,21 +48,21 @@ jobs:
       SF_PROJECT: ${{ secrets.SF_PROJECT }}
     steps:
       - uses: actions/checkout@v4
-      - name: Speicherplatz freigeben
+      - name: Free disk space
         run: |
           sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache \
             /usr/local/share/boost /usr/local/.ghcup /usr/share/swift
           sudo docker image prune --all --force || true
           df -h / /mnt
-      - name: Build-Werkzeuge
+      - name: Install build tools
         run: |
           sudo apt-get update
           sudo apt-get install -y debootstrap squashfs-tools xorriso dosfstools mtools curl librsvg2-bin
-      - name: ISO bauen
+      - name: Build ISO image
         run: sudo ./build.sh
-      - name: ISO-Größe
+      - name: ISO size
         run: ls -lh out/*.iso && cat out/*.sha256
-      - name: Boot-Test in QEMU (UEFI und BIOS, mit Screenshots)
+      - name: Boot test in QEMU (UEFI and BIOS, with screenshots)
         continue-on-error: true
         run: |
           sudo apt-get install -y qemu-system-x86 ovmf socat imagemagick
@@ -99,9 +101,9 @@ jobs:
           compression-level: 0
           retention-days: 30
 
-      # ISO-Dateien sind größer als die 2-GB-Grenze von GitHub-Releases → SourceForge.
-      # Benötigte Secrets: SF_SSH_KEY (privater Schlüssel), SF_USER, SF_PROJECT
-      - name: Auf SourceForge hochladen (bei Tag)
+      # ISO files exceed GitHub's 2 GB release limit → SourceForge.
+      # Secrets: SF_SSH_KEY (private key), SF_USER, SF_PROJECT
+      - name: Upload to SourceForge (tags only)
         if: startsWith(github.ref, 'refs/tags/v') && env.SF_USER != ''
         env:
           SF_SSH_KEY: ${{ secrets.SF_SSH_KEY }}
@@ -112,8 +114,11 @@ jobs:
           version="${GITHUB_REF_NAME#v}"
           rsync -av --progress -e "ssh -i ~/.ssh/sourceforge" out/*.iso out/*.sha256 \
             "$SF_USER@frs.sourceforge.net:/home/frs/project/$SF_PROJECT/$version/"
+          # README in the files area → SourceForge shows it on the "Files" page
+          rsync -av -e "ssh -i ~/.ssh/sourceforge" README.md \
+            "$SF_USER@frs.sourceforge.net:/home/frs/project/$SF_PROJECT/"
           echo "SF_URL=https://sourceforge.net/projects/$SF_PROJECT/files/$version/" >> "$GITHUB_ENV"
-      - name: GitHub-Release (bei Tag)
+      - name: GitHub release (tags only)
         if: startsWith(github.ref, 'refs/tags/v')
         uses: softprops/action-gh-release@v2
         with:
@@ -122,9 +127,9 @@ jobs:
           body: |
             ## Frametide OS ${{ github.ref_name }}
 
-            **Download:** ${{ env.SF_URL || 'als Artefakt dieses Workflow-Laufs (Actions → ISO bauen)' }}
+            **Download:** ${{ env.SF_URL || 'as an artifact of this workflow run (Actions → Build ISO)' }}
 
-            Die SHA256-Prüfsumme hängt an diesem Release. Bitte nach dem Download prüfen:
+            The SHA256 checksum is attached to this release. Please verify after downloading:
             `sha256sum -c frametide-os-*.iso.sha256`
 
-            ⚠️ Alpha-Version – zuerst in einer VM oder auf einem Testrechner ausprobieren.
+            ⚠️ Alpha – please test in a VM or on a spare machine first.

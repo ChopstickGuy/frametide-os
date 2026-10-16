@@ -1,0 +1,16 @@
+name: 💡 Idea / feature request
+description: Suggest something that would make Frametide better
+labels: [enhancement]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: Your idea
+      description: What would you like, and what problem does it solve?
+    validations:
+      required: true
+  - type: textarea
+    id: example
+    attributes:
+      label: Example / inspiration
+      description: Does another OS or app already do this well?
