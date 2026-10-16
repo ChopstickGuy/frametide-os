@@ -1,0 +1,12 @@
+Package: frametide-apps
+Version: @VERSION@
+Architecture: all
+Maintainer: Frametide OS <dev@frametide-os.invalid>
+Section: metapackages
+Priority: optional
+Recommends: code, google-chrome-stable, github-desktop, gh, frametide-tools, frametide-hardware,
+ wordcraft, gridcraft, deckcraft, pdfcraft, artcraft-launcher
+Description: Frametide OS – vorinstallierte Standard-Software
+ Visual Studio Code, Google Chrome, GitHub Desktop und GitHub CLI sowie
+ die ArtCraft-Office-Apps (WordCraft, GridCraft, DeckCraft, PdfCraft).
+ Nur „Recommends“: einzelne Apps lassen sich entfernen, ohne den Rest mitzunehmen.

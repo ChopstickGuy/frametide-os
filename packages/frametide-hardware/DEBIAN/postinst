@@ -1,0 +1,8 @@
+#!/bin/sh
+set -e
+if [ "$1" = configure ]; then
+    getent group i2c >/dev/null || addgroup --system i2c
+    if [ -e /usr/lib/systemd/system/coolercontrold.service ]; then
+        systemctl enable coolercontrold.service >/dev/null 2>&1 || true
+    fi
+fi

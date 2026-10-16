@@ -43,7 +43,7 @@ experimental-features=['variable-refresh-rate','scale-monitor-framebuffer','xway
 check-alive-timeout=uint32 20000
 
 [org.gnome.shell]
-favorite-apps=['firefox.desktop','org.gnome.Nautilus.desktop','steam.desktop','net.lutris.Lutris.desktop','org.gnome.Ptyxis.desktop','org.gnome.Software.desktop','org.gnome.Settings.desktop']
+favorite-apps=['google-chrome.desktop','org.gnome.Nautilus.desktop','steam.desktop','code.desktop','ai.storyteller.wordcraft.desktop','org.gnome.Ptyxis.desktop','org.frametide.Store.desktop','org.frametide.Center.desktop']
 disabled-extensions=['ding@rastersoft.com','web-search-provider@ubuntu.com','snapd-prompting@canonical.com','snapd-search-provider@canonical.com']
 
 [org.gnome.shell.extensions.dash-to-dock]
@@ -106,7 +106,7 @@ experimental-features=['variable-refresh-rate','scale-monitor-framebuffer','xway
 check-alive-timeout=uint32 20000
 
 [org.gnome.shell:ubuntu]
-favorite-apps=['firefox.desktop','org.gnome.Nautilus.desktop','steam.desktop','net.lutris.Lutris.desktop','org.gnome.Ptyxis.desktop','org.gnome.Software.desktop','org.gnome.Settings.desktop']
+favorite-apps=['google-chrome.desktop','org.gnome.Nautilus.desktop','steam.desktop','code.desktop','ai.storyteller.wordcraft.desktop','org.gnome.Ptyxis.desktop','org.frametide.Store.desktop','org.frametide.Center.desktop']
 disabled-extensions=['ding@rastersoft.com','web-search-provider@ubuntu.com','snapd-prompting@canonical.com','snapd-search-provider@canonical.com']
 
 [org.gnome.shell.extensions.dash-to-dock:ubuntu]

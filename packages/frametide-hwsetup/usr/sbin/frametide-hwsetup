@@ -56,6 +56,7 @@ class Plan:
     services: list = field(default_factory=list)
     ubuntu_drivers: bool = False
     amd64v3: bool = False
+    power_profile: str = "balanced"
     notes: list = field(default_factory=list)
 
 
@@ -129,7 +130,8 @@ def build_plan(gpus, cpu, conf):
         plan.ubuntu_drivers = True
         plan.kernel_params += ["nvidia-drm.modeset=1", "nvidia-drm.fbdev=1"]
         plan.modprobe.append(
-            "options nvidia NVreg_PreserveVideoMemoryAllocations=1 NVreg_TemporaryFilePath=/var/tmp")
+            "options nvidia NVreg_PreserveVideoMemoryAllocations=1 NVreg_TemporaryFilePath=/var/tmp "
+            "NVreg_UsePageAttributeTable=1")
         plan.services += ["nvidia-suspend.service", "nvidia-resume.service", "nvidia-hibernate.service"]
         if len(gpus) > 1:
             plan.services += ["nvidia-powerd.service", "switcheroo-control.service"]
@@ -150,6 +152,18 @@ def build_plan(gpus, cpu, conf):
 
     if "intel" in vendors:
         plan.packages.add("intel-media-va-driver-non-free")
+
+    if conf.get("SMBUS_LAX") == "yes":
+        # Manche Mainboards sperren den SMBus per ACPI – nötig für RGB auf RAM/Mainboard
+        plan.kernel_params.append("acpi_enforce_resources=lax")
+        plan.notes.append("Erweiterter SMBus-Zugriff für RGB aktiv.")
+
+    if conf.get("MITIGATIONS_OFF") == "yes":
+        plan.kernel_params.append("mitigations=off")
+        plan.notes.append("CPU-Sicherheitsbremsen sind abgeschaltet (mehr Leistung, weniger Schutz).")
+
+    # Desktop-PCs (ohne Akku) laufen im Energieprofil „Leistung“, Laptops bleiben „Ausgewogen“
+    plan.power_profile = "balanced" if glob.glob("/sys/class/power_supply/BAT*") else "performance"
 
     if conf.get("AMD64V3") == "yes":
         if cpu.x86_64_v3:
@@ -180,6 +194,7 @@ def report(gpus, cpu, plan):
         print(f"  • modprobe: {line}")
     if plan.services:
         print(f"  • Dienste: {' '.join(plan.services)}")
+    print(f"  • Energieprofil: {plan.power_profile}")
     if plan.amd64v3:
         print("  • x86-64-v3-optimierte Pakete aktivieren (experimentell)")
     for note in plan.notes:
@@ -226,6 +241,17 @@ def wait_for_network(timeout=1800):
     return False
 
 
+def sync_file(path, content):
+    """Schreibt `content` oder entfernt die Datei, wenn nichts mehr nötig ist."""
+    if content:
+        return write_file(path, content)
+    if os.path.exists(path):
+        os.remove(path)
+        log(f"entfernt: {path}")
+        return True
+    return False
+
+
 def installed_nvidia_branches():
     out = run(["dpkg-query", "-W", "-f=${Package} ${Status}\n", "nvidia-driver-*"], check=False).stdout
     return sorted({m.group(1) for m in re.finditer(r"^nvidia-driver-(\d+)\S* install ok installed", out, re.M)})
@@ -252,11 +278,19 @@ def apply(plan):
     if plan.amd64v3:
         run(apt + ["full-upgrade"])
 
-    changed = write_file(MODPROBE_FILE, "".join(f"{l}\n" for l in plan.modprobe)) if plan.modprobe else False
-    if plan.kernel_params:
-        params = " ".join(plan.kernel_params)
-        changed |= write_file(GRUB_HW_FILE, "# Von frametide-hwsetup erzeugt\n"
-                              f'GRUB_CMDLINE_LINUX_DEFAULT="$GRUB_CMDLINE_LINUX_DEFAULT {params}"\n')
+    changed = sync_file(MODPROBE_FILE, "".join(f"{l}\n" for l in plan.modprobe))
+    params = " ".join(plan.kernel_params)
+    changed |= sync_file(GRUB_HW_FILE, params and (
+        "# Von frametide-hwsetup erzeugt\n"
+        f'GRUB_CMDLINE_LINUX_DEFAULT="$GRUB_CMDLINE_LINUX_DEFAULT {params}"\n'))
+    if not plan.amd64v3 and os.path.exists(APT_V3_FILE):
+        os.remove(APT_V3_FILE)
+
+    # Temperatur- und Lüftersensoren des Mainboards erkennen (für Frametide Center/CoolerControl)
+    if os.path.exists("/usr/sbin/sensors-detect"):
+        run(["sensors-detect", "--auto"], check=False)
+
+    run(["powerprofilesctl", "set", plan.power_profile], check=False)
 
     for service in plan.services:
         run(["systemctl", "enable", service], check=False)

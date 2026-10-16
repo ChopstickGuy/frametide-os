@@ -1,8 +1,9 @@
 [Desktop Entry]
 Type=Application
-Name=Frametide OS installieren
-Name[en]=Install Frametide OS
-Comment=Frametide OS auf diesem Computer installieren
+Name=Install Frametide OS
+Name[de]=Frametide OS installieren
+Comment=Install Frametide OS on this computer
+Comment[de]=Frametide OS auf diesem Computer installieren
 Exec=sh -c "sudo -E calamares >/tmp/calamares.log 2>&1"
 Icon=frametide-logo
 Terminal=false

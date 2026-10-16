@@ -14,7 +14,15 @@ WORK="${WORK:-$ROOT/work}"
 OUT="${OUT:-$ROOT/out}"
 CHROOT="$WORK/chroot"
 ISODIR="$WORK/iso"
-MOZILLA_KEY_URL="https://packages.mozilla.org/apt/repo-signing-key.gpg"
+# Signaturschlüssel der Hersteller-Paketquellen
+declare -A REPO_KEYS=(
+    [mozilla]="https://packages.mozilla.org/apt/repo-signing-key.gpg"
+    [vscode]="https://packages.microsoft.com/keys/microsoft.asc"
+    [google-chrome]="https://dl.google.com/linux/linux_signing_key.pub"
+    [github-cli]="https://cli.github.com/packages/githubcli-archive-keyring.gpg"
+    [github-desktop]="https://mirror.mwt.me/shiftkey-desktop/gpgkey"
+    [coolercontrol]="https://dl.cloudsmith.io/public/coolercontrol/coolercontrol/gpg.key"
+)
 
 log() { printf '\n\033[1;36m==> %s\033[0m\n' "$*"; }
 die() { printf '\033[1;31mFehler: %s\033[0m\n' "$*" >&2; exit 1; }
@@ -58,6 +66,7 @@ build_rootfs() {
     rm -rf "$CHROOT"
     mkdir -p "$CHROOT"
     debootstrap --arch="$ARCH" --components=main,restricted,universe,multiverse \
+        --include=ca-certificates,gpg \
         "$UBUNTU_SUITE" "$CHROOT" "$MIRROR"
 
     log "System im Chroot einrichten"
@@ -65,7 +74,13 @@ build_rootfs() {
     mkdir -p "$CHROOT/tmp/frametide/debs"
     cp "$ROOT/config/frametide.conf" "$ROOT/scripts/chroot-install.sh" "$CHROOT/tmp/frametide/"
     cp "$OUT"/debs/*.deb "$CHROOT/tmp/frametide/debs/"
-    curl -fsSL "$MOZILLA_KEY_URL" -o "$CHROOT/tmp/frametide/mozilla.asc"
+    log "Schlüssel der Hersteller-Paketquellen"
+    mkdir -p "$CHROOT/tmp/frametide/keys"
+    for name in "${!REPO_KEYS[@]}"; do
+        curl -fsSL "${REPO_KEYS[$name]}" -o "$CHROOT/tmp/frametide/keys/$name.key"
+    done
+    log "ArtCraft-Apps herunterladen und prüfen"
+    "$ROOT/tools/fetch-craft.py" "$CHROOT/tmp/frametide/craft" $CRAFT_PREINSTALL
     rm -f "$CHROOT/etc/resolv.conf"
     cp -L /etc/resolv.conf "$CHROOT/etc/resolv.conf"
     # Keine Dienste während des Builds starten

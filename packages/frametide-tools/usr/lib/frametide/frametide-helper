@@ -1,0 +1,192 @@
+#!/usr/bin/python3 -I
+"""frametide-helper – privilegierte Aktionen für Store und Center.
+
+Wird ausschließlich per pkexec aufgerufen (Polkit-Aktion org.frametide.helper)
+und führt nur fest definierte, geprüfte Befehle aus – keine beliebigen Kommandos.
+"""
+import hashlib
+import json
+import os
+import re
+import subprocess
+import sys
+import tempfile
+import urllib.request
+
+CRAFT_REPOS = {
+    "wordcraft": "wordcraft", "gridcraft": "gridcraft", "deckcraft": "deckcraft",
+    "pdfcraft": "pdfcraft", "photocraft": "photocraft", "lightcraft": "lightcraft",
+    "vectorcraft": "vectorcraft", "filmcraft": "filmcraft", "effectcraft": "effectcraft",
+    "soundcraft": "soundcraft", "designcraft": "designcraft", "figcraft": "figcraft",
+    "cadcraft": "cadcraft", "artcraft-launcher": "craft-launcher",
+}
+PKG_RE = re.compile(r"^[a-z0-9][a-z0-9+.-]{1,80}(:i386)?$")
+DRIVER_RE = re.compile(r"^nvidia-driver-(\d+)(-open|-server|-server-open)?$")
+FAN_DRIVERS = {"it87-dkms", "nct6687d-dkms"}
+OPTIONS = {"AMD64V3", "AMD_OVERDRIVE", "SMBUS_LAX", "MITIGATIONS_OFF"}
+CONF = "/etc/frametide/hwsetup.conf"
+APT = ["apt-get", "-y", "-o", "DPkg::Lock::Timeout=300", "-o", "Dpkg::Options::=--force-confold"]
+ENV = {"PATH": "/usr/sbin:/usr/bin:/sbin:/bin", "DEBIAN_FRONTEND": "noninteractive", "LANG": "C.UTF-8"}
+
+
+ENGLISH = False
+EN = {
+    "neueste Version wird ermittelt": "looking up latest version",
+    "ist aktuell": "is up to date",
+    "wird heruntergeladen": "downloading",
+    "Prüfsumme OK, wird installiert": "checksum OK, installing",
+    "Paketquellen werden aktualisiert": "Refreshing package sources",
+    "System-Pakete werden aktualisiert": "Updating system packages",
+    "Flatpak-Apps werden aktualisiert": "Updating Flatpak apps",
+    "ArtCraft-Apps werden aktualisiert": "Updating ArtCraft apps",
+    "Wird installiert": "Installing",
+    "Wird entfernt": "Removing",
+    "NVIDIA-Treiber wird installiert": "Installing NVIDIA driver",
+    "Fertig – bitte neu starten": "Done – please restart",
+    "wird installiert (bei Secure Boot fragt der nächste Start nach dem MOK-Passwort)":
+        "installing (with Secure Boot the next boot asks for the MOK password)",
+    "Firmware-Updates (fwupd)": "Firmware updates (fwupd)",
+    "gespeichert, Einstellungen werden angewendet": "saved, applying settings",
+    "Fertig": "Done",
+}
+
+
+def t(text):
+    return EN.get(text, text) if ENGLISH else text
+
+
+def say(*parts):
+    """Statuszeile; Teile in t() werden übersetzt, Namen/Versionen bleiben."""
+    print("» " + " ".join(parts), flush=True)
+
+
+def run(argv, check=True):
+    proc = subprocess.run(argv, env=ENV)
+    if check and proc.returncode != 0:
+        raise SystemExit(f"Fehlgeschlagen ({proc.returncode}): {' '.join(argv)}")
+    return proc.returncode
+
+
+def packages(args):
+    bad = [p for p in args if not PKG_RE.match(p)]
+    if not args or bad:
+        raise SystemExit(f"Ungültige Paketnamen: {' '.join(bad) or '(keine)'}")
+    return args
+
+
+def is_newer(app, version):
+    current = subprocess.run(["dpkg-query", "-W", "-f=${Version}", app],
+                             capture_output=True, text=True).stdout.split("-")[0]
+    return not current or subprocess.run(["dpkg", "--compare-versions", version, "gt", current]).returncode == 0
+
+
+def craft_install(apps, only_newer=False):
+    for app in apps:
+        if app not in CRAFT_REPOS:
+            raise SystemExit(f"Unbekannte Craft-App: {app}")
+        say(f"{app}:", t("neueste Version wird ermittelt"))
+        url = f"https://api.github.com/repos/storytold/{CRAFT_REPOS[app]}/releases/latest"
+        with urllib.request.urlopen(url, timeout=30) as r:
+            release = json.load(r)
+        asset = next(a for a in release["assets"] if a["name"].endswith("-linux-x86_64.deb"))
+        if only_newer and not is_newer(app, release["tag_name"].lstrip("v")):
+            say(app, t("ist aktuell"))
+            continue
+        expected = (asset.get("digest") or "").removeprefix("sha256:")
+        if not expected:
+            raise SystemExit(f"{app}: keine Prüfsumme veröffentlicht – Abbruch")
+        if not asset["browser_download_url"].startswith("https://github.com/storytold/"):
+            raise SystemExit(f"{app}: unerwartete Download-Adresse")
+        with tempfile.TemporaryDirectory() as tmp:
+            path = os.path.join(tmp, asset["name"])
+            say(app, release["tag_name"], t("wird heruntergeladen"), f"({asset['size'] // 1_000_000} MB)")
+            urllib.request.urlretrieve(asset["browser_download_url"], path)
+            with open(path, "rb") as f:
+                actual = hashlib.sha256(f.read()).hexdigest()
+            if actual != expected:
+                raise SystemExit(f"{app}: Prüfsumme stimmt nicht – Download verworfen")
+            say(f"{app}:", t("Prüfsumme OK, wird installiert"))
+            os.chmod(tmp, 0o755)
+            run(APT + ["install", path])
+
+
+def craft_installed():
+    out = subprocess.run(["dpkg-query", "-W", "-f=${Package} ${db:Status-Abbrev}\n", *CRAFT_REPOS],
+                         capture_output=True, text=True).stdout
+    return [line.split()[0] for line in out.splitlines() if line.split()[1:2] == ["ii"]]
+
+
+def set_option(key, value):
+    if key not in OPTIONS or value not in ("yes", "no"):
+        raise SystemExit("Ungültige Option")
+    lines = open(CONF).read().splitlines() if os.path.exists(CONF) else []
+    lines = [l for l in lines if not l.startswith(f"{key}=")] + [f"{key}={value}"]
+    os.makedirs(os.path.dirname(CONF), exist_ok=True)
+    with open(CONF, "w") as f:
+        f.write("\n".join(lines) + "\n")
+    say(f"{key}={value}", t("gespeichert, Einstellungen werden angewendet"))
+    run(["/usr/sbin/frametide-hwsetup", "--apply"])
+
+
+def main(argv):
+    if os.geteuid() != 0:
+        raise SystemExit("frametide-helper muss über pkexec laufen")
+    global ENGLISH
+    if argv and argv[0].startswith("--lang="):
+        ENGLISH = argv.pop(0) != "--lang=de"
+    if not argv:
+        raise SystemExit(__doc__)
+    cmd, args = argv[0], argv[1:]
+
+    if cmd == "refresh":
+        say(t("Paketquellen werden aktualisiert"))
+        run(["apt-get", "-o", "DPkg::Lock::Timeout=300", "update"])
+        run(["flatpak", "update", "--appstream", "--system"], check=False)
+    elif cmd == "upgrade":
+        say(t("System-Pakete werden aktualisiert"))
+        run(["apt-get", "-o", "DPkg::Lock::Timeout=300", "update"])
+        run(APT + ["full-upgrade"])
+        say(t("Flatpak-Apps werden aktualisiert"))
+        run(["flatpak", "update", "-y", "--noninteractive", "--system"], check=False)
+        if craft_installed():
+            say(t("ArtCraft-Apps werden aktualisiert"))
+            craft_install(craft_installed(), only_newer=True)
+        run(APT + ["autoremove", "--purge"], check=False)
+    elif cmd == "install":
+        say(t("Wird installiert") + ":", *args)
+        run(APT + ["install", *packages(args)])
+    elif cmd == "remove":
+        say(t("Wird entfernt") + ":", *args)
+        run(APT + ["remove", *packages(args)])
+    elif cmd == "craft-install":
+        craft_install(args)
+    elif cmd == "driver-install":
+        m = DRIVER_RE.match(args[0]) if len(args) == 1 else None
+        if not m:
+            raise SystemExit("Ungültiger Treiber")
+        say(t("NVIDIA-Treiber wird installiert") + ":", args[0])
+        run(APT + ["install", args[0], f"libnvidia-gl-{m.group(1)}:i386"])
+        say(t("Fertig – bitte neu starten"))
+    elif cmd == "driver-auto":
+        run(["/usr/sbin/frametide-hwsetup", "--apply"])
+    elif cmd == "fan-driver":
+        if len(args) != 1 or args[0] not in FAN_DRIVERS:
+            raise SystemExit("Ungültiger Lüftertreiber")
+        say(args[0], t("wird installiert (bei Secure Boot fragt der nächste Start nach dem MOK-Passwort)"))
+        run(APT + ["install", args[0]])
+        run(["sensors-detect", "--auto"], check=False)
+    elif cmd == "sensors-detect":
+        run(["sensors-detect", "--auto"], check=False)
+    elif cmd == "firmware-update":
+        say(t("Firmware-Updates (fwupd)"))
+        run(["fwupdmgr", "refresh", "--force"], check=False)
+        run(["fwupdmgr", "update", "-y", "--no-reboot-check"], check=False)
+    elif cmd == "set-option" and len(args) == 2:
+        set_option(*args)
+    else:
+        raise SystemExit(f"Unbekannter Befehl: {cmd}")
+    say(t("Fertig"))
+
+
+if __name__ == "__main__":
+    main(sys.argv[1:])

@@ -1,0 +1,2 @@
+# Proton/Wine nutzen /dev/ntsync automatisch, wenn es lesbar ist
+KERNEL=="ntsync", MODE="0644"

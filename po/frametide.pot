@@ -1,0 +1,515 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8\n"
+
+#: center.py:321
+msgid "bei Secure Boot einmalig MOK-Bestätigung"
+msgstr ""
+
+#: center.py:97
+msgid "Suchen"
+msgstr ""
+
+#: center.py:98
+msgid "Alles aktualisieren"
+msgstr ""
+
+#: center.py:107
+msgid "Verfügbare Updates"
+msgstr ""
+
+#: center.py:119
+msgid "Firmware"
+msgstr ""
+
+#: center.py:119
+msgid "BIOS-, SSD- und Geräte-Firmware über fwupd (Hersteller-Updates)."
+msgstr ""
+
+#: center.py:129
+msgid "Suche läuft …"
+msgstr ""
+
+#: center.py:162
+msgid "Updates werden installiert …"
+msgstr ""
+
+#: center.py:178
+msgid "Grafikkarten"
+msgstr ""
+
+#: center.py:179
+msgid "Frametide richtet den passenden Treiber beim ersten Start automatisch ein."
+msgstr ""
+
+#: center.py:208
+msgid "Grafik-Stack"
+msgstr ""
+
+#: center.py:209
+msgid "installiert"
+msgstr ""
+
+#: center.py:209
+msgid "fehlt"
+msgstr ""
+
+#: center.py:221
+msgid "radeon (alt – Vulkan erst nach Einrichtung)"
+msgstr ""
+
+#: center.py:223
+msgid "nouveau (offen, eingeschränkt)"
+msgstr ""
+
+#: center.py:272
+msgid "Temperaturen"
+msgstr ""
+
+#: center.py:273
+msgid "Lüfter und Pumpen"
+msgstr ""
+
+#: center.py:274
+msgid "Kurven, Profile und AIO-Kühler stellst du in CoolerControl ein."
+msgstr ""
+
+#: center.py:285
+msgid "RGB-Beleuchtung"
+msgstr ""
+
+#: center.py:286
+msgid "Mainboard, RAM, Grafikkarte, Lüfter, Tastatur und Maus – herstellerübergreifend über OpenRGB."
+msgstr ""
+
+#: center.py:312
+msgid "Erweitert"
+msgstr ""
+
+#: center.py:312
+msgid "Nur nötig, wenn Geräte oder Lüfter oben fehlen."
+msgstr ""
+
+#: center.py:410
+msgid "Suche läuft … (kann einige Sekunden dauern)"
+msgstr ""
+
+#: center.py:445
+msgid "Über dieses System"
+msgstr ""
+
+#: center.py:455
+msgid "Leistung"
+msgstr ""
+
+#: center.py:93
+msgid "Updates"
+msgstr ""
+
+#: center.py:95
+msgid "Updates prüfen"
+msgstr ""
+
+#: center.py:95
+msgid "Noch nicht gesucht"
+msgstr ""
+
+#: center.py:109
+msgid "System und Programme"
+msgstr ""
+
+#: center.py:110
+msgid "Flatpak-Apps"
+msgstr ""
+
+#: center.py:111
+msgid "ArtCraft-Apps"
+msgstr ""
+
+#: center.py:120
+msgid "Firmware aktualisieren"
+msgstr ""
+
+#: center.py:121
+msgid "Nur bei Netzstrom ausführen – der Rechner startet ggf. neu."
+msgstr ""
+
+#: center.py:122
+msgid "Prüfen und installieren"
+msgstr ""
+
+#: center.py:153
+msgid "Alles aktuell"
+msgstr ""
+
+#: center.py:154
+msgid "Dein System ist auf dem neuesten Stand."
+msgstr ""
+
+#: center.py:157
+msgid "Installiert im Hintergrund – du kannst weiterarbeiten oder spielen."
+msgstr ""
+
+#: center.py:170
+msgid "Treiber"
+msgstr ""
+
+#: center.py:190
+msgid "Treiber automatisch einrichten"
+msgstr ""
+
+#: center.py:191
+msgid "Erkennt die Hardware erneut und installiert die empfohlenen Treiber."
+msgstr ""
+
+#: center.py:192
+msgid "Ausführen"
+msgstr ""
+
+#: center.py:200
+msgid "NVIDIA-Treiberversion"
+msgstr ""
+
+#: center.py:201
+msgid "„open“ = offene Kernel-Module (empfohlen ab RTX 20/GTX 16). Nach einem Wechsel bitte neu starten."
+msgstr ""
+
+#: center.py:210
+msgid "Mesa (AMD/Intel)"
+msgstr ""
+
+#: center.py:211
+msgid "Vulkan 32-Bit (Steam)"
+msgstr ""
+
+#: center.py:219
+msgid "NVIDIA-Treiber"
+msgstr ""
+
+#: center.py:267
+msgid "RGB & Lüfter"
+msgstr ""
+
+#: center.py:276
+msgid "Lüfterkurven, Pumpen, AIO-Wasserkühlungen"
+msgstr ""
+
+#: center.py:278
+msgid "Öffnen"
+msgstr ""
+
+#: center.py:293
+msgid "Farbe für alle Geräte"
+msgstr ""
+
+#: center.py:294
+msgid "Statische Farbe auf alle erkannten Geräte"
+msgstr ""
+
+#: center.py:297
+msgid "Anwenden"
+msgstr ""
+
+#: center.py:299
+msgid "Beleuchtung ausschalten"
+msgstr ""
+
+#: center.py:300
+msgid "Aus"
+msgstr ""
+
+#: center.py:303
+msgid "Erkannte Geräte"
+msgstr ""
+
+#: center.py:306
+msgid "Effekte, Zonen, Profile und Geräte im Detail"
+msgstr ""
+
+#: center.py:313
+msgid "Erweiterter SMBus-Zugriff"
+msgstr ""
+
+#: center.py:314
+msgid "Für RGB auf manchen Mainboards und RAM-Riegeln (acpi_enforce_resources=lax). Neustart nötig."
+msgstr ""
+
+#: center.py:322
+msgid "Lüftertreiber für ITE-Chips"
+msgstr ""
+
+#: center.py:323
+msgid "Gigabyte und viele andere Mainboards"
+msgstr ""
+
+#: center.py:324
+msgid "Lüftertreiber für Nuvoton NCT6687"
+msgstr ""
+
+#: center.py:325
+msgid "Viele MSI-Mainboards"
+msgstr ""
+
+#: center.py:330
+msgid "Sensoren neu erkennen"
+msgstr ""
+
+#: center.py:378
+msgid "Keine Temperatursensoren gefunden"
+msgstr ""
+
+#: center.py:379
+msgid "Keine Lüftersensoren gefunden – siehe „Erweitert“"
+msgstr ""
+
+#: center.py:440
+msgid "System"
+msgstr ""
+
+#: center.py:447
+msgid "Basis"
+msgstr ""
+
+#: center.py:449
+msgid "Prozessor"
+msgstr ""
+
+#: center.py:450
+msgid "Arbeitsspeicher"
+msgstr ""
+
+#: center.py:457
+msgid "x86-64-v3-optimierte Pakete"
+msgstr ""
+
+#: center.py:458
+msgid "Schnellere Pakete für CPUs ab Intel Haswell / AMD Zen (experimentell)"
+msgstr ""
+
+#: center.py:459
+msgid "AMD-GPU-Übertaktung freischalten"
+msgstr ""
+
+#: center.py:460
+msgid "Erlaubt Übertakten und Undervolting in CoreCtrl. Neustart nötig."
+msgstr ""
+
+#: center.py:461
+msgid "CPU-Sicherheitsbremsen abschalten"
+msgstr ""
+
+#: center.py:462
+msgid "Mehr Leistung v. a. auf älteren CPUs, aber weniger Schutz vor Spectre & Co. Nur für reine Gaming-PCs. Neustart nötig."
+msgstr ""
+
+#: center.py:79
+msgid "Erledigt ✓"
+msgstr ""
+
+#: center.py:145
+msgid "Aktuell"
+msgstr ""
+
+#: center.py:224
+msgid "Treiber: {driver}"
+msgstr ""
+
+#: center.py:318
+msgid "Einstellung wird angewendet …"
+msgstr ""
+
+#: center.py:327
+msgid "Installieren"
+msgstr ""
+
+#: center.py:407
+msgid "Farbe #{color} angewendet"
+msgstr ""
+
+#: center.py:424
+msgid "Keine Geräte gefunden – evtl. „Erweiterter SMBus-Zugriff“ aktivieren"
+msgstr ""
+
+#: center.py:81
+msgid "Abgebrochen"
+msgstr ""
+
+#: center.py:123
+msgid "Firmware …"
+msgstr ""
+
+#: center.py:137
+msgid "Suche fehlgeschlagen: {error}"
+msgstr ""
+
+#: center.py:156
+msgid "{n} Updates verfügbar"
+msgstr ""
+
+#: center.py:189
+msgid "Keine Grafikkarte erkannt"
+msgstr ""
+
+#: center.py:193
+msgid "Treiber werden eingerichtet …"
+msgstr ""
+
+#: center.py:203
+msgid "Verfügbare Treiber werden ermittelt …"
+msgstr ""
+
+#: center.py:219
+msgid "NVIDIA-Treiber {version}"
+msgstr ""
+
+#: center.py:224
+msgid "keiner"
+msgstr ""
+
+#: center.py:244
+msgid "Empfohlen"
+msgstr ""
+
+#: center.py:257
+msgid "Keine Treiber gefunden"
+msgstr ""
+
+#: center.py:258
+msgid "Sehr alte Karten laufen mit dem offenen nouveau/NVK-Treiber."
+msgstr ""
+
+#: center.py:301
+msgid "Beleuchtung aus"
+msgstr ""
+
+#: center.py:332
+msgid "Sensoren werden erkannt …"
+msgstr ""
+
+#: center.py:145
+msgid "{n} Updates"
+msgstr ""
+
+#: center.py:185
+msgid "Primär"
+msgstr ""
+
+#: center.py:423
+msgid "{n} Geräte"
+msgstr ""
+
+#: center.py:433
+msgid "Konnte {app} nicht starten: {error}"
+msgstr ""
+
+#: center.py:83
+msgid "Fehlgeschlagen (Code {code}) – Details unten"
+msgstr ""
+
+#: center.py:250
+msgid "{pkg} wird installiert …"
+msgstr ""
+
+#: center.py:367
+msgid "Lüfter"
+msgstr ""
+
+#: center.py:359
+msgid "{rpm} U/min"
+msgstr ""
+
+#: frametide_common.py:210
+msgid "Details anzeigen"
+msgstr ""
+
+#: store.py:234
+msgid "Abbrechen"
+msgstr ""
+
+#: store.py:235
+msgid "Entfernen"
+msgstr ""
+
+#: store.py:253
+msgid "Suche"
+msgstr ""
+
+#: store.py:90
+msgid "Entdecken"
+msgstr ""
+
+#: store.py:92
+msgid "Installiert"
+msgstr ""
+
+#: store.py:105
+msgid "Apps suchen – auch auf ganz Flathub"
+msgstr ""
+
+#: store.py:222
+msgid "{app} wurde installiert"
+msgstr ""
+
+#: store.py:222
+msgid "{app} wurde entfernt"
+msgstr ""
+
+#: store.py:233
+msgid "Deine eigenen Dateien bleiben erhalten."
+msgstr ""
+
+#: store.py:257
+msgid "Im Store"
+msgstr ""
+
+#: store.py:277
+msgid "Weitere Apps von Flathub"
+msgstr ""
+
+#: store.py:166
+msgid "Aus dem Store installierte Apps. Updates gibt es im Frametide Center."
+msgstr ""
+
+#: store.py:144
+msgid "Willkommen im Frametide Store"
+msgstr ""
+
+#: store.py:146
+msgid "Spiele, Kreativ-Apps, Office und Werkzeuge – geprüft und mit einem Klick installiert."
+msgstr ""
+
+#: store.py:152
+msgid "Komplettes ArtCraft-Paket installieren"
+msgstr ""
+
+#: store.py:156
+msgid "Alle installieren"
+msgstr ""
+
+#: store.py:232
+msgid "{app} entfernen?"
+msgstr ""
+
+#: store.py:47
+msgid "Läuft …"
+msgstr ""
+
+#: store.py:47
+msgid "Wartet"
+msgstr ""
+
+#: store.py:227
+msgid "Fehlercode {code}"
+msgstr ""
+
+#: store.py:265
+msgid "Nichts gefunden"
+msgstr ""
+
+#: store.py:280
+msgid "Versuch einen anderen Suchbegriff."
+msgstr ""
+
+#: store.py:153
+msgid "{n} weitere Craft-Apps (Foto, Video, Vektor, Audio, CAD …)"
+msgstr ""
+

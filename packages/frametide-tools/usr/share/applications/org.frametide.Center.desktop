@@ -1,0 +1,27 @@
+[Desktop Entry]
+Type=Application
+Name=Frametide Center
+Comment=Updates, drivers, RGB lighting and fans
+Comment[de]=Updates, Treiber, RGB-Beleuchtung und Lüfter
+Exec=frametide-center %u
+Icon=frametide-center
+Terminal=false
+Categories=System;Settings;HardwareSettings;
+Keywords=update;driver;nvidia;amd;rgb;fan;
+Keywords[de]=update;treiber;nvidia;amd;rgb;lüfter;
+StartupNotify=true
+Actions=updates;drivers;hardware;
+
+[Desktop Action updates]
+Name=Updates
+Exec=frametide-center updates
+
+[Desktop Action drivers]
+Name=Drivers
+Name[de]=Treiber
+Exec=frametide-center drivers
+
+[Desktop Action hardware]
+Name=RGB & Fans
+Name[de]=RGB & Lüfter
+Exec=frametide-center hardware

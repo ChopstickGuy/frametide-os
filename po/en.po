@@ -1,0 +1,388 @@
+# Englische Übersetzung von Frametide Store/Center
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8\nLanguage: en\n"
+
+msgid "bei Secure Boot einmalig MOK-Bestätigung"
+msgstr "one-time MOK confirmation with Secure Boot"
+
+msgid "Suchen"
+msgstr "Check"
+
+msgid "Alles aktualisieren"
+msgstr "Update all"
+
+msgid "Verfügbare Updates"
+msgstr "Available updates"
+
+msgid "Firmware"
+msgstr "Firmware"
+
+msgid "BIOS-, SSD- und Geräte-Firmware über fwupd (Hersteller-Updates)."
+msgstr "BIOS, SSD and device firmware via fwupd (vendor updates)."
+
+msgid "Suche läuft …"
+msgstr "Checking …"
+
+msgid "Updates werden installiert …"
+msgstr "Installing updates …"
+
+msgid "Grafikkarten"
+msgstr "Graphics cards"
+
+msgid "Frametide richtet den passenden Treiber beim ersten Start automatisch ein."
+msgstr "Frametide sets up the right driver automatically on first boot."
+
+msgid "Grafik-Stack"
+msgstr "Graphics stack"
+
+msgid "installiert"
+msgstr "installed"
+
+msgid "fehlt"
+msgstr "missing"
+
+msgid "radeon (alt – Vulkan erst nach Einrichtung)"
+msgstr "radeon (legacy – Vulkan after setup)"
+
+msgid "nouveau (offen, eingeschränkt)"
+msgstr "nouveau (open source, limited)"
+
+msgid "Temperaturen"
+msgstr "Temperatures"
+
+msgid "Lüfter und Pumpen"
+msgstr "Fans and pumps"
+
+msgid "Kurven, Profile und AIO-Kühler stellst du in CoolerControl ein."
+msgstr "Set up curves, profiles and AIO coolers in CoolerControl."
+
+msgid "RGB-Beleuchtung"
+msgstr "RGB lighting"
+
+msgid "Mainboard, RAM, Grafikkarte, Lüfter, Tastatur und Maus – herstellerübergreifend über OpenRGB."
+msgstr "Motherboard, RAM, graphics card, fans, keyboard and mouse – across all vendors via OpenRGB."
+
+msgid "Erweitert"
+msgstr "Advanced"
+
+msgid "Nur nötig, wenn Geräte oder Lüfter oben fehlen."
+msgstr "Only needed if devices or fans are missing above."
+
+msgid "Suche läuft … (kann einige Sekunden dauern)"
+msgstr "Scanning … (may take a few seconds)"
+
+msgid "Über dieses System"
+msgstr "About this system"
+
+msgid "Leistung"
+msgstr "Performance"
+
+msgid "Updates"
+msgstr "Updates"
+
+msgid "Updates prüfen"
+msgstr "Check for updates"
+
+msgid "Noch nicht gesucht"
+msgstr "Not checked yet"
+
+msgid "System und Programme"
+msgstr "System and programs"
+
+msgid "Flatpak-Apps"
+msgstr "Flatpak apps"
+
+msgid "ArtCraft-Apps"
+msgstr "ArtCraft apps"
+
+msgid "Firmware aktualisieren"
+msgstr "Update firmware"
+
+msgid "Nur bei Netzstrom ausführen – der Rechner startet ggf. neu."
+msgstr "Only run on AC power – the computer may restart."
+
+msgid "Prüfen und installieren"
+msgstr "Check and install"
+
+msgid "Alles aktuell"
+msgstr "Everything up to date"
+
+msgid "Dein System ist auf dem neuesten Stand."
+msgstr "Your system is up to date."
+
+msgid "Installiert im Hintergrund – du kannst weiterarbeiten oder spielen."
+msgstr "Installs in the background – keep working or playing."
+
+msgid "Treiber"
+msgstr "Drivers"
+
+msgid "Treiber automatisch einrichten"
+msgstr "Set up drivers automatically"
+
+msgid "Erkennt die Hardware erneut und installiert die empfohlenen Treiber."
+msgstr "Detects your hardware again and installs the recommended drivers."
+
+msgid "Ausführen"
+msgstr "Run"
+
+msgid "NVIDIA-Treiberversion"
+msgstr "NVIDIA driver version"
+
+msgid "„open“ = offene Kernel-Module (empfohlen ab RTX 20/GTX 16). Nach einem Wechsel bitte neu starten."
+msgstr "“open” = open kernel modules (recommended for RTX 20/GTX 16 and newer). Please restart after switching."
+
+msgid "Mesa (AMD/Intel)"
+msgstr "Mesa (AMD/Intel)"
+
+msgid "Vulkan 32-Bit (Steam)"
+msgstr "Vulkan 32-bit (Steam)"
+
+msgid "NVIDIA-Treiber"
+msgstr "NVIDIA driver"
+
+msgid "RGB & Lüfter"
+msgstr "RGB & Fans"
+
+msgid "Lüfterkurven, Pumpen, AIO-Wasserkühlungen"
+msgstr "Fan curves, pumps, AIO liquid coolers"
+
+msgid "Öffnen"
+msgstr "Open"
+
+msgid "Farbe für alle Geräte"
+msgstr "Color for all devices"
+
+msgid "Statische Farbe auf alle erkannten Geräte"
+msgstr "Static color on all detected devices"
+
+msgid "Anwenden"
+msgstr "Apply"
+
+msgid "Beleuchtung ausschalten"
+msgstr "Turn lighting off"
+
+msgid "Aus"
+msgstr "Off"
+
+msgid "Erkannte Geräte"
+msgstr "Detected devices"
+
+msgid "Effekte, Zonen, Profile und Geräte im Detail"
+msgstr "Effects, zones, profiles and devices in detail"
+
+msgid "Erweiterter SMBus-Zugriff"
+msgstr "Extended SMBus access"
+
+msgid "Für RGB auf manchen Mainboards und RAM-Riegeln (acpi_enforce_resources=lax). Neustart nötig."
+msgstr "For RGB on some motherboards and RAM modules (acpi_enforce_resources=lax). Restart required."
+
+msgid "Lüftertreiber für ITE-Chips"
+msgstr "Fan driver for ITE chips"
+
+msgid "Gigabyte und viele andere Mainboards"
+msgstr "Gigabyte and many other motherboards"
+
+msgid "Lüftertreiber für Nuvoton NCT6687"
+msgstr "Fan driver for Nuvoton NCT6687"
+
+msgid "Viele MSI-Mainboards"
+msgstr "Many MSI motherboards"
+
+msgid "Sensoren neu erkennen"
+msgstr "Detect sensors again"
+
+msgid "Keine Temperatursensoren gefunden"
+msgstr "No temperature sensors found"
+
+msgid "Keine Lüftersensoren gefunden – siehe „Erweitert“"
+msgstr "No fan sensors found – see “Advanced”"
+
+msgid "System"
+msgstr "System"
+
+msgid "Basis"
+msgstr "Base"
+
+msgid "Prozessor"
+msgstr "Processor"
+
+msgid "Arbeitsspeicher"
+msgstr "Memory"
+
+msgid "x86-64-v3-optimierte Pakete"
+msgstr "x86-64-v3 optimized packages"
+
+msgid "Schnellere Pakete für CPUs ab Intel Haswell / AMD Zen (experimentell)"
+msgstr "Faster packages for Intel Haswell / AMD Zen CPUs and newer (experimental)"
+
+msgid "AMD-GPU-Übertaktung freischalten"
+msgstr "Unlock AMD GPU overclocking"
+
+msgid "Erlaubt Übertakten und Undervolting in CoreCtrl. Neustart nötig."
+msgstr "Allows overclocking and undervolting in CoreCtrl. Restart required."
+
+msgid "CPU-Sicherheitsbremsen abschalten"
+msgstr "Disable CPU security mitigations"
+
+msgid "Mehr Leistung v. a. auf älteren CPUs, aber weniger Schutz vor Spectre & Co. Nur für reine Gaming-PCs. Neustart nötig."
+msgstr "More performance, especially on older CPUs, but less protection against Spectre & co. Only for dedicated gaming PCs. Restart required."
+
+msgid "Erledigt ✓"
+msgstr "Done ✓"
+
+msgid "Aktuell"
+msgstr "Up to date"
+
+msgid "Treiber: {driver}"
+msgstr "Driver: {driver}"
+
+msgid "Einstellung wird angewendet …"
+msgstr "Applying setting …"
+
+msgid "Installieren"
+msgstr "Install"
+
+msgid "Farbe #{color} angewendet"
+msgstr "Color #{color} applied"
+
+msgid "Keine Geräte gefunden – evtl. „Erweiterter SMBus-Zugriff“ aktivieren"
+msgstr "No devices found – try enabling “Extended SMBus access”"
+
+msgid "Abgebrochen"
+msgstr "Cancelled"
+
+msgid "Firmware …"
+msgstr "Firmware …"
+
+msgid "Suche fehlgeschlagen: {error}"
+msgstr "Check failed: {error}"
+
+msgid "{n} Updates verfügbar"
+msgstr "{n} updates available"
+
+msgid "Keine Grafikkarte erkannt"
+msgstr "No graphics card detected"
+
+msgid "Treiber werden eingerichtet …"
+msgstr "Setting up drivers …"
+
+msgid "Verfügbare Treiber werden ermittelt …"
+msgstr "Looking for available drivers …"
+
+msgid "NVIDIA-Treiber {version}"
+msgstr "NVIDIA driver {version}"
+
+msgid "keiner"
+msgstr "none"
+
+msgid "Empfohlen"
+msgstr "Recommended"
+
+msgid "Keine Treiber gefunden"
+msgstr "No drivers found"
+
+msgid "Sehr alte Karten laufen mit dem offenen nouveau/NVK-Treiber."
+msgstr "Very old cards run on the open nouveau/NVK driver."
+
+msgid "Beleuchtung aus"
+msgstr "Lighting off"
+
+msgid "Sensoren werden erkannt …"
+msgstr "Detecting sensors …"
+
+msgid "{n} Updates"
+msgstr "{n} updates"
+
+msgid "Primär"
+msgstr "Primary"
+
+msgid "{n} Geräte"
+msgstr "{n} devices"
+
+msgid "Konnte {app} nicht starten: {error}"
+msgstr "Could not start {app}: {error}"
+
+msgid "Fehlgeschlagen (Code {code}) – Details unten"
+msgstr "Failed (code {code}) – details below"
+
+msgid "{pkg} wird installiert …"
+msgstr "Installing {pkg} …"
+
+msgid "Lüfter"
+msgstr "Fan"
+
+msgid "{rpm} U/min"
+msgstr "{rpm} RPM"
+
+msgid "Details anzeigen"
+msgstr "Show details"
+
+msgid "Abbrechen"
+msgstr "Cancel"
+
+msgid "Entfernen"
+msgstr "Remove"
+
+msgid "Suche"
+msgstr "Search"
+
+msgid "Entdecken"
+msgstr "Discover"
+
+msgid "Installiert"
+msgstr "Installed"
+
+msgid "Apps suchen – auch auf ganz Flathub"
+msgstr "Search apps – including all of Flathub"
+
+msgid "{app} wurde installiert"
+msgstr "{app} was installed"
+
+msgid "{app} wurde entfernt"
+msgstr "{app} was removed"
+
+msgid "Deine eigenen Dateien bleiben erhalten."
+msgstr "Your own files are kept."
+
+msgid "Im Store"
+msgstr "In the store"
+
+msgid "Weitere Apps von Flathub"
+msgstr "More apps from Flathub"
+
+msgid "Aus dem Store installierte Apps. Updates gibt es im Frametide Center."
+msgstr "Apps installed from the store. Updates are in Frametide Center."
+
+msgid "Willkommen im Frametide Store"
+msgstr "Welcome to the Frametide Store"
+
+msgid "Spiele, Kreativ-Apps, Office und Werkzeuge – geprüft und mit einem Klick installiert."
+msgstr "Games, creative apps, office and tools – curated and installed with one click."
+
+msgid "Komplettes ArtCraft-Paket installieren"
+msgstr "Install the complete ArtCraft suite"
+
+msgid "Alle installieren"
+msgstr "Install all"
+
+msgid "{app} entfernen?"
+msgstr "Remove {app}?"
+
+msgid "Läuft …"
+msgstr "Working …"
+
+msgid "Wartet"
+msgstr "Queued"
+
+msgid "Fehlercode {code}"
+msgstr "Error code {code}"
+
+msgid "Nichts gefunden"
+msgstr "Nothing found"
+
+msgid "Versuch einen anderen Suchbegriff."
+msgstr "Try a different search term."
+
+msgid "{n} weitere Craft-Apps (Foto, Video, Vektor, Audio, CAD …)"
+msgstr "{n} more Craft apps (photo, video, vector, audio, CAD …)"
+

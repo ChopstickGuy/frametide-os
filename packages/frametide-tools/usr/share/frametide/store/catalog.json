@@ -1,0 +1,935 @@
+{
+ "version": 1,
+ "categories": [
+  {
+   "id": "gaming",
+   "name": "Gaming",
+   "icon": "input-gaming-symbolic",
+   "apps": [
+    {
+     "id": "steam",
+     "name": "Steam",
+     "summary": "Die größte PC-Spieleplattform – mit Proton auch für Windows-Spiele",
+     "icon": "steam",
+     "source": "apt",
+     "ref": "steam-installer",
+     "featured": true,
+     "summary_en": "The biggest PC gaming platform – Windows games too, thanks to Proton"
+    },
+    {
+     "id": "heroic",
+     "name": "Heroic Games Launcher",
+     "summary": "Epic Games, GOG und Amazon Prime Gaming",
+     "icon": "com.heroicgameslauncher.hgl",
+     "source": "flatpak",
+     "ref": "com.heroicgameslauncher.hgl",
+     "featured": true,
+     "summary_en": "Epic Games, GOG and Amazon Prime Gaming"
+    },
+    {
+     "id": "lutris",
+     "name": "Lutris",
+     "summary": "Alle Spiele und Launcher an einem Ort",
+     "icon": "lutris",
+     "source": "apt",
+     "ref": "lutris",
+     "summary_en": "All your games and launchers in one place"
+    },
+    {
+     "id": "bottles",
+     "name": "Bottles",
+     "summary": "Windows-Programme bequem ausführen",
+     "icon": "com.usebottles.bottles",
+     "source": "flatpak",
+     "ref": "com.usebottles.bottles",
+     "summary_en": "Run Windows software with ease"
+    },
+    {
+     "id": "protonplus",
+     "name": "ProtonPlus",
+     "summary": "Proton-GE und andere Kompatibilitätsschichten verwalten",
+     "icon": "com.vysp3r.ProtonPlus",
+     "source": "flatpak",
+     "ref": "com.vysp3r.ProtonPlus",
+     "featured": true,
+     "summary_en": "Manage Proton-GE and other compatibility tools"
+    },
+    {
+     "id": "protonupqt",
+     "name": "ProtonUp-Qt",
+     "summary": "Proton-GE, Wine-GE und Luxtorpeda installieren",
+     "icon": "net.davidotek.pupgui2",
+     "source": "flatpak",
+     "ref": "net.davidotek.pupgui2",
+     "summary_en": "Install Proton-GE, Wine-GE and Luxtorpeda"
+    },
+    {
+     "id": "discord",
+     "name": "Discord",
+     "summary": "Sprach-, Video- und Textchat für Gamer",
+     "icon": "com.discordapp.Discord",
+     "source": "flatpak",
+     "ref": "com.discordapp.Discord",
+     "featured": true,
+     "summary_en": "Voice, video and text chat for gamers"
+    },
+    {
+     "id": "prism",
+     "name": "Prism Launcher",
+     "summary": "Minecraft mit Mods und mehreren Instanzen",
+     "icon": "org.prismlauncher.PrismLauncher",
+     "source": "flatpak",
+     "ref": "org.prismlauncher.PrismLauncher",
+     "summary_en": "Minecraft with mods and multiple instances"
+    },
+    {
+     "id": "sober",
+     "name": "Sober",
+     "summary": "Roblox unter Linux spielen",
+     "icon": "org.vinegarhq.Sober",
+     "source": "flatpak",
+     "ref": "org.vinegarhq.Sober",
+     "summary_en": "Play Roblox on Linux"
+    },
+    {
+     "id": "itch",
+     "name": "itch",
+     "summary": "Indie-Spiele von itch.io",
+     "icon": "io.itch.itch",
+     "source": "flatpak",
+     "ref": "io.itch.itch",
+     "summary_en": "Indie games from itch.io"
+    },
+    {
+     "id": "retroarch",
+     "name": "RetroArch",
+     "summary": "Alle Retro-Konsolen in einer App",
+     "icon": "org.libretro.RetroArch",
+     "source": "flatpak",
+     "ref": "org.libretro.RetroArch",
+     "summary_en": "Every retro console in one app"
+    },
+    {
+     "id": "dolphin",
+     "name": "Dolphin",
+     "summary": "GameCube- und Wii-Emulator",
+     "icon": "org.DolphinEmu.dolphin-emu",
+     "source": "flatpak",
+     "ref": "org.DolphinEmu.dolphin-emu",
+     "summary_en": "GameCube and Wii emulator"
+    },
+    {
+     "id": "pcsx2",
+     "name": "PCSX2",
+     "summary": "PlayStation-2-Emulator",
+     "icon": "net.pcsx2.PCSX2",
+     "source": "flatpak",
+     "ref": "net.pcsx2.PCSX2",
+     "summary_en": "PlayStation 2 emulator"
+    },
+    {
+     "id": "rpcs3",
+     "name": "RPCS3",
+     "summary": "PlayStation-3-Emulator",
+     "icon": "net.rpcs3.RPCS3",
+     "source": "flatpak",
+     "ref": "net.rpcs3.RPCS3",
+     "summary_en": "PlayStation 3 emulator"
+    },
+    {
+     "id": "ppsspp",
+     "name": "PPSSPP",
+     "summary": "PSP-Emulator",
+     "icon": "org.ppsspp.PPSSPP",
+     "source": "flatpak",
+     "ref": "org.ppsspp.PPSSPP",
+     "summary_en": "PSP emulator"
+    },
+    {
+     "id": "goverlay",
+     "name": "GOverlay",
+     "summary": "MangoHud und vkBasalt grafisch einstellen",
+     "icon": "goverlay",
+     "source": "apt",
+     "ref": "goverlay",
+     "summary_en": "Configure MangoHud and vkBasalt visually"
+    },
+    {
+     "id": "mangojuice",
+     "name": "MangoJuice",
+     "summary": "Moderne Oberfläche für MangoHud",
+     "icon": "io.github.radiolamp.mangojuice",
+     "source": "flatpak",
+     "ref": "io.github.radiolamp.mangojuice",
+     "summary_en": "Modern interface for MangoHud"
+    }
+   ],
+   "name_en": "Gaming"
+  },
+  {
+   "id": "office",
+   "name": "Büro",
+   "icon": "x-office-document-symbolic",
+   "apps": [
+    {
+     "id": "wordcraft",
+     "name": "WordCraft",
+     "summary": "Textverarbeitung im Word-Stil – öffnet und speichert .docx",
+     "icon": "x-office-document",
+     "source": "craft",
+     "ref": "wordcraft",
+     "featured": true,
+     "summary_en": "Word-style word processor – opens and saves .docx"
+    },
+    {
+     "id": "gridcraft",
+     "name": "GridCraft",
+     "summary": "Tabellenkalkulation im Excel-Stil – .xlsx, Formeln, Diagramme",
+     "icon": "x-office-spreadsheet",
+     "source": "craft",
+     "ref": "gridcraft",
+     "featured": true,
+     "summary_en": "Excel-style spreadsheets – .xlsx, formulas, charts"
+    },
+    {
+     "id": "deckcraft",
+     "name": "DeckCraft",
+     "summary": "Präsentationen im PowerPoint-Stil – .pptx",
+     "icon": "x-office-presentation",
+     "source": "craft",
+     "ref": "deckcraft",
+     "featured": true,
+     "summary_en": "PowerPoint-style presentations – .pptx"
+    },
+    {
+     "id": "pdfcraft",
+     "name": "PdfCraft",
+     "summary": "PDFs lesen, kommentieren und bearbeiten",
+     "icon": "application-pdf",
+     "source": "craft",
+     "ref": "pdfcraft",
+     "summary_en": "Read, annotate and edit PDFs"
+    },
+    {
+     "id": "libreoffice",
+     "name": "LibreOffice",
+     "summary": "Die bewährte freie Office-Suite",
+     "icon": "org.libreoffice.LibreOffice",
+     "source": "flatpak",
+     "ref": "org.libreoffice.LibreOffice",
+     "summary_en": "The proven free office suite"
+    },
+    {
+     "id": "onlyoffice",
+     "name": "ONLYOFFICE",
+     "summary": "Office-Suite mit hoher Microsoft-Kompatibilität",
+     "icon": "org.onlyoffice.desktopeditors",
+     "source": "flatpak",
+     "ref": "org.onlyoffice.desktopeditors",
+     "summary_en": "Office suite with strong Microsoft compatibility"
+    },
+    {
+     "id": "thunderbird",
+     "name": "Thunderbird",
+     "summary": "E-Mail, Kalender und Kontakte",
+     "icon": "org.mozilla.Thunderbird",
+     "source": "flatpak",
+     "ref": "org.mozilla.Thunderbird",
+     "summary_en": "Email, calendar and contacts"
+    },
+    {
+     "id": "obsidian",
+     "name": "Obsidian",
+     "summary": "Notizen und Wissensdatenbank in Markdown",
+     "icon": "md.obsidian.Obsidian",
+     "source": "flatpak",
+     "ref": "md.obsidian.Obsidian",
+     "summary_en": "Notes and knowledge base in Markdown"
+    },
+    {
+     "id": "joplin",
+     "name": "Joplin",
+     "summary": "Notizen mit Synchronisation",
+     "icon": "net.cozic.joplin_desktop",
+     "source": "flatpak",
+     "ref": "net.cozic.joplin_desktop",
+     "summary_en": "Notes with sync"
+    },
+    {
+     "id": "xournalpp",
+     "name": "Xournal++",
+     "summary": "Handschriftliche Notizen und PDF-Anmerkungen",
+     "icon": "com.github.xournalpp.xournalpp",
+     "source": "flatpak",
+     "ref": "com.github.xournalpp.xournalpp",
+     "summary_en": "Handwritten notes and PDF annotation"
+    }
+   ],
+   "name_en": "Office"
+  },
+  {
+   "id": "creative",
+   "name": "Kreativ",
+   "icon": "applications-graphics-symbolic",
+   "apps": [
+    {
+     "id": "photocraft",
+     "name": "PhotoCraft",
+     "summary": "Bildbearbeitung im Photoshop-Stil",
+     "icon": "applications-graphics",
+     "source": "craft",
+     "ref": "photocraft",
+     "featured": true,
+     "summary_en": "Photoshop-style image editor"
+    },
+    {
+     "id": "lightcraft",
+     "name": "LightCraft",
+     "summary": "Nicht-destruktive Fotoentwicklung im Lightroom-Stil",
+     "icon": "camera-photo",
+     "source": "craft",
+     "ref": "lightcraft",
+     "summary_en": "Lightroom-style non-destructive photo editing"
+    },
+    {
+     "id": "vectorcraft",
+     "name": "VectorCraft",
+     "summary": "Vektorgrafik im Illustrator-Stil",
+     "icon": "applications-graphics",
+     "source": "craft",
+     "ref": "vectorcraft",
+     "summary_en": "Illustrator-style vector graphics"
+    },
+    {
+     "id": "filmcraft",
+     "name": "FilmCraft",
+     "summary": "Videoschnitt im Premiere-Stil",
+     "icon": "applications-multimedia",
+     "source": "craft",
+     "ref": "filmcraft",
+     "featured": true,
+     "summary_en": "Premiere-style video editing"
+    },
+    {
+     "id": "effectcraft",
+     "name": "EffectCraft",
+     "summary": "Motion Graphics und Compositing",
+     "icon": "applications-multimedia",
+     "source": "craft",
+     "ref": "effectcraft",
+     "summary_en": "Motion graphics and compositing"
+    },
+    {
+     "id": "soundcraft",
+     "name": "SoundCraft",
+     "summary": "Audio-Produktion im Pro-Tools-Stil",
+     "icon": "audio-x-generic",
+     "source": "craft",
+     "ref": "soundcraft",
+     "summary_en": "Pro Tools-style audio production"
+    },
+    {
+     "id": "designcraft",
+     "name": "DesignCraft",
+     "summary": "Seiten- und Layoutgestaltung",
+     "icon": "x-office-drawing",
+     "source": "craft",
+     "ref": "designcraft",
+     "summary_en": "Page and layout design"
+    },
+    {
+     "id": "figcraft",
+     "name": "FigCraft",
+     "summary": "Interface-Design und Prototyping",
+     "icon": "applications-graphics",
+     "source": "craft",
+     "ref": "figcraft",
+     "summary_en": "Interface design and prototyping"
+    },
+    {
+     "id": "cadcraft",
+     "name": "CADCraft",
+     "summary": "Technisches Zeichnen und CAD",
+     "icon": "applications-engineering",
+     "source": "craft",
+     "ref": "cadcraft",
+     "summary_en": "Technical drawing and CAD"
+    },
+    {
+     "id": "artcraft-launcher",
+     "name": "ArtCraft Launcher",
+     "summary": "Alle Craft-Apps verwalten und starten",
+     "icon": "applications-other",
+     "source": "craft",
+     "ref": "artcraft-launcher",
+     "summary_en": "Manage and launch all Craft apps"
+    },
+    {
+     "id": "gimp",
+     "name": "GIMP",
+     "summary": "Klassische Bildbearbeitung",
+     "icon": "org.gimp.GIMP",
+     "source": "flatpak",
+     "ref": "org.gimp.GIMP",
+     "summary_en": "Classic image editor"
+    },
+    {
+     "id": "krita",
+     "name": "Krita",
+     "summary": "Digitales Malen und Illustration",
+     "icon": "org.kde.krita",
+     "source": "flatpak",
+     "ref": "org.kde.krita",
+     "summary_en": "Digital painting and illustration"
+    },
+    {
+     "id": "inkscape",
+     "name": "Inkscape",
+     "summary": "Vektorgrafik",
+     "icon": "org.inkscape.Inkscape",
+     "source": "flatpak",
+     "ref": "org.inkscape.Inkscape",
+     "summary_en": "Vector graphics"
+    },
+    {
+     "id": "blender",
+     "name": "Blender",
+     "summary": "3D-Modellierung, Animation und Rendering",
+     "icon": "org.blender.Blender",
+     "source": "flatpak",
+     "ref": "org.blender.Blender",
+     "featured": true,
+     "summary_en": "3D modeling, animation and rendering"
+    },
+    {
+     "id": "kdenlive",
+     "name": "Kdenlive",
+     "summary": "Videoschnitt",
+     "icon": "org.kde.kdenlive",
+     "source": "flatpak",
+     "ref": "org.kde.kdenlive",
+     "summary_en": "Video editing"
+    },
+    {
+     "id": "darktable",
+     "name": "darktable",
+     "summary": "RAW-Fotoentwicklung",
+     "icon": "org.darktable.Darktable",
+     "source": "flatpak",
+     "ref": "org.darktable.Darktable",
+     "summary_en": "RAW photo development"
+    },
+    {
+     "id": "audacity",
+     "name": "Audacity",
+     "summary": "Audio aufnehmen und bearbeiten",
+     "icon": "org.audacityteam.Audacity",
+     "source": "flatpak",
+     "ref": "org.audacityteam.Audacity",
+     "summary_en": "Record and edit audio"
+    },
+    {
+     "id": "obs",
+     "name": "OBS Studio",
+     "summary": "Streaming und Bildschirmaufnahme",
+     "icon": "com.obsproject.Studio",
+     "source": "flatpak",
+     "ref": "com.obsproject.Studio",
+     "featured": true,
+     "summary_en": "Streaming and screen recording"
+    },
+    {
+     "id": "freecad",
+     "name": "FreeCAD",
+     "summary": "Parametrisches 3D-CAD",
+     "icon": "org.freecad.FreeCAD",
+     "source": "flatpak",
+     "ref": "org.freecad.FreeCAD",
+     "summary_en": "Parametric 3D CAD"
+    },
+    {
+     "id": "pinta",
+     "name": "Pinta",
+     "summary": "Einfache Bildbearbeitung",
+     "icon": "com.github.PintaProject.Pinta",
+     "source": "flatpak",
+     "ref": "com.github.PintaProject.Pinta",
+     "summary_en": "Simple image editor"
+    }
+   ],
+   "name_en": "Creative"
+  },
+  {
+   "id": "internet",
+   "name": "Internet",
+   "icon": "web-browser-symbolic",
+   "apps": [
+    {
+     "id": "chrome",
+     "name": "Google Chrome",
+     "summary": "Webbrowser von Google",
+     "icon": "google-chrome",
+     "source": "apt",
+     "ref": "google-chrome-stable",
+     "summary_en": "Web browser by Google"
+    },
+    {
+     "id": "firefox",
+     "name": "Firefox",
+     "summary": "Freier Webbrowser von Mozilla",
+     "icon": "firefox",
+     "source": "apt",
+     "ref": "firefox",
+     "summary_en": "Free web browser by Mozilla"
+    },
+    {
+     "id": "brave",
+     "name": "Brave",
+     "summary": "Browser mit eingebautem Werbeblocker",
+     "icon": "com.brave.Browser",
+     "source": "flatpak",
+     "ref": "com.brave.Browser",
+     "summary_en": "Browser with built-in ad blocker"
+    },
+    {
+     "id": "signal",
+     "name": "Signal",
+     "summary": "Verschlüsselter Messenger",
+     "icon": "org.signal.Signal",
+     "source": "flatpak",
+     "ref": "org.signal.Signal",
+     "summary_en": "Encrypted messenger"
+    },
+    {
+     "id": "telegram",
+     "name": "Telegram",
+     "summary": "Messenger",
+     "icon": "org.telegram.desktop",
+     "source": "flatpak",
+     "ref": "org.telegram.desktop",
+     "summary_en": "Messenger"
+    },
+    {
+     "id": "element",
+     "name": "Element",
+     "summary": "Matrix-Chat",
+     "icon": "im.riot.Riot",
+     "source": "flatpak",
+     "ref": "im.riot.Riot",
+     "summary_en": "Matrix chat"
+    },
+    {
+     "id": "slack",
+     "name": "Slack",
+     "summary": "Team-Kommunikation",
+     "icon": "com.slack.Slack",
+     "source": "flatpak",
+     "ref": "com.slack.Slack",
+     "summary_en": "Team communication"
+    },
+    {
+     "id": "zoom",
+     "name": "Zoom",
+     "summary": "Videokonferenzen",
+     "icon": "us.zoom.Zoom",
+     "source": "flatpak",
+     "ref": "us.zoom.Zoom",
+     "summary_en": "Video conferencing"
+    },
+    {
+     "id": "teamspeak",
+     "name": "TeamSpeak",
+     "summary": "Sprachchat für Gamer",
+     "icon": "com.teamspeak.TeamSpeak",
+     "source": "flatpak",
+     "ref": "com.teamspeak.TeamSpeak",
+     "summary_en": "Voice chat for gamers"
+    },
+    {
+     "id": "qbittorrent",
+     "name": "qBittorrent",
+     "summary": "BitTorrent-Client",
+     "icon": "org.qbittorrent.qBittorrent",
+     "source": "flatpak",
+     "ref": "org.qbittorrent.qBittorrent",
+     "summary_en": "BitTorrent client"
+    },
+    {
+     "id": "localsend",
+     "name": "LocalSend",
+     "summary": "Dateien im Heimnetz an Handy und PC senden",
+     "icon": "org.localsend.localsend_app",
+     "source": "flatpak",
+     "ref": "org.localsend.localsend_app",
+     "summary_en": "Send files to phones and PCs on your network"
+    }
+   ],
+   "name_en": "Internet"
+  },
+  {
+   "id": "media",
+   "name": "Multimedia",
+   "icon": "applications-multimedia-symbolic",
+   "apps": [
+    {
+     "id": "vlc",
+     "name": "VLC",
+     "summary": "Spielt so gut wie jedes Video- und Audioformat",
+     "icon": "org.videolan.VLC",
+     "source": "flatpak",
+     "ref": "org.videolan.VLC",
+     "featured": true,
+     "summary_en": "Plays almost any video and audio format"
+    },
+    {
+     "id": "spotify",
+     "name": "Spotify",
+     "summary": "Musik-Streaming",
+     "icon": "com.spotify.Client",
+     "source": "flatpak",
+     "ref": "com.spotify.Client",
+     "featured": true,
+     "summary_en": "Music streaming"
+    },
+    {
+     "id": "mpv",
+     "name": "mpv",
+     "summary": "Schlanker, schneller Videoplayer",
+     "icon": "io.mpv.Mpv",
+     "source": "flatpak",
+     "ref": "io.mpv.Mpv",
+     "summary_en": "Lean, fast video player"
+    },
+    {
+     "id": "celluloid",
+     "name": "Celluloid",
+     "summary": "Einfacher Videoplayer für GNOME",
+     "icon": "io.github.celluloid_player.Celluloid",
+     "source": "flatpak",
+     "ref": "io.github.celluloid_player.Celluloid",
+     "summary_en": "Simple video player for GNOME"
+    },
+    {
+     "id": "handbrake",
+     "name": "HandBrake",
+     "summary": "Videos umwandeln",
+     "icon": "fr.handbrake.ghb",
+     "source": "flatpak",
+     "ref": "fr.handbrake.ghb",
+     "summary_en": "Convert videos"
+    },
+    {
+     "id": "kodi",
+     "name": "Kodi",
+     "summary": "Mediacenter",
+     "icon": "tv.kodi.Kodi",
+     "source": "flatpak",
+     "ref": "tv.kodi.Kodi",
+     "summary_en": "Media center"
+    },
+    {
+     "id": "easyeffects",
+     "name": "Easy Effects",
+     "summary": "Equalizer und Audioeffekte für Mikrofon und Lautsprecher",
+     "icon": "com.github.wwmm.easyeffects",
+     "source": "flatpak",
+     "ref": "com.github.wwmm.easyeffects",
+     "summary_en": "Equalizer and audio effects for mic and speakers"
+    },
+    {
+     "id": "shortwave",
+     "name": "Shortwave",
+     "summary": "Internetradio",
+     "icon": "de.haeckerfelix.Shortwave",
+     "source": "flatpak",
+     "ref": "de.haeckerfelix.Shortwave",
+     "summary_en": "Internet radio"
+    }
+   ],
+   "name_en": "Multimedia"
+  },
+  {
+   "id": "dev",
+   "name": "Entwicklung",
+   "icon": "applications-engineering-symbolic",
+   "apps": [
+    {
+     "id": "vscode",
+     "name": "Visual Studio Code",
+     "summary": "Code-Editor von Microsoft",
+     "icon": "vscode",
+     "source": "apt",
+     "ref": "code",
+     "featured": true,
+     "summary_en": "Code editor by Microsoft"
+    },
+    {
+     "id": "github-desktop",
+     "name": "GitHub Desktop",
+     "summary": "Git und GitHub mit grafischer Oberfläche",
+     "icon": "github-desktop",
+     "source": "apt",
+     "ref": "github-desktop",
+     "featured": true,
+     "summary_en": "Git and GitHub with a graphical interface"
+    },
+    {
+     "id": "gh",
+     "name": "GitHub CLI",
+     "summary": "GitHub im Terminal (gh)",
+     "icon": "github",
+     "source": "apt",
+     "ref": "gh",
+     "summary_en": "GitHub on the command line (gh)"
+    },
+    {
+     "id": "zed",
+     "name": "Zed",
+     "summary": "Sehr schneller Code-Editor",
+     "icon": "dev.zed.Zed",
+     "source": "flatpak",
+     "ref": "dev.zed.Zed",
+     "summary_en": "Very fast code editor"
+    },
+    {
+     "id": "podman-desktop",
+     "name": "Podman Desktop",
+     "summary": "Container grafisch verwalten",
+     "icon": "io.podman_desktop.PodmanDesktop",
+     "source": "flatpak",
+     "ref": "io.podman_desktop.PodmanDesktop",
+     "summary_en": "Manage containers visually"
+    },
+    {
+     "id": "docker",
+     "name": "Docker",
+     "summary": "Container-Engine",
+     "icon": "docker",
+     "source": "apt",
+     "ref": "docker.io",
+     "summary_en": "Container engine"
+    },
+    {
+     "id": "postman",
+     "name": "Postman",
+     "summary": "APIs testen",
+     "icon": "com.getpostman.Postman",
+     "source": "flatpak",
+     "ref": "com.getpostman.Postman",
+     "summary_en": "Test APIs"
+    },
+    {
+     "id": "bruno",
+     "name": "Bruno",
+     "summary": "Offline-API-Client",
+     "icon": "com.usebruno.Bruno",
+     "source": "flatpak",
+     "ref": "com.usebruno.Bruno",
+     "summary_en": "Offline API client"
+    },
+    {
+     "id": "dbeaver",
+     "name": "DBeaver",
+     "summary": "Datenbank-Werkzeug",
+     "icon": "io.dbeaver.DBeaverCommunity",
+     "source": "flatpak",
+     "ref": "io.dbeaver.DBeaverCommunity",
+     "summary_en": "Database tool"
+    },
+    {
+     "id": "android-studio",
+     "name": "Android Studio",
+     "summary": "Android-Entwicklung",
+     "icon": "com.google.AndroidStudio",
+     "source": "flatpak",
+     "ref": "com.google.AndroidStudio",
+     "summary_en": "Android development"
+    },
+    {
+     "id": "godot",
+     "name": "Godot",
+     "summary": "Spiele-Engine",
+     "icon": "org.godotengine.Godot",
+     "source": "flatpak",
+     "ref": "org.godotengine.Godot",
+     "featured": true,
+     "summary_en": "Game engine"
+    },
+    {
+     "id": "meld",
+     "name": "Meld",
+     "summary": "Dateien und Ordner vergleichen",
+     "icon": "org.gnome.meld",
+     "source": "flatpak",
+     "ref": "org.gnome.meld",
+     "summary_en": "Compare files and folders"
+    },
+    {
+     "id": "neovim",
+     "name": "Neovim",
+     "summary": "Terminal-Editor",
+     "icon": "nvim",
+     "source": "apt",
+     "ref": "neovim",
+     "summary_en": "Terminal editor"
+    }
+   ],
+   "name_en": "Development"
+  },
+  {
+   "id": "system",
+   "name": "System & Hardware",
+   "icon": "preferences-system-symbolic",
+   "apps": [
+    {
+     "id": "openrgb",
+     "name": "OpenRGB",
+     "summary": "RGB-Beleuchtung aller Hersteller steuern",
+     "icon": "openrgb",
+     "source": "apt",
+     "ref": "openrgb",
+     "featured": true,
+     "summary_en": "Control RGB lighting from every vendor"
+    },
+    {
+     "id": "coolercontrol",
+     "name": "CoolerControl",
+     "summary": "Lüfterkurven, Pumpen und AIO-Kühler steuern",
+     "icon": "org.coolercontrol.CoolerControl",
+     "source": "apt",
+     "ref": "coolercontrol",
+     "featured": true,
+     "summary_en": "Control fan curves, pumps and AIO coolers"
+    },
+    {
+     "id": "corectrl",
+     "name": "CoreCtrl",
+     "summary": "GPU- und CPU-Profile (AMD)",
+     "icon": "corectrl",
+     "source": "apt",
+     "ref": "corectrl",
+     "summary_en": "GPU and CPU profiles (AMD)"
+    },
+    {
+     "id": "piper",
+     "name": "Piper",
+     "summary": "Gaming-Mäuse konfigurieren (Logitech, SteelSeries …)",
+     "icon": "org.freedesktop.Piper",
+     "source": "apt",
+     "ref": "piper",
+     "summary_en": "Configure gaming mice (Logitech, SteelSeries …)"
+    },
+    {
+     "id": "solaar",
+     "name": "Solaar",
+     "summary": "Logitech-Geräte und Unifying-Empfänger",
+     "icon": "solaar",
+     "source": "apt",
+     "ref": "solaar",
+     "summary_en": "Logitech devices and Unifying receivers"
+    },
+    {
+     "id": "ckb-next",
+     "name": "ckb-next",
+     "summary": "Corsair-Tastaturen und -Mäuse",
+     "icon": "ckb-next",
+     "source": "apt",
+     "ref": "ckb-next",
+     "summary_en": "Corsair keyboards and mice"
+    },
+    {
+     "id": "openrazer",
+     "name": "OpenRazer",
+     "summary": "Treiber für Razer-Geräte",
+     "icon": "razer",
+     "source": "apt",
+     "ref": "openrazer-daemon",
+     "summary_en": "Drivers for Razer devices"
+    },
+    {
+     "id": "missioncenter",
+     "name": "Mission Center",
+     "summary": "CPU, GPU, RAM und Prozesse überwachen",
+     "icon": "io.missioncenter.MissionCenter",
+     "source": "flatpak",
+     "ref": "io.missioncenter.MissionCenter",
+     "featured": true,
+     "summary_en": "Monitor CPU, GPU, RAM and processes"
+    },
+    {
+     "id": "resources",
+     "name": "Resources",
+     "summary": "Systemmonitor",
+     "icon": "net.nokyan.Resources",
+     "source": "flatpak",
+     "ref": "net.nokyan.Resources",
+     "summary_en": "System monitor"
+    },
+    {
+     "id": "timeshift",
+     "name": "Timeshift",
+     "summary": "System-Schnappschüsse und Wiederherstellung",
+     "icon": "timeshift",
+     "source": "apt",
+     "ref": "timeshift",
+     "summary_en": "System snapshots and restore"
+    },
+    {
+     "id": "gparted",
+     "name": "GParted",
+     "summary": "Partitionen verwalten",
+     "icon": "gparted",
+     "source": "apt",
+     "ref": "gparted",
+     "summary_en": "Manage partitions"
+    },
+    {
+     "id": "flatseal",
+     "name": "Flatseal",
+     "summary": "Berechtigungen von Flatpak-Apps verwalten",
+     "icon": "com.github.tchx84.Flatseal",
+     "source": "flatpak",
+     "ref": "com.github.tchx84.Flatseal",
+     "summary_en": "Manage Flatpak app permissions"
+    },
+    {
+     "id": "extension-manager",
+     "name": "Extension Manager",
+     "summary": "GNOME-Erweiterungen finden und verwalten",
+     "icon": "com.mattjakeman.ExtensionManager",
+     "source": "flatpak",
+     "ref": "com.mattjakeman.ExtensionManager",
+     "summary_en": "Find and manage GNOME extensions"
+    },
+    {
+     "id": "impression",
+     "name": "Impression",
+     "summary": "Boot-USB-Sticks erstellen",
+     "icon": "io.gitlab.adhami3310.Impression",
+     "source": "flatpak",
+     "ref": "io.gitlab.adhami3310.Impression",
+     "summary_en": "Create bootable USB drives"
+    },
+    {
+     "id": "bitwarden",
+     "name": "Bitwarden",
+     "summary": "Passwort-Manager",
+     "icon": "com.bitwarden.desktop",
+     "source": "flatpak",
+     "ref": "com.bitwarden.desktop",
+     "summary_en": "Password manager"
+    },
+    {
+     "id": "keepassxc",
+     "name": "KeePassXC",
+     "summary": "Offline-Passwort-Manager",
+     "icon": "org.keepassxc.KeePassXC",
+     "source": "flatpak",
+     "ref": "org.keepassxc.KeePassXC",
+     "summary_en": "Offline password manager"
+    }
+   ],
+   "name_en": "System & Hardware"
+  }
+ ]
+}

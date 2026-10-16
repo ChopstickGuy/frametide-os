@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Frametide Store
+Comment=Install apps and games with one click
+Comment[de]=Apps und Spiele mit einem Klick installieren
+Exec=frametide-store
+Icon=frametide-store
+Terminal=false
+Categories=System;PackageManager;
+Keywords=store;apps;install;software;flatpak;steam;
+Keywords[de]=store;apps;installieren;software;flatpak;steam;
+StartupNotify=true

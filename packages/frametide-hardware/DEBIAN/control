@@ -1,0 +1,11 @@
+Package: frametide-hardware
+Version: @VERSION@
+Architecture: all
+Maintainer: Frametide OS <dev@frametide-os.invalid>
+Section: metapackages
+Priority: optional
+Depends: openrgb, lm-sensors, i2c-tools
+Recommends: coolercontrol, solaar, piper
+Description: Frametide OS – RGB- und Lüftersteuerung
+ OpenRGB für RGB-Beleuchtung aller gängigen Hersteller, CoolerControl für
+ Lüfterkurven, Pumpen und AIO-Kühler, lm-sensors für Temperaturen.

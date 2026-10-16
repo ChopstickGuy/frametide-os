@@ -15,7 +15,8 @@ import urllib.request
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 COMPONENTS = ["main", "restricted", "universe", "multiverse"]
 # Kommen aus Fremdquellen bzw. werden selbst gebaut
-EXTERNAL = {"firefox"}
+EXTERNAL = {"firefox", "code", "google-chrome-stable", "github-desktop", "coolercontrol",
+            "wordcraft", "gridcraft", "deckcraft", "pdfcraft", "artcraft-launcher"}
 
 
 def conf():
@@ -58,9 +59,24 @@ def script_packages():
     text = open(os.path.join(ROOT, "scripts/chroot-install.sh")).read()
     for cmd in re.findall(r"apt_install ((?:[^\n]|\\\n)+)", text):
         for word in cmd.replace("\\\n", " ").split():
-            if word != "\\" and not word.startswith(("-", "/", "$")):
+            if word != "\\" and not word.startswith(("-", "/", "$", "\"")):
                 pkgs.setdefault(word.split(":")[0], set()).add("chroot-install.sh")
     return pkgs
+
+
+def catalog_packages():
+    import json
+    path = os.path.join(ROOT, "packages/frametide-tools/usr/share/frametide/store/catalog.json")
+    apps = [a for c in json.load(open(path))["categories"] for a in c["apps"]]
+    return {a["ref"]: {"Store-Katalog"} for a in apps if a["source"] == "apt"}
+
+
+def language_packages(c):
+    names = {}
+    for l in c.get("LANGUAGES", "").split():
+        for pkg in (f"language-pack-{l}", f"language-pack-gnome-{l}"):
+            names[pkg] = {"LANGUAGES"}
+    return names
 
 
 def main():
@@ -68,7 +84,8 @@ def main():
     print(f"Lade Paketlisten für Ubuntu {c['UBUNTU_VERSION']} ({c['UBUNTU_SUITE']}) …")
     available = archive_packages(c["MIRROR"], c["UBUNTU_SUITE"], c["ARCH"])
     deps, local = control_deps()
-    for name, src in script_packages().items():
+    extra = {**script_packages(), **catalog_packages(), **language_packages(c)}
+    for name, src in extra.items():
         deps.setdefault(name, set()).update(src)
 
     missing = {n: s for n, s in deps.items() if n not in available and n not in local and n not in EXTERNAL}

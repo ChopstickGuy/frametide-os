@@ -4,6 +4,8 @@ import calamares.slideshow 1.0;
 Presentation {
     id: presentation
 
+    // Deutsch, sonst Englisch
+    readonly property bool de: Qt.locale().name.startsWith("de")
     function nextSlide() { presentation.goToNextSlide(); }
 
     Timer {
@@ -41,20 +43,20 @@ Presentation {
     }
 
     FrametideSlide {
-        heading: "Willkommen bei Frametide OS"
-        body: "Die Installation dauert nur wenige Minuten. Lehn dich zurück – wir kümmern uns um den Rest."
+        heading: presentation.de ? "Willkommen bei Frametide OS" : "Welcome to Frametide OS"
+        body: presentation.de ? "Die Installation dauert nur wenige Minuten. Lehn dich zurück – wir kümmern uns um den Rest." : "Installation only takes a few minutes. Sit back – we'll take care of the rest."
     }
     FrametideSlide {
-        heading: "Treiber? Erledigt."
-        body: "Beim ersten Start erkennt Frametide deine Grafikkarte und richtet automatisch den besten Treiber ein – NVIDIA, AMD oder Intel."
+        heading: presentation.de ? "Treiber? Erledigt." : "Drivers? Done."
+        body: presentation.de ? "Beim ersten Start erkennt Frametide deine Grafikkarte und richtet automatisch den besten Treiber ein – NVIDIA, AMD oder Intel." : "On first boot Frametide detects your graphics card and sets up the best driver automatically – NVIDIA, AMD or Intel."
     }
     FrametideSlide {
-        heading: "Bereit zum Spielen"
-        body: "Steam, Proton, GameMode und MangoHud sind schon an Bord. Einfach anmelden und loslegen."
+        heading: presentation.de ? "Bereit zum Spielen" : "Ready to play"
+        body: presentation.de ? "Steam, Proton, GameMode und MangoHud sind schon an Bord. Einfach anmelden und loslegen." : "Steam, Proton, GameMode and MangoHud are already on board. Just sign in and play."
     }
     FrametideSlide {
-        heading: "Schnell und leise"
-        body: "Optimiert für kurze Startzeiten, niedrige Latenz und ein ruhiges, aufgeräumtes Design."
+        heading: presentation.de ? "Schnell und leise" : "Fast and quiet"
+        body: presentation.de ? "Optimiert für kurze Startzeiten, niedrige Latenz und ein ruhiges, aufgeräumtes Design." : "Tuned for quick boot times, low latency and a calm, clean design."
     }
 
     function onActivate() { presentation.currentSlide = 0; }
