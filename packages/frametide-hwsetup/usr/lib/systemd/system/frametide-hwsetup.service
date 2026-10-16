@@ -1,0 +1,15 @@
+[Unit]
+Description=Frametide OS Hardware- und Treibereinrichtung (erster Start)
+# Läuft parallel zum Desktop und bremst den Start nicht; wartet selbst auf Internet.
+After=NetworkManager.service
+ConditionPathExists=!/var/lib/frametide/hwsetup.done
+ConditionKernelCommandLine=!boot=casper
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/frametide-hwsetup --apply --wait-network
+Nice=10
+TimeoutStartSec=45min
+
+[Install]
+WantedBy=multi-user.target

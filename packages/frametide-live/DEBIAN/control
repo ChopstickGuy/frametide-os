@@ -1,0 +1,9 @@
+Package: frametide-live
+Version: @VERSION@
+Architecture: all
+Maintainer: Frametide OS <dev@frametide-os.invalid>
+Section: admin
+Priority: optional
+Depends: casper, calamares, frametide-desktop
+Description: Frametide OS – Live-System und Installer
+ Calamares-Konfiguration und Branding. Wird bei der Installation entfernt.

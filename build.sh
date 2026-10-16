@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Vektor OS – ISO-Build
+# Frametide OS – ISO-Build
 #
 #   sudo ./build.sh            alles bauen (Pakete -> Root-Dateisystem -> ISO)
 #   sudo ./build.sh rootfs     nur Root-Dateisystem
@@ -8,8 +8,8 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")" && pwd)"
-# shellcheck source=config/vektor.conf
-source "$ROOT/config/vektor.conf"
+# shellcheck source=config/frametide.conf
+source "$ROOT/config/frametide.conf"
 WORK="${WORK:-$ROOT/work}"
 OUT="${OUT:-$ROOT/out}"
 CHROOT="$WORK/chroot"
@@ -46,7 +46,7 @@ mount_chroot() {
 }
 
 build_rootfs() {
-    log "Vektor-Pakete bauen"
+    log "Frametide-Pakete bauen"
     rm -rf "$OUT/debs"
     "$ROOT/packages/build-debs.sh" "$OUT/debs"
 
@@ -62,17 +62,17 @@ build_rootfs() {
 
     log "System im Chroot einrichten"
     mount_chroot
-    mkdir -p "$CHROOT/tmp/vektor/debs"
-    cp "$ROOT/config/vektor.conf" "$ROOT/scripts/chroot-install.sh" "$CHROOT/tmp/vektor/"
-    cp "$OUT"/debs/*.deb "$CHROOT/tmp/vektor/debs/"
-    curl -fsSL "$MOZILLA_KEY_URL" -o "$CHROOT/tmp/vektor/mozilla.asc"
+    mkdir -p "$CHROOT/tmp/frametide/debs"
+    cp "$ROOT/config/frametide.conf" "$ROOT/scripts/chroot-install.sh" "$CHROOT/tmp/frametide/"
+    cp "$OUT"/debs/*.deb "$CHROOT/tmp/frametide/debs/"
+    curl -fsSL "$MOZILLA_KEY_URL" -o "$CHROOT/tmp/frametide/mozilla.asc"
     rm -f "$CHROOT/etc/resolv.conf"
     cp -L /etc/resolv.conf "$CHROOT/etc/resolv.conf"
     # Keine Dienste während des Builds starten
     printf '#!/bin/sh\nexit 101\n' > "$CHROOT/usr/sbin/policy-rc.d"
     chmod 755 "$CHROOT/usr/sbin/policy-rc.d"
 
-    chroot "$CHROOT" /tmp/vektor/chroot-install.sh
+    chroot "$CHROOT" /tmp/frametide/chroot-install.sh
 
     rm -f "$CHROOT/usr/sbin/policy-rc.d"
     ln -sf ../run/systemd/resolve/stub-resolv.conf "$CHROOT/etc/resolv.conf"
@@ -92,7 +92,7 @@ build_iso() {
     cp "$initrd" "$ISODIR/casper/initrd"
 
     chroot "$CHROOT" dpkg-query -W --showformat='${Package} ${Version}\n' > "$ISODIR/casper/filesystem.manifest"
-    printf '%s\n' casper calamares vektor-live > "$ISODIR/casper/filesystem.manifest-remove"
+    printf '%s\n' casper calamares frametide-live > "$ISODIR/casper/filesystem.manifest-remove"
     du -sx --block-size=1 "$CHROOT" | cut -f1 > "$ISODIR/casper/filesystem.size"
     echo "$DISTRO_NAME $DISTRO_VERSION \"$DISTRO_CODENAME_PRETTY\" - $ARCH ($(date +%Y%m%d))" > "$ISODIR/.disk/info"
 
@@ -126,7 +126,7 @@ build_iso() {
     local efiimg="$WORK/efiboot.img"
     rm -f "$efiimg"
     truncate -s 10M "$efiimg"
-    mkfs.vfat -F 12 -n VEKTOR_EFI "$efiimg" >/dev/null
+    mkfs.vfat -F 12 -n FRAMETIDE "$efiimg" >/dev/null
     mmd -i "$efiimg" ::/EFI ::/EFI/boot
     mcopy -i "$efiimg" "$ISODIR"/EFI/boot/*.efi ::/EFI/boot/
 

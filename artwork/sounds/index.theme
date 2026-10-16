@@ -1,0 +1,8 @@
+[Sound Theme]
+Name=Frametide
+Comment=Leise, minimalistische Systemklänge
+Inherits=freedesktop
+Directories=stereo
+
+[stereo]
+OutputProfile=stereo

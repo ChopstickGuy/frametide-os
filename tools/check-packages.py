@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Prüft, ob alle Abhängigkeiten der Vektor-Pakete und alle im Build-Skript
+"""Prüft, ob alle Abhängigkeiten der Frametide-Pakete und alle im Build-Skript
 installierten Pakete im Ubuntu-Archiv existieren – bevor ein 30-minütiger
 ISO-Build daran scheitert.
 
@@ -20,7 +20,7 @@ EXTERNAL = {"firefox"}
 
 def conf():
     values = {}
-    for line in open(os.path.join(ROOT, "config/vektor.conf")):
+    for line in open(os.path.join(ROOT, "config/frametide.conf")):
         m = re.match(r'(\w+)="([^"]*)"', line)
         if m:
             values[m.group(1)] = m.group(2)
@@ -29,8 +29,8 @@ def conf():
 
 def archive_packages(mirror, suite, arch):
     names = set()
-    for comp in COMPONENTS:
-        url = f"{mirror}/dists/{suite}/{comp}/binary-{arch}/Packages.xz"
+    for dist, comp in [(d, c) for d in (suite, f"{suite}-updates") for c in COMPONENTS]:
+        url = f"{mirror}/dists/{dist}/{comp}/binary-{arch}/Packages.xz"
         with urllib.request.urlopen(url) as r:
             text = lzma.decompress(r.read()).decode("utf-8", "replace")
         names |= set(re.findall(r"^Package: (\S+)", text, re.M))

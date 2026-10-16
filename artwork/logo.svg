@@ -1,13 +1,28 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#19E3D1"/>
-      <stop offset="1" stop-color="#7C5CFF"/>
+    <linearGradient id="ftWave" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#22D3EE"/>
+      <stop offset=".55" stop-color="#6D7CFF"/>
+      <stop offset="1" stop-color="#A855F7"/>
     </linearGradient>
   </defs>
-  <!-- Vektor-„V“: zwei Klingen, die sich in einer Spitze treffen -->
-  <path d="M28 44 H84 L128 164 L172 44 H228 L150 224 H106 Z" fill="url(#g)"/>
-  <path d="M128 164 L172 44 H228 L150 224 Z" fill="#ffffff" fill-opacity=".14"/>
-  <!-- Geschwindigkeits-Pfeil -->
-  <path d="M100 28 H156 L128 92 Z" fill="#ffffff" fill-opacity=".92"/>
+  <!-- Sucher-Rahmen: der „Frame“ -->
+  <g fill="none" stroke="#E6EAF2" stroke-width="14" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M22 76 V44 Q22 22 44 22 H76"/>
+    <path d="M234 180 V212 Q234 234 212 234 H180"/>
+  </g>
+  <!-- Bewegungslinien -->
+  <g stroke="#22D3EE" stroke-width="10" stroke-linecap="round">
+    <path d="M30 150 H70" opacity=".55"/>
+    <path d="M44 176 H82" opacity=".8"/>
+  </g>
+  <!-- Die Welle: „Tide“ -->
+  <path fill="url(#ftWave)" d="M40 206
+    C86 206 100 176 112 144
+    C128 100 154 62 196 60
+    C232 58 246 92 232 116
+    C220 136 190 134 184 114
+    C180 98 194 88 207 94
+    C184 80 160 98 150 132
+    C138 172 156 200 218 206 Z"/>
 </svg>

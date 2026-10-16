@@ -1,6 +1,0 @@
-#!/bin/sh
-set -e
-if [ "$1" = install ] || [ "$1" = upgrade ]; then
-    dpkg-divert --package vektor-base --add --rename \
-        --divert /usr/lib/os-release.ubuntu /usr/lib/os-release
-fi

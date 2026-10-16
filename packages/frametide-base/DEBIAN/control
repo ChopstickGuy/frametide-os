@@ -1,0 +1,12 @@
+Package: frametide-base
+Version: @VERSION@
+Architecture: all
+Maintainer: Frametide OS <dev@frametide-os.invalid>
+Section: metapackages
+Priority: optional
+Depends: linux-generic-hwe-26.04, linux-firmware, intel-microcode, amd64-microcode,
+ ubuntu-drivers-common, fwupd, systemd-zram-generator, power-profiles-daemon,
+ switcheroo-control, flatpak, ufw, base-files
+Description: Frametide OS – Basissystem und Leistungs-Tuning
+ Kernel, Firmware, Microcode, zram, sysctl- und I/O-Tuning sowie
+ Branding (os-release) für Frametide OS.

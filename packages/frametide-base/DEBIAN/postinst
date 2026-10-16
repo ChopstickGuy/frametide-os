@@ -1,0 +1,20 @@
+#!/bin/sh
+set -e
+if [ "$1" = configure ]; then
+    ln -sf frametide/os-release /usr/lib/os-release
+    # Schnellerer Start: nicht auf das Netzwerk warten, keine Werbe-/News-Abrufe
+    for unit in NetworkManager-wait-online.service systemd-networkd-wait-online.service; do
+        systemctl mask --quiet "$unit" 2>/dev/null || ln -sf /dev/null "/etc/systemd/system/$unit"
+    done
+    systemctl disable --quiet motd-news.timer apt-news.service esm-cache.service 2>/dev/null || true
+    if command -v flatpak >/dev/null 2>&1; then
+        flatpak remote-add --system --if-not-exists flathub \
+            https://dl.flathub.org/repo/flathub.flatpakrepo || true
+    fi
+    # Laufendes System (nicht im Image-Build): Tuning sofort aktivieren
+    if [ -d /run/systemd/system ]; then
+        systemctl daemon-reload || true
+        sysctl --system >/dev/null || true
+        udevadm trigger --subsystem-match=block --action=change || true
+    fi
+fi

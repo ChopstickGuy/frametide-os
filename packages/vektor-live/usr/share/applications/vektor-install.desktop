@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Vektor OS installieren
-Name[en]=Install Vektor OS
-Comment=Vektor OS auf diesem Computer installieren
-Exec=sh -c "pkexec calamares -d >/tmp/calamares.log 2>&1"
-Icon=vektor-logo
-Terminal=false
-Categories=System;

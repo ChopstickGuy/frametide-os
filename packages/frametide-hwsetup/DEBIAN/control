@@ -1,0 +1,11 @@
+Package: frametide-hwsetup
+Version: @VERSION@
+Architecture: all
+Maintainer: Frametide OS <dev@frametide-os.invalid>
+Section: admin
+Priority: optional
+Depends: python3, ubuntu-drivers-common, pciutils, grub-common, initramfs-tools
+Description: Frametide OS – automatische Hardware- und Treibereinrichtung
+ Erkennt GPU(s) und CPU beim ersten Start und installiert die passenden
+ Treiber (NVIDIA proprietär/open, Mesa inkl. 32-Bit für Steam, Intel Media),
+ setzt die richtigen Kernel-Parameter und aktiviert Energie-/Suspend-Dienste.

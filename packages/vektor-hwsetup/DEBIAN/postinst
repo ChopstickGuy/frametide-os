@@ -1,8 +1,0 @@
-#!/bin/sh
-set -e
-if [ "$1" = configure ]; then
-    mkdir -p /var/lib/vektor
-    systemctl enable vektor-hwsetup.service >/dev/null 2>&1 || \
-        ln -sf /usr/lib/systemd/system/vektor-hwsetup.service \
-            /etc/systemd/system/multi-user.target.wants/vektor-hwsetup.service
-fi

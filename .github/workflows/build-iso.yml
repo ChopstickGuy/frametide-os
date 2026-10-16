@@ -14,7 +14,7 @@ jobs:
       - name: Paketverfügbarkeit prüfen
         run: python3 tools/check-packages.py
       - name: Hardware-Erkennung testen
-        run: python3 packages/vektor-hwsetup/usr/sbin/vektor-hwsetup
+        run: python3 packages/frametide-hwsetup/usr/sbin/frametide-hwsetup
 
   iso:
     needs: check
@@ -35,7 +35,7 @@ jobs:
         run: sudo ./build.sh
       - uses: actions/upload-artifact@v4
         with:
-          name: vektor-os-iso
+          name: frametide-os-iso
           path: |
             out/*.iso
             out/*.sha256

@@ -1,39 +1,52 @@
-# Vektor OS 1.0 „Ignition“
+# Frametide OS 1.0 „Ignition“
 
-Eine auf **Ubuntu 26.10** basierende Distribution mit GNOME. Priorität eins ist
-**maximale Gaming-Leistung durch korrekt eingerichtete Treiber**, danach folgen
-niedrige Latenz und ein modernes, dunkles Design.
+![Logos und Wallpaper](artwork/previews/overview.png)
 
-## Was Vektor anders macht als Ubuntu
+Eine Gaming-Distribution auf Basis von **Ubuntu 26.04 LTS** (Updates bis 2031)
+mit GNOME. Die Ziele, nach Priorität:
 
-| Bereich | Vektor OS |
+1. **Volle Gaming-Leistung** durch automatisch passend eingerichtete Treiber
+2. **Schneller Start und schnelle, einfache Installation**
+3. **Minimalistisches, ruhiges Design** bei Optik und Klang
+
+## Was Frametide anders macht als Ubuntu
+
+| Bereich | Frametide OS |
 |---|---|
-| **Treiber** | `vektor-hwsetup` erkennt beim ersten Start GPU und CPU und installiert den passenden Treiber. NVIDIA wird über die vorsignierten Ubuntu-Module eingerichtet, Secure Boot funktioniert also ohne MOK. Dazu kommen 32-Bit-Bibliotheken für Steam/Proton, Kernel-Parameter (z. B. `nvidia-drm.modeset=1`, amdgpu für ältere GCN-Karten), Suspend-Dienste und Hybrid-Grafik-Unterstützung |
-| **Kernel** | Ubuntu-Kernel 7.3 (signiert, kompatibel mit Treibern) mit `preempt=full` für niedrigere Latenz |
-| **Speicher** | zram mit zstd statt Swap-Datei, abgestimmte `vm.*`-Werte, `vm.max_map_count` für Proton-Spiele |
-| **Datenträger** | I/O-Scheduler je nach Gerätetyp: NVMe `none`, SSD `mq-deadline`, HDD `bfq` |
-| **Gaming** | Steam (.deb), GameMode (vorkonfiguriert), MangoHud, Gamescope, Lutris, vkBasalt, CoreCtrl, große Shader-Caches gegen Ruckler |
-| **Desktop** | GNOME 51 dunkel mit Teal-Akzent, Inter und JetBrains Mono, Papirus-Icons, Dock unten, **VRR aktiviert**, flache Mausbeschleunigung |
-| **Ballast** | Kein Snap, Firefox als .deb direkt von Mozilla, Flathub vorkonfiguriert |
-| **Installer** | Calamares mit Vektor-Branding, kein Swap auf der Festplatte (zram), BIOS und UEFI mit Secure Boot |
+| **Treiber** | `frametide-hwsetup` erkennt beim ersten Start GPU und CPU und installiert im Hintergrund den passenden Treiber. NVIDIA nutzt die vorsignierten Ubuntu-Module, Secure Boot funktioniert also ohne MOK. Dazu kommen 32-Bit-Bibliotheken für Steam/Proton, Kernel-Parameter, Suspend-Dienste und Hybrid-Grafik-Unterstützung |
+| **Kernel** | Ubuntu-HWE-Kernel (7.0, wächst über die LTS-Laufzeit mit, damit auch neue Hardware erkannt wird) mit `preempt=full` |
+| **Start** | Kein sichtbares Bootmenü, kein Warten aufs Netzwerk, keine Textmeldungen. Ohne Snap, Absturzberichte, Telemetrie und Ubuntu-Einrichtungsassistent. Hintergrund-Updates starten erst nach dem Hochfahren und mit niedrigster Priorität |
+| **Installation** | Der Installer öffnet sich im Live-System automatisch. Sechs klare Schritte auf Deutsch, offline und ohne Swap-Partition (zram) |
+| **Speicher/IO** | zram mit zstd, angepasste `vm.*`-Werte, I/O-Scheduler je nach Datenträger |
+| **Gaming** | Steam, GameMode, MangoHud, Gamescope, Lutris, große Shader-Caches, VRR aktiviert, flache Mausbeschleunigung |
+| **Design** | Dunkles GNOME mit Teal-Akzent, Inter und JetBrains Mono, Papirus-Icons, Dock blendet sich aus, keine Desktop-Symbole |
+| **Klang** | Eigenes Sound-Theme mit 13 weichen, kurzen Tönen (-18 dBFS) statt lauter Systemklänge, kein Tastenklick-Feedback |
+| **Wallpaper** | 7 Motive: Tide (hell/dunkel, passend zum Hell/Dunkel-Modus), Tide mit Logo, Nightwave, Sunset Surge, Frames, OLED Black |
 
 ## Aufbau
 
 ```
-config/vektor.conf        Name, Version, Ubuntu-Basis (zentrale Stelle)
-build.sh                  ISO-Build: debootstrap → chroot → squashfs → ISO
-scripts/chroot-install.sh Paketinstallation im Image
-packages/                 Vektor-Pakete (.deb), gebaut mit build-debs.sh
-  vektor-base             Tuning, zram, sysctl, I/O, Branding (os-release)
-  vektor-hwsetup          Hardware-/Treiber-Erkennung (Python)
-  vektor-gaming           Gaming-Stack + GameMode-Profil
-  vektor-desktop          GNOME-Design, Wallpaper, Boot-Logo
-  vektor-dev              Entwicklerwerkzeuge
-  vektor-live             Live-System + Calamares (wird bei Installation entfernt)
-iso/grub.cfg              Bootmenü der Live-ISO
-artwork/                  Logo und Wallpaper (SVG)
-tools/check-packages.py   prüft alle Paketnamen gegen das Ubuntu-Archiv
-.github/workflows/        CI: prüfen, ISO bauen, Release bei Tag v*
+config/frametide.conf        Name, Version, Ubuntu-Basis (zentrale Stelle)
+build.sh                     ISO-Build: debootstrap → chroot → squashfs → ISO
+scripts/chroot-install.sh    Paketinstallation im Image
+packages/                    Frametide-Pakete (.deb), gebaut mit build-debs.sh
+  frametide-base             Tuning, Startzeit, zram, sysctl, I/O, Branding
+  frametide-hwsetup          Hardware- und Treiber-Erkennung (Python)
+  frametide-gaming           Gaming-Stack und GameMode-Profil
+  frametide-desktop          GNOME-Design (Wallpaper, Icons, Sounds kommen aus artwork/)
+  frametide-dev              Entwicklerwerkzeuge
+  frametide-live             Live-System und Calamares (wird bei Installation entfernt)
+artwork/                     Logos (SVG), Generatoren für Wallpaper und Sounds
+iso/grub.cfg                 Bootmenü der Live-ISO
+tools/check-packages.py      prüft alle Paketnamen gegen das Ubuntu-Archiv
+.github/workflows/           CI: prüfen, ISO bauen, Release bei Tag v*
+```
+
+Wallpaper und Sounds werden per Skript erzeugt und sind damit leicht anzupassen:
+
+```bash
+python3 artwork/generate-wallpapers.py   # → artwork/wallpapers/*.svg (4K, skalierbar)
+python3 artwork/generate-sounds.py       # → artwork/sounds/
 ```
 
 ## ISO bauen
@@ -43,54 +56,48 @@ Benötigt Ubuntu/Debian, root und etwa 25 GB freien Speicher:
 ```bash
 sudo apt install debootstrap squashfs-tools xorriso dosfstools mtools curl librsvg2-bin
 python3 tools/check-packages.py     # schneller Vorab-Check
-sudo ./build.sh                     # Ergebnis: out/vektor-os-1.0-ignition-amd64.iso
+sudo ./build.sh                     # Ergebnis: out/frametide-os-1.0-ignition-amd64.iso
 ```
 
 Ohne eigenen Build-Rechner: das Repo auf GitHub pushen und unter *Actions* den
 Workflow „ISO bauen“ starten. Die ISO erscheint dann als Download-Artefakt.
 
-Testen in einer VM:
+Testen in einer VM (UEFI):
 
 ```bash
-qemu-system-x86_64 -enable-kvm -m 8G -smp 4 -cdrom out/vektor-os-*.iso \
+qemu-system-x86_64 -enable-kvm -m 8G -smp 4 -cdrom out/frametide-os-*.iso \
   -bios /usr/share/ovmf/OVMF.fd -vga virtio
+systemd-analyze && systemd-analyze blame | head   # im installierten System: Startzeit prüfen
 ```
 
 ## Treiber-Einrichtung
 
-Nach der Installation läuft `vektor-hwsetup` einmalig beim ersten Start mit
-Internetverbindung. Danach meldet GNOME „Neustart erforderlich“.
+Nach der Installation läuft `frametide-hwsetup` einmalig im Hintergrund, sobald
+Internet verfügbar ist. Danach meldet GNOME „Neustart erforderlich“.
 
 ```bash
-vektor-hwsetup                 # erkannte Hardware und geplante Schritte anzeigen
-sudo vektor-hwsetup --apply    # erneut ausführen, z. B. nach GPU-Wechsel
-cat /var/log/vektor-hwsetup.log
+frametide-hwsetup                 # erkannte Hardware und geplante Schritte anzeigen
+sudo frametide-hwsetup --apply    # erneut ausführen, z. B. nach GPU-Wechsel
+cat /var/log/frametide-hwsetup.log
 ```
 
-Optionen in `/etc/vektor/hwsetup.conf`:
+Optionen in `/etc/frametide/hwsetup.conf`:
 
 - `AMD64V3=yes` aktiviert Ubuntus x86-64-v3-optimierte Pakete, wenn die CPU sie
-  unterstützt (Haswell/Zen 1 oder neuer). Die Option ist **experimentell**.
-- `AMD_OVERDRIVE=yes` schaltet Übertakten und Undervolting für AMD-GPUs in
-  CoreCtrl frei.
+  unterstützt. Die Option ist **experimentell**.
+- `AMD_OVERDRIVE=yes` schaltet Übertakten und Undervolting für AMD-GPUs frei.
 
 ## Gaming-Tipps
 
-- Steam-Startoption für GameMode: `gamemoderun %command%`
-- FPS-Overlay: `mangohud %command%` (beides kombinierbar)
-- Proton-GE: „ProtonPlus“ aus GNOME Software (Flathub) installieren
-
-## Hinweise
-
-- **Support-Zeitraum:** Ubuntu 26.10 ist ein Interim-Release mit Updates bis
-  etwa Juli 2027. Für Vektor 2.0 entweder auf 27.04 wechseln oder für
-  Langzeitstabilität auf 26.04 LTS umstellen. Dafür nur `UBUNTU_SUITE` und
-  `UBUNTU_VERSION` in `config/vektor.conf` ändern.
-- **Name:** Vor einer öffentlichen Veröffentlichung „Vektor OS“ auf
-  Markenkonflikte prüfen.
+- Steam-Startoption: `gamemoderun %command%`, mit FPS-Overlay `gamemoderun mangohud %command%`
+- Proton-GE: „ProtonPlus“ aus GNOME Software (Flathub)
 
 ## Roadmap
 
-- **1.1**: NVIDIA-Treiber offline auf der ISO, Willkommens-App (GTK4/libadwaita)
-- **1.2**: eigenes APT-Repo (Mesa-Backports, scx-Scheduler/`sched_ext`), Benchmarks gegen Ubuntu
+- **1.1**: NVIDIA-Treiber offline auf der ISO, Willkommens-App (GTK4/libadwaita), GDM-Login im Frametide-Design
+- **1.2**: eigenes APT-Repo (neueres Mesa, scx-Scheduler/`sched_ext`), Benchmarks gegen Ubuntu
 - **2.0**: optionaler Gaming-Kernel als eigenes, signiertes Paket
+
+> Der Name „Frametide“ ergab bei der Recherche keine bestehende Distribution
+> und kein Betriebssystem. Vor einer öffentlichen Veröffentlichung trotzdem
+> bei DPMA/EUIPO auf Markeneinträge prüfen.
