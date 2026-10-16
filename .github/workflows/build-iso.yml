@@ -74,7 +74,9 @@ jobs:
             sleep 2 && convert "/tmp/$2.ppm" "screenshots/$2.png" && echo "Screenshot: $2"
           }
           for mode in uefi bios; do
+            qemu-img create -f qcow2 "/tmp/disk-$mode.qcow2" 40G >/dev/null   # leere Platte für den Installer
             args=(-m 6144 -smp 4 -cdrom "$iso" -boot d -vga virtio -display none
+                  -drive "file=/tmp/disk-$mode.qcow2,if=virtio,format=qcow2"
                   -monitor "unix:/tmp/mon-$mode,server,nowait")
             [ -e /dev/kvm ] && args+=(-enable-kvm -cpu host)
             [ "$mode" = uefi ] && args+=(-bios /usr/share/ovmf/OVMF.fd)
