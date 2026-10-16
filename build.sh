@@ -24,6 +24,8 @@ declare -A REPO_KEYS=(
     [coolercontrol]="https://dl.cloudsmith.io/public/coolercontrol/coolercontrol/gpg.key"
 )
 
+# Erste existierende Datei aus einer Liste (ohne Fehler, wenn keine existiert)
+first_file() { local f; for f in "$@"; do [ -f "$f" ] && { echo "$f"; return 0; }; done; return 0; }
 log() { printf '\n\033[1;36m==> %s\033[0m\n' "$*"; }
 die() { printf '\033[1;31mFehler: %s\033[0m\n' "$*" >&2; exit 1; }
 
@@ -101,7 +103,8 @@ build_iso() {
     mkdir -p "$ISODIR"/{casper,.disk,EFI/boot,boot/grub/i386-pc,boot/grub/fonts}
 
     local kernel initrd
-    kernel="$(ls -1 "$CHROOT"/boot/vmlinuz-* | sort -V | tail -1)"
+    kernel="$(find "$CHROOT/boot" -maxdepth 1 -name 'vmlinuz-*' | sort -V | tail -1)"
+    [ -n "$kernel" ] || die "kein Kernel im Root-Dateisystem"
     initrd="$CHROOT/boot/initrd.img-${kernel##*/vmlinuz-}"
     cp "$kernel" "$ISODIR/casper/vmlinuz"
     cp "$initrd" "$ISODIR/casper/initrd"
@@ -120,23 +123,19 @@ build_iso() {
         "$ROOT/iso/grub.cfg" > "$ISODIR/boot/grub/grub.cfg"
     cp "$CHROOT/usr/share/grub/unicode.pf2" "$ISODIR/boot/grub/fonts/"
 
-    # BIOS: El-Torito-Image + Module
-    chroot "$CHROOT" grub-mkimage -O i386-pc-eltorito -d /usr/lib/grub/i386-pc \
-        -p /boot/grub -o /tmp/eltorito.img \
-        biosdisk iso9660 part_msdos part_gpt normal search configfile linux echo test \
-        all_video gfxterm font ls
-    mv "$CHROOT/tmp/eltorito.img" "$ISODIR/boot/grub/i386-pc/eltorito.img"
-    cp "$CHROOT"/usr/lib/grub/i386-pc/*.{mod,lst} "$ISODIR/boot/grub/i386-pc/"
+    # BIOS: fertiges El-Torito-Image aus grub-pc-bin (wie Ubuntus eigene ISOs) + Module
+    cp "$CHROOT/usr/lib/grub/i386-pc/eltorito.img" "$ISODIR/boot/grub/i386-pc/eltorito.img"
+    cp "$CHROOT"/usr/lib/grub/i386-pc/*.mod "$CHROOT"/usr/lib/grub/i386-pc/*.lst "$ISODIR/boot/grub/i386-pc/"
 
     # UEFI: von Microsoft/Canonical signierte shim + GRUB -> bootet mit aktivem Secure Boot
     local shim grub mm
-    shim="$(ls "$CHROOT"/usr/lib/shim/shimx64.efi.signed.latest "$CHROOT"/usr/lib/shim/shimx64.efi.signed 2>/dev/null | head -1)"
-    mm="$(ls "$CHROOT"/usr/lib/shim/mmx64.efi.signed "$CHROOT"/usr/lib/shim/mmx64.efi 2>/dev/null | head -1)"
+    shim="$(first_file "$CHROOT"/usr/lib/shim/shimx64.efi.signed.latest "$CHROOT"/usr/lib/shim/shimx64.efi.signed)"
+    mm="$(first_file "$CHROOT"/usr/lib/shim/mmx64.efi.signed "$CHROOT"/usr/lib/shim/mmx64.efi)"
     grub="$CHROOT/usr/lib/grub/x86_64-efi-signed/gcdx64.efi.signed"
     [ -f "$shim" ] && [ -f "$grub" ] || die "signierte shim/GRUB nicht gefunden"
     cp "$shim" "$ISODIR/EFI/boot/bootx64.efi"
     cp "$grub" "$ISODIR/EFI/boot/grubx64.efi"
-    [ -n "$mm" ] && cp "$mm" "$ISODIR/EFI/boot/mmx64.efi"
+    if [ -n "$mm" ]; then cp "$mm" "$ISODIR/EFI/boot/mmx64.efi"; fi
 
     local efiimg="$WORK/efiboot.img"
     rm -f "$efiimg"

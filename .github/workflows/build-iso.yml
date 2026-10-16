@@ -60,6 +60,36 @@ jobs:
         run: sudo ./build.sh
       - name: ISO-Größe
         run: ls -lh out/*.iso && cat out/*.sha256
+      - name: Boot-Test in QEMU (UEFI und BIOS, mit Screenshots)
+        continue-on-error: true
+        run: |
+          sudo apt-get install -y qemu-system-x86 ovmf socat imagemagick
+          [ -e /dev/kvm ] && sudo chmod 666 /dev/kvm && echo "KVM verfügbar"
+          mkdir -p screenshots
+          iso=$(ls out/*.iso)
+          shot() {  # $1 = Modus, $2 = Name
+            echo "screendump /tmp/$2.ppm" | socat - "unix-connect:/tmp/mon-$1" >/dev/null
+            sleep 2 && convert "/tmp/$2.ppm" "screenshots/$2.png" && echo "Screenshot: $2"
+          }
+          for mode in uefi bios; do
+            args=(-m 6144 -smp 4 -cdrom "$iso" -boot d -vga virtio -display none
+                  -monitor "unix:/tmp/mon-$mode,server,nowait")
+            [ -e /dev/kvm ] && args+=(-enable-kvm -cpu host)
+            [ "$mode" = uefi ] && args+=(-bios /usr/share/ovmf/OVMF.fd)
+            qemu-system-x86_64 "${args[@]}" &
+            pid=$!
+            sleep 8;   shot "$mode" "$mode-1-bootmenue"
+            sleep 40;  shot "$mode" "$mode-2-start"
+            sleep 150; shot "$mode" "$mode-3-desktop"
+            kill "$pid" || true
+            wait "$pid" 2>/dev/null || true
+          done
+          ls -la screenshots
+      - uses: actions/upload-artifact@v4
+        with:
+          name: boot-screenshots
+          path: screenshots/
+          if-no-files-found: ignore
       - uses: actions/upload-artifact@v4
         with:
           name: frametide-os-iso
