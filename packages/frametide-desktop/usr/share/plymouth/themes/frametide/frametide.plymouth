@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=Frametide
+Description=Frametide OS – Startbildschirm mit Wellen-Animation
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/frametide
+ScriptFile=/usr/share/plymouth/themes/frametide/frametide.script

@@ -5,4 +5,5 @@ if [ "$1" = remove ] || [ "$1" = purge ]; then
         --divert /usr/share/plymouth/themes/spinner/watermark.png.ubuntu \
         /usr/share/plymouth/themes/spinner/watermark.png
     glib-compile-schemas /usr/share/glib-2.0/schemas || true
+    update-alternatives --quiet --remove default.plymouth /usr/share/plymouth/themes/frametide/frametide.plymouth || true
 fi

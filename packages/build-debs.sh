@@ -37,6 +37,8 @@ install_artwork() {
         install -d "$dir/usr/share/sounds/frametide/stereo"
         install -m644 "$root/artwork/sounds/index.theme" "$dir/usr/share/sounds/frametide/"
         install -m644 "$root"/artwork/sounds/stereo/*.wav "$dir/usr/share/sounds/frametide/stereo/"
+        # Startbildschirm-Theme: Grafiken aus artwork/plymouth
+        install -m644 "$root"/artwork/plymouth/*.png "$dir/usr/share/plymouth/themes/frametide/"
         # Boot-Logo (Plymouth-Wasserzeichen) als PNG
         if command -v rsvg-convert >/dev/null; then
             install -d "$dir/usr/share/plymouth/themes/spinner"
@@ -62,6 +64,7 @@ install_artwork() {
 for pkg in "$here"/frametide-*/; do
     name="$(basename "$pkg")"
     cp -a "$pkg" "$work/$name"
+    find "$work/$name" -name __pycache__ -type d -prune -exec rm -rf {} +
     install_artwork "$name" "$work/$name"
     # Platzhalter in Textdateien ersetzen
     grep -rlI '@VERSION@\|@CODENAME@\|@CODENAME_PRETTY@\|@UBUNTU_SUITE@\|@URL@\|@LIVE_USER@' "$work/$name" 2>/dev/null |

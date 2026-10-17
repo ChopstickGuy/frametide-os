@@ -1,6 +1,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=UTF-8\n"
 
+#: audio.py:111
+msgid "Mikrofon mit Rauschunterdrückung"
+msgstr ""
+
 #: bench.py:32
 msgid "CPU Single-Core"
 msgstr ""
@@ -109,7 +113,7 @@ msgstr ""
 msgid "Nicht installiert (Tests übersprungen): {tools}"
 msgstr ""
 
-#: center.py:429
+#: center.py:573
 msgid "bei Secure Boot einmalig MOK-Bestätigung"
 msgstr ""
 
@@ -185,47 +189,79 @@ msgstr ""
 msgid "Deine installierten Steam-Spiele"
 msgstr ""
 
-#: center.py:380
-msgid "Temperaturen"
-msgstr ""
-
-#: center.py:381
-msgid "Lüfter und Pumpen"
+#: center.py:382
+msgid "Ausgabe"
 msgstr ""
 
 #: center.py:382
+msgid "Wohin der Ton geht – Kopfhörer, Headset oder Lautsprecher."
+msgstr ""
+
+#: center.py:383
+msgid "Mikrofon"
+msgstr ""
+
+#: center.py:388
+msgid "Rauschunterdrückung"
+msgstr ""
+
+#: center.py:389
+msgid "Entfernt Tastatur, Lüfter und Hintergrundgeräusche aus deinem Mikrofon – für Discord, Teams und Spiele-Chat. Läuft direkt im Audiosystem, ohne Zusatzprogramm."
+msgstr ""
+
+#: center.py:404
+msgid "Mikrofon testen"
+msgstr ""
+
+#: center.py:407
+msgid "Test starten"
+msgstr ""
+
+#: center.py:498
+msgid "Sprich jetzt … (4 Sekunden)"
+msgstr ""
+
+#: center.py:524
+msgid "Temperaturen"
+msgstr ""
+
+#: center.py:525
+msgid "Lüfter und Pumpen"
+msgstr ""
+
+#: center.py:526
 msgid "Kurven, Profile und AIO-Kühler stellst du in CoolerControl ein."
 msgstr ""
 
-#: center.py:393
+#: center.py:537
 msgid "RGB-Beleuchtung"
 msgstr ""
 
-#: center.py:394
+#: center.py:538
 msgid "Mainboard, RAM, Grafikkarte, Lüfter, Tastatur und Maus – herstellerübergreifend über OpenRGB."
 msgstr ""
 
-#: center.py:420
+#: center.py:564
 msgid "Erweitert"
 msgstr ""
 
-#: center.py:420
+#: center.py:564
 msgid "Nur nötig, wenn Geräte oder Lüfter oben fehlen."
 msgstr ""
 
-#: center.py:518
+#: center.py:662
 msgid "Suche läuft … (kann einige Sekunden dauern)"
 msgstr ""
 
-#: center.py:553
+#: center.py:697
 msgid "Über dieses System"
 msgstr ""
 
-#: center.py:563
+#: center.py:707
 msgid "Leistung"
 msgstr ""
 
-#: center.py:580
+#: center.py:724
 msgid "Werkzeuge"
 msgstr ""
 
@@ -333,135 +369,187 @@ msgstr ""
 msgid "Installiere Spiele in Steam oder prüfe oben ein Spiel nach Namen."
 msgstr ""
 
-#: center.py:375
-msgid "RGB & Lüfter"
+#: center.py:377
+msgid "Audio"
 msgstr ""
 
-#: center.py:384
-msgid "Lüfterkurven, Pumpen, AIO-Wasserkühlungen"
+#: center.py:391
+msgid "Hintergrundgeräusche entfernen"
 msgstr ""
 
-#: center.py:386
-msgid "Öffnen"
+#: center.py:392
+msgid "Beim Umschalten ist der Ton kurz weg."
 msgstr ""
 
-#: center.py:401
-msgid "Farbe für alle Geräte"
+#: center.py:394
+msgid "Automatische Mikrofon-Lautstärke"
 msgstr ""
 
-#: center.py:402
-msgid "Statische Farbe auf alle erkannten Geräte"
+#: center.py:395
+msgid "Gleicht leises und lautes Sprechen aus."
 msgstr ""
 
 #: center.py:405
-msgid "Anwenden"
+msgid "Aufnehmen und anhören"
 msgstr ""
 
-#: center.py:407
-msgid "Beleuchtung ausschalten"
-msgstr ""
-
-#: center.py:408
-msgid "Aus"
-msgstr ""
-
-#: center.py:411
-msgid "Erkannte Geräte"
-msgstr ""
-
-#: center.py:414
-msgid "Effekte, Zonen, Profile und Geräte im Detail"
-msgstr ""
-
-#: center.py:421
-msgid "Erweiterter SMBus-Zugriff"
-msgstr ""
-
-#: center.py:422
-msgid "Für RGB auf manchen Mainboards und RAM-Riegeln (acpi_enforce_resources=lax). Neustart nötig."
+#: center.py:406
+msgid "Nimmt 4 Sekunden auf und spielt sie dir vor."
 msgstr ""
 
 #: center.py:430
-msgid "Lüftertreiber für ITE-Chips"
+msgid "Kein Ausgabegerät gefunden"
 msgstr ""
 
 #: center.py:431
-msgid "Gigabyte und viele andere Mainboards"
+msgid "Kein Mikrofon gefunden"
 msgstr ""
 
-#: center.py:432
-msgid "Lüftertreiber für Nuvoton NCT6687"
+#: center.py:464
+msgid "Lautstärke"
 msgstr ""
 
-#: center.py:433
-msgid "Viele MSI-Mainboards"
+#: center.py:472
+msgid "Stumm"
 msgstr ""
 
-#: center.py:438
-msgid "Sensoren neu erkennen"
+#: center.py:490
+msgid "Rauschunterdrückung aktiv – „Mikrofon mit Rauschunterdrückung“ ist jetzt Standard."
 msgstr ""
 
-#: center.py:486
-msgid "Keine Temperatursensoren gefunden"
+#: center.py:507
+msgid "Wiedergabe …"
 msgstr ""
 
-#: center.py:487
-msgid "Keine Lüftersensoren gefunden – siehe „Erweitert“"
+#: center.py:519
+msgid "RGB & Lüfter"
 msgstr ""
 
-#: center.py:548
-msgid "System"
+#: center.py:528
+msgid "Lüfterkurven, Pumpen, AIO-Wasserkühlungen"
+msgstr ""
+
+#: center.py:530
+msgid "Öffnen"
+msgstr ""
+
+#: center.py:545
+msgid "Farbe für alle Geräte"
+msgstr ""
+
+#: center.py:546
+msgid "Statische Farbe auf alle erkannten Geräte"
+msgstr ""
+
+#: center.py:549
+msgid "Anwenden"
+msgstr ""
+
+#: center.py:551
+msgid "Beleuchtung ausschalten"
+msgstr ""
+
+#: center.py:552
+msgid "Aus"
 msgstr ""
 
 #: center.py:555
-msgid "Basis"
-msgstr ""
-
-#: center.py:557
-msgid "Prozessor"
+msgid "Erkannte Geräte"
 msgstr ""
 
 #: center.py:558
-msgid "Arbeitsspeicher"
+msgid "Effekte, Zonen, Profile und Geräte im Detail"
 msgstr ""
 
 #: center.py:565
-msgid "x86-64-v3-optimierte Pakete"
+msgid "Erweiterter SMBus-Zugriff"
 msgstr ""
 
 #: center.py:566
-msgid "Schnellere Pakete für CPUs ab Intel Haswell / AMD Zen (experimentell)"
+msgid "Für RGB auf manchen Mainboards und RAM-Riegeln (acpi_enforce_resources=lax). Neustart nötig."
 msgstr ""
 
-#: center.py:567
-msgid "AMD-GPU-Übertaktung freischalten"
+#: center.py:574
+msgid "Lüftertreiber für ITE-Chips"
 msgstr ""
 
-#: center.py:568
-msgid "Erlaubt Übertakten und Undervolting in CoreCtrl. Neustart nötig."
+#: center.py:575
+msgid "Gigabyte und viele andere Mainboards"
 msgstr ""
 
-#: center.py:569
-msgid "CPU-Sicherheitsbremsen abschalten"
+#: center.py:576
+msgid "Lüftertreiber für Nuvoton NCT6687"
 msgstr ""
 
-#: center.py:570
-msgid "Mehr Leistung v. a. auf älteren CPUs, aber weniger Schutz vor Spectre & Co. Nur für reine Gaming-PCs. Neustart nötig."
+#: center.py:577
+msgid "Viele MSI-Mainboards"
 msgstr ""
 
 #: center.py:582
+msgid "Sensoren neu erkennen"
+msgstr ""
+
+#: center.py:630
+msgid "Keine Temperatursensoren gefunden"
+msgstr ""
+
+#: center.py:631
+msgid "Keine Lüftersensoren gefunden – siehe „Erweitert“"
+msgstr ""
+
+#: center.py:692
+msgid "System"
+msgstr ""
+
+#: center.py:699
+msgid "Basis"
+msgstr ""
+
+#: center.py:701
+msgid "Prozessor"
+msgstr ""
+
+#: center.py:702
+msgid "Arbeitsspeicher"
+msgstr ""
+
+#: center.py:709
+msgid "x86-64-v3-optimierte Pakete"
+msgstr ""
+
+#: center.py:710
+msgid "Schnellere Pakete für CPUs ab Intel Haswell / AMD Zen (experimentell)"
+msgstr ""
+
+#: center.py:711
+msgid "AMD-GPU-Übertaktung freischalten"
+msgstr ""
+
+#: center.py:712
+msgid "Erlaubt Übertakten und Undervolting in CoreCtrl. Neustart nötig."
+msgstr ""
+
+#: center.py:713
+msgid "CPU-Sicherheitsbremsen abschalten"
+msgstr ""
+
+#: center.py:714
+msgid "Mehr Leistung v. a. auf älteren CPUs, aber weniger Schutz vor Spectre & Co. Nur für reine Gaming-PCs. Neustart nötig."
+msgstr ""
+
+#: center.py:726
 msgid "Misst CPU, Speicher, Latenz, SSD und GPU (ca. 4 Minuten). Ergebnis: ~/.local/share/frametide-bench"
 msgstr ""
 
-#: center.py:584
+#: center.py:728
 msgid "Starten"
 msgstr ""
 
-#: center.py:587
+#: center.py:731
 msgid "Windows-Umzug"
 msgstr ""
 
-#: center.py:588
+#: center.py:732
 msgid "Dateien, Lesezeichen, WLAN und Steam-Spiele von Windows übernehmen"
 msgstr ""
 
@@ -489,19 +577,23 @@ msgstr ""
 msgid "Ergebnis für „{term}“"
 msgstr ""
 
-#: center.py:426
+#: center.py:492
+msgid "Rauschunterdrückung konnte nicht gestartet werden."
+msgstr ""
+
+#: center.py:570
 msgid "Einstellung wird angewendet …"
 msgstr ""
 
-#: center.py:435
+#: center.py:579
 msgid "Installieren"
 msgstr ""
 
-#: center.py:515
+#: center.py:659
 msgid "Farbe #{color} angewendet"
 msgstr ""
 
-#: center.py:532
+#: center.py:676
 msgid "Keine Geräte gefunden – evtl. „Erweiterter SMBus-Zugriff“ aktivieren"
 msgstr ""
 
@@ -565,15 +657,15 @@ msgstr ""
 msgid "Nichts gefunden"
 msgstr ""
 
-#: center.py:409
+#: center.py:553
 msgid "Beleuchtung aus"
 msgstr ""
 
-#: center.py:440
+#: center.py:584
 msgid "Sensoren werden erkannt …"
 msgstr ""
 
-#: center.py:585
+#: center.py:729
 msgid "Benchmark läuft – bitte nichts anderes starten …"
 msgstr ""
 
@@ -585,11 +677,11 @@ msgstr ""
 msgid "Primär"
 msgstr ""
 
-#: center.py:531
+#: center.py:675
 msgid "{n} Geräte"
 msgstr ""
 
-#: center.py:541
+#: center.py:685
 msgid "Konnte {app} nicht starten: {error}"
 msgstr ""
 
@@ -601,11 +693,11 @@ msgstr ""
 msgid "{pkg} wird installiert …"
 msgstr ""
 
-#: center.py:475
+#: center.py:619
 msgid "Lüfter"
 msgstr ""
 
-#: center.py:467
+#: center.py:611
 msgid "{rpm} U/min"
 msgstr ""
 

@@ -11,7 +11,7 @@ Categories=System;Settings;HardwareSettings;
 Keywords=update;driver;nvidia;amd;rgb;fan;
 Keywords[de]=update;treiber;nvidia;amd;rgb;lüfter;
 StartupNotify=true
-Actions=updates;drivers;hardware;
+Actions=updates;drivers;audio;hardware;
 
 [Desktop Action updates]
 Name=Updates
@@ -21,6 +21,11 @@ Exec=frametide-center updates
 Name=Drivers
 Name[de]=Treiber
 Exec=frametide-center drivers
+
+[Desktop Action audio]
+Name=Audio & Microphone
+Name[de]=Audio & Mikrofon
+Exec=frametide-center audio
 
 [Desktop Action hardware]
 Name=RGB & Fans

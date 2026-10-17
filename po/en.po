@@ -1007,3 +1007,72 @@ msgstr "Let's go"
 msgid "Alles Wichtige ist nur einen Klick entfernt."
 msgstr "Everything important is just one click away."
 
+
+msgid "Mikrofon mit Rauschunterdrückung"
+msgstr "Microphone with noise suppression"
+
+msgid "Ausgabe"
+msgstr "Output"
+
+msgid "Wohin der Ton geht – Kopfhörer, Headset oder Lautsprecher."
+msgstr "Where sound goes – headphones, headset or speakers."
+
+msgid "Mikrofon"
+msgstr "Microphone"
+
+msgid "Rauschunterdrückung"
+msgstr "Noise suppression"
+
+msgid "Entfernt Tastatur, Lüfter und Hintergrundgeräusche aus deinem Mikrofon – für Discord, Teams und Spiele-Chat. Läuft direkt im Audiosystem, ohne Zusatzprogramm."
+msgstr "Removes keyboard, fan and background noise from your microphone – for Discord, Teams and game chat. Runs right inside the audio system, no extra app needed."
+
+msgid "Mikrofon testen"
+msgstr "Test microphone"
+
+msgid "Test starten"
+msgstr "Start test"
+
+msgid "Sprich jetzt … (4 Sekunden)"
+msgstr "Speak now … (4 seconds)"
+
+msgid "Audio"
+msgstr "Audio"
+
+msgid "Hintergrundgeräusche entfernen"
+msgstr "Remove background noise"
+
+msgid "Beim Umschalten ist der Ton kurz weg."
+msgstr "Sound drops out briefly while switching."
+
+msgid "Automatische Mikrofon-Lautstärke"
+msgstr "Automatic microphone level"
+
+msgid "Gleicht leises und lautes Sprechen aus."
+msgstr "Evens out quiet and loud speech."
+
+msgid "Aufnehmen und anhören"
+msgstr "Record and listen"
+
+msgid "Nimmt 4 Sekunden auf und spielt sie dir vor."
+msgstr "Records 4 seconds and plays them back to you."
+
+msgid "Kein Ausgabegerät gefunden"
+msgstr "No output device found"
+
+msgid "Kein Mikrofon gefunden"
+msgstr "No microphone found"
+
+msgid "Lautstärke"
+msgstr "Volume"
+
+msgid "Stumm"
+msgstr "Mute"
+
+msgid "Rauschunterdrückung aktiv – „Mikrofon mit Rauschunterdrückung“ ist jetzt Standard."
+msgstr "Noise suppression on – “Microphone with noise suppression” is now the default."
+
+msgid "Wiedergabe …"
+msgstr "Playing back …"
+
+msgid "Rauschunterdrückung konnte nicht gestartet werden."
+msgstr "Noise suppression could not be started."

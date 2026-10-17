@@ -1,0 +1,4 @@
+[GSConnect]
+title=GSConnect (KDE Connect)
+description=Handy-Kopplung: Dateien, Benachrichtigungen, SMS und Fernbedienung
+ports=1714:1764/tcp|1714:1764/udp

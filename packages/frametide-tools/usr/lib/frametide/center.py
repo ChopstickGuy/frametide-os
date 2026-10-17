@@ -368,6 +368,150 @@ class GamesPage(Adw.PreferencesPage):
         return False
 
 
+# ========================================================================= Audio
+
+class AudioPage(Adw.PreferencesPage):
+    """Ausgabe, Mikrofon, Rauschunterdrückung und Mikrofontest an einem Ort."""
+
+    def __init__(self, window):
+        super().__init__(title=_("Audio"), icon_name="audio-volume-high-symbolic")
+        import audio
+        self.audio, self.window = audio, window
+        self.signature = None
+
+        self.out_group = group(_("Ausgabe"), _("Wohin der Ton geht – Kopfhörer, Headset oder Lautsprecher."))
+        self.in_group = group(_("Mikrofon"))
+        self.add(self.out_group)
+        self.add(self.in_group)
+        self.dynamic_rows = []
+
+        ns = group(_("Rauschunterdrückung"),
+                   _("Entfernt Tastatur, Lüfter und Hintergrundgeräusche aus deinem Mikrofon – "
+                     "für Discord, Teams und Spiele-Chat. Läuft direkt im Audiosystem, ohne Zusatzprogramm."))
+        self.ns_switch = Adw.SwitchRow(title=_("Hintergrundgeräusche entfernen"),
+                                       subtitle=_("Beim Umschalten ist der Ton kurz weg."),
+                                       active=audio.noise_suppression_enabled())
+        self.agc_switch = Adw.SwitchRow(title=_("Automatische Mikrofon-Lautstärke"),
+                                        subtitle=_("Gleicht leises und lautes Sprechen aus."),
+                                        active=audio.auto_gain_enabled(),
+                                        sensitive=audio.noise_suppression_enabled())
+        self.ns_switch.connect("notify::active", self.on_noise)
+        self.agc_switch.connect("notify::active", self.on_noise)
+        ns.add(self.ns_switch)
+        ns.add(self.agc_switch)
+        self.add(ns)
+
+        test = group(_("Mikrofon testen"))
+        self.test_row = Adw.ActionRow(title=_("Aufnehmen und anhören"),
+                                      subtitle=_("Nimmt 4 Sekunden auf und spielt sie dir vor."))
+        self.test_btn = button(_("Test starten"), "suggested-action", self.mic_test)
+        self.test_row.add_suffix(self.test_btn)
+        test.add(self.test_row)
+        self.add(test)
+
+        self.refresh()
+        GLib.timeout_add_seconds(3, self.refresh)
+
+    # ------------------------------------------------------------- Geräte
+    def refresh(self):
+        ft.in_thread(self.audio.devices, self.show)
+        return True
+
+    def show(self, devs):
+        if isinstance(devs, Exception):
+            return False
+        sig = json.dumps(devs, sort_keys=True)
+        if sig == self.signature:
+            return False  # nichts geändert → Regler nicht unter den Fingern neu aufbauen
+        self.signature = sig
+        for grp, row in self.dynamic_rows:
+            grp.remove(row)
+        self.dynamic_rows = []
+        for grp, items, empty in ((self.out_group, devs["sinks"], _("Kein Ausgabegerät gefunden")),
+                                  (self.in_group, devs["sources"], _("Kein Mikrofon gefunden"))):
+            first = None
+            default = None
+            for dev in items:
+                icon = ("bluetooth-active-symbolic" if dev["bluetooth"] else
+                        "audio-headset-symbolic" if dev["usb"] else
+                        "audio-speakers-symbolic" if grp is self.out_group else "audio-input-microphone-symbolic")
+                row = Adw.ActionRow(title=dev["description"])
+                row.add_prefix(Gtk.Image(icon_name=icon))
+                check = Gtk.CheckButton(active=dev["default"], valign=Gtk.Align.CENTER)
+                if first:
+                    check.set_group(first)
+                first = first or check
+                check.connect("toggled", lambda c, d=dev: c.get_active() and not d["default"]
+                              and (self.audio.set_default(d["id"]), self.refresh()))
+                row.add_suffix(check)
+                row.set_activatable_widget(check)
+                grp.add(row)
+                self.dynamic_rows.append((grp, row))
+                if dev["default"]:
+                    default = dev
+            if not items:
+                row = Adw.ActionRow(title=empty)
+                grp.add(row)
+                self.dynamic_rows.append((grp, row))
+            if default:
+                row = self.volume_row(default)
+                grp.add(row)
+                self.dynamic_rows.append((grp, row))
+        return False
+
+    def volume_row(self, dev):
+        vol, muted = self.audio.volume(dev["id"])
+        row = Adw.ActionRow(title=_("Lautstärke"))
+        scale = Gtk.Scale.new_with_range(Gtk.Orientation.HORIZONTAL, 0, 100, 1)
+        scale.set_value(round(vol * 100))
+        scale.set_hexpand(True)
+        scale.set_size_request(260, -1)
+        scale.set_draw_value(False)
+        scale.connect("value-changed", lambda s: self.audio.set_volume(dev["id"], s.get_value() / 100))
+        mute = Gtk.ToggleButton(icon_name="audio-volume-muted-symbolic", active=muted, valign=Gtk.Align.CENTER,
+                                tooltip_text=_("Stumm"), css_classes=["flat"])
+        mute.connect("toggled", lambda b: self.audio.set_mute(dev["id"], b.get_active()))
+        row.add_suffix(scale)
+        row.add_suffix(mute)
+        return row
+
+    # ------------------------------------------------- Rauschunterdrückung
+    def on_noise(self, _switch, _param):
+        enabled, gain = self.ns_switch.get_active(), self.agc_switch.get_active()
+        self.agc_switch.set_sensitive(enabled)
+        self.ns_switch.set_sensitive(False)
+        ft.in_thread(lambda: self.audio.set_noise_suppression(enabled, gain), self.noise_done)
+
+    def noise_done(self, ok):
+        self.ns_switch.set_sensitive(True)
+        self.signature = None
+        self.refresh()
+        if ok is True and self.ns_switch.get_active():
+            self.window.toast(_("Rauschunterdrückung aktiv – „Mikrofon mit Rauschunterdrückung“ ist jetzt Standard."))
+        elif isinstance(ok, Exception) or ok is False:
+            self.window.toast(_("Rauschunterdrückung konnte nicht gestartet werden."))
+        return False
+
+    # ------------------------------------------------------------ Mikrofontest
+    def mic_test(self):
+        self.test_btn.set_sensitive(False)
+        self.test_row.set_subtitle(_("Sprich jetzt … (4 Sekunden)"))
+        proc = Gio.Subprocess.new(self.audio.record_argv(), Gio.SubprocessFlags.NONE)
+
+        def stop():
+            proc.send_signal(2)  # SIGINT → Datei wird sauber abgeschlossen
+            GLib.timeout_add(400, play)
+            return False
+
+        def play():
+            self.test_row.set_subtitle(_("Wiedergabe …"))
+            player = Gio.Subprocess.new(self.audio.play_argv(), Gio.SubprocessFlags.NONE)
+            player.wait_async(None, lambda *_a: (self.test_btn.set_sensitive(True),
+                                                 self.test_row.set_subtitle(_("Nimmt 4 Sekunden auf und spielt sie dir vor."))))
+            return False
+        GLib.timeout_add(4000, stop)
+
+
 # ================================================================= RGB & Lüfter
 
 class HardwarePage(Adw.PreferencesPage):
@@ -595,11 +739,11 @@ class SystemPage(Adw.PreferencesPage):
 class CenterWindow(Adw.ApplicationWindow):
     def __init__(self, application, page=None):
         super().__init__(application=application, title="Frametide Center",
-                         default_width=1040, default_height=780)
+                         default_width=1120, default_height=800)
         self.toasts = Adw.ToastOverlay()
         stack = Adw.ViewStack()
         for name, widget in (("updates", UpdatesPage()), ("drivers", DriversPage()), ("games", GamesPage()),
-                             ("hardware", HardwarePage(self)), ("system", SystemPage())):
+                             ("audio", AudioPage(self)), ("hardware", HardwarePage(self)), ("system", SystemPage())):
             stack.add_titled_with_icon(widget, name, widget.get_title(), widget.get_icon_name())
         header = Adw.HeaderBar(title_widget=Adw.ViewSwitcher(stack=stack, policy=Adw.ViewSwitcherPolicy.WIDE))
         view = Adw.ToolbarView(content=stack)
