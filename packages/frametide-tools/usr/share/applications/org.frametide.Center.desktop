@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
-Name=Control Panel
-Name[de]=Systemsteuerung
+Name=Control
+Name[de]=Steuerung
 Comment=Updates, drivers, RGB lighting and fans
 Comment[de]=Updates, Treiber, RGB-Beleuchtung und Lüfter
 Exec=frametide-center %u

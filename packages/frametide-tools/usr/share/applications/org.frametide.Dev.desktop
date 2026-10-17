@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
-Name=Dev Center
-Name[de]=Entwicklerzentrale
+Name=Develop
+Name[de]=Entwickeln
 Comment=Git & SSH setup, languages, local databases, ports and new projects
 Comment[de]=Git & SSH, Programmiersprachen, lokale Datenbanken, Ports und neue Projekte
 Exec=frametide-dev
