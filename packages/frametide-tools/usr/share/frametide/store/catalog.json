@@ -162,6 +162,125 @@
      "source": "flatpak",
      "ref": "io.github.radiolamp.mangojuice",
      "summary_en": "Modern interface for MangoHud"
+    },
+    {
+     "id": "modrinth",
+     "name": "Modrinth App",
+     "summary": "Minecraft mit Mods und Modpacks – schnell und werbefrei",
+     "summary_en": "Modded Minecraft and modpacks – fast and ad-free",
+     "icon": "com.modrinth.ModrinthApp",
+     "source": "flatpak",
+     "ref": "com.modrinth.ModrinthApp",
+     "featured": true
+    },
+    {
+     "id": "curseforge",
+     "name": "CurseForge",
+     "summary": "Minecraft-Modpacks und Mods von CurseForge",
+     "summary_en": "Minecraft modpacks and mods from CurseForge",
+     "icon": "curseforge",
+     "source": "vendor",
+     "ref": "curseforge",
+     "package": "curseforge"
+    },
+    {
+     "id": "atlauncher",
+     "name": "ATLauncher",
+     "summary": "Minecraft-Launcher mit vielen fertigen Modpacks",
+     "summary_en": "Minecraft launcher with many ready-made modpacks",
+     "icon": "com.atlauncher.ATLauncher",
+     "source": "flatpak",
+     "ref": "com.atlauncher.ATLauncher"
+    },
+    {
+     "id": "cartridges",
+     "name": "Cartridges",
+     "summary": "Alle Spiele aus allen Launchern in einer Bibliothek",
+     "summary_en": "All games from every launcher in one library",
+     "icon": "page.kramo.Cartridges",
+     "source": "flatpak",
+     "ref": "page.kramo.Cartridges"
+    },
+    {
+     "id": "ludusavi",
+     "name": "Ludusavi",
+     "summary": "Spielstände sichern und wiederherstellen",
+     "summary_en": "Back up and restore your game saves",
+     "icon": "com.github.mtkennerly.ludusavi",
+     "source": "flatpak",
+     "ref": "com.github.mtkennerly.ludusavi"
+    },
+    {
+     "id": "protontricks",
+     "name": "Protontricks",
+     "summary": "Fixes und Zusatzprogramme für Proton-Spiele",
+     "summary_en": "Fixes and extras for Proton games",
+     "icon": "com.github.Matoking.protontricks",
+     "source": "flatpak",
+     "ref": "com.github.Matoking.protontricks"
+    },
+    {
+     "id": "moonlight",
+     "name": "Moonlight",
+     "summary": "Spiele vom Gaming-PC auf andere Geräte streamen",
+     "summary_en": "Stream games from your gaming PC to other devices",
+     "icon": "com.moonlight_stream.Moonlight",
+     "source": "flatpak",
+     "ref": "com.moonlight_stream.Moonlight"
+    },
+    {
+     "id": "sunshine",
+     "name": "Sunshine",
+     "summary": "Diesen PC zum Streaming-Host für Moonlight machen",
+     "summary_en": "Turn this PC into a streaming host for Moonlight",
+     "icon": "dev.lizardbyte.app.Sunshine",
+     "source": "flatpak",
+     "ref": "dev.lizardbyte.app.Sunshine"
+    },
+    {
+     "id": "parsec",
+     "name": "Parsec",
+     "summary": "Spielen und arbeiten am entfernten PC mit niedriger Latenz",
+     "summary_en": "Low-latency remote play and remote desktop",
+     "icon": "com.parsecgaming.parsec",
+     "source": "flatpak",
+     "ref": "com.parsecgaming.parsec"
+    },
+    {
+     "id": "retrodeck",
+     "name": "RetroDECK",
+     "summary": "Alle Retro-Konsolen fertig eingerichtet",
+     "summary_en": "Every retro console, ready to go",
+     "icon": "net.retrodeck.retrodeck",
+     "source": "flatpak",
+     "ref": "net.retrodeck.retrodeck"
+    },
+    {
+     "id": "cemu",
+     "name": "Cemu",
+     "summary": "Wii-U-Emulator",
+     "summary_en": "Wii U emulator",
+     "icon": "info.cemu.Cemu",
+     "source": "flatpak",
+     "ref": "info.cemu.Cemu"
+    },
+    {
+     "id": "xemu",
+     "name": "xemu",
+     "summary": "Original-Xbox-Emulator",
+     "summary_en": "Original Xbox emulator",
+     "icon": "app.xemu.xemu",
+     "source": "flatpak",
+     "ref": "app.xemu.xemu"
+    },
+    {
+     "id": "vesktop",
+     "name": "Vesktop",
+     "summary": "Discord mit Bildschirmübertragung inkl. Ton unter Linux",
+     "summary_en": "Discord with screen sharing including audio on Linux",
+     "icon": "dev.vencord.Vesktop",
+     "source": "flatpak",
+     "ref": "dev.vencord.Vesktop"
     }
    ],
    "name_en": "Gaming"
@@ -263,6 +382,60 @@
      "source": "flatpak",
      "ref": "com.github.xournalpp.xournalpp",
      "summary_en": "Handwritten notes and PDF annotation"
+    },
+    {
+     "id": "anki",
+     "name": "Anki",
+     "summary": "Karteikarten mit intelligenter Wiederholung",
+     "summary_en": "Flash cards with spaced repetition",
+     "icon": "net.ankiweb.Anki",
+     "source": "flatpak",
+     "ref": "net.ankiweb.Anki"
+    },
+    {
+     "id": "rnote",
+     "name": "Rnote",
+     "summary": "Handschriftliche Notizen und Skizzen (ideal mit Stift)",
+     "summary_en": "Handwritten notes and sketches (great with a pen)",
+     "icon": "com.github.flxzt.rnote",
+     "source": "flatpak",
+     "ref": "com.github.flxzt.rnote"
+    },
+    {
+     "id": "okular",
+     "name": "Okular",
+     "summary": "Dokumente und PDFs ansehen und kommentieren",
+     "summary_en": "View and annotate documents and PDFs",
+     "icon": "org.kde.okular",
+     "source": "flatpak",
+     "ref": "org.kde.okular"
+    },
+    {
+     "id": "foliate",
+     "name": "Foliate",
+     "summary": "E-Books schön lesen",
+     "summary_en": "Read e-books beautifully",
+     "icon": "com.github.johnfactotum.Foliate",
+     "source": "flatpak",
+     "ref": "com.github.johnfactotum.Foliate"
+    },
+    {
+     "id": "authenticator",
+     "name": "Authenticator",
+     "summary": "Zwei-Faktor-Codes erzeugen",
+     "summary_en": "Generate two-factor codes",
+     "icon": "com.belmoussaoui.Authenticator",
+     "source": "flatpak",
+     "ref": "com.belmoussaoui.Authenticator"
+    },
+    {
+     "id": "secrets",
+     "name": "Secrets",
+     "summary": "Passwörter verwalten (KeePass-kompatibel)",
+     "summary_en": "Manage passwords (KeePass compatible)",
+     "icon": "org.gnome.World.Secrets",
+     "source": "flatpak",
+     "ref": "org.gnome.World.Secrets"
     }
    ],
    "name_en": "Office"
@@ -455,6 +628,79 @@
      "source": "flatpak",
      "ref": "com.github.PintaProject.Pinta",
      "summary_en": "Simple image editor"
+    },
+    {
+     "id": "upscayl",
+     "name": "Upscayl",
+     "summary": "Bilder mit KI hochskalieren – lokal und kostenlos",
+     "summary_en": "Upscale images with AI – local and free",
+     "icon": "org.upscayl.Upscayl",
+     "source": "flatpak",
+     "ref": "org.upscayl.Upscayl",
+     "featured": true
+    },
+    {
+     "id": "curtail",
+     "name": "Curtail",
+     "summary": "Bilder verkleinern ohne sichtbaren Qualitätsverlust",
+     "summary_en": "Compress images without visible quality loss",
+     "icon": "com.github.huluti.Curtail",
+     "source": "flatpak",
+     "ref": "com.github.huluti.Curtail"
+    },
+    {
+     "id": "tenacity",
+     "name": "Tenacity",
+     "summary": "Audio aufnehmen und schneiden",
+     "summary_en": "Record and edit audio",
+     "icon": "org.tenacityaudio.Tenacity",
+     "source": "flatpak",
+     "ref": "org.tenacityaudio.Tenacity"
+    },
+    {
+     "id": "lmms",
+     "name": "LMMS",
+     "summary": "Musik produzieren – Beats, Synths, Sequencer",
+     "summary_en": "Make music – beats, synths, sequencer",
+     "icon": "io.lmms.LMMS",
+     "source": "flatpak",
+     "ref": "io.lmms.LMMS"
+    },
+    {
+     "id": "musescore",
+     "name": "MuseScore",
+     "summary": "Noten schreiben und abspielen",
+     "summary_en": "Write and play sheet music",
+     "icon": "org.musescore.MuseScore",
+     "source": "flatpak",
+     "ref": "org.musescore.MuseScore"
+    },
+    {
+     "id": "cura",
+     "name": "UltiMaker Cura",
+     "summary": "3D-Druck vorbereiten (Slicer)",
+     "summary_en": "Prepare 3D prints (slicer)",
+     "icon": "com.ultimaker.cura",
+     "source": "flatpak",
+     "ref": "com.ultimaker.cura"
+    },
+    {
+     "id": "prusaslicer",
+     "name": "PrusaSlicer",
+     "summary": "3D-Druck-Slicer für viele Drucker",
+     "summary_en": "3D printing slicer for many printers",
+     "icon": "com.prusa3d.PrusaSlicer",
+     "source": "flatpak",
+     "ref": "com.prusa3d.PrusaSlicer"
+    },
+    {
+     "id": "digikam",
+     "name": "digiKam",
+     "summary": "Große Fotosammlungen verwalten",
+     "summary_en": "Manage large photo collections",
+     "icon": "org.kde.digikam",
+     "source": "flatpak",
+     "ref": "org.kde.digikam"
     }
    ],
    "name_en": "Creative"
@@ -562,6 +808,55 @@
      "source": "flatpak",
      "ref": "org.localsend.localsend_app",
      "summary_en": "Send files to phones and PCs on your network"
+    },
+    {
+     "id": "net-merge",
+     "name": "net-merge",
+     "summary": "Alle Internetverbindungen gleichzeitig: WLAN, LAN und Handy-Tethering bündeln",
+     "summary_en": "Use all connections at once: bundle Wi-Fi, Ethernet and phone tethering",
+     "icon": "net-merge",
+     "source": "github",
+     "ref": "net-merge",
+     "experimental": true,
+     "featured": true,
+     "warning": "net-merge ist erst wenige Tage alt (github.com/rohit267/net-merge). Es verteilt neue Verbindungen auf alle Leitungen – Steam-Downloads, Browser und Torrents werden schneller, ein einzelner großer Download nicht. Bedienung über das Symbol oben rechts. Bei Problemen einfach wieder entfernen.",
+     "warning_en": "net-merge is only a few days old (github.com/rohit267/net-merge). It spreads new connections over all links – Steam downloads, browsers and torrents get faster, a single large download does not. Control it from the icon at the top right. If anything goes wrong, just remove it again."
+    },
+    {
+     "id": "zapzap",
+     "name": "ZapZap",
+     "summary": "WhatsApp als Desktop-App",
+     "summary_en": "WhatsApp as a desktop app",
+     "icon": "com.rtosta.zapzap",
+     "source": "flatpak",
+     "ref": "com.rtosta.zapzap"
+    },
+    {
+     "id": "rustdesk",
+     "name": "RustDesk",
+     "summary": "Fernwartung – wie TeamViewer, aber Open Source",
+     "summary_en": "Remote desktop – like TeamViewer, but open source",
+     "icon": "com.rustdesk.RustDesk",
+     "source": "flatpak",
+     "ref": "com.rustdesk.RustDesk"
+    },
+    {
+     "id": "remmina",
+     "name": "Remmina",
+     "summary": "Remote-Desktop (RDP, VNC, SSH)",
+     "summary_en": "Remote desktop (RDP, VNC, SSH)",
+     "icon": "org.remmina.Remmina",
+     "source": "flatpak",
+     "ref": "org.remmina.Remmina"
+    },
+    {
+     "id": "videodownloader",
+     "name": "Video Downloader",
+     "summary": "Videos aus dem Web herunterladen",
+     "summary_en": "Download web videos",
+     "icon": "com.github.unrud.VideoDownloader",
+     "source": "flatpak",
+     "ref": "com.github.unrud.VideoDownloader"
     }
    ],
    "name_en": "Internet"
@@ -772,6 +1067,61 @@
      "source": "apt",
      "ref": "neovim",
      "summary_en": "Terminal editor"
+    },
+    {
+     "id": "vscodium",
+     "name": "VSCodium",
+     "summary": "VS Code ohne Telemetrie",
+     "summary_en": "VS Code without telemetry",
+     "icon": "com.vscodium.codium",
+     "source": "flatpak",
+     "ref": "com.vscodium.codium"
+    },
+    {
+     "id": "intellij",
+     "name": "IntelliJ IDEA",
+     "summary": "Java- und Kotlin-Entwicklung",
+     "summary_en": "Java and Kotlin development",
+     "icon": "com.jetbrains.IntelliJ-IDEA-Community",
+     "source": "flatpak",
+     "ref": "com.jetbrains.IntelliJ-IDEA-Community"
+    },
+    {
+     "id": "pycharm",
+     "name": "PyCharm",
+     "summary": "Python-Entwicklungsumgebung",
+     "summary_en": "Python IDE",
+     "icon": "com.jetbrains.PyCharm-Community",
+     "source": "flatpak",
+     "ref": "com.jetbrains.PyCharm-Community"
+    },
+    {
+     "id": "insomnia",
+     "name": "Insomnia",
+     "summary": "APIs testen (REST, GraphQL, gRPC)",
+     "summary_en": "Test APIs (REST, GraphQL, gRPC)",
+     "icon": "rest.insomnia.Insomnia",
+     "source": "flatpak",
+     "ref": "rest.insomnia.Insomnia"
+    },
+    {
+     "id": "wireshark",
+     "name": "Wireshark",
+     "summary": "Netzwerkverkehr analysieren",
+     "summary_en": "Analyse network traffic",
+     "icon": "org.wireshark.Wireshark",
+     "source": "flatpak",
+     "ref": "org.wireshark.Wireshark"
+    },
+    {
+     "id": "alpaca",
+     "name": "Alpaca",
+     "summary": "Lokale KI-Modelle chatten – offline und privat",
+     "summary_en": "Chat with local AI models – offline and private",
+     "icon": "com.jeffser.Alpaca",
+     "source": "flatpak",
+     "ref": "com.jeffser.Alpaca",
+     "featured": true
     }
    ],
    "name_en": "Development"
@@ -1032,6 +1382,60 @@
      "source": "flatpak",
      "ref": "org.keepassxc.KeePassXC",
      "summary_en": "Offline password manager"
+    },
+    {
+     "id": "gearlever",
+     "name": "Gear Lever",
+     "summary": "AppImages installieren und verwalten",
+     "summary_en": "Install and manage AppImages",
+     "icon": "it.mijorus.gearlever",
+     "source": "flatpak",
+     "ref": "it.mijorus.gearlever"
+    },
+    {
+     "id": "boxbuddy",
+     "name": "BoxBuddy",
+     "summary": "Distrobox-Container grafisch verwalten",
+     "summary_en": "Manage Distrobox containers visually",
+     "icon": "io.github.dvlv.boxbuddyrs",
+     "source": "flatpak",
+     "ref": "io.github.dvlv.boxbuddyrs"
+    },
+    {
+     "id": "dejadup",
+     "name": "Déjà Dup",
+     "summary": "Einfache, automatische Backups",
+     "summary_en": "Simple, automatic backups",
+     "icon": "org.gnome.DejaDup",
+     "source": "flatpak",
+     "ref": "org.gnome.DejaDup"
+    },
+    {
+     "id": "hidamari",
+     "name": "Hidamari",
+     "summary": "Video-Hintergrundbilder",
+     "summary_en": "Video wallpapers",
+     "icon": "io.github.jeffshee.Hidamari",
+     "source": "flatpak",
+     "ref": "io.github.jeffshee.Hidamari"
+    },
+    {
+     "id": "frog",
+     "name": "Frog",
+     "summary": "Text aus Bildern und Screenshots kopieren",
+     "summary_en": "Copy text from images and screenshots",
+     "icon": "com.github.tenderowl.frog",
+     "source": "flatpak",
+     "ref": "com.github.tenderowl.frog"
+    },
+    {
+     "id": "gdmsettings",
+     "name": "GDM Settings",
+     "summary": "Anmeldebildschirm anpassen",
+     "summary_en": "Customise the login screen",
+     "icon": "io.github.realmazharhussain.GdmSettings",
+     "source": "flatpak",
+     "ref": "io.github.realmazharhussain.GdmSettings"
     }
    ],
    "name_en": "System & Hardware"

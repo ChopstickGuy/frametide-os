@@ -869,7 +869,7 @@ msgstr ""
 msgid "Erstellt mit Frametide OS ({template})."
 msgstr ""
 
-#: frametide_common.py:231
+#: frametide_common.py:274
 msgid "Details anzeigen"
 msgstr ""
 
@@ -1153,95 +1153,115 @@ msgstr ""
 msgid "{ok} von {n} WLAN-Netzwerken"
 msgstr ""
 
-#: store.py:283
+#: store.py:14
+msgid "Hersteller"
+msgstr ""
+
+#: store.py:299
 msgid "Abbrechen"
 msgstr ""
 
-#: store.py:284
+#: store.py:300
+msgid "Trotzdem installieren"
+msgstr ""
+
+#: store.py:309
 msgid "Entfernen"
 msgstr ""
 
-#: store.py:302
+#: store.py:327
 msgid "Suche"
 msgstr ""
 
-#: store.py:108
+#: store.py:114
 msgid "Entdecken"
 msgstr ""
 
-#: store.py:110
+#: store.py:116
 msgid "Installiert"
 msgstr ""
 
-#: store.py:123
+#: store.py:129
 msgid "Apps suchen – auch auf ganz Flathub"
 msgstr ""
 
-#: store.py:262
+#: store.py:276
 msgid "{app} wurde installiert"
 msgstr ""
 
-#: store.py:262
+#: store.py:276
 msgid "{app} wurde entfernt"
 msgstr ""
 
-#: store.py:282
+#: store.py:307
 msgid "Deine eigenen Dateien bleiben erhalten."
 msgstr ""
 
-#: store.py:306
+#: store.py:331
 msgid "Im Store"
 msgstr ""
 
-#: store.py:326
+#: store.py:351
 msgid "Weitere Apps von Flathub"
 msgstr ""
 
-#: store.py:184
+#: store.py:190
 msgid "Aus dem Store installierte Apps. Updates gibt es im Frametide Center."
 msgstr ""
 
-#: store.py:278
+#: store.py:292
 msgid "Kein Terminal gefunden"
 msgstr ""
 
-#: store.py:162
+#: store.py:298
+msgid "Diese Software ist noch sehr neu. Sie kann Fehler haben – bei Problemen einfach wieder entfernen."
+msgstr ""
+
+#: store.py:35
+msgid "Experimentell"
+msgstr ""
+
+#: store.py:168
 msgid "Willkommen im Frametide Store"
 msgstr ""
 
-#: store.py:164
+#: store.py:170
 msgid "Spiele, Kreativ-Apps, Office und Werkzeuge – geprüft und mit einem Klick installiert."
 msgstr ""
 
-#: store.py:170
+#: store.py:176
 msgid "Komplettes ArtCraft-Paket installieren"
 msgstr ""
 
-#: store.py:174
+#: store.py:180
 msgid "Alle installieren"
 msgstr ""
 
-#: store.py:281
+#: store.py:296
+msgid "{app} ist experimentell"
+msgstr ""
+
+#: store.py:306
 msgid "{app} entfernen?"
 msgstr ""
 
-#: store.py:58
+#: store.py:62
 msgid "Wartet"
 msgstr ""
 
-#: store.py:267
+#: store.py:281
 msgid "Fehlercode {code}"
 msgstr ""
 
-#: store.py:329
+#: store.py:354
 msgid "Versuch einen anderen Suchbegriff."
 msgstr ""
 
-#: store.py:58
+#: store.py:62
 msgid "Läuft …"
 msgstr ""
 
-#: store.py:171
+#: store.py:177
 msgid "{n} weitere Craft-Apps (Foto, Video, Vektor, Audio, CAD …)"
 msgstr ""
 

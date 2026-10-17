@@ -24,10 +24,19 @@ FLATHUB_EQUIV = {
     "piper": "org.freedesktop.Piper", "solaar": "io.github.pwr_solaar.solaar",
     "openrazer": "app.polychromatic.controller", "corectrl": "org.corectrl.CoreCtrl",
     "gparted": "org.gnome.GParted", "timeshift": "com.linuxmint.timeshift",
+    "resources": "net.nokyan.Resources",
+}
+
+
+# Feste Logo-Adressen für Apps ohne Flathub-Eintrag
+ICON_URLS = {
+    "net-merge": "https://raw.githubusercontent.com/rohit267/net-merge/main/docs/icon.png",
 }
 
 
 def icon_url(app):
+    if app["id"] in ICON_URLS:
+        return ICON_URLS[app["id"]]
     if app["source"] == "craft":
         repo = CRAFT_REPOS.get(app["ref"], app["ref"])
         return (f"https://raw.githubusercontent.com/storytold/{repo}/HEAD/assets/app-icon/"

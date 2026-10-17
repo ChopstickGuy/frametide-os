@@ -866,8 +866,14 @@ msgstr "Step {i} of {n}"
 msgid "{ok} von {n} WLAN-Netzwerken"
 msgstr "{ok} of {n} Wi-Fi networks"
 
+msgid "Hersteller"
+msgstr "Vendor"
+
 msgid "Abbrechen"
 msgstr "Cancel"
+
+msgid "Trotzdem installieren"
+msgstr "Install anyway"
 
 msgid "Entfernen"
 msgstr "Remove"
@@ -905,6 +911,12 @@ msgstr "Apps installed from the store. Updates are in Frametide Center."
 msgid "Kein Terminal gefunden"
 msgstr "No terminal found"
 
+msgid "Diese Software ist noch sehr neu. Sie kann Fehler haben – bei Problemen einfach wieder entfernen."
+msgstr "This software is still very new and may have bugs – if anything goes wrong, just remove it again."
+
+msgid "Experimentell"
+msgstr "Experimental"
+
 msgid "Willkommen im Frametide Store"
 msgstr "Welcome to the Frametide Store"
 
@@ -916,6 +928,9 @@ msgstr "Install the complete ArtCraft suite"
 
 msgid "Alle installieren"
 msgstr "Install all"
+
+msgid "{app} ist experimentell"
+msgstr "{app} is experimental"
 
 msgid "{app} entfernen?"
 msgstr "Remove {app}?"

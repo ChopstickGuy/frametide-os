@@ -10,7 +10,8 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import frametide_common as ft  # noqa: E402
 from frametide_common import Adw, Gio, Gtk, _  # noqa: E402
 
-SOURCE_LABEL = {"apt": "Ubuntu", "flatpak": "Flathub", "craft": "ArtCraft", "devbox": "Container"}
+SOURCE_LABEL = {"apt": "Ubuntu", "flatpak": "Flathub", "craft": "ArtCraft", "devbox": "Container",
+                "vendor": _("Hersteller"), "github": "GitHub"}
 
 
 class AppCard(Gtk.Box):
@@ -28,8 +29,11 @@ class AppCard(Gtk.Box):
         text.append(Gtk.Label(label=ft.localized(app, "summary"), xalign=0, wrap=True, lines=2,
                               ellipsize=3, css_classes=["dim-label", "caption"],
                               max_width_chars=17, width_chars=16))
-        text.append(Gtk.Label(label=SOURCE_LABEL[app["source"]], xalign=0, halign=Gtk.Align.START,
-                              css_classes=["ft-badge", "caption"]))
+        badges = Gtk.Box(spacing=6, halign=Gtk.Align.START)
+        badges.append(Gtk.Label(label=SOURCE_LABEL[app["source"]], css_classes=["ft-badge", "caption"]))
+        if app.get("experimental"):
+            badges.append(Gtk.Label(label=_("Experimentell"), css_classes=["ft-badge", "caption", "warning"]))
+        text.append(badges)
         self.append(text)
 
         actions = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=4, valign=Gtk.Align.CENTER)
@@ -80,6 +84,8 @@ class AppCard(Gtk.Box):
             self.store.open_container(self.app)
         elif self.installed():
             self.store.confirm_remove(self.app)
+        elif self.app.get("experimental"):
+            self.store.confirm_experimental(self.app)
         else:
             self.store.enqueue(self.app, "install")
 
@@ -189,7 +195,7 @@ class StoreWindow(Adw.ApplicationWindow):
 
     # ------------------------------------------------------------- Status
     def refresh_state(self):
-        apt = [a["ref"] for a in self.apps if a["source"] in ("apt", "craft")]
+        apt = [a.get("package", a["ref"]) for a in self.apps if a["source"] in ("apt", "craft", "vendor")]
         self.apt_installed = ft.apt_installed(apt)
         self.flatpak_installed = ft.flatpak_installed()
         names = ft.run(["podman", "ps", "-a", "--format", "{{.Names}}"]) if shutil.which("podman") else ""
@@ -200,7 +206,9 @@ class StoreWindow(Adw.ApplicationWindow):
             return app["ref"] in self.flatpak_installed
         if app["source"] == "devbox":
             return app["ref"] in self.containers
-        return app["ref"] in self.apt_installed
+        if app["source"] == "github":
+            return os.path.exists(f"/opt/frametide/tools/{app['ref']}/VERSION")
+        return app.get("package", app["ref"]) in self.apt_installed
 
     def queue_ids(self):
         return {a["id"] for a, _action in self.queue}
@@ -240,6 +248,12 @@ class StoreWindow(Adw.ApplicationWindow):
             argv = ["distrobox", "rm", "--force", ref]
         elif src == "craft" and action == "install":
             argv = ft.helper_argv("craft-install", ref)
+        elif src == "vendor" and action == "install":
+            argv = ft.helper_argv("vendor-install", ref)
+        elif src == "vendor":
+            argv = ft.helper_argv("remove", app.get("package", ref))
+        elif src == "github":
+            argv = ft.helper_argv("tool-install" if action == "install" else "tool-remove", ref)
         else:
             argv = ft.helper_argv("install" if action == "install" else "remove", ref)
         self.last_lines, self.progress = [], None
@@ -276,6 +290,17 @@ class StoreWindow(Adw.ApplicationWindow):
                 Gio.Subprocess.new(argv, Gio.SubprocessFlags.NONE)
                 return
         self.toasts.add_toast(Adw.Toast(title=_("Kein Terminal gefunden"), timeout=4))
+
+    def confirm_experimental(self, app):
+        dialog = Adw.MessageDialog(
+            transient_for=self, heading=_("{app} ist experimentell").format(app=app["name"]),
+            body=ft.localized(app, "warning") if app.get("warning") else
+            _("Diese Software ist noch sehr neu. Sie kann Fehler haben – bei Problemen einfach wieder entfernen."))
+        dialog.add_response("cancel", _("Abbrechen"))
+        dialog.add_response("install", _("Trotzdem installieren"))
+        dialog.set_response_appearance("install", Adw.ResponseAppearance.SUGGESTED)
+        dialog.connect("response", lambda _d, r: r == "install" and self.enqueue(app, "install"))
+        dialog.present()
 
     def confirm_remove(self, app):
         dialog = Adw.MessageDialog(transient_for=self, heading=_("{app} entfernen?").format(app=app["name"]),

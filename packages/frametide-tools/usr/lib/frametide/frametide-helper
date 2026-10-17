@@ -20,6 +20,20 @@ CRAFT_REPOS = {
     "soundcraft": "soundcraft", "designcraft": "designcraft", "figcraft": "figcraft",
     "cadcraft": "cadcraft", "artcraft-launcher": "craft-launcher",
 }
+# Hersteller-Pakete (.deb von der offiziellen Adresse; der Paketname wird geprüft)
+VENDOR_DEBS = {
+    "curseforge": ("https://curseforge.overwolf.com/downloads/curseforge-latest-linux.deb", "curseforge"),
+}
+# Werkzeuge aus GitHub-Releases (SHA256-geprüft, nur die erwartete Programmdatei wird entpackt)
+GITHUB_TOOLS = {
+    "net-merge": {"repo": "rohit267/net-merge", "asset": r"-linux-x86_64\.tar\.gz$", "binary": "net-merge",
+                  "caps": "cap_net_admin,cap_net_raw+ep", "exec": "net-merge tray",
+                  "name": "net-merge", "comment": "Alle Internetverbindungen gleichzeitig nutzen",
+                  "icon": "network-transmit-receive"},
+}
+TOOLS_DIR = "/opt/frametide/tools"
+LOCAL_BIN = "/usr/local/bin"
+LOCAL_APPS = "/usr/local/share/applications"
 PKG_RE = re.compile(r"^[a-z0-9][a-z0-9+.-]{1,80}(:i386)?$")
 DRIVER_RE = re.compile(r"^nvidia-driver-(\d+)(-open|-server|-server-open)?$")
 FAN_DRIVERS = {"it87-dkms", "nct6687d-dkms"}
@@ -49,6 +63,7 @@ EN = {
     "Firmware-Updates (fwupd)": "Firmware updates (fwupd)",
     "gespeichert, Einstellungen werden angewendet": "saved, applying settings",
     "Fertig": "Done",
+    "wird aktualisiert": "updating",
 }
 
 
@@ -124,6 +139,92 @@ def craft_installed():
     return [line.split()[0] for line in out.splitlines() if line.split()[1:2] == ["ii"]]
 
 
+def vendor_install(app_id):
+    if app_id not in VENDOR_DEBS:
+        raise SystemExit(f"Unbekanntes Hersteller-Paket: {app_id}")
+    url, expected = VENDOR_DEBS[app_id]
+    with tempfile.TemporaryDirectory() as tmp:
+        os.chmod(tmp, 0o755)
+        path = os.path.join(tmp, f"{app_id}.deb")
+        say(app_id, t("wird heruntergeladen"))
+        last = [-1]
+
+        def progress(blocks, block_size, total):
+            pct = min(100, blocks * block_size * 100 // total) if total > 0 else 0
+            if pct >= last[0] + 5:
+                last[0] = pct
+                print(f"dlstatus:{app_id}:{pct}:download", flush=True)
+        urllib.request.urlretrieve(url, path, progress)
+        name = subprocess.run(["dpkg-deb", "-f", path, "Package"], capture_output=True, text=True).stdout.strip()
+        if name != expected:
+            raise SystemExit(f"{app_id}: unerwartetes Paket „{name}“ – Abbruch")
+        run(APT + ["install", path])
+
+
+def github_tool_install(tool_id, only_newer=False):
+    import tarfile
+    if tool_id not in GITHUB_TOOLS:
+        raise SystemExit(f"Unbekanntes Werkzeug: {tool_id}")
+    tool = GITHUB_TOOLS[tool_id]
+    with urllib.request.urlopen(f"https://api.github.com/repos/{tool['repo']}/releases/latest", timeout=30) as r:
+        release = json.load(r)
+    version = release["tag_name"].lstrip("v")
+    version_file = os.path.join(TOOLS_DIR, tool_id, "VERSION")
+    if only_newer and os.path.exists(version_file) and open(version_file).read().strip() == version:
+        say(tool_id, t("ist aktuell"))
+        return
+    asset = next(a for a in release["assets"] if re.search(tool["asset"], a["name"]))
+    expected = (asset.get("digest") or "").removeprefix("sha256:")
+    if not expected or not asset["browser_download_url"].startswith(f"https://github.com/{tool['repo']}/"):
+        raise SystemExit(f"{tool_id}: keine Prüfsumme oder unerwartete Adresse – Abbruch")
+    with tempfile.TemporaryDirectory() as tmp:
+        path = os.path.join(tmp, asset["name"])
+        say(tool_id, release["tag_name"], t("wird heruntergeladen"))
+        urllib.request.urlretrieve(asset["browser_download_url"], path)
+        with open(path, "rb") as f:
+            if hashlib.sha256(f.read()).hexdigest() != expected:
+                raise SystemExit(f"{tool_id}: Prüfsumme stimmt nicht – Download verworfen")
+        say(f"{tool_id}:", t("Prüfsumme OK, wird installiert"))
+        with tarfile.open(path) as tar:
+            member = next(m for m in tar.getmembers()
+                          if m.isfile() and os.path.basename(m.name) == tool["binary"])
+            data = tar.extractfile(member).read()
+    target_dir = os.path.join(TOOLS_DIR, tool_id)
+    os.makedirs(target_dir, exist_ok=True)
+    binary = os.path.join(target_dir, tool["binary"])
+    with open(binary + ".new", "wb") as f:
+        f.write(data)
+    os.chmod(binary + ".new", 0o755)
+    os.replace(binary + ".new", binary)
+    if tool.get("caps"):
+        run(["setcap", tool["caps"], binary])
+    link = os.path.join(LOCAL_BIN, tool["binary"])
+    if os.path.islink(link) or not os.path.exists(link):
+        if os.path.islink(link):
+            os.remove(link)
+        os.symlink(binary, link)
+    os.makedirs(LOCAL_APPS, exist_ok=True)
+    with open(os.path.join(LOCAL_APPS, f"frametide-tool-{tool_id}.desktop"), "w") as f:
+        f.write(f"[Desktop Entry]\nType=Application\nName={tool['name']}\nComment={tool['comment']}\n"
+                f"Exec={tool['exec']}\nIcon={tool['icon']}\nTerminal=false\nCategories=Network;\n")
+    with open(version_file, "w") as f:
+        f.write(version + "\n")
+
+
+def github_tool_remove(tool_id):
+    if tool_id not in GITHUB_TOOLS:
+        raise SystemExit(f"Unbekanntes Werkzeug: {tool_id}")
+    tool = GITHUB_TOOLS[tool_id]
+    link = os.path.join(LOCAL_BIN, tool["binary"])
+    if os.path.islink(link):
+        os.remove(link)
+    for path in (os.path.join(LOCAL_APPS, f"frametide-tool-{tool_id}.desktop"),):
+        if os.path.exists(path):
+            os.remove(path)
+    import shutil
+    shutil.rmtree(os.path.join(TOOLS_DIR, tool_id), ignore_errors=True)
+
+
 def set_option(key, value):
     if key not in OPTIONS or value not in ("yes", "no"):
         raise SystemExit("Ungültige Option")
@@ -159,6 +260,10 @@ def main(argv):
         if craft_installed():
             say(t("ArtCraft-Apps werden aktualisiert"))
             craft_install(craft_installed(), only_newer=True)
+        for tool_id in GITHUB_TOOLS:
+            if os.path.exists(os.path.join(TOOLS_DIR, tool_id, "VERSION")):
+                say(tool_id, t("wird aktualisiert"))
+                github_tool_install(tool_id, only_newer=True)
         run(APT + ["autoremove", "--purge"], check=False)
     elif cmd == "install":
         say(t("Wird installiert") + ":", *args)
@@ -168,6 +273,12 @@ def main(argv):
         run(APT + ["remove", *packages(args)])
     elif cmd == "craft-install":
         craft_install(args)
+    elif cmd == "vendor-install" and len(args) == 1:
+        vendor_install(args[0])
+    elif cmd == "tool-install" and len(args) == 1:
+        github_tool_install(args[0])
+    elif cmd == "tool-remove" and len(args) == 1:
+        github_tool_remove(args[0])
     elif cmd == "driver-install":
         m = DRIVER_RE.match(args[0]) if len(args) == 1 else None
         if not m:
