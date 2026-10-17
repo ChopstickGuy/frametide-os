@@ -19,6 +19,17 @@ log "Platte partitionieren (GPT: 512 MB EFI + ext4)"
 rm -f "$DISK"; truncate -s 40G "$DISK"
 sgdisk -q -n1:0:+512M -t1:ef00 -c1:EFI -n2:0:0 -t2:8304 -c2:root "$DISK"
 LOOP=$(losetup -Pf --show "$DISK")
+partx -u "$LOOP" 2>/dev/null || true
+udevadm settle 2>/dev/null || true
+for _ in $(seq 20); do [ -b "${LOOP}p2" ] && break; sleep 0.5; done
+# Ohne udev (z. B. in Containern) die Partitionsgeräte selbst anlegen
+for n in 1 2; do
+    dev="${LOOP}p$n"; sys="/sys/block/$(basename "$LOOP")/$(basename "$LOOP")p$n/dev"
+    if [ ! -b "$dev" ] && [ -f "$sys" ]; then
+        IFS=: read -r major minor < "$sys"; mknod "$dev" b "$major" "$minor"
+    fi
+done
+[ -b "${LOOP}p2" ] || { echo "Partitionen nicht gefunden"; exit 1; }
 mkfs.vfat -F32 -n EFI "${LOOP}p1" >/dev/null
 mkfs.ext4 -q -L frametide "${LOOP}p2"
 

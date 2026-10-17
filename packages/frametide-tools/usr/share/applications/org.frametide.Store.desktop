@@ -1,6 +1,8 @@
 [Desktop Entry]
 Type=Application
-Name=Frametide Store
+Name=App Store
+Name[de]=App-Store
+X-GNOME-FullName=Frametide App Store
 Comment=Install apps and games with one click
 Comment[de]=Apps und Spiele mit einem Klick installieren
 Exec=frametide-store
