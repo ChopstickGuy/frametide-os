@@ -1,0 +1,15 @@
+#!/bin/sh
+# Kopiert das Installer-Protokoll ins installierte System (Calamares shellprocess@logs).
+#   save-install-log <Zielwurzel>
+root="$1"
+[ -n "$root" ] && [ -d "$root" ] || exit 0
+mkdir -p "$root/var/log/installer"
+for f in /root/.cache/calamares/session.log /home/*/.cache/calamares/session.log; do
+    if [ -f "$f" ]; then
+        cp "$f" "$root/var/log/installer/calamares.log"
+        break
+    fi
+done
+[ -f /tmp/calamares.log ] && cp /tmp/calamares.log "$root/var/log/installer/calamares-debug.log"
+chmod 600 "$root"/var/log/installer/calamares*.log 2>/dev/null
+exit 0
