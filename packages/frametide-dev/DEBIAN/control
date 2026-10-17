@@ -5,7 +5,9 @@ Maintainer: Frametide OS <205694622+ChopstickGuy@users.noreply.github.com>
 Section: metapackages
 Priority: optional
 Depends: build-essential, clang, cmake, ninja-build, pkg-config, git, git-lfs,
- curl, wget, python3-venv, pipx, podman, distrobox, ripgrep, fd-find, jq
+ curl, wget, python3-venv, pipx, podman, distrobox, ripgrep, fd-find, jq,
+ openssh-client, iproute2, frametide-tools
+Recommends: mise, gh
 Description: Frametide OS – Entwickler-Werkzeuge
  Compiler, Build-Systeme, Git, Container (Podman/Distrobox) und
  nützliche Kommandozeilen-Tools.

@@ -15,7 +15,7 @@ import urllib.request
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 COMPONENTS = ["main", "restricted", "universe", "multiverse"]
 # Kommen aus Fremdquellen bzw. werden selbst gebaut
-EXTERNAL = {"firefox", "code", "google-chrome-stable", "github-desktop", "coolercontrol",
+EXTERNAL = {"firefox", "code", "google-chrome-stable", "github-desktop", "coolercontrol", "mise",
             "wordcraft", "gridcraft", "deckcraft", "pdfcraft", "artcraft-launcher"}
 
 

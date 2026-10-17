@@ -458,6 +458,201 @@ msgstr "Fan"
 msgid "{rpm} U/min"
 msgstr "{rpm} RPM"
 
+msgid "Projekte"
+msgstr "Projects"
+
+msgid "Git"
+msgstr "Git"
+
+msgid "Name und E-Mail erscheinen in deinen Commits."
+msgstr "Your name and email appear in your commits."
+
+msgid "SSH-Schlüssel & GitHub"
+msgstr "SSH key & GitHub"
+
+msgid "Programmiersprachen"
+msgstr "Programming languages"
+
+msgid "Über mise: immer die neueste Version, mehrere Versionen parallel, ohne das System zu verändern. Pro Projekt lassen sich Versionen in einer mise.toml festlegen."
+msgstr "Via mise: always the latest version, several versions side by side, without touching the system. Pin versions per project in a mise.toml."
+
+msgid "Git ist eingerichtet."
+msgstr "Git is set up."
+
+msgid "Datenbanken & Dienste"
+msgstr "Databases & services"
+
+msgid "Laufen als Container nur auf diesem Rechner (127.0.0.1). Daten bleiben beim Stoppen erhalten. Benutzer „dev“, Passwort „frametide“."
+msgstr "Run as containers on this computer only (127.0.0.1). Data is kept when stopped. User “dev”, password “frametide”."
+
+msgid "Laufende Server"
+msgstr "Running servers"
+
+msgid "Deine Programme, die gerade auf einem Port lauschen."
+msgstr "Your programs currently listening on a port."
+
+msgid "Neues Projekt"
+msgstr "New project"
+
+msgid "Mit Git, .gitignore, Dev-Container, VS-Code-Empfehlungen und README."
+msgstr "With Git, .gitignore, dev container, VS Code recommendations and README."
+
+msgid "Deine Projekte"
+msgstr "Your projects"
+
+msgid "Einrichtung"
+msgstr "Setup"
+
+msgid "Name"
+msgstr "Name"
+
+msgid "E-Mail"
+msgstr "Email"
+
+msgid "Git einrichten"
+msgstr "Set up Git"
+
+msgid "Setzt auch „main“ als Standard-Branch und sinnvolle Push-/Pull-Vorgaben."
+msgstr "Also sets “main” as the default branch and sensible push/pull defaults."
+
+msgid "Speichern"
+msgstr "Save"
+
+msgid "SSH-Schlüssel"
+msgstr "SSH key"
+
+msgid "mise ist nicht installiert – im App Store oder mit „sudo apt install mise“."
+msgstr "mise is not installed – get it from the App Store or with “sudo apt install mise”."
+
+msgid "Bitte Name und eine gültige E-Mail eingeben."
+msgstr "Please enter a name and a valid email."
+
+msgid "Vorhanden (ed25519)"
+msgstr "Present (ed25519)"
+
+msgid "Kopieren"
+msgstr "Copy"
+
+msgid "Noch kein Schlüssel – nötig für GitHub, GitLab und Server."
+msgstr "No key yet – needed for GitHub, GitLab and servers."
+
+msgid "Erstellen"
+msgstr "Create"
+
+msgid "Schlüssel hochladen"
+msgstr "Upload key"
+
+msgid "Nicht angemeldet – Anmeldung im Browser, lädt den SSH-Schlüssel mit hoch."
+msgstr "Not signed in – sign in via browser, uploads your SSH key too."
+
+msgid "Anmelden"
+msgstr "Sign in"
+
+msgid "SSH-Schlüssel erstellt"
+msgstr "SSH key created"
+
+msgid "Dienste & Ports"
+msgstr "Services & ports"
+
+msgid "Podman fehlt – „sudo apt install podman“."
+msgstr "Podman is missing – “sudo apt install podman”."
+
+msgid "Stoppt …"
+msgstr "Stopping …"
+
+msgid "Startet …"
+msgstr "Starting …"
+
+msgid "Projektname"
+msgstr "Project name"
+
+msgid "Vorlage"
+msgstr "Template"
+
+msgid "Ort"
+msgstr "Location"
+
+msgid "Ändern"
+msgstr "Change"
+
+msgid "Git-Repository anlegen"
+msgstr "Create Git repository"
+
+msgid "Dev-Container-Konfiguration"
+msgstr "Dev container configuration"
+
+msgid "Projekt erstellen"
+msgstr "Create project"
+
+msgid "Öffnet danach VS Code im Projekt."
+msgstr "Then opens VS Code in the project."
+
+msgid "Ort für Projekte"
+msgstr "Location for projects"
+
+msgid "Bitte einen Projektnamen eingeben."
+msgstr "Please enter a project name."
+
+msgid "Entwicklerzentrale"
+msgstr "Dev Center"
+
+msgid "Nicht installiert"
+msgstr "Not installed"
+
+msgid "Aktualisieren"
+msgstr "Update"
+
+msgid "{tool} wird installiert – das kann ein paar Minuten dauern …"
+msgstr "Installing {tool} – this can take a few minutes …"
+
+msgid "Fertig ✓ – in neuen Terminals verfügbar."
+msgstr "Done ✓ – available in new terminals."
+
+msgid "Kopiert: {text}"
+msgstr "Copied: {text}"
+
+msgid "Stoppen"
+msgstr "Stop"
+
+msgid "Beenden"
+msgstr "Stop"
+
+msgid "Gerade läuft kein Server"
+msgstr "No server running right now"
+
+msgid "Starte z. B. „npm run dev“ – er erscheint dann hier."
+msgstr "Start e.g. “npm run dev” – it will show up here."
+
+msgid "Projekt erstellt: {path}"
+msgstr "Project created: {path}"
+
+msgid "Terminal"
+msgstr "Terminal"
+
+msgid "Noch keine Projekte"
+msgstr "No projects yet"
+
+msgid "Öffentlicher Schlüssel kopiert"
+msgstr "Public key copied"
+
+msgid "Angemeldet als {user}"
+msgstr "Signed in as {user}"
+
+msgid "Fehlgeschlagen"
+msgstr "Failed"
+
+msgid "Version {v}"
+msgstr "Version {v}"
+
+msgid "Der Ordner {path} existiert bereits."
+msgstr "The folder {path} already exists."
+
+msgid "Projekt angelegt"
+msgstr "Initial commit"
+
+msgid "Erstellt mit Frametide OS ({template})."
+msgstr "Created with Frametide OS ({template})."
+
 msgid "Details anzeigen"
 msgstr "Show details"
 
@@ -725,9 +920,6 @@ msgstr "Install all"
 msgid "{app} entfernen?"
 msgstr "Remove {app}?"
 
-msgid "Läuft …"
-msgstr "Working …"
-
 msgid "Wartet"
 msgstr "Queued"
 
@@ -736,6 +928,9 @@ msgstr "Error code {code}"
 
 msgid "Versuch einen anderen Suchbegriff."
 msgstr "Try a different search term."
+
+msgid "Läuft …"
+msgstr "Working …"
 
 msgid "{n} weitere Craft-Apps (Foto, Video, Vektor, Audio, CAD …)"
 msgstr "{n} more Craft apps (photo, video, vector, audio, CAD …)"
@@ -767,6 +962,12 @@ msgstr "Move from Windows"
 msgid "Dateien, Lesezeichen, WLAN, Spiele"
 msgstr "Files, bookmarks, Wi-Fi, games"
 
+msgid "Entwickeln"
+msgstr "Develop"
+
+msgid "Git, Sprachen, Datenbanken, Projekte"
+msgstr "Git, languages, databases, projects"
+
 msgid "Beleuchtung und Lüfterkurven"
 msgstr "Lighting and fan curves"
 
@@ -781,9 +982,6 @@ msgstr "✓ Drivers set up · Chrome and VS Code installed"
 
 msgid "Willkommen bei Frametide OS"
 msgstr "Welcome to Frametide OS"
-
-msgid "Einrichtung"
-msgstr "Setup"
 
 msgid "Beim Anmelden anzeigen"
 msgstr "Show at login"

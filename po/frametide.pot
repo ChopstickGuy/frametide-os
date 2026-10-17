@@ -109,507 +109,767 @@ msgstr ""
 msgid "Nicht installiert (Tests übersprungen): {tools}"
 msgstr ""
 
-#: center.py:423
+#: center.py:429
 msgid "bei Secure Boot einmalig MOK-Bestätigung"
 msgstr ""
 
-#: center.py:97
+#: center.py:103
 msgid "Suchen"
 msgstr ""
 
-#: center.py:98
+#: center.py:104
 msgid "Alles aktualisieren"
 msgstr ""
 
-#: center.py:107
+#: center.py:113
 msgid "Verfügbare Updates"
 msgstr ""
 
-#: center.py:119
+#: center.py:125
 msgid "Firmware"
 msgstr ""
 
-#: center.py:119
+#: center.py:125
 msgid "BIOS-, SSD- und Geräte-Firmware über fwupd (Hersteller-Updates)."
 msgstr ""
 
-#: center.py:129
+#: center.py:135
 msgid "Suche läuft …"
 msgstr ""
 
-#: center.py:162
+#: center.py:168
 msgid "Updates werden installiert …"
 msgstr ""
 
-#: center.py:178
+#: center.py:184
 msgid "Grafikkarten"
 msgstr ""
 
-#: center.py:179
+#: center.py:185
 msgid "Frametide richtet den passenden Treiber beim ersten Start automatisch ein."
 msgstr ""
 
-#: center.py:208
+#: center.py:214
 msgid "Grafik-Stack"
 msgstr ""
 
-#: center.py:209
+#: center.py:215
 msgid "installiert"
 msgstr ""
 
-#: center.py:209
+#: center.py:215
 msgid "fehlt"
 msgstr ""
 
-#: center.py:221
+#: center.py:227
 msgid "radeon (alt – Vulkan erst nach Einrichtung)"
 msgstr ""
 
-#: center.py:223
+#: center.py:229
 msgid "nouveau (offen, eingeschränkt)"
 msgstr ""
 
-#: center.py:280
+#: center.py:286
 msgid "Spiel prüfen"
 msgstr ""
 
-#: center.py:281
+#: center.py:287
 msgid "Läuft mein Spiel unter Linux? Daten von ProtonDB und AreWeAntiCheatYet."
 msgstr ""
 
-#: center.py:287
+#: center.py:293
 msgid "Ergebnis"
 msgstr ""
 
-#: center.py:291
+#: center.py:297
 msgid "Deine installierten Steam-Spiele"
 msgstr ""
 
-#: center.py:374
+#: center.py:380
 msgid "Temperaturen"
 msgstr ""
 
-#: center.py:375
+#: center.py:381
 msgid "Lüfter und Pumpen"
 msgstr ""
 
-#: center.py:376
+#: center.py:382
 msgid "Kurven, Profile und AIO-Kühler stellst du in CoolerControl ein."
 msgstr ""
 
-#: center.py:387
+#: center.py:393
 msgid "RGB-Beleuchtung"
 msgstr ""
 
-#: center.py:388
+#: center.py:394
 msgid "Mainboard, RAM, Grafikkarte, Lüfter, Tastatur und Maus – herstellerübergreifend über OpenRGB."
 msgstr ""
 
-#: center.py:414
+#: center.py:420
 msgid "Erweitert"
 msgstr ""
 
-#: center.py:414
+#: center.py:420
 msgid "Nur nötig, wenn Geräte oder Lüfter oben fehlen."
 msgstr ""
 
-#: center.py:512
+#: center.py:518
 msgid "Suche läuft … (kann einige Sekunden dauern)"
 msgstr ""
 
-#: center.py:547
+#: center.py:553
 msgid "Über dieses System"
 msgstr ""
 
-#: center.py:557
+#: center.py:563
 msgid "Leistung"
 msgstr ""
 
-#: center.py:574
+#: center.py:580
 msgid "Werkzeuge"
 msgstr ""
 
-#: center.py:93
+#: center.py:99
 msgid "Updates"
 msgstr ""
 
-#: center.py:95
+#: center.py:101
 msgid "Updates prüfen"
 msgstr ""
 
-#: center.py:95
+#: center.py:101
 msgid "Noch nicht gesucht"
 msgstr ""
 
-#: center.py:109
+#: center.py:115
 msgid "System und Programme"
 msgstr ""
 
-#: center.py:110
+#: center.py:116
 msgid "Flatpak-Apps"
 msgstr ""
 
-#: center.py:111
+#: center.py:117
 msgid "ArtCraft-Apps"
 msgstr ""
 
-#: center.py:120
+#: center.py:126
 msgid "Firmware aktualisieren"
 msgstr ""
 
-#: center.py:121
+#: center.py:127
 msgid "Nur bei Netzstrom ausführen – der Rechner startet ggf. neu."
 msgstr ""
 
-#: center.py:122
+#: center.py:128
 msgid "Prüfen und installieren"
 msgstr ""
 
-#: center.py:153
+#: center.py:159
 msgid "Alles aktuell"
 msgstr ""
 
-#: center.py:154
+#: center.py:160
 msgid "Dein System ist auf dem neuesten Stand."
 msgstr ""
 
-#: center.py:157
+#: center.py:163
 msgid "Installiert im Hintergrund – du kannst weiterarbeiten oder spielen."
 msgstr ""
 
-#: center.py:170
+#: center.py:176
 msgid "Treiber"
 msgstr ""
 
-#: center.py:190
+#: center.py:196
 msgid "Treiber automatisch einrichten"
 msgstr ""
 
-#: center.py:191
+#: center.py:197
 msgid "Erkennt die Hardware erneut und installiert die empfohlenen Treiber."
 msgstr ""
 
-#: center.py:192
+#: center.py:198
 msgid "Ausführen"
 msgstr ""
 
-#: center.py:200
+#: center.py:206
 msgid "NVIDIA-Treiberversion"
 msgstr ""
 
-#: center.py:201
+#: center.py:207
 msgid "„open“ = offene Kernel-Module (empfohlen ab RTX 20/GTX 16). Nach einem Wechsel bitte neu starten."
 msgstr ""
 
-#: center.py:210
+#: center.py:216
 msgid "Mesa (AMD/Intel)"
 msgstr ""
 
-#: center.py:211
+#: center.py:217
 msgid "Vulkan 32-Bit (Steam)"
 msgstr ""
 
-#: center.py:219
+#: center.py:225
 msgid "NVIDIA-Treiber"
 msgstr ""
 
-#: center.py:276
+#: center.py:282
 msgid "Spiele"
 msgstr ""
 
-#: center.py:282
+#: center.py:288
 msgid "Spielname, z. B. Elden Ring"
 msgstr ""
 
-#: center.py:292
+#: center.py:298
 msgid "Bibliothek wird gelesen …"
 msgstr ""
 
-#: center.py:309
+#: center.py:315
 msgid "Keine installierten Steam-Spiele gefunden"
 msgstr ""
 
-#: center.py:310
+#: center.py:316
 msgid "Installiere Spiele in Steam oder prüfe oben ein Spiel nach Namen."
 msgstr ""
 
-#: center.py:369
+#: center.py:375
 msgid "RGB & Lüfter"
 msgstr ""
 
-#: center.py:378
+#: center.py:384
 msgid "Lüfterkurven, Pumpen, AIO-Wasserkühlungen"
 msgstr ""
 
-#: center.py:380
+#: center.py:386
 msgid "Öffnen"
 msgstr ""
 
-#: center.py:395
+#: center.py:401
 msgid "Farbe für alle Geräte"
 msgstr ""
 
-#: center.py:396
+#: center.py:402
 msgid "Statische Farbe auf alle erkannten Geräte"
 msgstr ""
 
-#: center.py:399
+#: center.py:405
 msgid "Anwenden"
 msgstr ""
 
-#: center.py:401
+#: center.py:407
 msgid "Beleuchtung ausschalten"
 msgstr ""
 
-#: center.py:402
+#: center.py:408
 msgid "Aus"
 msgstr ""
 
-#: center.py:405
+#: center.py:411
 msgid "Erkannte Geräte"
 msgstr ""
 
-#: center.py:408
+#: center.py:414
 msgid "Effekte, Zonen, Profile und Geräte im Detail"
 msgstr ""
 
-#: center.py:415
+#: center.py:421
 msgid "Erweiterter SMBus-Zugriff"
 msgstr ""
 
-#: center.py:416
+#: center.py:422
 msgid "Für RGB auf manchen Mainboards und RAM-Riegeln (acpi_enforce_resources=lax). Neustart nötig."
 msgstr ""
 
-#: center.py:424
+#: center.py:430
 msgid "Lüftertreiber für ITE-Chips"
 msgstr ""
 
-#: center.py:425
+#: center.py:431
 msgid "Gigabyte und viele andere Mainboards"
 msgstr ""
 
-#: center.py:426
+#: center.py:432
 msgid "Lüftertreiber für Nuvoton NCT6687"
 msgstr ""
 
-#: center.py:427
+#: center.py:433
 msgid "Viele MSI-Mainboards"
 msgstr ""
 
-#: center.py:432
+#: center.py:438
 msgid "Sensoren neu erkennen"
 msgstr ""
 
-#: center.py:480
+#: center.py:486
 msgid "Keine Temperatursensoren gefunden"
 msgstr ""
 
-#: center.py:481
+#: center.py:487
 msgid "Keine Lüftersensoren gefunden – siehe „Erweitert“"
 msgstr ""
 
-#: center.py:542
+#: center.py:548
 msgid "System"
 msgstr ""
 
-#: center.py:549
+#: center.py:555
 msgid "Basis"
 msgstr ""
 
-#: center.py:551
+#: center.py:557
 msgid "Prozessor"
 msgstr ""
 
-#: center.py:552
+#: center.py:558
 msgid "Arbeitsspeicher"
 msgstr ""
 
-#: center.py:559
+#: center.py:565
 msgid "x86-64-v3-optimierte Pakete"
 msgstr ""
 
-#: center.py:560
+#: center.py:566
 msgid "Schnellere Pakete für CPUs ab Intel Haswell / AMD Zen (experimentell)"
 msgstr ""
 
-#: center.py:561
+#: center.py:567
 msgid "AMD-GPU-Übertaktung freischalten"
 msgstr ""
 
-#: center.py:562
+#: center.py:568
 msgid "Erlaubt Übertakten und Undervolting in CoreCtrl. Neustart nötig."
 msgstr ""
 
-#: center.py:563
+#: center.py:569
 msgid "CPU-Sicherheitsbremsen abschalten"
 msgstr ""
 
-#: center.py:564
+#: center.py:570
 msgid "Mehr Leistung v. a. auf älteren CPUs, aber weniger Schutz vor Spectre & Co. Nur für reine Gaming-PCs. Neustart nötig."
 msgstr ""
 
-#: center.py:576
+#: center.py:582
 msgid "Misst CPU, Speicher, Latenz, SSD und GPU (ca. 4 Minuten). Ergebnis: ~/.local/share/frametide-bench"
 msgstr ""
 
-#: center.py:578
+#: center.py:584
 msgid "Starten"
 msgstr ""
 
-#: center.py:581
+#: center.py:587
 msgid "Windows-Umzug"
 msgstr ""
 
-#: center.py:582
+#: center.py:588
 msgid "Dateien, Lesezeichen, WLAN und Steam-Spiele von Windows übernehmen"
 msgstr ""
 
-#: center.py:79
+#: center.py:85
 msgid "Erledigt ✓"
 msgstr ""
 
-#: center.py:145
+#: center.py:151
 msgid "Aktuell"
 msgstr ""
 
-#: center.py:224
+#: center.py:230
 msgid "Treiber: {driver}"
 msgstr ""
 
-#: center.py:318
+#: center.py:324
 msgid "{n} Spiele geprüft"
 msgstr ""
 
-#: center.py:319
+#: center.py:325
 msgid "{good} laufen gut · {ok} mit Einschränkungen · {bad} blockiert/defekt · {unknown} unbekannt"
 msgstr ""
 
-#: center.py:329
+#: center.py:335
 msgid "Ergebnis für „{term}“"
 msgstr ""
 
-#: center.py:420
+#: center.py:426
 msgid "Einstellung wird angewendet …"
 msgstr ""
 
-#: center.py:429
+#: center.py:435
 msgid "Installieren"
 msgstr ""
 
-#: center.py:509
+#: center.py:515
 msgid "Farbe #{color} angewendet"
 msgstr ""
 
-#: center.py:526
+#: center.py:532
 msgid "Keine Geräte gefunden – evtl. „Erweiterter SMBus-Zugriff“ aktivieren"
 msgstr ""
 
-#: center.py:81
+#: center.py:87
 msgid "Abgebrochen"
 msgstr ""
 
-#: center.py:123
+#: center.py:129
 msgid "Firmware …"
 msgstr ""
 
-#: center.py:137
+#: center.py:143
 msgid "Suche fehlgeschlagen: {error}"
 msgstr ""
 
-#: center.py:156
+#: center.py:162
 msgid "{n} Updates verfügbar"
 msgstr ""
 
-#: center.py:189
+#: center.py:195
 msgid "Keine Grafikkarte erkannt"
 msgstr ""
 
-#: center.py:193
+#: center.py:199
 msgid "Treiber werden eingerichtet …"
 msgstr ""
 
-#: center.py:203
+#: center.py:209
 msgid "Verfügbare Treiber werden ermittelt …"
 msgstr ""
 
-#: center.py:219
+#: center.py:225
 msgid "NVIDIA-Treiber {version}"
 msgstr ""
 
-#: center.py:224
+#: center.py:230
 msgid "keiner"
 msgstr ""
 
-#: center.py:244
+#: center.py:250
 msgid "Empfohlen"
 msgstr ""
 
-#: center.py:257
+#: center.py:263
 msgid "Keine Treiber gefunden"
 msgstr ""
 
-#: center.py:258
+#: center.py:264
 msgid "Sehr alte Karten laufen mit dem offenen nouveau/NVK-Treiber."
 msgstr ""
 
-#: center.py:350
+#: center.py:356
 msgid "Keine Verbindung"
 msgstr ""
 
-#: center.py:350
+#: center.py:356
 msgid "Für den Spiele-Check wird Internet benötigt."
 msgstr ""
 
-#: center.py:358
+#: center.py:364
 msgid "Nichts gefunden"
 msgstr ""
 
-#: center.py:403
+#: center.py:409
 msgid "Beleuchtung aus"
 msgstr ""
 
-#: center.py:434
+#: center.py:440
 msgid "Sensoren werden erkannt …"
 msgstr ""
 
-#: center.py:579
+#: center.py:585
 msgid "Benchmark läuft – bitte nichts anderes starten …"
 msgstr ""
 
-#: center.py:145
+#: center.py:151
 msgid "{n} Updates"
 msgstr ""
 
-#: center.py:185
+#: center.py:191
 msgid "Primär"
 msgstr ""
 
-#: center.py:525
+#: center.py:531
 msgid "{n} Geräte"
 msgstr ""
 
-#: center.py:535
+#: center.py:541
 msgid "Konnte {app} nicht starten: {error}"
 msgstr ""
 
-#: center.py:83
+#: center.py:89
 msgid "Fehlgeschlagen (Code {code}) – Details unten"
 msgstr ""
 
-#: center.py:250
+#: center.py:256
 msgid "{pkg} wird installiert …"
 msgstr ""
 
-#: center.py:469
+#: center.py:475
 msgid "Lüfter"
 msgstr ""
 
-#: center.py:461
+#: center.py:467
 msgid "{rpm} U/min"
 msgstr ""
 
-#: frametide_common.py:204
+#: dev.py:11
+msgid "Projekte"
+msgstr ""
+
+#: dev.py:40
+msgid "Git"
+msgstr ""
+
+#: dev.py:40
+msgid "Name und E-Mail erscheinen in deinen Commits."
+msgstr ""
+
+#: dev.py:52
+msgid "SSH-Schlüssel & GitHub"
+msgstr ""
+
+#: dev.py:61
+msgid "Programmiersprachen"
+msgstr ""
+
+#: dev.py:62
+msgid "Über mise: immer die neueste Version, mehrere Versionen parallel, ohne das System zu verändern. Pro Projekt lassen sich Versionen in einer mise.toml festlegen."
+msgstr ""
+
+#: dev.py:85
+msgid "Git ist eingerichtet."
+msgstr ""
+
+#: dev.py:148
+msgid "Datenbanken & Dienste"
+msgstr ""
+
+#: dev.py:149
+msgid "Laufen als Container nur auf diesem Rechner (127.0.0.1). Daten bleiben beim Stoppen erhalten. Benutzer „dev“, Passwort „frametide“."
+msgstr ""
+
+#: dev.py:164
+msgid "Laufende Server"
+msgstr ""
+
+#: dev.py:164
+msgid "Deine Programme, die gerade auf einem Port lauschen."
+msgstr ""
+
+#: dev.py:225
+msgid "Neues Projekt"
+msgstr ""
+
+#: dev.py:225
+msgid "Mit Git, .gitignore, Dev-Container, VS-Code-Empfehlungen und README."
+msgstr ""
+
+#: dev.py:244
+msgid "Deine Projekte"
+msgstr ""
+
+#: dev.py:35
+msgid "Einrichtung"
+msgstr ""
+
+#: dev.py:41
+msgid "Name"
+msgstr ""
+
+#: dev.py:42
+msgid "E-Mail"
+msgstr ""
+
+#: dev.py:45
+msgid "Git einrichten"
+msgstr ""
+
+#: dev.py:46
+msgid "Setzt auch „main“ als Standard-Branch und sinnvolle Push-/Pull-Vorgaben."
+msgstr ""
+
+#: dev.py:47
+msgid "Speichern"
+msgstr ""
+
+#: dev.py:53
+msgid "SSH-Schlüssel"
+msgstr ""
+
+#: dev.py:74
+msgid "mise ist nicht installiert – im App Store oder mit „sudo apt install mise“."
+msgstr ""
+
+#: dev.py:82
+msgid "Bitte Name und eine gültige E-Mail eingeben."
+msgstr ""
+
+#: dev.py:94
+msgid "Vorhanden (ed25519)"
+msgstr ""
+
+#: dev.py:95
+msgid "Kopieren"
+msgstr ""
+
+#: dev.py:97
+msgid "Noch kein Schlüssel – nötig für GitHub, GitLab und Server."
+msgstr ""
+
+#: dev.py:98
+msgid "Erstellen"
+msgstr ""
+
+#: dev.py:105
+msgid "Schlüssel hochladen"
+msgstr ""
+
+#: dev.py:108
+msgid "Nicht angemeldet – Anmeldung im Browser, lädt den SSH-Schlüssel mit hoch."
+msgstr ""
+
+#: dev.py:109
+msgid "Anmelden"
+msgstr ""
+
+#: dev.py:116
+msgid "SSH-Schlüssel erstellt"
+msgstr ""
+
+#: dev.py:146
+msgid "Dienste & Ports"
+msgstr ""
+
+#: dev.py:161
+msgid "Podman fehlt – „sudo apt install podman“."
+msgstr ""
+
+#: dev.py:179
+msgid "Stoppt …"
+msgstr ""
+
+#: dev.py:179
+msgid "Startet …"
+msgstr ""
+
+#: dev.py:226
+msgid "Projektname"
+msgstr ""
+
+#: dev.py:229
+msgid "Vorlage"
+msgstr ""
+
+#: dev.py:233
+msgid "Ort"
+msgstr ""
+
+#: dev.py:234
+msgid "Ändern"
+msgstr ""
+
+#: dev.py:236
+msgid "Git-Repository anlegen"
+msgstr ""
+
+#: dev.py:237
+msgid "Dev-Container-Konfiguration"
+msgstr ""
+
+#: dev.py:240
+msgid "Projekt erstellen"
+msgstr ""
+
+#: dev.py:240
+msgid "Öffnet danach VS Code im Projekt."
+msgstr ""
+
+#: dev.py:250
+msgid "Ort für Projekte"
+msgstr ""
+
+#: dev.py:265
+msgid "Bitte einen Projektnamen eingeben."
+msgstr ""
+
+#: dev.py:315
+msgid "Entwicklerzentrale"
+msgstr ""
+
+#: dev.py:126
+msgid "Nicht installiert"
+msgstr ""
+
+#: dev.py:127
+msgid "Aktualisieren"
+msgstr ""
+
+#: dev.py:133
+msgid "{tool} wird installiert – das kann ein paar Minuten dauern …"
+msgstr ""
+
+#: dev.py:137
+msgid "Fertig ✓ – in neuen Terminals verfügbar."
+msgstr ""
+
+#: dev.py:172
+msgid "Kopiert: {text}"
+msgstr ""
+
+#: dev.py:201
+msgid "Stoppen"
+msgstr ""
+
+#: dev.py:210
+msgid "Beenden"
+msgstr ""
+
+#: dev.py:214
+msgid "Gerade läuft kein Server"
+msgstr ""
+
+#: dev.py:215
+msgid "Starte z. B. „npm run dev“ – er erscheint dann hier."
+msgstr ""
+
+#: dev.py:275
+msgid "Projekt erstellt: {path}"
+msgstr ""
+
+#: dev.py:303
+msgid "Terminal"
+msgstr ""
+
+#: dev.py:308
+msgid "Noch keine Projekte"
+msgstr ""
+
+#: dev.py:95
+msgid "Öffentlicher Schlüssel kopiert"
+msgstr ""
+
+#: dev.py:104
+msgid "Angemeldet als {user}"
+msgstr ""
+
+#: dev.py:138
+msgid "Fehlgeschlagen"
+msgstr ""
+
+#: dev.py:126
+msgid "Version {v}"
+msgstr ""
+
+#: devtools.py:309
+msgid "Der Ordner {path} existiert bereits."
+msgstr ""
+
+#: devtools.py:340
+msgid "Projekt angelegt"
+msgstr ""
+
+#: devtools.py:334
+msgid "Erstellt mit Frametide OS ({template})."
+msgstr ""
+
+#: frametide_common.py:231
 msgid "Details anzeigen"
 msgstr ""
 
@@ -893,99 +1153,99 @@ msgstr ""
 msgid "{ok} von {n} WLAN-Netzwerken"
 msgstr ""
 
-#: store.py:272
+#: store.py:283
 msgid "Abbrechen"
 msgstr ""
 
-#: store.py:273
+#: store.py:284
 msgid "Entfernen"
 msgstr ""
 
-#: store.py:291
+#: store.py:302
 msgid "Suche"
 msgstr ""
 
-#: store.py:107
+#: store.py:108
 msgid "Entdecken"
 msgstr ""
 
-#: store.py:109
+#: store.py:110
 msgid "Installiert"
 msgstr ""
 
-#: store.py:122
+#: store.py:123
 msgid "Apps suchen – auch auf ganz Flathub"
 msgstr ""
 
-#: store.py:251
+#: store.py:262
 msgid "{app} wurde installiert"
 msgstr ""
 
-#: store.py:251
+#: store.py:262
 msgid "{app} wurde entfernt"
 msgstr ""
 
-#: store.py:271
+#: store.py:282
 msgid "Deine eigenen Dateien bleiben erhalten."
 msgstr ""
 
-#: store.py:295
+#: store.py:306
 msgid "Im Store"
 msgstr ""
 
-#: store.py:315
+#: store.py:326
 msgid "Weitere Apps von Flathub"
 msgstr ""
 
-#: store.py:183
+#: store.py:184
 msgid "Aus dem Store installierte Apps. Updates gibt es im Frametide Center."
 msgstr ""
 
-#: store.py:267
+#: store.py:278
 msgid "Kein Terminal gefunden"
 msgstr ""
 
-#: store.py:161
+#: store.py:162
 msgid "Willkommen im Frametide Store"
 msgstr ""
 
-#: store.py:163
+#: store.py:164
 msgid "Spiele, Kreativ-Apps, Office und Werkzeuge – geprüft und mit einem Klick installiert."
 msgstr ""
 
-#: store.py:169
+#: store.py:170
 msgid "Komplettes ArtCraft-Paket installieren"
 msgstr ""
 
-#: store.py:173
+#: store.py:174
 msgid "Alle installieren"
 msgstr ""
 
-#: store.py:270
+#: store.py:281
 msgid "{app} entfernen?"
 msgstr ""
 
-#: store.py:57
-msgid "Läuft …"
-msgstr ""
-
-#: store.py:57
+#: store.py:58
 msgid "Wartet"
 msgstr ""
 
-#: store.py:256
+#: store.py:267
 msgid "Fehlercode {code}"
 msgstr ""
 
-#: store.py:318
+#: store.py:329
 msgid "Versuch einen anderen Suchbegriff."
 msgstr ""
 
-#: store.py:170
+#: store.py:58
+msgid "Läuft …"
+msgstr ""
+
+#: store.py:171
 msgid "{n} weitere Craft-Apps (Foto, Video, Vektor, Audio, CAD …)"
 msgstr ""
 
-#: welcome.py:29
+#: welcome.py:30
 msgid "Treiber, Chrome und VS Code werden im Hintergrund eingerichtet, sobald Internet da ist. Du kannst schon loslegen."
 msgstr ""
 
@@ -1022,38 +1282,42 @@ msgid "Dateien, Lesezeichen, WLAN, Spiele"
 msgstr ""
 
 #: welcome.py:19
+msgid "Entwickeln"
+msgstr ""
+
+#: welcome.py:19
+msgid "Git, Sprachen, Datenbanken, Projekte"
+msgstr ""
+
+#: welcome.py:20
 msgid "Beleuchtung und Lüfterkurven"
 msgstr ""
 
-#: welcome.py:20
+#: welcome.py:21
 msgid "Einstellungen"
 msgstr ""
 
-#: welcome.py:20
+#: welcome.py:21
 msgid "Bildschirm, Ton, Konten, Design"
 msgstr ""
 
-#: welcome.py:28
+#: welcome.py:29
 msgid "✓ Treiber eingerichtet · Chrome und VS Code installiert"
 msgstr ""
 
-#: welcome.py:48
+#: welcome.py:49
 msgid "Willkommen bei Frametide OS"
 msgstr ""
 
-#: welcome.py:64
-msgid "Einrichtung"
-msgstr ""
-
-#: welcome.py:71
+#: welcome.py:72
 msgid "Beim Anmelden anzeigen"
 msgstr ""
 
-#: welcome.py:74
+#: welcome.py:75
 msgid "Los geht's"
 msgstr ""
 
-#: welcome.py:54
+#: welcome.py:55
 msgid "Alles Wichtige ist nur einen Klick entfernt."
 msgstr ""
 

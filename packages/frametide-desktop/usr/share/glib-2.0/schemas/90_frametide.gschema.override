@@ -45,7 +45,7 @@ check-alive-timeout=uint32 20000
 [org.gnome.shell]
 favorite-apps=['org.gnome.Nautilus.desktop','google-chrome.desktop','firefox.desktop','steam.desktop','ai.storyteller.wordcraft.desktop','code.desktop','org.gnome.Ptyxis.desktop','org.frametide.Store.desktop','org.frametide.Center.desktop']
 enabled-extensions=['apps-menu@gnome-shell-extensions.gcampax.github.com']
-app-picker-layout=[{'org.frametide.Store.desktop': <{'position': <0>}>, 'org.frametide.Center.desktop': <{'position': <1>}>, 'org.frametide.Welcome.desktop': <{'position': <2>}>, 'org.frametide.Migrate.desktop': <{'position': <3>}>, 'org.gnome.Settings.desktop': <{'position': <4>}>}]
+app-picker-layout=[{'org.frametide.Store.desktop': <{'position': <0>}>, 'org.frametide.Center.desktop': <{'position': <1>}>, 'org.frametide.Welcome.desktop': <{'position': <2>}>, 'org.frametide.Migrate.desktop': <{'position': <3>}>, 'org.frametide.Dev.desktop': <{'position': <4>}>, 'org.gnome.Settings.desktop': <{'position': <5>}>}]
 disabled-extensions=['ding@rastersoft.com','web-search-provider@ubuntu.com','snapd-prompting@canonical.com','snapd-search-provider@canonical.com']
 
 [org.gnome.shell.extensions.dash-to-dock]
@@ -112,7 +112,7 @@ check-alive-timeout=uint32 20000
 [org.gnome.shell:ubuntu]
 favorite-apps=['org.gnome.Nautilus.desktop','google-chrome.desktop','firefox.desktop','steam.desktop','ai.storyteller.wordcraft.desktop','code.desktop','org.gnome.Ptyxis.desktop','org.frametide.Store.desktop','org.frametide.Center.desktop']
 enabled-extensions=['apps-menu@gnome-shell-extensions.gcampax.github.com']
-app-picker-layout=[{'org.frametide.Store.desktop': <{'position': <0>}>, 'org.frametide.Center.desktop': <{'position': <1>}>, 'org.frametide.Welcome.desktop': <{'position': <2>}>, 'org.frametide.Migrate.desktop': <{'position': <3>}>, 'org.gnome.Settings.desktop': <{'position': <4>}>}]
+app-picker-layout=[{'org.frametide.Store.desktop': <{'position': <0>}>, 'org.frametide.Center.desktop': <{'position': <1>}>, 'org.frametide.Welcome.desktop': <{'position': <2>}>, 'org.frametide.Migrate.desktop': <{'position': <3>}>, 'org.frametide.Dev.desktop': <{'position': <4>}>, 'org.gnome.Settings.desktop': <{'position': <5>}>}]
 disabled-extensions=['ding@rastersoft.com','web-search-provider@ubuntu.com','snapd-prompting@canonical.com','snapd-search-provider@canonical.com']
 
 [org.gnome.shell.extensions.dash-to-dock:ubuntu]

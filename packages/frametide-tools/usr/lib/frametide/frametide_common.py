@@ -21,6 +21,19 @@ for _row in (Adw.ActionRow, Adw.SwitchRow, Adw.ExpanderRow):
             getattr(self, f"set_{key}")(value or "")
     _row.__init__ = _plain_init
 
+# Gruppen-Überschriften sind immer Markup → Sonderzeichen wie „&“ maskieren
+_group_init = Adw.PreferencesGroup.__init__
+
+
+def _plain_group_init(self, *args, **kwargs):
+    for key in ("title", "description"):
+        if kwargs.get(key):
+            kwargs[key] = GLib.markup_escape_text(kwargs[key])
+    _group_init(self, *args, **kwargs)
+
+
+Adw.PreferencesGroup.__init__ = _plain_group_init
+
 from frametide_i18n import GERMAN, LANG, _, localized  # noqa: E402,F401
 
 HELPER = "/usr/lib/frametide/frametide-helper"

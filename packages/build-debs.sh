@@ -49,6 +49,7 @@ install_artwork() {
         python3 "$root/tools/i18n.py" compile "$dir/usr/share/locale" >/dev/null
         install -Dm644 "$root/artwork/icon-store.svg" "$dir/usr/share/icons/hicolor/scalable/apps/frametide-store.svg"
         install -Dm644 "$root/artwork/icon-center.svg" "$dir/usr/share/icons/hicolor/scalable/apps/frametide-center.svg"
+        install -Dm644 "$root/artwork/icon-dev.svg" "$dir/usr/share/icons/hicolor/scalable/apps/frametide-dev.svg"
         ;;
     frametide-live)
         install -m644 "$root/artwork/logo.svg" "$root/artwork/logo-icon.svg" "$dir/etc/calamares/branding/frametide/"

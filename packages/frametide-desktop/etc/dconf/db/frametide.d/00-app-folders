@@ -33,6 +33,7 @@ excluded-apps=['firefox.desktop', 'google-chrome.desktop', 'steam.desktop']
 name='Development.directory'
 translate=true
 categories=['Development', 'IDE']
+excluded-apps=['org.frametide.Dev.desktop']
 
 [org/gnome/desktop/app-folders/folders/System]
 name='System.directory'

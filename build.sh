@@ -22,6 +22,7 @@ declare -A REPO_KEYS=(
     [github-cli]="https://cli.github.com/packages/githubcli-archive-keyring.gpg"
     [github-desktop]="https://mirror.mwt.me/shiftkey-desktop/gpgkey"
     [coolercontrol]="https://dl.cloudsmith.io/public/coolercontrol/coolercontrol/gpg.key"
+    [mise]="https://mise.jdx.dev/gpg-key.pub"
 )
 
 # Erste existierende Datei aus einer Liste (ohne Fehler, wenn keine existiert)

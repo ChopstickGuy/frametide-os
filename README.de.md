@@ -76,6 +76,18 @@ mit GNOME. Die Ziele, nach Priorität:
   Rust, Go und .NET. Installieren und Öffnen geht mit einem Klick, das Hauptsystem
   bleibt unberührt.
 
+## Entwicklerzentrale
+
+- **Einrichtung:** Git-Name und E-Mail, SSH-Schlüssel und GitHub-Anmeldung in einer Minute.
+  Sprachen wie Python, Node.js, Go, Rust, Java, Bun, Deno, Ruby und Zig installierst du per
+  Klick über **mise**, auch mehrere Versionen parallel.
+- **Dienste & Ports:** PostgreSQL, MySQL, MariaDB, Redis, MongoDB und Adminer laufen als lokale
+  Container. Verbindungsdaten lassen sich mit einem Klick kopieren. Eine Live-Liste zeigt alle
+  Dev-Server mit Port, mit Knöpfen zum Öffnen und Beenden.
+- **Projekt-Starter:** Vorlagen für FastAPI, TypeScript, React (Vite), Rust, Go, C++ (CMake),
+  Website und Godot. Git, `.gitignore`, Dev-Container, VS-Code-Empfehlungen, `mise.toml` und
+  README sind gleich dabei, danach öffnet sich VS Code.
+
 ## Vorinstalliert
 
 Steam, GitHub Desktop, GitHub CLI, WordCraft, GridCraft, DeckCraft,

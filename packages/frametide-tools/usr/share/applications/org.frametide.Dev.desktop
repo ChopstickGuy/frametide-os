@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=Dev Center
+Name[de]=Entwicklerzentrale
+Comment=Git & SSH setup, languages, local databases, ports and new projects
+Comment[de]=Git & SSH, Programmiersprachen, lokale Datenbanken, Ports und neue Projekte
+Exec=frametide-dev
+Icon=frametide-dev
+Terminal=false
+Categories=Development;
+Keywords=git;ssh;github;python;node;rust;go;database;postgres;docker;podman;port;project;
+StartupNotify=true

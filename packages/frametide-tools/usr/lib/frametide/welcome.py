@@ -16,6 +16,7 @@ TILES = [
     ("frametide-center", _("Updates & Treiber"), _("System aktuell halten, Grafiktreiber"), ["frametide-center", "updates"]),
     ("input-gaming", _("Spiele-Check"), _("Läuft mein Spiel unter Linux?"), ["frametide-center", "games"]),
     ("frametide-logo", _("Von Windows umziehen"), _("Dateien, Lesezeichen, WLAN, Spiele"), ["frametide-migrate"]),
+    ("frametide-dev", _("Entwickeln"), _("Git, Sprachen, Datenbanken, Projekte"), ["frametide-dev"]),
     ("openrgb", _("RGB & Lüfter"), _("Beleuchtung und Lüfterkurven"), ["frametide-center", "hardware"]),
     ("org.gnome.Settings", _("Einstellungen"), _("Bildschirm, Ton, Konten, Design"), ["gnome-control-center"]),
 ]

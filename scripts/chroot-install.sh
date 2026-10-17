@@ -61,6 +61,7 @@ add_repo vscode https://packages.microsoft.com/repos/code stable main
 add_repo github-cli https://cli.github.com/packages stable main
 add_repo github-desktop https://mirror.mwt.me/shiftkey-desktop/deb/ any main
 add_repo coolercontrol https://dl.cloudsmith.io/public/coolercontrol/coolercontrol/deb/ubuntu "$UBUNTU_SUITE" main
+add_repo mise https://mise.jdx.dev/deb stable main
 # Chrome verwaltet seine Quelle selbst unter diesem Dateinamen – wir legen sie passend an
 echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/google-chrome.gpg] https://dl.google.com/linux/chrome/deb/ stable main" \
     > /etc/apt/sources.list.d/google-chrome.list
@@ -96,7 +97,7 @@ echo ">>> ArtCraft-Apps (geprüfte .deb aus den GitHub-Releases)"
 apt_install /tmp/frametide/craft/*.deb
 
 echo ">>> Standard-Software"
-apt_install gh github-desktop coolercontrol
+apt_install gh github-desktop coolercontrol mise
 # Chrome und VS Code: Lizenz verbietet Weitergabe auf der ISO → Installation beim ersten Start (frametide-apps)
 
 echo ">>> Sprachpakete: $LANGUAGES"
