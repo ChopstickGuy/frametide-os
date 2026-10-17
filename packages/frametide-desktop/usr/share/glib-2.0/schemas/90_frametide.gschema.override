@@ -134,3 +134,7 @@ click-action='minimize-or-previews'
 [org.gnome.nautilus.preferences:ubuntu]
 default-folder-viewer='icon-view'
 show-delete-permanently=true
+
+# Anmeldebildschirm (GDM): Frametide-Schriftzug statt Ubuntu-Logo
+[org.gnome.login-screen]
+logo='/usr/share/pixmaps/frametide-wordmark.png'

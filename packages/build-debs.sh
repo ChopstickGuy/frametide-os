@@ -17,6 +17,7 @@ install_artwork() {
     frametide-desktop)
         install -Dm644 "$root/artwork/logo-icon.svg" "$dir/usr/share/icons/hicolor/scalable/apps/frametide-logo.svg"
         install -Dm644 "$root/artwork/logo-icon.svg" "$dir/usr/share/pixmaps/frametide-logo.svg"
+        install -Dm644 "$root/artwork/wordmark.png" "$dir/usr/share/pixmaps/frametide-wordmark.png"
         install -d "$dir/usr/share/backgrounds/frametide" "$dir/usr/share/gnome-background-properties"
         cp "$root"/artwork/wallpapers/*.svg "$dir/usr/share/backgrounds/frametide/"
         {
