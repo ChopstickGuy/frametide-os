@@ -64,9 +64,15 @@ class TaskPanel(Gtk.Box):
         self.running = True
         self.set_visible(True)
         self.status.set_label(title)
-        pulse = GLib.timeout_add(120, lambda: (self.bar.pulse(), True)[1])
+        state = {"pulse": True}
+        pulse = GLib.timeout_add(120, lambda: (state["pulse"] and self.bar.pulse(), True)[1])
 
         def line(text):
+            pct = ft.progress_of(text)
+            if pct is not None and ":" in text[:10]:
+                state["pulse"] = False
+                self.bar.set_fraction(pct / 100)
+                return
             self.append_log(text)
             if text.startswith("» "):
                 self.status.set_label(text[2:])

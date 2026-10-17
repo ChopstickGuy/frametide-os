@@ -168,6 +168,20 @@ class Task:
         return False
 
 
+_STATUS = re.compile(r"^(dl|pm)status:[^:]*:([\d.]+):")
+_PERCENT = re.compile(r"(\d{1,3})(?:[.,]\d)?\s?%")
+
+
+def progress_of(line):
+    """Fortschritt 0–100 aus apt-Status-Zeilen (Download 0–50, Installation 50–100) oder „42%“."""
+    m = _STATUS.match(line)
+    if m:
+        value = float(m.group(2))
+        return int(value / 2) if m.group(1) == "dl" else int(50 + value / 2)
+    m = _PERCENT.search(line)
+    return min(100, int(m.group(1))) if m else None
+
+
 def in_thread(func, callback):
     """Führt `func` in einem Thread aus und ruft `callback(ergebnis)` im GTK-Hauptthread."""
     import threading

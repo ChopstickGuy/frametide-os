@@ -25,7 +25,8 @@ DRIVER_RE = re.compile(r"^nvidia-driver-(\d+)(-open|-server|-server-open)?$")
 FAN_DRIVERS = {"it87-dkms", "nct6687d-dkms"}
 OPTIONS = {"AMD64V3", "AMD_OVERDRIVE", "SMBUS_LAX", "MITIGATIONS_OFF"}
 CONF = "/etc/frametide/hwsetup.conf"
-APT = ["apt-get", "-y", "-o", "DPkg::Lock::Timeout=300", "-o", "Dpkg::Options::=--force-confold"]
+APT = ["apt-get", "-y", "-o", "DPkg::Lock::Timeout=300", "-o", "Dpkg::Options::=--force-confold",
+       "-o", "APT::Status-Fd=1"]  # Fortschritt als "dlstatus:/pmstatus:" für Store und Center
 ENV = {"PATH": "/usr/sbin:/usr/bin:/sbin:/bin", "DEBIAN_FRONTEND": "noninteractive", "LANG": "C.UTF-8"}
 
 
@@ -100,7 +101,14 @@ def craft_install(apps, only_newer=False):
         with tempfile.TemporaryDirectory() as tmp:
             path = os.path.join(tmp, asset["name"])
             say(app, release["tag_name"], t("wird heruntergeladen"), f"({asset['size'] // 1_000_000} MB)")
-            urllib.request.urlretrieve(asset["browser_download_url"], path)
+            last = [-1]
+
+            def progress(blocks, block_size, total):
+                pct = min(100, blocks * block_size * 100 // total) if total > 0 else 0
+                if pct >= last[0] + 5:
+                    last[0] = pct
+                    print(f"dlstatus:{app}:{pct}:download", flush=True)
+            urllib.request.urlretrieve(asset["browser_download_url"], path, progress)
             with open(path, "rb") as f:
                 actual = hashlib.sha256(f.read()).hexdigest()
             if actual != expected:

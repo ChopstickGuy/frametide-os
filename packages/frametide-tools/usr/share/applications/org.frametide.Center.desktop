@@ -1,8 +1,7 @@
 [Desktop Entry]
 Type=Application
-Name=Control Center
-Name[de]=Kontrollzentrum
-X-GNOME-FullName=Frametide Control Center
+Name=Control Panel
+Name[de]=Systemsteuerung
 Comment=Updates, drivers, RGB lighting and fans
 Comment[de]=Updates, Treiber, RGB-Beleuchtung und Lüfter
 Exec=frametide-center %u

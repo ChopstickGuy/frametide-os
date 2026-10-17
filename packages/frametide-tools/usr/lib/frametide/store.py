@@ -54,7 +54,8 @@ class AppCard(Gtk.Box):
         if busy or queued:
             box = Gtk.Box(spacing=6, halign=Gtk.Align.CENTER)
             box.append(Gtk.Spinner(spinning=busy))
-            box.append(Gtk.Label(label=_("Läuft …") if busy else _("Wartet")))
+            pct = self.store.progress if busy else None
+            box.append(Gtk.Label(label=(f"{pct} %" if pct is not None else _("Läuft …")) if busy else _("Wartet")))
             self.button.set_child(box)
             self.button.set_sensitive(False)
             self.button.set_css_classes([])
@@ -90,7 +91,7 @@ class StoreWindow(Adw.ApplicationWindow):
         with open(os.path.join(ft.DATA_DIR, "store", "catalog.json")) as f:
             self.catalog = json.load(f)
         self.apps = [a for c in self.catalog["categories"] for a in c["apps"]]
-        self.cards, self.queue, self.busy_id = [], [], None
+        self.cards, self.queue, self.busy_id, self.progress = [], [], None, None
         self.refresh_state()
 
         self.toasts = Adw.ToastOverlay()
@@ -241,9 +242,19 @@ class StoreWindow(Adw.ApplicationWindow):
             argv = ft.helper_argv("craft-install", ref)
         else:
             argv = ft.helper_argv("install" if action == "install" else "remove", ref)
-        self.last_lines = []
-        ft.Task(argv, on_line=self.last_lines.append,
+        self.last_lines, self.progress = [], None
+        ft.Task(argv, on_line=self.on_job_line,
                 on_done=lambda status: self.job_done(app, action, status))
+
+    def on_job_line(self, line):
+        pct = ft.progress_of(line)
+        if pct is not None:
+            if pct != self.progress:
+                self.progress = pct
+                self.update_cards()
+            return  # Statuszeilen nicht als Fehlermeldung anzeigen
+        if line.strip():
+            self.last_lines.append(line)
 
     def job_done(self, app, action, status):
         self.refresh_state()
