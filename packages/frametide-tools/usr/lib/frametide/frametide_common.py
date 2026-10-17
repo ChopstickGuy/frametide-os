@@ -1,5 +1,6 @@
 """Gemeinsamer Code für Frametide Store und Frametide Center."""
 import json
+import math
 import os
 import re
 import subprocess
@@ -206,6 +207,48 @@ def in_thread(func, callback):
             result = e
         GLib.idle_add(callback, result)
     threading.Thread(target=worker, daemon=True).start()
+
+
+class WaveSpinner(Gtk.DrawingArea):
+    """Ladesymbol im Frametide-Stil: eine Welle läuft als Kometenschweif im Kreis."""
+
+    def __init__(self, size=18):
+        super().__init__(content_width=size, content_height=size, valign=Gtk.Align.CENTER)
+        self.set_draw_func(self._draw)
+        self._phase = 0.0
+        self.add_tick_callback(self._tick)
+
+    def _tick(self, _widget, clock):
+        self._phase = (clock.get_frame_time() / 1_000_000) * 2 * math.pi  # 1 Umdrehung pro Sekunde
+        self.queue_draw()
+        return True
+
+    def _draw(self, _area, cr, width, height):
+        import cairo
+        size = min(width, height)
+        cx, cy = width / 2, height / 2
+        radius, amp, line = size * 0.36, size * 0.035, max(1.5, size * 0.09)
+        grad = cairo.LinearGradient(0, height, width, 0)
+        grad.add_color_stop_rgb(0, 0x22 / 255, 0xD3 / 255, 0xEE / 255)
+        grad.add_color_stop_rgb(1, 0xA8 / 255, 0x55 / 255, 0xF7 / 255)
+        segments, span = 14, 300
+        for s_idx in range(segments):
+            cr.new_path()
+            a0 = s_idx * span / segments
+            for j in range(13):
+                deg = a0 + j * (span / segments) / 12
+                a = math.radians(deg) + self._phase
+                r = radius + amp * math.sin(math.radians(deg) * 7 - 3 * self._phase)
+                (cr.move_to if j == 0 else cr.line_to)(cx + r * math.cos(a), cy + r * math.sin(a))
+            alpha = ((s_idx + 1) / segments) ** 1.6
+            cr.set_source(grad)
+            cr.set_line_width(line * (0.55 + 0.45 * (s_idx + 1) / segments))
+            cr.set_line_cap(cairo.LINE_CAP_ROUND if s_idx == segments - 1 else cairo.LINE_CAP_BUTT)
+            cr.push_group()
+            cr.set_source(grad)
+            cr.stroke()
+            cr.pop_group_to_source()
+            cr.paint_with_alpha(alpha)
 
 
 def icon_widget(icon, size=48, app_id=None):

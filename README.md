@@ -70,7 +70,7 @@ settings, `ntsync` for Proton, zram and a calm, minimal GNOME desktop.
 | **📊 Frametide Bench** | A reproducible benchmark for CPU, memory, latency under load, SSD, GPU and boot time. Its JSON results can be compared against any other system. |
 | **🧭 Clear, classic desktop** | GNOME with a classic categorized *Applications* menu, an always-visible dock with your key apps, and app folders instead of an endless icon wall. A welcome screen on first login shows you around. |
 | **⚡ Fast & quiet** | Hidden boot menu, no waiting for the network, no Snap, no telemetry. Updates run with idle priority so they never steal frames. |
-| **🎹 Synthwave sound theme** | Custom retro-modern system sounds and a startup jingle made with analog-style synths, arpeggios and echo. |
+| **🌊 Calm sound & motion** | Soft, low system sounds and a startup sound with an ocean wave – nothing shrill. Loading cursors and spinners show a wave circling around. Task Manager on Ctrl+Shift+Esc, just like on Windows. |
 | **🌍 10 languages offline** | German, English, French, Spanish, Italian, Polish, Portuguese, Dutch, Turkish and Russian. |
 
 ## 📸 Screenshots

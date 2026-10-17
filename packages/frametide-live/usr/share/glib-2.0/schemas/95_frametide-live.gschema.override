@@ -11,3 +11,12 @@ lock-enabled=false
 [org.gnome.desktop.background:ubuntu]
 picture-uri-dark='file:///usr/share/backgrounds/frametide/frametide-tide-logo.svg'
 picture-uri='file:///usr/share/backgrounds/frametide/frametide-tide-logo.svg'
+
+# Neu angelegte Partitionen nicht automatisch einhängen (stört den Installer)
+[org.gnome.desktop.media-handling]
+automount=false
+automount-open=false
+
+[org.gnome.desktop.media-handling:ubuntu]
+automount=false
+automount-open=false

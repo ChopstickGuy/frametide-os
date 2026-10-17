@@ -181,31 +181,93 @@ def pluck(note, start, dur=0.14, pan=0.0, gain=1.0, bright=4200, **kw):
                  pan=pan, gain=gain, **kw)
 
 
+# ------------------------------------------------------- weiche Klangbausteine
+
+def soft_tone(out_l, out_r, freq, start, dur, gain=1.0, pan=0.0, attack=0.012, cutoff=1400.0,
+              partials=((1.0, 1.0), (2.0, 0.18), (3.9, 0.06)), glide_to=None):
+    """Weicher, marimbaartiger Ton: Sinus + wenige leise Obertöne, sanfter Einsatz,
+    exponentielles Ausklingen, Tiefpass gegen jede Schärfe."""
+    n0, n = int(start * RATE), int(dur * RATE)
+    left, right = math.cos((pan + 1) * math.pi / 4), math.sin((pan + 1) * math.pi / 4)
+    phases = [0.0] * len(partials)
+    low = 0.0
+    a = 1 - math.exp(-2 * math.pi * cutoff / RATE)
+    for i in range(n):
+        t = i / RATE
+        f = freq if glide_to is None else freq * (glide_to / freq) ** min(1.0, t / (dur * 0.6))
+        x = 0.0
+        for k, (mult, amp) in enumerate(partials):
+            phases[k] += 2 * math.pi * f * mult / RATE
+            # höhere Teiltöne klingen schneller aus → warm statt klirrend
+            x += amp * math.sin(phases[k]) * math.exp(-t * (3.5 + 6 * (mult - 1)))
+        env = min(1.0, t / attack) * math.exp(-t * 4.0 / dur) * min(1.0, (dur - t) / 0.03)
+        low += a * (x * env - low)
+        y = low * gain
+        if n0 + i < len(out_l):
+            out_l[n0 + i] += y * left
+            out_r[n0 + i] += y * right
+
+
+def pad(out_l, out_r, freqs, start, dur, gain=0.5, attack=1.2, release=1.6, cutoff=700.0):
+    """Warmer Flächenklang aus leicht verstimmten Sinus-/Dreieckswellen."""
+    n0, n = int(start * RATE), int((dur + release) * RATE)
+    a = 1 - math.exp(-2 * math.pi * cutoff / RATE)
+    for idx, f0 in enumerate(freqs):
+        pan = (idx / max(1, len(freqs) - 1)) * 1.2 - 0.6
+        left, right = math.cos((pan + 1) * math.pi / 4), math.sin((pan + 1) * math.pi / 4)
+        p1 = p2 = 0.0
+        low = 0.0
+        for i in range(n):
+            t = i / RATE
+            p1 += 2 * math.pi * f0 * 1.0015 / RATE
+            p2 += 2 * math.pi * f0 * 0.9985 / RATE
+            tri = 2 / math.pi * math.asin(math.sin(p2))
+            x = 0.6 * math.sin(p1) + 0.4 * tri
+            env = min(1.0, t / attack) if t < dur else max(0.0, 1 - (t - dur) / release)
+            low += a * (x * env - low)
+            y = low * gain / len(freqs)
+            if n0 + i < len(out_l):
+                out_l[n0 + i] += y * left
+                out_r[n0 + i] += y * right
+
+
+def ocean_wave(out_l, out_r, start, dur, gain=0.6, seed=11, low_hz=180.0, high_hz=1100.0):
+    """Meereswelle: rosa Rauschen, dessen Lautstärke und Helligkeit an- und abschwillt."""
+    rnd = random.Random(seed)
+    n0, n = int(start * RATE), int(dur * RATE)
+    b = [0.0] * 3
+    lows = [0.0, 0.0]
+    for i in range(n):
+        t = i / n
+        w = rnd.uniform(-1, 1)
+        # einfaches Rosa-Rauschen (Paul Kellet, gekürzt)
+        b[0] = 0.997 * b[0] + 0.029591 * w
+        b[1] = 0.985 * b[1] + 0.032534 * w
+        b[2] = 0.950 * b[2] + 0.048056 * w
+        pink = b[0] + b[1] + b[2] + 0.05 * w
+        swell = math.sin(math.pi * min(1.0, t * 1.15)) ** 2           # anrollen, brechen, auslaufen
+        cutoff = low_hz + (high_hz - low_hz) * swell
+        a = 1 - math.exp(-2 * math.pi * cutoff / RATE)
+        for ch in (0, 1):
+            lows[ch] += a * (pink * (0.92 if ch else 1.0) - lows[ch])
+        if n0 + i < len(out_l):
+            out_l[n0 + i] += lows[0] * swell * gain
+            out_r[n0 + i] += lows[1] * swell * gain
+
+
+def make_soft(name, length, parts, peak_db=-18.0, room=0.30, fx_echo=False):
+    n = int(length * RATE)
+    l, r = [0.0] * n, [0.0] * n
+    for fn, args, kw in parts:
+        fn(l, r, *args, **kw)
+    finish(name, l, r, peak_db=peak_db, fx_echo=fx_echo, room=room)
+
+
+def T(*args, **kw):
+    return (soft_tone, args, kw)
+
+
 # --------------------------------------------------------------------- Sounds
-
-def startup():
-    """Startklang (ca. 3 s): Pad schwillt an, Arpeggio steigt auf, glitzernder Schluss."""
-    voices = []
-    # Pad: Am(add9) mit langsamem Filter-Sweep und Band-Wobbeln
-    for note, pan in (("A2", 0), ("E3", -0.5), ("A3", 0.5), ("C4", -0.3), ("B4", 0.3)):
-        voices.append(Voice(hz(note), 0.0, 2.2, voices=4, detune=0.18, cutoff=(250, 1800, 1100),
-                            res=0.25, attack=0.9, decay=1.6, sustain=0.75, release=1.1,
-                            gain=0.28, vibrato=0.0025, pan=pan))
-    # Bass mit Sub
-    voices.append(Voice(hz("A2"), 0.0, 2.4, voices=2, detune=0.05, cutoff=(200, 900, 400), res=0.2,
-                        attack=0.25, decay=1.2, sustain=0.6, release=0.9, gain=0.45, sub=0.25))
-    # Arpeggio (Sechzehntel bei 112 BPM), Ping-Pong im Panorama
-    arp = ["A3", "C4", "E4", "A4", "B4", "C5", "E5", "A5"]
-    step = 60 / 112 / 4
-    for i, note in enumerate(arp):
-        voices.append(pluck(note, 0.35 + i * step, dur=0.12, pan=-0.6 if i % 2 else 0.6,
-                            gain=1.0, bright=4500 + i * 400, res=0.45))
-    # Schluss: heller Lead-Ton mit Glide
-    voices.append(Voice(hz("E5"), 0.35 + 8 * step, 0.9, voices=3, detune=0.1, cutoff=(1200, 5200, 2600),
-                        res=0.3, attack=0.02, decay=0.6, sustain=0.45, release=0.9, gain=0.45,
-                        glide_from=hz("C5"), glide_time=0.08, vibrato=0.006))
-    make("desktop-login", 3.6, voices, peak_db=-12, fx_echo=True, room=0.3)
-
 
 def main():
     random.seed(42)
@@ -213,31 +275,36 @@ def main():
     for old in os.listdir(os.path.join(OUT, "stereo")):
         os.remove(os.path.join(OUT, "stereo", old))
     with open(os.path.join(OUT, "index.theme"), "w") as f:
-        f.write("[Sound Theme]\nName=Frametide\nComment=Synthwave-Systemklänge\n"
+        f.write("[Sound Theme]\nName=Frametide\nComment=Ruhige Systemklänge mit Meereswelle\n"
                 "Inherits=freedesktop\nDirectories=stereo\n\n[stereo]\nOutputProfile=stereo\n")
 
-    startup()
-    make("bell", 0.6, [pluck("E5", 0, 0.12, gain=0.9)], fx_echo=True)
-    make("message-new-instant", 0.75, [pluck("A4", 0, 0.1, pan=-0.4), pluck("E5", 0.09, 0.16, pan=0.4)],
-         fx_echo=True)
-    make("complete", 0.9, [pluck("A4", 0.0, 0.1, pan=-0.5), pluck("C5", 0.08, 0.1),
-                           pluck("E5", 0.16, 0.1, pan=0.5), pluck("A5", 0.24, 0.2, bright=5200)],
-         fx_echo=True)
-    make("dialog-warning", 0.7, [pluck("E4", 0, 0.12, wave="square", gain=0.7),
-                                 pluck("C4", 0.12, 0.2, wave="square", gain=0.7)])
-    make("dialog-error", 0.65, [Voice(hz("A2"), 0, 0.12, voices=3, detune=0.4, cutoff=(400, 2200, 500),
-                                      decay=0.12, release=0.05, gain=0.9),
-                                Voice(hz("A2"), 0.16, 0.18, voices=3, detune=0.4, cutoff=(400, 2200, 500),
-                                      decay=0.18, release=0.05, gain=0.9)])
-    make("audio-volume-change", 0.12, [pluck("A5", 0, 0.035, bright=3000, gain=0.6)], room=0.08)
-    make("device-added", 0.7, [Voice(hz("A4"), 0, 0.25, cutoff=(500, 4800, 1500), decay=0.25,
-                                     glide_from=hz("A3"), glide_time=0.12, gain=0.8)], fx_echo=True)
-    make("device-removed", 0.7, [Voice(hz("A3"), 0, 0.25, cutoff=(500, 3600, 700), decay=0.25,
-                                       glide_from=hz("A4"), glide_time=0.12, gain=0.8)], fx_echo=True)
-    make("power-plug", 0.6, [pluck("E4", 0, 0.08), pluck("B4", 0.07, 0.15)])
-    make("power-unplug", 0.6, [pluck("B4", 0, 0.08), pluck("E4", 0.07, 0.15)])
-    make("screen-capture", 0.35, noises=[(0, 0.08, 6000, 1500, 0.9)], room=0.12)
-    make("trash-empty", 0.7, noises=[(0, 0.45, 7000, 300, 0.7, 9)], room=0.2)
+    # Startklang (ca. 4,5 s): Welle rollt heran, darüber ein warmer, tiefer Akkord und drei weiche Töne
+    make_soft("desktop-login", 4.6, [
+        (ocean_wave, (0.0, 4.4), {"gain": 0.55}),
+        (pad, ([hz("F2"), hz("C3"), hz("A3"), hz("E4")], 0.3, 2.4), {"gain": 0.9, "attack": 1.4, "release": 1.8}),
+        T(hz("A3"), 0.9, 1.6, gain=0.55, pan=-0.3),
+        T(hz("C4"), 1.25, 1.6, gain=0.5, pan=0.3),
+        T(hz("E4"), 1.6, 2.2, gain=0.45, cutoff=1200),
+    ], peak_db=-14, room=0.38)
+
+    # Kurz, tief, leise – nichts davon soll „im Ohr wehtun“ (alle Grundtöne unter 400 Hz)
+    make_soft("audio-volume-change", 0.16, [T(hz("A3"), 0, 0.12, cutoff=1000,
+                                             partials=((1.0, 1.0), (2.0, 0.25)))], peak_db=-21, room=0.10)
+    make_soft("bell", 0.45, [T(hz("A3"), 0, 0.35, cutoff=800)], peak_db=-24, room=0.2)
+    make_soft("message-new-instant", 1.0, [T(hz("C4"), 0, 0.5, pan=-0.3), T(hz("G3"), 0.14, 0.7, pan=0.3,
+                                                                          cutoff=1100)], peak_db=-18)
+    make_soft("complete", 1.3, [T(hz("F3"), 0, 0.6, pan=-0.4), T(hz("A3"), 0.12, 0.6),
+                                T(hz("C4"), 0.24, 0.9, pan=0.4)], peak_db=-18)
+    make_soft("dialog-warning", 1.0, [T(hz("A3"), 0, 0.5), T(hz("F3"), 0.16, 0.7)], peak_db=-18)
+    make_soft("dialog-error", 0.9, [T(hz("D3"), 0, 0.4, cutoff=700), T(hz("D3"), 0.2, 0.6, cutoff=700)],
+              peak_db=-17)
+    make_soft("device-added", 1.0, [T(hz("G3"), 0, 0.8, glide_to=hz("D4"), cutoff=1000)], peak_db=-18)
+    make_soft("device-removed", 1.0, [T(hz("D4"), 0, 0.8, glide_to=hz("G3"), cutoff=1000)], peak_db=-18)
+    make_soft("power-plug", 0.9, [T(hz("C3"), 0, 0.4), T(hz("G3"), 0.12, 0.6)], peak_db=-18)
+    make_soft("power-unplug", 0.9, [T(hz("G3"), 0, 0.4), T(hz("C3"), 0.12, 0.6)], peak_db=-18)
+    make_soft("screen-capture", 0.5, [(ocean_wave, (0.0, 0.25), {"gain": 0.9, "low_hz": 400, "high_hz": 1600})],
+              peak_db=-20, room=0.15)
+    make_soft("trash-empty", 1.2, [(ocean_wave, (0.0, 1.0), {"gain": 0.9, "seed": 5})], peak_db=-18)
 
 
 if __name__ == "__main__":

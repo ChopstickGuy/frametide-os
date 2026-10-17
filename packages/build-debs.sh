@@ -32,6 +32,8 @@ install_artwork() {
             done
             echo '</wallpapers>'
         } > "$dir/usr/share/gnome-background-properties/frametide.xml"
+        install -d "$dir/usr/share/icons"
+        cp -a "$root/artwork/cursors/Frametide" "$dir/usr/share/icons/Frametide"
         install -d "$dir/usr/share/sounds/frametide/stereo"
         install -m644 "$root/artwork/sounds/index.theme" "$dir/usr/share/sounds/frametide/"
         install -m644 "$root"/artwork/sounds/stereo/*.wav "$dir/usr/share/sounds/frametide/stereo/"
@@ -52,7 +54,7 @@ install_artwork() {
         install -Dm644 "$root/artwork/icon-dev.svg" "$dir/usr/share/icons/hicolor/scalable/apps/frametide-dev.svg"
         ;;
     frametide-live)
-        install -m644 "$root/artwork/logo.svg" "$root/artwork/logo-icon.svg" "$dir/etc/calamares/branding/frametide/"
+        install -m644 "$root/artwork/logo.svg" "$root/artwork/logo-icon.svg" "$root/artwork/wordmark.png" "$dir/etc/calamares/branding/frametide/"
         ;;
     esac
 }

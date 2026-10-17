@@ -6,6 +6,7 @@ color-scheme='prefer-dark'
 accent-color='teal'
 gtk-theme='Yaru-prussiangreen-dark'
 icon-theme='Papirus-Dark'
+cursor-theme='Frametide'
 font-name='Inter Variable 11'
 document-font-name='Inter Variable 11'
 monospace-font-name='JetBrains Mono 11'
@@ -16,6 +17,8 @@ clock-show-weekday=true
 
 [org.gnome.desktop.wm.preferences]
 button-layout='appmenu:minimize,maximize,close'
+# Kein Warnton beim Löschen am Textanfang & Co.
+audible-bell=false
 titlebar-font='Inter Variable Bold 11'
 
 [org.gnome.desktop.background]
@@ -45,7 +48,7 @@ check-alive-timeout=uint32 20000
 [org.gnome.shell]
 favorite-apps=['org.gnome.Nautilus.desktop','google-chrome.desktop','firefox.desktop','steam.desktop','ai.storyteller.wordcraft.desktop','code.desktop','org.gnome.Ptyxis.desktop','org.frametide.Store.desktop','org.frametide.Center.desktop']
 enabled-extensions=['apps-menu@gnome-shell-extensions.gcampax.github.com']
-app-picker-layout=[{'org.frametide.Store.desktop': <{'position': <0>}>, 'org.frametide.Center.desktop': <{'position': <1>}>, 'org.frametide.Welcome.desktop': <{'position': <2>}>, 'org.frametide.Migrate.desktop': <{'position': <3>}>, 'org.frametide.Dev.desktop': <{'position': <4>}>, 'org.gnome.Settings.desktop': <{'position': <5>}>}]
+app-picker-layout=[{'org.frametide.Store.desktop': <{'position': <0>}>, 'org.frametide.Center.desktop': <{'position': <1>}>, 'org.frametide.Welcome.desktop': <{'position': <2>}>, 'org.frametide.Migrate.desktop': <{'position': <3>}>, 'org.frametide.Dev.desktop': <{'position': <4>}>, 'org.frametide.TaskManager.desktop': <{'position': <5>}>, 'org.gnome.Settings.desktop': <{'position': <6>}>}]
 disabled-extensions=['ding@rastersoft.com','web-search-provider@ubuntu.com','snapd-prompting@canonical.com','snapd-search-provider@canonical.com']
 
 [org.gnome.shell.extensions.dash-to-dock]
@@ -74,6 +77,7 @@ color-scheme='prefer-dark'
 accent-color='teal'
 gtk-theme='Yaru-prussiangreen-dark'
 icon-theme='Papirus-Dark'
+cursor-theme='Frametide'
 font-name='Inter Variable 11'
 document-font-name='Inter Variable 11'
 monospace-font-name='JetBrains Mono 11'
@@ -83,6 +87,8 @@ clock-show-weekday=true
 
 [org.gnome.desktop.wm.preferences:ubuntu]
 button-layout='appmenu:minimize,maximize,close'
+# Kein Warnton beim Löschen am Textanfang & Co.
+audible-bell=false
 titlebar-font='Inter Variable Bold 11'
 
 [org.gnome.desktop.background:ubuntu]
@@ -112,7 +118,7 @@ check-alive-timeout=uint32 20000
 [org.gnome.shell:ubuntu]
 favorite-apps=['org.gnome.Nautilus.desktop','google-chrome.desktop','firefox.desktop','steam.desktop','ai.storyteller.wordcraft.desktop','code.desktop','org.gnome.Ptyxis.desktop','org.frametide.Store.desktop','org.frametide.Center.desktop']
 enabled-extensions=['apps-menu@gnome-shell-extensions.gcampax.github.com']
-app-picker-layout=[{'org.frametide.Store.desktop': <{'position': <0>}>, 'org.frametide.Center.desktop': <{'position': <1>}>, 'org.frametide.Welcome.desktop': <{'position': <2>}>, 'org.frametide.Migrate.desktop': <{'position': <3>}>, 'org.frametide.Dev.desktop': <{'position': <4>}>, 'org.gnome.Settings.desktop': <{'position': <5>}>}]
+app-picker-layout=[{'org.frametide.Store.desktop': <{'position': <0>}>, 'org.frametide.Center.desktop': <{'position': <1>}>, 'org.frametide.Welcome.desktop': <{'position': <2>}>, 'org.frametide.Migrate.desktop': <{'position': <3>}>, 'org.frametide.Dev.desktop': <{'position': <4>}>, 'org.frametide.TaskManager.desktop': <{'position': <5>}>, 'org.gnome.Settings.desktop': <{'position': <6>}>}]
 disabled-extensions=['ding@rastersoft.com','web-search-provider@ubuntu.com','snapd-prompting@canonical.com','snapd-search-provider@canonical.com']
 
 [org.gnome.shell.extensions.dash-to-dock:ubuntu]

@@ -3,9 +3,9 @@ componentName: frametide
 welcomeStyleCalamares: false
 welcomeExpandingLogo: true
 windowExpanding: normal
-windowSize: 1024px,640px
+windowSize: 1100px,700px
 windowPlacement: center
-sidebar: widget
+sidebar: qml
 navigation: widget
 
 strings:
@@ -23,13 +23,13 @@ strings:
 images:
     productLogo:         "logo-icon.svg"
     productIcon:         "logo-icon.svg"
-    productWelcome:      "logo-icon.svg"
+    productWelcome:      "wordmark.png"
 
 slideshow:               "show.qml"
 slideshowAPI:            2
 
 style:
-   SidebarBackground:        "#05070F"
-   SidebarText:              "#E6EAF2"
-   SidebarTextCurrent:       "#05070F"
-   SidebarBackgroundCurrent: "#22D3EE"
+   SidebarBackground:        "#0A0D18"
+   SidebarText:              "#7D879C"
+   SidebarTextCurrent:       "#F3F6FD"
+   SidebarBackgroundCurrent: "#16384A"

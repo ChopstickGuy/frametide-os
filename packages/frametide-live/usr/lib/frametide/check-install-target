@@ -1,0 +1,15 @@
+#!/bin/sh
+# Prüft vor dem Entpacken, ob das Installationsziel eine echte, große genug Partition ist.
+root="$1"
+if ! mountpoint -q "$root"; then
+    echo "Die Zielpartition ist nicht eingehängt ($root)."
+    echo "Bitte den Installer schließen, neu starten und die Partitionierung erneut wählen."
+    echo "Details: lsblk -f und /tmp/calamares.log"
+    exit 1
+fi
+avail_kb=$(df -Pk "$root" | awk 'NR==2 {print $4}')
+if [ "${avail_kb:-0}" -lt 15000000 ]; then
+    echo "Zu wenig Platz auf der Zielpartition: $((avail_kb / 1024 / 1024)) GB frei, mindestens 15 GB nötig."
+    exit 1
+fi
+echo "Ziel in Ordnung: $(findmnt -no SOURCE,FSTYPE "$root"), $((avail_kb / 1024 / 1024)) GB frei"

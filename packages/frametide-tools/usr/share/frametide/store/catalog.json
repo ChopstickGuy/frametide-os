@@ -962,12 +962,13 @@
     },
     {
      "id": "resources",
-     "name": "Resources",
+     "name": "Resources (Task-Manager)",
      "summary": "Systemmonitor",
      "icon": "net.nokyan.Resources",
-     "source": "flatpak",
-     "ref": "net.nokyan.Resources",
-     "summary_en": "System monitor"
+     "source": "apt",
+     "ref": "resources",
+     "summary_en": "System monitor",
+     "name_en": "Resources (Task Manager)"
     },
     {
      "id": "timeshift",

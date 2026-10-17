@@ -4,7 +4,7 @@ Name=Install Frametide OS
 Name[de]=Frametide OS installieren
 Comment=Install Frametide OS on this computer
 Comment[de]=Frametide OS auf diesem Computer installieren
-Exec=sh -c "sudo -E calamares >/tmp/calamares.log 2>&1"
+Exec=sh -c "sudo --preserve-env=WAYLAND_DISPLAY,XDG_RUNTIME_DIR,DISPLAY,XAUTHORITY,LANG,LANGUAGE,LC_ALL,QT_QPA_PLATFORM /usr/bin/calamares -D6 >/tmp/calamares.log 2>&1"
 Icon=frametide-logo
 Terminal=false
 X-GNOME-Autostart-Delay=2

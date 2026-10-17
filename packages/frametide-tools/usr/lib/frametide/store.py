@@ -53,7 +53,7 @@ class AppCard(Gtk.Box):
         self.remove_btn.set_visible(container and self.installed() and not (busy or queued))
         if busy or queued:
             box = Gtk.Box(spacing=6, halign=Gtk.Align.CENTER)
-            box.append(Gtk.Spinner(spinning=busy))
+            box.append(ft.WaveSpinner(18) if busy else Gtk.Image(icon_name="content-loading-symbolic"))
             pct = self.store.progress if busy else None
             box.append(Gtk.Label(label=(f"{pct} %" if pct is not None else _("Läuft …")) if busy else _("Wartet")))
             self.button.set_child(box)
