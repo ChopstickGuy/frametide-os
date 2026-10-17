@@ -62,29 +62,36 @@ jobs:
         run: sudo ./build.sh
       - name: ISO size
         run: ls -lh out/*.iso && cat out/*.sha256
-      - name: Install test (install like Calamares, then boot the installed system)
+      - name: Install test (install like Calamares in UEFI and BIOS mode, then boot the installed system)
         continue-on-error: true
         run: |
           sudo apt-get install -y gdisk qemu-system-x86 ovmf socat imagemagick
           [ -e /dev/kvm ] && sudo chmod 666 /dev/kvm
           mkdir -p screenshots
-          sudo tools/ci-install-test.sh out/*.iso /tmp/installed.img 2>&1 | tee screenshots/install-test.log
-          sudo chmod 666 /tmp/installed.img
-          cp /usr/share/OVMF/OVMF_VARS_4M.fd /tmp/vars.fd 2>/dev/null || cp /usr/share/OVMF/OVMF_VARS.fd /tmp/vars.fd
-          code=$(ls /usr/share/OVMF/OVMF_CODE_4M.fd /usr/share/OVMF/OVMF_CODE.fd 2>/dev/null | head -1)
-          args=(-m 6144 -smp 4 -vga virtio -display none -monitor unix:/tmp/mon-installed,server,nowait
-                -drive "if=pflash,format=raw,readonly=on,file=$code" -drive "if=pflash,format=raw,file=/tmp/vars.fd"
-                -drive "file=/tmp/installed.img,if=virtio,format=raw")
-          [ -e /dev/kvm ] && args+=(-enable-kvm -cpu host)
-          qemu-system-x86_64 "${args[@]}" &
-          pid=$!
-          for t in 30 90 150; do
-            sleep $([ $t = 30 ] && echo 30 || echo 60)
-            echo "screendump /tmp/inst-$t.ppm" | socat - unix-connect:/tmp/mon-installed >/dev/null
-            sleep 2 && convert /tmp/inst-$t.ppm screenshots/installed-${t}s.png && echo "Screenshot installed-${t}s"
+          ok=0
+          for mode in uefi bios; do
+            sudo tools/ci-install-test.sh out/*.iso /tmp/installed.img $mode 2>&1 | tee screenshots/install-test-$mode.log
+            grep -q "Installation abgeschlossen" screenshots/install-test-$mode.log && ok=$((ok + 1))
+            sudo chmod 666 /tmp/installed.img
+            args=(-m 6144 -smp 4 -vga virtio -display none -monitor unix:/tmp/mon-installed,server,nowait
+                  -drive "file=/tmp/installed.img,if=virtio,format=raw")
+            if [ $mode = uefi ]; then
+              cp /usr/share/OVMF/OVMF_VARS_4M.fd /tmp/vars.fd 2>/dev/null || cp /usr/share/OVMF/OVMF_VARS.fd /tmp/vars.fd
+              code=$(ls /usr/share/OVMF/OVMF_CODE_4M.fd /usr/share/OVMF/OVMF_CODE.fd 2>/dev/null | head -1)
+              args+=(-drive "if=pflash,format=raw,readonly=on,file=$code" -drive "if=pflash,format=raw,file=/tmp/vars.fd")
+            fi
+            [ -e /dev/kvm ] && args+=(-enable-kvm -cpu host)
+            qemu-system-x86_64 "${args[@]}" &
+            pid=$!
+            for t in 30 90; do
+              sleep $([ $t = 30 ] && echo 30 || echo 60)
+              echo "screendump /tmp/inst.ppm" | socat - unix-connect:/tmp/mon-installed >/dev/null
+              sleep 2 && convert /tmp/inst.ppm screenshots/installed-$mode-${t}s.png && echo "Screenshot installed-$mode-${t}s"
+            done
+            kill $pid || true; wait $pid 2>/dev/null || true
+            rm -f /tmp/installed.img /tmp/mon-installed
           done
-          kill $pid || true
-          grep -q "Installation abgeschlossen" screenshots/install-test.log
+          [ $ok = 2 ]
       - name: Boot test in QEMU (UEFI and BIOS, with screenshots)
         continue-on-error: true
         run: |

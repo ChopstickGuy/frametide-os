@@ -113,8 +113,18 @@ echo ">>> 32-Bit-Grafiktreiber (Steam/Proton)"
 apt_install mesa-vulkan-drivers:i386 libgl1-mesa-dri:i386 libglx-mesa0:i386 libvulkan1:i386
 
 echo ">>> GRUB-Pakete für den Offline-Installer vorhalten"
-mkdir -p /var/cache/frametide/grub
-(cd /var/cache/frametide/grub && apt-get download grub-efi-amd64 grub-pc)
+# Je Startmodus das GRUB-Paket samt allen fehlenden Abhängigkeiten (z. B. grub-gfxpayload-lists
+# bei grub-pc), damit der Installer ohne Internet auskommt.
+for entry in efi:grub-efi-amd64 pc:grub-pc; do
+    dir="/var/cache/frametide/grub/${entry%%:*}"
+    mkdir -p "$dir"
+    mapfile -t need < <(apt-get -s -o Debug::NoLocking=1 install --no-install-recommends "${entry#*:}" |
+                        awk '/^Inst /{print $2}')
+    echo "    ${entry%%:*}: ${need[*]:-(bereits vollständig)}"
+    if [ "${#need[@]}" -gt 0 ]; then
+        (cd "$dir" && apt-get download "${need[@]}")
+    fi
+done
 
 echo ">>> Ballast entfernen (schnellerer Start, aufgeräumtes System)"
 # Absturzberichte, Telemetrie, Ubuntu-Einrichtungsassistent, Snap (alles nur „Recommends“)
