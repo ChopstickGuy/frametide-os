@@ -1,9 +1,9 @@
 [Desktop Entry]
 Type=Application
-Name=Task Manager
-Name[de]=Task-Manager
-Comment=See and end running programs, CPU, GPU, memory and network usage (Ctrl+Shift+Esc)
-Comment[de]=Laufende Programme sehen und beenden, CPU-, GPU-, Speicher- und Netzwerkauslastung (Strg+Umschalt+Esc)
+Name=Tasks
+Name[de]=Tasks
+Comment=Task Manager – see and end running programs, CPU, GPU, memory and network usage (Ctrl+Shift+Esc)
+Comment[de]=Task-Manager – laufende Programme sehen und beenden, CPU-, GPU-, Speicher- und Netzwerkauslastung (Strg+Umschalt+Esc)
 Exec=resources
 Icon=net.nokyan.Resources
 Terminal=false

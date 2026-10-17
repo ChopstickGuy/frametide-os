@@ -1,7 +1,7 @@
 ---
 componentName: frametide
 welcomeStyleCalamares: false
-welcomeExpandingLogo: true
+welcomeExpandingLogo: false
 windowExpanding: normal
 windowSize: 1100px,700px
 windowPlacement: center
