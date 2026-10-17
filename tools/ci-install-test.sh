@@ -61,7 +61,10 @@ chroot "$MNT" /usr/lib/frametide/update-initramfs-all
 log "GRUB-Paket und Bootloader (Calamares: grubpkg + bootloader)"
 chroot "$MNT" env DEBIAN_FRONTEND=noninteractive sh -c 'dpkg -i /var/cache/frametide/grub/grub-efi-amd64_*.deb && rm -rf /var/cache/frametide/grub'
 chroot "$MNT" grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=ubuntu \
-    --uefi-secure-boot --no-nvram --force-extra-removable
+    --uefi-secure-boot --no-nvram
+# Fallback-Pfad EFI/BOOT (wie Calamares installEFIFallback) – startet auch ohne NVRAM-Eintrag
+chroot "$MNT" grub-install --target=x86_64-efi --efi-directory=/boot/efi --uefi-secure-boot \
+    --no-nvram --removable
 chroot "$MNT" update-grub
 ls -R "$MNT/boot/efi/EFI" | head -20
 ls "$MNT/boot"
