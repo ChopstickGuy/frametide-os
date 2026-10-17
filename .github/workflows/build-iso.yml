@@ -89,7 +89,7 @@ jobs:
               sleep 2 && convert /tmp/inst.ppm screenshots/installed-$mode-${t}s.png && echo "Screenshot installed-$mode-${t}s"
             done
             kill $pid || true; wait $pid 2>/dev/null || true
-            rm -f /tmp/installed.img /tmp/mon-installed
+            sudo rm -f /tmp/installed.img /tmp/mon-installed
           done
           [ $ok = 2 ]
       - name: Boot test in QEMU (UEFI and BIOS, with screenshots)
