@@ -11,41 +11,40 @@ cleanup() {
     done
     mountpoint -q /mnt/ft-sq && umount -lf /mnt/ft-sq
     mountpoint -q /mnt/ft-iso && umount -lf /mnt/ft-iso
-    [ -n "${LOOP:-}" ] && losetup -d "$LOOP" 2>/dev/null || true
+    for l in ${LOOPS:-}; do losetup -d "$l" 2>/dev/null || true; done
 }
 trap cleanup EXIT
 
 log "Platte partitionieren (GPT: 512 MB EFI + ext4)"
 rm -f "$DISK"; truncate -s 40G "$DISK"
-sgdisk -q -n1:0:+512M -t1:ef00 -c1:EFI -n2:0:0 -t2:8304 -c2:root "$DISK"
-LOOP=$(losetup -Pf --show "$DISK")
-partx -u "$LOOP" 2>/dev/null || true
-udevadm settle 2>/dev/null || true
-for _ in $(seq 20); do [ -b "${LOOP}p2" ] && break; sleep 0.5; done
-# Ohne udev (z. B. in Containern) die Partitionsgeräte selbst anlegen
-for n in 1 2; do
-    dev="${LOOP}p$n"; sys="/sys/block/$(basename "$LOOP")/$(basename "$LOOP")p$n/dev"
-    if [ ! -b "$dev" ] && [ -f "$sys" ]; then
-        IFS=: read -r major minor < "$sys"; mknod "$dev" b "$major" "$minor"
-    fi
-done
-[ -b "${LOOP}p2" ] || { echo "Partitionen nicht gefunden"; exit 1; }
-mkfs.vfat -F32 -n EFI "${LOOP}p1" >/dev/null
-mkfs.ext4 -q -L frametide "${LOOP}p2"
+sgdisk -n1:0:+512M -t1:ef00 -n2:0:0 -t2:8304 "$DISK" >/dev/null
+# Partitionen über ihre Position in der Image-Datei einhängen (Runner-Kernel legen
+# für Loop-Geräte nicht immer Partitionsgeräte an)
+part_loop() {
+    local first last
+    first=$(sgdisk -i "$1" "$DISK" | awk '/First sector/{print $3}')
+    last=$(sgdisk -i "$1" "$DISK" | awk '/Last sector/{print $3}')
+    losetup -f --show -o $((first * 512)) --sizelimit $(((last - first + 1) * 512)) "$DISK"
+}
+EFI_DEV=$(part_loop 1); ROOT_DEV=$(part_loop 2)
+LOOPS="$EFI_DEV $ROOT_DEV"
+echo "EFI: $EFI_DEV  Root: $ROOT_DEV"
+mkfs.vfat -F32 -n EFI "$EFI_DEV" >/dev/null
+mkfs.ext4 -q -L frametide "$ROOT_DEV"
 
 log "System entpacken (wie Calamares unpackfs)"
 mkdir -p /mnt/ft-iso /mnt/ft-sq "$MNT"
 mount -o loop,ro "$ISO" /mnt/ft-iso
 mount -t squashfs -o loop,ro /mnt/ft-iso/casper/filesystem.squashfs /mnt/ft-sq
-mount -o noatime "${LOOP}p2" "$MNT"
+mount -o noatime "$ROOT_DEV" "$MNT"
 rsync -aHAXSr --filter='-x trusted.overlay.*' --exclude /proc/ --exclude /sys/ --exclude /dev/ \
     --exclude /run/ --exclude /run/udev/ /mnt/ft-sq/ "$MNT/"
-mkdir -p "$MNT/boot/efi" && mount "${LOOP}p1" "$MNT/boot/efi"
+mkdir -p "$MNT/boot/efi" && mount "$EFI_DEV" "$MNT/boot/efi"
 for d in dev dev/pts proc sys run; do mkdir -p "$MNT/$d"; mount --bind "/$d" "$MNT/$d"; done
 mkdir -p "$MNT/cdrom" && mount --bind /mnt/ft-iso "$MNT/cdrom"
 
 log "fstab, machine-id, Testbenutzer"
-root_uuid=$(blkid -s UUID -o value "${LOOP}p2"); efi_uuid=$(blkid -s UUID -o value "${LOOP}p1")
+root_uuid=$(blkid -s UUID -o value "$ROOT_DEV"); efi_uuid=$(blkid -s UUID -o value "$EFI_DEV")
 printf 'UUID=%s / ext4 defaults,noatime 0 1\nUUID=%s /boot/efi vfat umask=0077 0 1\n' "$root_uuid" "$efi_uuid" > "$MNT/etc/fstab"
 chroot "$MNT" systemd-machine-id-setup >/dev/null
 chroot "$MNT" useradd -m -s /bin/bash -G sudo,video,render,gamemode -c "Test" tester 2>/dev/null \
