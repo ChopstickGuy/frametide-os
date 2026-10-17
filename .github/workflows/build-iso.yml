@@ -9,6 +9,9 @@ on:
   pull_request:
     paths-ignore: ["**.md", "docs/**", ".github/ISSUE_TEMPLATE/**"]
 
+permissions:
+  contents: write   # GitHub-Release für Tags anlegen
+
 jobs:
   check:
     runs-on: ubuntu-24.04
