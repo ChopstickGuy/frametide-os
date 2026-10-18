@@ -5,6 +5,10 @@ if [ "$1" = configure ]; then
     # Eigenes Schema der Fenster-Layout-Erweiterung (neuer als Ubuntus Systemschema)
     glib-compile-schemas /usr/share/gnome-shell/extensions/tiling-assistant@frametide/schemas || true
     dconf update 2>/dev/null || true
+    # GSConnect (Handy-Kopplung): Ports freigeben – greift, sobald die Firewall eingeschaltet ist
+    if command -v ufw >/dev/null 2>&1; then
+        ufw allow GSConnect >/dev/null 2>&1 || true
+    fi
     gtk-update-icon-cache -q /usr/share/icons/hicolor 2>/dev/null || true
     # Frametide-Startbildschirm als Standard (die Initramfs wird beim Build/Installieren neu erzeugt)
     update-alternatives --quiet --install /usr/share/plymouth/themes/default.plymouth default.plymouth \
