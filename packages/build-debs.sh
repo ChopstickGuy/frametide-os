@@ -22,6 +22,10 @@ install_artwork() {
         install -Dm644 "$root/artwork/logo-icon.svg" "$dir/usr/share/icons/hicolor/scalable/apps/frametide-logo.svg"
         install -Dm644 "$root/artwork/logo-icon.svg" "$dir/usr/share/pixmaps/frametide-logo.svg"
         install -Dm644 "$root/artwork/wordmark.png" "$dir/usr/share/pixmaps/frametide-wordmark.png"
+        # Apps-Knopf im Dock: Ubuntus Dock sucht zuerst „view-app-grid-ubuntu-symbolic“ und fände sonst
+        # das Ubuntu-Logo aus Yaru – unser neutrales Raster liegt in hicolor und wird vorher gefunden
+        install -Dm644 "$root/artwork/icons/view-app-grid-symbolic.svg" \
+            "$dir/usr/share/icons/hicolor/scalable/actions/view-app-grid-ubuntu-symbolic.svg"
         install -d "$dir/usr/share/backgrounds/frametide" "$dir/usr/share/gnome-background-properties"
         cp "$root"/artwork/wallpapers/*.svg "$dir/usr/share/backgrounds/frametide/"
         {
