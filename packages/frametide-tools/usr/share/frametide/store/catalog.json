@@ -812,11 +812,12 @@
     {
      "id": "localsend",
      "name": "LocalSend",
-     "summary": "Dateien im Heimnetz an Handy und PC senden",
+     "summary": "Wie AirDrop: Fotos und Dateien mit iPhone, Android und PCs teilen",
      "icon": "org.localsend.localsend_app",
      "source": "flatpak",
      "ref": "org.localsend.localsend_app",
-     "summary_en": "Send files to phones and PCs on your network"
+     "summary_en": "Like AirDrop: share photos and files with iPhone, Android and PCs",
+     "featured": true
     },
     {
      "id": "net-merge",
