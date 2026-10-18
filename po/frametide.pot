@@ -993,7 +993,7 @@ msgstr ""
 msgid "Erstellt mit Frametide OS ({template})."
 msgstr ""
 
-#: frametide_common.py:274
+#: frametide_common.py:335
 msgid "Details anzeigen"
 msgstr ""
 
@@ -1277,12 +1277,96 @@ msgstr ""
 msgid "{ok} von {n} WLAN-Netzwerken"
 msgstr ""
 
-#: store.py:14
-msgid "Hersteller"
+#: network_setup.py:177
+msgid "Weiter zur Installation"
 msgstr ""
 
-#: store.py:299
+#: network_setup.py:202
 msgid "Abbrechen"
+msgstr ""
+
+#: network_setup.py:203
+msgid "Verbinden"
+msgstr ""
+
+#: network_setup.py:91
+msgid "Mit dem Internet verbinden"
+msgstr ""
+
+#: network_setup.py:106
+msgid "Suche nach Netzwerken …"
+msgstr ""
+
+#: network_setup.py:110
+msgid "Erneut suchen"
+msgstr ""
+
+#: network_setup.py:117
+msgid "Verstecktes Netzwerk oder Firmen-WLAN …"
+msgstr ""
+
+#: network_setup.py:131
+msgid "Ohne Internet fortfahren"
+msgstr ""
+
+#: network_setup.py:163
+msgid "Verbunden über Kabel"
+msgstr ""
+
+#: network_setup.py:164
+msgid "Alles bereit – du kannst weitermachen."
+msgstr ""
+
+#: network_setup.py:197
+msgid "WLAN-Passwort eingeben"
+msgstr ""
+
+#: network_setup.py:198
+msgid "Passwort"
+msgstr ""
+
+#: network_setup.py:101
+msgid "Empfohlen: Frametide lädt dann beim ersten Start sofort Grafiktreiber und Updates. Die Verbindung wird ins installierte System übernommen."
+msgstr ""
+
+#: network_setup.py:213
+msgid "Verbinde mit {ssid} …"
+msgstr ""
+
+#: network_setup.py:170
+msgid "Noch kein Internet – evtl. Anmeldeseite im Browser nötig."
+msgstr ""
+
+#: network_setup.py:172
+msgid "Nicht verbunden"
+msgstr ""
+
+#: network_setup.py:223
+msgid "Verbindung fehlgeschlagen – Passwort richtig?"
+msgstr ""
+
+#: network_setup.py:99
+msgid "Vor der Installation"
+msgstr ""
+
+#: network_setup.py:166
+msgid "Verbunden mit {ssid}"
+msgstr ""
+
+#: network_setup.py:173
+msgid "Wähle dein WLAN aus der Liste."
+msgstr ""
+
+#: network_setup.py:174
+msgid "Keine WLAN-Netze gefunden. Kabel anschließen oder erneut suchen."
+msgstr ""
+
+#: network_setup.py:184
+msgid "Verbunden"
+msgstr ""
+
+#: store.py:14
+msgid "Hersteller"
 msgstr ""
 
 #: store.py:300
@@ -1465,23 +1549,23 @@ msgstr ""
 msgid "Alles Wichtige ist nur einen Klick entfernt."
 msgstr ""
 
-#: whats_new.py:137
+#: whats_new.py:78
 msgid "Neu in Frametide OS"
 msgstr ""
 
-#: whats_new.py:156
+#: whats_new.py:97
 msgid "Schließen"
 msgstr ""
 
-#: whats_new.py:177
+#: whats_new.py:118
 msgid "Alle Änderungen"
 msgstr ""
 
-#: whats_new.py:179
+#: whats_new.py:120
 msgid "Alles klar"
 msgstr ""
 
-#: whats_new.py:146
+#: whats_new.py:87
 msgid "UPDATE"
 msgstr ""
 

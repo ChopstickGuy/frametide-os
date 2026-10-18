@@ -1,0 +1,12 @@
+#!/bin/sh
+# Startet den Frametide-Installer. Ohne Internet, aber mit WLAN-Adapter, kommt zuerst die
+# WLAN-Auswahl – die Verbindung übernimmt Calamares (networkcfg) ins installierte System.
+if command -v nmcli >/dev/null 2>&1 && nmcli -t -f TYPE device 2>/dev/null | grep -qx wifi; then
+    # Kabelverbindungen brauchen nach dem Anmelden einen Moment (DHCP)
+    nm-online -q -t 8 >/dev/null 2>&1 || true
+    if [ "$(nmcli -t networking connectivity check 2>/dev/null)" != full ]; then
+        /usr/bin/frametide-network-setup || true
+    fi
+fi
+exec sudo --preserve-env=XDG_RUNTIME_DIR,DISPLAY,XAUTHORITY,LANG,LANGUAGE,LC_ALL \
+    QT_QPA_PLATFORM=xcb /usr/bin/calamares -D6 >/tmp/calamares.log 2>&1

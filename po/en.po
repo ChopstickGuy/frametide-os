@@ -1115,3 +1115,66 @@ msgstr "Got it"
 
 msgid "UPDATE"
 msgstr "UPDATE"
+
+msgid "Weiter zur Installation"
+msgstr "Continue to installation"
+
+msgid "Verbinden"
+msgstr "Connect"
+
+msgid "Mit dem Internet verbinden"
+msgstr "Connect to the internet"
+
+msgid "Suche nach Netzwerken …"
+msgstr "Looking for networks …"
+
+msgid "Erneut suchen"
+msgstr "Search again"
+
+msgid "Verstecktes Netzwerk oder Firmen-WLAN …"
+msgstr "Hidden network or enterprise Wi-Fi …"
+
+msgid "Ohne Internet fortfahren"
+msgstr "Continue without internet"
+
+msgid "Verbunden über Kabel"
+msgstr "Connected via cable"
+
+msgid "Alles bereit – du kannst weitermachen."
+msgstr "All set – you can continue."
+
+msgid "WLAN-Passwort eingeben"
+msgstr "Enter the Wi-Fi password"
+
+msgid "Passwort"
+msgstr "Password"
+
+msgid "Empfohlen: Frametide lädt dann beim ersten Start sofort Grafiktreiber und Updates. Die Verbindung wird ins installierte System übernommen."
+msgstr "Recommended: Frametide then fetches graphics drivers and updates right on first boot. The connection carries over to the installed system."
+
+msgid "Verbinde mit {ssid} …"
+msgstr "Connecting to {ssid} …"
+
+msgid "Noch kein Internet – evtl. Anmeldeseite im Browser nötig."
+msgstr "No internet yet – the network may need a sign-in page in the browser."
+
+msgid "Nicht verbunden"
+msgstr "Not connected"
+
+msgid "Verbindung fehlgeschlagen – Passwort richtig?"
+msgstr "Connection failed – is the password correct?"
+
+msgid "Vor der Installation"
+msgstr "Before installing"
+
+msgid "Verbunden mit {ssid}"
+msgstr "Connected to {ssid}"
+
+msgid "Wähle dein WLAN aus der Liste."
+msgstr "Pick your Wi-Fi from the list."
+
+msgid "Keine WLAN-Netze gefunden. Kabel anschließen oder erneut suchen."
+msgstr "No Wi-Fi networks found. Plug in a cable or search again."
+
+msgid "Verbunden"
+msgstr "Connected"

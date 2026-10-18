@@ -4,6 +4,6 @@ Architecture: all
 Maintainer: Frametide OS <205694622+ChopstickGuy@users.noreply.github.com>
 Section: admin
 Priority: optional
-Depends: casper, calamares, frametide-desktop
+Depends: casper, calamares, frametide-desktop, frametide-tools, network-manager
 Description: Frametide OS – Live-System und Installer
  Calamares-Konfiguration und Branding. Wird bei der Installation entfernt.

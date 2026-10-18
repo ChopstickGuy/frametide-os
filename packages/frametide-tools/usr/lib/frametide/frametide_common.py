@@ -209,6 +209,67 @@ def in_thread(func, callback):
     threading.Thread(target=worker, daemon=True).start()
 
 
+# Markenfarben: Petrol → Indigo → Violett
+TEAL, INDIGO, VIOLET = (0x22, 0xD3, 0xEE), (0x6D, 0x7C, 0xFF), (0xA8, 0x55, 0xF7)
+
+
+def rgb(c, a=1.0):
+    return c[0] / 255, c[1] / 255, c[2] / 255, a
+
+
+class WaveHero(Gtk.DrawingArea):
+    """Dunkler Kopfbereich mit langsam laufenden Wellen in den Frametide-Farben."""
+
+    LAYERS = (  # Höhe (Anteil), Amplitude, Wellenlänge, Tempo, Phase, Deckkraft
+        (0.62, 10, 340, 0.35, 0.0, 0.22),
+        (0.70, 13, 260, -0.28, 1.7, 0.30),
+        (0.78, 9, 200, 0.45, 3.1, 0.45),
+        (0.86, 7, 150, -0.6, 4.4, 0.85),
+    )
+
+    def __init__(self, height=210):
+        super().__init__(content_height=height, hexpand=True)
+        self.set_draw_func(self._draw)
+        self._t = 0.0
+        self.add_tick_callback(self._tick)
+
+    def _tick(self, _widget, clock):
+        self._t = clock.get_frame_time() / 1_000_000
+        self.queue_draw()
+        return True
+
+    def _draw(self, _area, cr, w, h):
+        import cairo
+        bg = cairo.LinearGradient(0, 0, w, h)
+        bg.add_color_stop_rgb(0, 0x05 / 255, 0x07 / 255, 0x0F / 255)
+        bg.add_color_stop_rgb(1, 0x1A / 255, 0x16 / 255, 0x3A / 255)
+        cr.set_source(bg)
+        cr.paint()
+        glow = cairo.RadialGradient(w * 0.85, h * 0.1, 0, w * 0.85, h * 0.1, w * 0.6)
+        glow.add_color_stop_rgba(0, *rgb(VIOLET, 0.28))
+        glow.add_color_stop_rgba(1, *rgb(VIOLET, 0))
+        cr.set_source(glow)
+        cr.paint()
+        for base, amp, length, speed, phase, alpha in self.LAYERS:
+            y0 = h * base
+            cr.new_path()
+            cr.move_to(0, h)
+            x = 0
+            while x <= w + 6:
+                y = (y0 + amp * math.sin(2 * math.pi * x / length + self._t * speed + phase)
+                     + amp * 0.35 * math.sin(2 * math.pi * x / (length * 0.47) - self._t * speed * 1.3))
+                cr.line_to(x, y)
+                x += 6
+            cr.line_to(w, h)
+            cr.close_path()
+            fill = cairo.LinearGradient(0, 0, w, 0)
+            fill.add_color_stop_rgba(0, *rgb(TEAL, alpha))
+            fill.add_color_stop_rgba(0.55, *rgb(INDIGO, alpha))
+            fill.add_color_stop_rgba(1, *rgb(VIOLET, alpha))
+            cr.set_source(fill)
+            cr.fill()
+
+
 class WaveSpinner(Gtk.DrawingArea):
     """Ladesymbol im Frametide-Stil: eine Welle läuft als Kometenschweif im Kreis."""
 
