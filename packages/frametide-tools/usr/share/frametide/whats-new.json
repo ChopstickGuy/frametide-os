@@ -1,6 +1,35 @@
 {
  "releases": [
   {
+   "id": "2026-10-18-3",
+   "date": "18.10.2026",
+   "title": "Admin & Netzwerk",
+   "title_en": "Admin & network",
+   "items": [
+    {
+     "icon": "network-workgroup-symbolic",
+     "title": "Neue Kategorie „Admin & Netzwerk“",
+     "title_en": "New “Admin & network” category",
+     "text": "Im App Store: Cockpit als Server-Manager, Sniffnet, Wireshark, Netzwerk-Scanner, SSH Pilot und mehr.",
+     "text_en": "In the App Store: Cockpit server manager, Sniffnet, Wireshark, network scanners, SSH Pilot and more."
+    },
+    {
+     "icon": "power-profile-performance-symbolic",
+     "title": "Energiemodus bleibt, wie du ihn wählst",
+     "title_en": "Power mode stays as you set it",
+     "text": "Oben rechts → Energiemodus: Energiesparen, Ausgewogen oder Leistung. Deine Wahl gilt bis zum Neustart.",
+     "text_en": "Top right → Power mode: Power Saver, Balanced or Performance. Your choice holds until the next restart."
+    },
+    {
+     "icon": "view-grid-symbolic",
+     "title": "Fenster-Layouts für alle",
+     "title_en": "Window layouts for everyone",
+     "text": "Werden jetzt auch bei bestehenden Installationen automatisch eingeschaltet.",
+     "text_en": "Now switched on automatically on existing installations too."
+    }
+   ]
+  },
+  {
    "id": "2026-10-18-2",
    "date": "18.10.2026",
    "title": "AirPods & mehr",

@@ -851,15 +851,6 @@
      "ref": "com.rustdesk.RustDesk"
     },
     {
-     "id": "remmina",
-     "name": "Remmina",
-     "summary": "Remote-Desktop (RDP, VNC, SSH)",
-     "summary_en": "Remote desktop (RDP, VNC, SSH)",
-     "icon": "org.remmina.Remmina",
-     "source": "flatpak",
-     "ref": "org.remmina.Remmina"
-    },
-    {
      "id": "videodownloader",
      "name": "Video Downloader",
      "summary": "Videos aus dem Web herunterladen",
@@ -1115,15 +1106,6 @@
      "ref": "rest.insomnia.Insomnia"
     },
     {
-     "id": "wireshark",
-     "name": "Wireshark",
-     "summary": "Netzwerkverkehr analysieren",
-     "summary_en": "Analyse network traffic",
-     "icon": "org.wireshark.Wireshark",
-     "source": "flatpak",
-     "ref": "org.wireshark.Wireshark"
-    },
-    {
      "id": "alpaca",
      "name": "Alpaca",
      "summary": "Lokale KI-Modelle chatten – offline und privat",
@@ -1237,6 +1219,125 @@
      "source": "devbox",
      "ref": "ft-dotnet",
      "image": "mcr.microsoft.com/dotnet/sdk:9.0"
+    }
+   ]
+  },
+  {
+   "id": "admin",
+   "name": "Admin & Netzwerk",
+   "icon": "network-workgroup-symbolic",
+   "name_en": "Admin & Network",
+   "apps": [
+    {
+     "id": "cockpit",
+     "name": "Cockpit",
+     "summary": "Server-Manager im Browser: Dienste, Protokolle, Updates, Speicher, Container – unter localhost:9090",
+     "summary_en": "Server manager in the browser: services, logs, updates, storage, containers – at localhost:9090",
+     "icon": "cockpit",
+     "source": "apt",
+     "ref": "cockpit",
+     "featured": true
+    },
+    {
+     "id": "cockpit-client",
+     "name": "Cockpit Client",
+     "summary": "Andere Server per SSH mit Cockpit verwalten – ohne Installation auf dem Server",
+     "summary_en": "Manage other servers over SSH with Cockpit – nothing to install on the server",
+     "icon": "org.cockpit_project.CockpitClient",
+     "source": "flatpak",
+     "ref": "org.cockpit_project.CockpitClient"
+    },
+    {
+     "id": "sniffnet",
+     "name": "Sniffnet",
+     "summary": "Netzwerkverkehr live sehen – wie Wireshark, nur einfach: Verbindungen, Länder, Dienste, Filter",
+     "summary_en": "See network traffic live – like Wireshark, only simple: connections, countries, services, filters",
+     "icon": "sniffnet",
+     "source": "vendor",
+     "ref": "sniffnet",
+     "package": "sniffnet",
+     "featured": true
+    },
+    {
+     "id": "wireshark",
+     "name": "Wireshark",
+     "summary": "Netzwerkverkehr bis ins Detail analysieren – das Profi-Werkzeug",
+     "summary_en": "Analyse network traffic in full detail – the pro tool",
+     "icon": "org.wireshark.Wireshark",
+     "source": "apt",
+     "ref": "wireshark"
+    },
+    {
+     "id": "zenmap",
+     "name": "Zenmap",
+     "summary": "Netzwerk-Scan mit nmap und fertigen Scan-Profilen",
+     "summary_en": "Network scans with nmap and ready-made scan profiles",
+     "icon": "network-workgroup",
+     "source": "apt",
+     "ref": "zenmap"
+    },
+    {
+     "id": "angryip",
+     "name": "Angry IP Scanner",
+     "summary": "Schnell alle Geräte im Netzwerk finden",
+     "summary_en": "Quickly find every device on the network",
+     "icon": "org.angryip.ipscan",
+     "source": "flatpak",
+     "ref": "org.angryip.ipscan"
+    },
+    {
+     "id": "sshpilot",
+     "name": "SSH Pilot",
+     "summary": "SSH-Server verwalten: Terminal, Dateiübertragung, Schlüssel",
+     "summary_en": "Manage SSH servers: terminal, file transfer, keys",
+     "icon": "io.github.mfat.sshpilot",
+     "source": "flatpak",
+     "ref": "io.github.mfat.sshpilot"
+    },
+    {
+     "id": "remmina",
+     "name": "Remmina",
+     "summary": "Fernzugriff auf Windows- und Linux-Rechner (RDP, VNC, SSH)",
+     "summary_en": "Remote access to Windows and Linux machines (RDP, VNC, SSH)",
+     "icon": "org.remmina.Remmina",
+     "source": "flatpak",
+     "ref": "org.remmina.Remmina"
+    },
+    {
+     "id": "trippy",
+     "name": "Trippy",
+     "summary": "Traceroute und Ping live – zeigt, wo eine Verbindung hakt (Terminal: trip)",
+     "summary_en": "Live traceroute and ping – shows where a connection stalls (terminal: trip)",
+     "icon": "utilities-terminal",
+     "source": "apt",
+     "ref": "trippy"
+    },
+    {
+     "id": "gping",
+     "name": "gping",
+     "summary": "Ping als Live-Diagramm im Terminal",
+     "summary_en": "Ping as a live graph in the terminal",
+     "icon": "utilities-terminal",
+     "source": "apt",
+     "ref": "gping"
+    },
+    {
+     "id": "termshark",
+     "name": "Termshark",
+     "summary": "Wireshark im Terminal – für Server ohne Oberfläche",
+     "summary_en": "Wireshark in the terminal – for servers without a desktop",
+     "icon": "utilities-terminal",
+     "source": "apt",
+     "ref": "termshark"
+    },
+    {
+     "id": "iperf3",
+     "name": "iperf3",
+     "summary": "Netzwerk-Geschwindigkeit zwischen zwei Rechnern messen",
+     "summary_en": "Measure network speed between two machines",
+     "icon": "utilities-terminal",
+     "source": "apt",
+     "ref": "iperf3"
     }
    ]
   },

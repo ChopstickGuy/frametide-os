@@ -81,6 +81,8 @@ update-locale LANG=de_DE.UTF-8
 echo ">>> Steam-Lizenz vorab akzeptieren"
 echo "steam steam/question select I AGREE" | debconf-set-selections
 echo "steam steam/license note ''" | debconf-set-selections
+# Wireshark (optional im App Store): Mitschneiden für die Gruppe „wireshark“ erlauben
+echo "wireshark-common wireshark-common/install-setuid boolean true" | debconf-set-selections
 
 echo ">>> Kernel, Bootloader, Desktop"
 apt_install linux-generic-hwe-26.04 casper \

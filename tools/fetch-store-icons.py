@@ -20,7 +20,7 @@ FLATHUB_EQUIV = {
     "goverlay": "io.github.benjamimgois.goverlay", "chrome": "com.google.Chrome",
     "firefox": "org.mozilla.firefox", "vscode": "com.visualstudio.code",
     "github-desktop": "io.github.shiftey.Desktop", "neovim": "io.neovim.nvim",
-    "openrgb": "org.openrgb.OpenRGB", "coolercontrol": "org.coolercontrol.CoolerControl",
+    "openrgb": "org.openrgb.OpenRGB", "cockpit": "org.cockpit_project.CockpitClient", "wireshark": "org.wireshark.Wireshark", "coolercontrol": "org.coolercontrol.CoolerControl",
     "piper": "org.freedesktop.Piper", "solaar": "io.github.pwr_solaar.solaar",
     "openrazer": "app.polychromatic.controller", "corectrl": "org.corectrl.CoreCtrl",
     "gparted": "org.gnome.GParted", "timeshift": "com.linuxmint.timeshift",
@@ -31,6 +31,7 @@ FLATHUB_EQUIV = {
 # Feste Logo-Adressen für Apps ohne Flathub-Eintrag
 ICON_URLS = {
     "net-merge": "https://raw.githubusercontent.com/rohit267/net-merge/main/docs/icon.png",
+    "sniffnet": "https://raw.githubusercontent.com/GyulyVGC/sniffnet/main/resources/logos/raw/icon.png",
 }
 
 

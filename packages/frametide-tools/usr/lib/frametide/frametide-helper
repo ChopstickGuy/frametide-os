@@ -23,6 +23,7 @@ CRAFT_REPOS = {
 # Hersteller-Pakete (.deb von der offiziellen Adresse; der Paketname wird geprüft)
 VENDOR_DEBS = {
     "curseforge": ("https://curseforge.overwolf.com/downloads/curseforge-latest-linux.deb", "curseforge"),
+    "sniffnet": ("https://github.com/GyulyVGC/sniffnet/releases/latest/download/Sniffnet_LinuxDEB_amd64.deb", "sniffnet"),
 }
 # Werkzeuge aus GitHub-Releases (SHA256-geprüft, nur die erwartete Programmdatei wird entpackt)
 GITHUB_TOOLS = {
