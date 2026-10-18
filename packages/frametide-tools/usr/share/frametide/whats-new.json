@@ -1,6 +1,42 @@
 {
  "releases": [
   {
+   "id": "2026-10-18-2",
+   "date": "18.10.2026",
+   "title": "AirPods & mehr",
+   "title_en": "AirPods & more",
+   "items": [
+    {
+     "icon": "audio-headphones-symbolic",
+     "title": "AirPods-Unterstützung",
+     "title_en": "AirPods support",
+     "text": "Akku, Geräuschunterdrückung und Ohrerkennung in den Schnelleinstellungen – im App Store unter „AirPods (EarPort)“.",
+     "text_en": "Battery, noise control and ear detection in Quick Settings – in the App Store as “AirPods (EarPort)”."
+    },
+    {
+     "icon": "send-to-symbolic",
+     "title": "LocalSend – wie AirDrop",
+     "title_en": "LocalSend – like AirDrop",
+     "text": "Fotos und Dateien mit iPhone, Android und PCs teilen. Jetzt unter „Empfohlen“ im App Store.",
+     "text_en": "Share photos and files with iPhone, Android and PCs. Now under “Recommended” in the App Store."
+    },
+    {
+     "icon": "software-update-available-symbolic",
+     "title": "Updates sofort sichtbar",
+     "title_en": "Updates show up right away",
+     "text": "Steuerung → Updates fragt jetzt direkt beim Server nach.",
+     "text_en": "Control → Updates now asks the server directly."
+    },
+    {
+     "icon": "phone-symbolic",
+     "title": "GSConnect hinter der Firewall",
+     "title_en": "GSConnect behind the firewall",
+     "text": "Die Handy-Kopplung funktioniert auch mit eingeschalteter Firewall.",
+     "text_en": "Phone pairing keeps working with the firewall turned on."
+    }
+   ]
+  },
+  {
    "id": "2026-10-18",
    "date": "18.10.2026",
    "title": "Oktober-Update",

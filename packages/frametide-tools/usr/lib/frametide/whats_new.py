@@ -154,10 +154,19 @@ class WhatsNewApp(Adw.Application):
             return 0
         release = releases[0]
         if "--if-pending" in args:
-            pending = read(PENDING)
-            if not pending or pending == read(SEEN) or "boot=casper" in read("/proc/cmdline"):
+            pending, seen = read(PENDING), read(SEEN)
+            if not pending or pending == seen or "boot=casper" in read("/proc/cmdline"):
                 return 0
-            release = next((r for r in releases if r.get("id") == pending), release)
+            # Alle noch nicht gesehenen Updates zusammen zeigen (neueste zuerst, höchstens drei)
+            ids = [r.get("id") for r in releases]
+            start = ids.index(pending) if pending in ids else 0
+            unseen = []
+            for r in releases[start:start + 3]:
+                if r.get("id") == seen:
+                    break
+                unseen.append(r)
+            release = dict(unseen[0] if unseen else releases[start])
+            release["items"] = [item for r in unseen for item in r.get("items", [])] or release.get("items", [])
         ft.load_css()
         provider = Gtk.CssProvider()
         provider.load_from_string(CSS) if hasattr(provider, "load_from_string") else provider.load_from_data(CSS, -1)

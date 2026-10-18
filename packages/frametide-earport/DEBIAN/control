@@ -1,0 +1,13 @@
+Package: frametide-earport
+Version: @VERSION@
+Architecture: amd64
+Maintainer: Frametide OS <205694622+ChopstickGuy@users.noreply.github.com>
+Section: gnome
+Priority: optional
+Depends: bluez, gnome-shell (>= 46), libglib2.0-0t64
+Recommends: pulseaudio-utils
+Description: AirPods in den GNOME-Schnelleinstellungen (EarPort)
+ Akkustand von linkem und rechtem AirPod und Ladecase, Geräuschunterdrückung,
+ Transparenz- und adaptiver Modus, Gesprächserkennung und automatische Pause,
+ wenn ein AirPod aus dem Ohr genommen wird. Aus dem Quellcode von EarPort 0.6.0
+ gebaut (https://github.com/Anoryth/earport, GPL-3.0-or-later).

@@ -1246,6 +1246,18 @@
    "icon": "preferences-system-symbolic",
    "apps": [
     {
+     "id": "earport",
+     "name": "AirPods (EarPort)",
+     "summary": "Akku, Geräuschunterdrückung und Ohrerkennung für AirPods – direkt in den Schnelleinstellungen",
+     "summary_en": "Battery, noise control and ear detection for AirPods – right in Quick Settings",
+     "icon": "earport",
+     "source": "apt",
+     "ref": "frametide-earport",
+     "label": "Frametide",
+     "gnome_extension": "earport@anoryth.github.io",
+     "featured": true
+    },
+    {
      "id": "openrgb",
      "name": "OpenRGB",
      "summary": "RGB-Beleuchtung aller Hersteller steuern",

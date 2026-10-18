@@ -993,7 +993,7 @@ msgstr ""
 msgid "Erstellt mit Frametide OS ({template})."
 msgstr ""
 
-#: frametide_common.py:335
+#: frametide_common.py:350
 msgid "Details anzeigen"
 msgstr ""
 
@@ -1369,108 +1369,124 @@ msgstr ""
 msgid "Hersteller"
 msgstr ""
 
-#: store.py:300
+#: store.py:307
+msgid "Später"
+msgstr ""
+
+#: store.py:308
+msgid "Jetzt abmelden"
+msgstr ""
+
+#: store.py:329
 msgid "Trotzdem installieren"
 msgstr ""
 
-#: store.py:309
+#: store.py:338
 msgid "Entfernen"
 msgstr ""
 
-#: store.py:327
+#: store.py:356
 msgid "Suche"
 msgstr ""
 
-#: store.py:114
+#: store.py:125
 msgid "Entdecken"
 msgstr ""
 
-#: store.py:116
+#: store.py:127
 msgid "Installiert"
 msgstr ""
 
-#: store.py:129
+#: store.py:140
 msgid "Apps suchen – auch auf ganz Flathub"
 msgstr ""
 
-#: store.py:276
-msgid "{app} wurde installiert"
+#: store.py:306
+msgid "Einmal ab- und wieder anmelden – danach erscheint es oben rechts in den Schnelleinstellungen."
 msgstr ""
 
-#: store.py:276
-msgid "{app} wurde entfernt"
-msgstr ""
-
-#: store.py:307
+#: store.py:336
 msgid "Deine eigenen Dateien bleiben erhalten."
 msgstr ""
 
-#: store.py:331
+#: store.py:360
 msgid "Im Store"
 msgstr ""
 
-#: store.py:351
+#: store.py:380
 msgid "Weitere Apps von Flathub"
 msgstr ""
 
-#: store.py:190
+#: store.py:201
 msgid "Aus dem Store installierte Apps. Updates gibt es im Frametide Center."
 msgstr ""
 
-#: store.py:292
+#: store.py:294
+msgid "{app} wurde installiert"
+msgstr ""
+
+#: store.py:294
+msgid "{app} wurde entfernt"
+msgstr ""
+
+#: store.py:321
 msgid "Kein Terminal gefunden"
 msgstr ""
 
-#: store.py:298
+#: store.py:327
 msgid "Diese Software ist noch sehr neu. Sie kann Fehler haben – bei Problemen einfach wieder entfernen."
 msgstr ""
 
-#: store.py:35
+#: store.py:46
 msgid "Experimentell"
 msgstr ""
 
-#: store.py:168
+#: store.py:179
 msgid "Willkommen im Frametide Store"
 msgstr ""
 
-#: store.py:170
+#: store.py:181
 msgid "Spiele, Kreativ-Apps, Office und Werkzeuge – geprüft und mit einem Klick installiert."
 msgstr ""
 
-#: store.py:176
+#: store.py:187
 msgid "Komplettes ArtCraft-Paket installieren"
 msgstr ""
 
-#: store.py:180
+#: store.py:191
 msgid "Alle installieren"
 msgstr ""
 
-#: store.py:296
+#: store.py:305
+msgid "{app} ist installiert"
+msgstr ""
+
+#: store.py:325
 msgid "{app} ist experimentell"
 msgstr ""
 
-#: store.py:306
+#: store.py:335
 msgid "{app} entfernen?"
 msgstr ""
 
-#: store.py:62
+#: store.py:73
 msgid "Wartet"
 msgstr ""
 
-#: store.py:281
-msgid "Fehlercode {code}"
-msgstr ""
-
-#: store.py:354
+#: store.py:383
 msgid "Versuch einen anderen Suchbegriff."
 msgstr ""
 
-#: store.py:62
+#: store.py:73
 msgid "Läuft …"
 msgstr ""
 
-#: store.py:177
+#: store.py:188
 msgid "{n} weitere Craft-Apps (Foto, Video, Vektor, Audio, CAD …)"
+msgstr ""
+
+#: store.py:299
+msgid "Fehlercode {code}"
 msgstr ""
 
 #: welcome.py:30

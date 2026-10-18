@@ -135,7 +135,8 @@ cat /var/log/frametide-hwsetup.log
 ## Selbst bauen
 
 ```bash
-sudo apt install debootstrap squashfs-tools xorriso dosfstools mtools curl librsvg2-bin
+sudo apt install debootstrap squashfs-tools xorriso dosfstools mtools curl librsvg2-bin \
+    meson ninja-build libglib2.0-dev libbluetooth-dev   # die letzten vier bauen das AirPods-Paket
 python3 tools/check-packages.py   # prüft Paketnamen gegen das Ubuntu-Archiv
 sudo ./build.sh                   # → out/frametide-os-1.0-ignition-amd64.iso (~25 GB frei)
 ```

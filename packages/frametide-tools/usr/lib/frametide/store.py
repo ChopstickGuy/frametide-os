@@ -14,6 +14,16 @@ SOURCE_LABEL = {"apt": "Ubuntu", "flatpak": "Flathub", "craft": "ArtCraft", "dev
                 "vendor": _("Hersteller"), "github": "GitHub"}
 
 
+def set_extension_enabled(uuid, enabled):
+    """GNOME-Shell-Erweiterung in den Benutzereinstellungen ein- oder ausschalten."""
+    settings = Gio.Settings(schema_id="org.gnome.shell")
+    on = [u for u in settings.get_strv("enabled-extensions") if u != uuid]
+    off = [u for u in settings.get_strv("disabled-extensions") if u != uuid]
+    (on if enabled else off).append(uuid)
+    settings.set_strv("enabled-extensions", on)
+    settings.set_strv("disabled-extensions", off)
+
+
 class AppCard(Gtk.Box):
     def __init__(self, store, app):
         super().__init__(orientation=Gtk.Orientation.HORIZONTAL, spacing=14,
@@ -30,7 +40,8 @@ class AppCard(Gtk.Box):
                               ellipsize=3, css_classes=["dim-label", "caption"],
                               max_width_chars=17, width_chars=16))
         badges = Gtk.Box(spacing=6, halign=Gtk.Align.START)
-        badges.append(Gtk.Label(label=SOURCE_LABEL[app["source"]], css_classes=["ft-badge", "caption"]))
+        badges.append(Gtk.Label(label=app.get("label") or SOURCE_LABEL[app["source"]],
+                                  css_classes=["ft-badge", "caption"]))
         if app.get("experimental"):
             badges.append(Gtk.Label(label=_("Experimentell"), css_classes=["ft-badge", "caption", "warning"]))
         text.append(badges)
@@ -272,7 +283,14 @@ class StoreWindow(Adw.ApplicationWindow):
 
     def job_done(self, app, action, status):
         self.refresh_state()
-        if status == 0:
+        if status == 0 and app.get("gnome_extension"):
+            # GNOME-Erweiterung für diesen Benutzer ein-/ausschalten; geladen wird sie nach dem Neuanmelden
+            set_extension_enabled(app["gnome_extension"], action == "install")
+            if action == "install":
+                self.relogin_hint(app)
+            else:
+                self.toasts.add_toast(Adw.Toast(title=_("{app} wurde entfernt").format(app=app["name"]), timeout=3))
+        elif status == 0:
             text = _("{app} wurde installiert") if action == "install" else _("{app} wurde entfernt")
             self.toasts.add_toast(Adw.Toast(title=text.format(app=app["name"]), timeout=3))
         elif status in (126, 127) and not self.last_lines:
@@ -281,6 +299,17 @@ class StoreWindow(Adw.ApplicationWindow):
             reason = self.last_lines[-1] if self.last_lines else _("Fehlercode {code}").format(code=status)
             self.toasts.add_toast(Adw.Toast(title=f"{app['name']}: {reason}", timeout=6))
         self.next_job()
+
+    def relogin_hint(self, app):
+        dialog = Adw.MessageDialog(
+            transient_for=self, heading=_("{app} ist installiert").format(app=app["name"]),
+            body=_("Einmal ab- und wieder anmelden – danach erscheint es oben rechts in den Schnelleinstellungen."))
+        dialog.add_response("later", _("Später"))
+        dialog.add_response("logout", _("Jetzt abmelden"))
+        dialog.set_response_appearance("logout", Adw.ResponseAppearance.SUGGESTED)
+        dialog.connect("response", lambda _d, r: r == "logout" and Gio.Subprocess.new(
+            ["gnome-session-quit", "--logout"], Gio.SubprocessFlags.NONE))
+        dialog.present()
 
     def open_container(self, app):
         for argv in (["xdg-terminal-exec", "distrobox", "enter", app["ref"]],

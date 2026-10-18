@@ -71,6 +71,20 @@ PY
         install -Dm644 "$root/artwork/icon-center.svg" "$dir/usr/share/icons/hicolor/scalable/apps/frametide-center.svg"
         install -Dm644 "$root/artwork/icon-dev.svg" "$dir/usr/share/icons/hicolor/scalable/apps/frametide-dev.svg"
         ;;
+    frametide-earport)
+        # AirPods-Unterstützung: aus dem geprüften Quellcode bauen (vendor/earport), samt Projekt-Tests
+        (cd "$root/vendor/earport" && sha256sum --quiet -c SHA256SUMS) || { echo "earport: Prüfsumme falsch" >&2; exit 1; }
+        local src="$work/earport-src"
+        mkdir -p "$src"
+        tar -xzf "$root"/vendor/earport/earport-*-source.tar.gz -C "$src" --strip-components=1
+        meson setup "$src/daemon/build" "$src/daemon" --buildtype=release --prefix=/usr >/dev/null
+        meson compile -C "$src/daemon/build" >/dev/null
+        meson test -C "$src/daemon/build" --print-errorlogs >/dev/null || { echo "earport: Tests fehlgeschlagen" >&2; exit 1; }
+        DESTDIR="$dir" meson install -C "$src/daemon/build" --no-rebuild >/dev/null
+        install -d "$dir/usr/share/gnome-shell/extensions/earport@anoryth.github.io"
+        cp -a "$src/extension/." "$dir/usr/share/gnome-shell/extensions/earport@anoryth.github.io/"
+        rm -rf "$src"
+        ;;
     frametide-live)
         install -m644 "$root/artwork/logo.svg" "$root/artwork/logo-icon.svg" "$root/artwork/wordmark.png" "$dir/etc/calamares/branding/frametide/"
         ;;
@@ -79,6 +93,14 @@ PY
 
 for pkg in "$here"/frametide-*/; do
     name="$(basename "$pkg")"
+    # EarPort wird kompiliert: ohne Build-Werkzeuge überspringen (in der CI Pflicht)
+    if [ "$name" = frametide-earport ] && ! command -v meson >/dev/null; then
+        if [ -n "${FRAMETIDE_REQUIRE_EARPORT:-}" ]; then
+            echo "FEHLER: meson fehlt – frametide-earport kann nicht gebaut werden" >&2; exit 1
+        fi
+        echo "WARNUNG: meson fehlt – frametide-earport wird übersprungen" >&2
+        continue
+    fi
     cp -a "$pkg" "$work/$name"
     find "$work/$name" -name __pycache__ -type d -prune -exec rm -rf {} +
     install_artwork "$name" "$work/$name"
@@ -96,6 +118,7 @@ for pkg in "$here"/frametide-*/; do
     done
     find "$work/$name" -type d -exec chmod 0755 {} +
     find "$work/$name" -type f -exec chmod go-w {} +
-    dpkg-deb --root-owner-group -Zxz --build "$work/$name" "$out/${name}_${PKG_VERSION}_all.deb" >/dev/null
-    echo "gebaut: ${name}_${PKG_VERSION}_all.deb"
+    arch="$(awk '/^Architecture:/{print $2}' "$work/$name/DEBIAN/control")"
+    dpkg-deb --root-owner-group -Zxz --build "$work/$name" "$out/${name}_${PKG_VERSION}_${arch}.deb" >/dev/null
+    echo "gebaut: ${name}_${PKG_VERSION}_${arch}.deb"
 done

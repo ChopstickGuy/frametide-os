@@ -88,7 +88,9 @@ apt_install linux-generic-hwe-26.04 casper \
     ubuntu-desktop-minimal
 
 echo ">>> Frametide-Pakete"
-apt_install /tmp/frametide/debs/*.deb
+# Alle Frametide-Pakete außer den optionalen aus dem App Store (z. B. AirPods/EarPort)
+mapfile -t frametide_debs < <(find /tmp/frametide/debs -name 'frametide-*.deb' ! -name 'frametide-earport_*' | sort)
+apt_install "${frametide_debs[@]}"
 
 echo ">>> Flathub-Katalog für den Store vorladen"
 flatpak update --appstream --system || true

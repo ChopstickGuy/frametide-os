@@ -9,7 +9,7 @@ root="$(cd "$(dirname "$0")/.." && pwd)"
 debs="$(realpath "$1")"; site="$(realpath -m "$2")"; key="${3:-}"
 repo="$site/apt"
 rm -rf "$site"; mkdir -p "$repo"
-for deb in "$debs"/frametide-*_all.deb; do
+for deb in "$debs"/frametide-*_*.deb; do
     case "$(basename "$deb")" in frametide-live_*) continue ;; esac  # nur fürs Live-System
     cp "$deb" "$repo/"
 done

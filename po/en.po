@@ -1178,3 +1178,15 @@ msgstr "No Wi-Fi networks found. Plug in a cable or search again."
 
 msgid "Verbunden"
 msgstr "Connected"
+
+msgid "Später"
+msgstr "Later"
+
+msgid "Jetzt abmelden"
+msgstr "Log out now"
+
+msgid "Einmal ab- und wieder anmelden – danach erscheint es oben rechts in den Schnelleinstellungen."
+msgstr "Log out and back in once – then it shows up in Quick Settings at the top right."
+
+msgid "{app} ist installiert"
+msgstr "{app} is installed"

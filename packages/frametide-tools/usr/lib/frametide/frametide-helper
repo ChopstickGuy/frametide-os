@@ -316,7 +316,13 @@ def main(argv):
         run(APT + ["autoremove", "--purge"], check=False)
     elif cmd == "install":
         say(t("Wird installiert") + ":", *args)
-        run(APT + ["install", *packages(args)])
+        names = packages(args)
+        # Paket noch nicht in der lokalen Liste (z. B. neu in der Frametide-Quelle)? Erst abgleichen.
+        policy = subprocess.run(["apt-cache", "policy", *names], capture_output=True, text=True, env=ENV).stdout
+        known = {line[:-1] for line in policy.splitlines() if line.endswith(":") and not line.startswith(" ")}
+        if "Candidate: (none)" in policy or not set(names) <= known:
+            run(["apt-get", "-o", "DPkg::Lock::Timeout=300", "update"])
+        run(APT + ["install", *names])
     elif cmd == "remove":
         say(t("Wird entfernt") + ":", *args)
         run(APT + ["remove", *packages(args)])

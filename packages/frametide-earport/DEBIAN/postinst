@@ -1,0 +1,7 @@
+#!/bin/sh
+set -e
+if [ "$1" = configure ]; then
+    glib-compile-schemas /usr/share/gnome-shell/extensions/earport@anoryth.github.io/schemas || true
+    # Dienst startet beim Anmelden im Benutzerkontext (kein root)
+    systemctl --global enable earport-daemon.service >/dev/null 2>&1 || true
+fi
