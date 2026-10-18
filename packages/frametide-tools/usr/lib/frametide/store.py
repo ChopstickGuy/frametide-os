@@ -296,7 +296,10 @@ class StoreWindow(Adw.ApplicationWindow):
         elif status in (126, 127) and not self.last_lines:
             self.toasts.add_toast(Adw.Toast(title=_("Abgebrochen"), timeout=3))
         else:
-            reason = self.last_lines[-1] if self.last_lines else _("Fehlercode {code}").format(code=status)
+            # Die eigentliche Ursache steht in apts „E:“-Zeile, nicht in der letzten Zeile (dem Befehl)
+            errors = [l.strip() for l in self.last_lines if l.lstrip().startswith(("E:", "dpkg:", "Fehler:"))]
+            reason = (errors[-1] if errors else self.last_lines[-1] if self.last_lines
+                      else _("Fehlercode {code}").format(code=status))
             self.toasts.add_toast(Adw.Toast(title=f"{app['name']}: {reason}", timeout=6))
         self.next_job()
 
