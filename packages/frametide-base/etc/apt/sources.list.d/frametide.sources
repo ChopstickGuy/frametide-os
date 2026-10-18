@@ -1,0 +1,5 @@
+# Frametide OS – Updates für App Store, Steuerung, Design und Systemeinstellungen
+Types: deb
+URIs: @APT_REPO_URL@
+Suites: ./
+Signed-By: /usr/share/keyrings/frametide-archive-keyring.gpg

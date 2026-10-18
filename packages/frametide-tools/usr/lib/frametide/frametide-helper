@@ -37,7 +37,7 @@ LOCAL_APPS = "/usr/local/share/applications"
 PKG_RE = re.compile(r"^[a-z0-9][a-z0-9+.-]{1,80}(:i386)?$")
 DRIVER_RE = re.compile(r"^nvidia-driver-(\d+)(-open|-server|-server-open)?$")
 FAN_DRIVERS = {"it87-dkms", "nct6687d-dkms"}
-OPTIONS = {"AMD64V3", "AMD_OVERDRIVE", "SMBUS_LAX", "MITIGATIONS_OFF"}
+OPTIONS = {"AMD64V3", "AMD_OVERDRIVE", "SMBUS_LAX", "MITIGATIONS_OFF", "AC_PERFORMANCE"}
 CONF = "/etc/frametide/hwsetup.conf"
 APT = ["apt-get", "-y", "-o", "DPkg::Lock::Timeout=300", "-o", "Dpkg::Options::=--force-confold",
        "-o", "APT::Status-Fd=1"]  # Fortschritt als "dlstatus:/pmstatus:" für Store und Center
@@ -234,6 +234,11 @@ def set_option(key, value):
     with open(CONF, "w") as f:
         f.write("\n".join(lines) + "\n")
     say(f"{key}={value}", t("gespeichert, Einstellungen werden angewendet"))
+    if key == "AC_PERFORMANCE":  # nur das Energieprofil, kein Treiber-Durchlauf
+        if value == "no":
+            run(["powerprofilesctl", "set", "balanced"], check=False)
+        run(["systemctl", "start", "frametide-power-profile.service"], check=False)
+        return
     run(["/usr/sbin/frametide-hwsetup", "--apply"])
 
 

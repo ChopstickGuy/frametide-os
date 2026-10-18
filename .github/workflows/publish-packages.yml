@@ -1,0 +1,43 @@
+name: Publish packages
+
+# Baut die Frametide-Pakete und veröffentlicht sie als signierte APT-Quelle auf GitHub Pages.
+# Installierte Systeme bekommen die neuen Versionen über Steuerung → Updates.
+on:
+  push:
+    tags: ["v*", "update-*"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}apt/
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # Paketversion = Anzahl der Commits
+      - name: Tools
+        run: sudo apt-get install -y apt-utils librsvg2-bin
+      - name: Build packages
+        run: bash packages/build-debs.sh out/debs
+      - name: Import signing key
+        env:
+          APT_SIGNING_KEY: ${{ secrets.APT_SIGNING_KEY }}
+        run: printf '%s\n' "$APT_SIGNING_KEY" | gpg --batch --import
+      - name: Create repository
+        run: tools/make-apt-repo.sh out/debs site
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deploy
+        uses: actions/deploy-pages@v4

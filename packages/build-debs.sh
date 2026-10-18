@@ -6,6 +6,10 @@ root="$(dirname "$here")"
 # shellcheck source=../config/frametide.conf
 source "$root/config/frametide.conf"
 out="${1:-$root/out/debs}"
+# Paketversion steigt mit jedem Commit, damit installierte Systeme Updates erkennen
+# (1.0 → 1.0.312 → 1.0.313 …). FRAMETIDE_PKG_VERSION überschreibt das.
+commits="$(git -C "$root" rev-list --count HEAD 2>/dev/null || echo 0)"
+PKG_VERSION="${FRAMETIDE_PKG_VERSION:-$DISTRO_VERSION.$commits}"
 work="$(mktemp -d)"
 trap 'rm -rf "$work"' EXIT
 mkdir -p "$out"
@@ -67,17 +71,19 @@ for pkg in "$here"/frametide-*/; do
     find "$work/$name" -name __pycache__ -type d -prune -exec rm -rf {} +
     install_artwork "$name" "$work/$name"
     # Platzhalter in Textdateien ersetzen
-    grep -rlI '@VERSION@\|@CODENAME@\|@CODENAME_PRETTY@\|@UBUNTU_SUITE@\|@URL@\|@LIVE_USER@' "$work/$name" 2>/dev/null |
+    sed -i "s|^Version: @VERSION@|Version: $PKG_VERSION|" "$work/$name/DEBIAN/control"
+    { grep -rlI '@VERSION@\|@CODENAME@\|@CODENAME_PRETTY@\|@UBUNTU_SUITE@\|@URL@\|@LIVE_USER@\|@APT_REPO_URL@' "$work/$name" 2>/dev/null || true; } |
     while read -r f; do
         sed -i -e "s|@VERSION@|$DISTRO_VERSION|g" \
                -e "s|@CODENAME_PRETTY@|$DISTRO_CODENAME_PRETTY|g" \
                -e "s|@CODENAME@|$DISTRO_CODENAME|g" \
                -e "s|@UBUNTU_SUITE@|$UBUNTU_SUITE|g" \
                -e "s|@URL@|$DISTRO_URL|g" \
-               -e "s|@LIVE_USER@|$LIVE_USER|g" "$f"
+               -e "s|@LIVE_USER@|$LIVE_USER|g" \
+               -e "s|@APT_REPO_URL@|$APT_REPO_URL|g" "$f"
     done
     find "$work/$name" -type d -exec chmod 0755 {} +
     find "$work/$name" -type f -exec chmod go-w {} +
-    dpkg-deb --root-owner-group -Zxz --build "$work/$name" "$out/${name}_${DISTRO_VERSION}_all.deb" >/dev/null
-    echo "gebaut: ${name}_${DISTRO_VERSION}_all.deb"
+    dpkg-deb --root-owner-group -Zxz --build "$work/$name" "$out/${name}_${PKG_VERSION}_all.deb" >/dev/null
+    echo "gebaut: ${name}_${PKG_VERSION}_all.deb"
 done

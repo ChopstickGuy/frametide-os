@@ -1,0 +1,12 @@
+[Unit]
+Description=Frametide: Energieprofil passend zum Netzteil (Laptops)
+After=power-profiles-daemon.service
+Wants=power-profiles-daemon.service
+ConditionPathExistsGlob=/sys/class/power_supply/BAT*
+
+[Service]
+Type=oneshot
+ExecStart=/usr/lib/frametide/power-profile-auto
+
+[Install]
+WantedBy=multi-user.target

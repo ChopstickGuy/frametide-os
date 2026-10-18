@@ -1076,3 +1076,9 @@ msgstr "Playing back …"
 
 msgid "Rauschunterdrückung konnte nicht gestartet werden."
 msgstr "Noise suppression could not be started."
+
+msgid "Am Netzteil volle Leistung"
+msgstr "Full power when plugged in"
+
+msgid "Laptop: Energieprofil „Leistung“, solange das Netzteil steckt – Lüfter und Leistungsgrenzen erlauben höhere Takte. Im Akkubetrieb „Ausgewogen“."
+msgstr "Laptop: “Performance” power mode while the charger is connected – fans and power limits allow higher clocks. “Balanced” on battery."

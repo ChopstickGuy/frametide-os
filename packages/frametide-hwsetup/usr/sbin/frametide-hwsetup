@@ -162,7 +162,8 @@ def build_plan(gpus, cpu, conf):
         plan.kernel_params.append("mitigations=off")
         plan.notes.append("CPU-Sicherheitsbremsen sind abgeschaltet (mehr Leistung, weniger Schutz).")
 
-    # Desktop-PCs (ohne Akku) laufen im Energieprofil „Leistung“, Laptops bleiben „Ausgewogen“
+    # Desktop-PCs (ohne Akku) laufen im Energieprofil „Leistung“. Laptops: „Ausgewogen“, am
+    # Netzteil schaltet frametide-power-profile.service auf „Leistung“.
     plan.power_profile = "balanced" if glob.glob("/sys/class/power_supply/BAT*") else "performance"
 
     if conf.get("AMD64V3") == "yes":
@@ -291,6 +292,8 @@ def apply(plan):
         run(["sensors-detect", "--auto"], check=False)
 
     run(["powerprofilesctl", "set", plan.power_profile], check=False)
+    # Laptops: am Netzteil „Leistung“ (frametide-base, abschaltbar mit AC_PERFORMANCE=no)
+    run(["systemctl", "start", "--no-block", "frametide-power-profile.service"], check=False)
 
     for service in plan.services:
         run(["systemctl", "enable", service], check=False)

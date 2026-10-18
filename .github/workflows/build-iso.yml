@@ -17,6 +17,8 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # Paketversion = Anzahl der Commits
       - name: Check package availability
         run: python3 tools/check-packages.py
       - name: Check translations
@@ -51,6 +53,8 @@ jobs:
       SF_PROJECT: ${{ secrets.SF_PROJECT }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # Paketversion = Anzahl der Commits
       - name: Free disk space
         run: |
           sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache \

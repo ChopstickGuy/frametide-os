@@ -11,10 +11,14 @@ if [ "$1" = configure ]; then
         flatpak remote-add --system --if-not-exists flathub \
             https://dl.flathub.org/repo/flathub.flatpakrepo || true
     fi
+    # Laptops: „Leistung“ am Netzteil, „Ausgewogen“ im Akkubetrieb
+    systemctl enable --quiet frametide-power-profile.service 2>/dev/null || true
     # Laufendes System (nicht im Image-Build): Tuning sofort aktivieren
     if [ -d /run/systemd/system ]; then
         systemctl daemon-reload || true
         sysctl --system >/dev/null || true
         udevadm trigger --subsystem-match=block --action=change || true
+        udevadm control --reload-rules || true
+        systemctl start --no-block frametide-power-profile.service 2>/dev/null || true
     fi
 fi

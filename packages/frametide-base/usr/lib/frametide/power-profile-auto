@@ -1,0 +1,23 @@
+#!/bin/sh
+# Laptops: am Netzteil Energieprofil „Leistung“, im Akkubetrieb „Ausgewogen“.
+# Unter Last bleibt der Laptop so kühler und hält höhere Takte (Lüfter und Leistungsgrenzen
+# des Herstellers hängen am Profil). Ein bewusst gewählter Stromsparmodus bleibt unangetastet.
+# Abschaltbar in Steuerung → System bzw. mit AC_PERFORMANCE=no in /etc/frametide/hwsetup.conf.
+conf=/etc/frametide/hwsetup.conf
+grep -qsi '^AC_PERFORMANCE=no' "$conf" && exit 0
+ls -d /sys/class/power_supply/BAT* >/dev/null 2>&1 || exit 0   # Desktops: frametide-hwsetup
+command -v powerprofilesctl >/dev/null 2>&1 || exit 0
+
+online=0
+for supply in /sys/class/power_supply/*; do
+    case "$(cat "$supply/type" 2>/dev/null)" in Mains | USB) ;; *) continue ;; esac
+    [ "$(cat "$supply/online" 2>/dev/null)" = 1 ] && online=1
+done
+
+current="$(powerprofilesctl get 2>/dev/null)" || exit 0
+[ "$current" = power-saver ] && exit 0
+want=balanced
+if [ "$online" = 1 ] && powerprofilesctl list 2>/dev/null | grep -q 'performance:'; then
+    want=performance
+fi
+[ "$current" = "$want" ] || powerprofilesctl set "$want"

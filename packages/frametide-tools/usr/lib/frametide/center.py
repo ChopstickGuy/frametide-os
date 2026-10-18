@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """Frametide Center – Updates, Treiber, RGB & Lüfter und Systemoptionen an einem Ort."""
+import glob
 import importlib.machinery
 import importlib.util
 import json
@@ -718,6 +719,16 @@ class SystemPage(Adw.PreferencesPage):
                 _("Einstellung wird angewendet …"),
                 ft.helper_argv("set-option", k, "yes" if r.get_active() else "no")))
             perf.add(row)
+        if glob.glob("/sys/class/power_supply/BAT*"):
+            ac = Adw.SwitchRow(title=_("Am Netzteil volle Leistung"),
+                               subtitle=_("Laptop: Energieprofil „Leistung“, solange das Netzteil steckt – "
+                                          "Lüfter und Leistungsgrenzen erlauben höhere Takte. "
+                                          "Im Akkubetrieb „Ausgewogen“."),
+                               active=conf.get("AC_PERFORMANCE", "yes") != "no")
+            ac.connect("notify::active", lambda r, _p: self.task.start(
+                _("Einstellung wird angewendet …"),
+                ft.helper_argv("set-option", "AC_PERFORMANCE", "yes" if r.get_active() else "no")))
+            perf.add(ac)
         perf.add(self.task)
         self.add(perf)
 
