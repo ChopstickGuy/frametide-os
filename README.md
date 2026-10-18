@@ -31,6 +31,9 @@ updates.
 - **Tuned, but nothing exotic.** zram, a per-drive I/O scheduler, `preempt=full`, `noatime`,
   BBR and higher file limits. Updates run at idle priority.
 - **No Snap and no telemetry.** Apps come from apt and Flathub.
+- **Window layouts.** Drag a window to the top edge and pick a layout (from Ubuntu 26.10).
+- **Updates without reinstalling.** Frametide's own apps and settings update through
+  *Control → Updates*; a short "What's new" window shows what changed.
 - **Quick boot.** The boot menu is hidden, boot doesn't wait for the network, and a quiet
   splash screen shows while it starts.
 - **Calm desktop.** Dark GNOME with a teal accent, a fixed dock, a classic applications menu,
@@ -43,7 +46,7 @@ updates.
 | | |
 |---|---|
 | **App Store** | About 150 hand-picked apps with their real icons, plus search across all of Flathub. Sources are apt, Flathub, ArtCraft and a few vendor packages. |
-| **Control** | Updates (system, Flatpak, ArtCraft, firmware), GPU drivers, **game check** (ProtonDB + anti-cheat status), **audio**, RGB & fans, and performance options. |
+| **Control** | Updates (system, Flatpak, ArtCraft, firmware), GPU drivers incl. optional latest Mesa, **game check** (ProtonDB + anti-cheat status), **audio**, RGB & fans, and performance options. |
 | **Develop** | Git, SSH key and GitHub sign-in; language runtimes via `mise`; PostgreSQL, MySQL, Redis and others as local containers; a live list of dev-server ports; a project starter with templates. |
 | **PC Move** | Copies documents, photos, browser bookmarks, Wi-Fi networks and Steam games over from a Windows drive. Windows itself is only read, never changed. |
 | **Bench** | A repeatable benchmark (CPU, memory, latency, SSD, GPU, boot time) with JSON output you can compare. |
@@ -80,6 +83,7 @@ and games without an extra app.
 | **Gaming** | Steam, Proton, GameMode, MangoHud, Gamescope, Lutris |
 | **Office** | ArtCraft: WordCraft, GridCraft, DeckCraft, PdfCraft |
 | **Development** | GitHub Desktop, GitHub CLI, mise, Podman, Distrobox |
+| **Media** | Video codecs (GStreamer libav/ugly/bad, FFmpeg) |
 | **Hardware** | OpenRGB, CoolerControl, lm-sensors, fwupd |
 | **Phone** | GSConnect – pair with the KDE Connect app on Android or iOS |
 | **Installed on first boot** | Google Chrome and VS Code, directly from Google and Microsoft (their licenses don't allow shipping them on the ISO) |

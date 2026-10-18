@@ -1082,3 +1082,36 @@ msgstr "Full power when plugged in"
 
 msgid "Laptop: Energieprofil „Leistung“, solange das Netzteil steckt – Lüfter und Leistungsgrenzen erlauben höhere Takte. Im Akkubetrieb „Ausgewogen“."
 msgstr "Laptop: “Performance” power mode while the charger is connected – fans and power limits allow higher clocks. “Balanced” on battery."
+
+msgid "Neueste Mesa-Treiber"
+msgstr "Latest Mesa drivers"
+
+msgid "Für AMD- und Intel-Grafik: aktuelle Mesa-Version statt der LTS-Version – oft mehr FPS in neuen Spielen. Quelle: Kisak-PPA. Ausschalten stellt Ubuntus Version wieder her."
+msgstr "For AMD and Intel graphics: the current Mesa release instead of the LTS one – often more FPS in new games. Source: Kisak PPA. Turning it off restores Ubuntu's version."
+
+msgid "Was ist neu"
+msgstr "What's new"
+
+msgid "Die Neuerungen des letzten Frametide-Updates"
+msgstr "What changed in the latest Frametide update"
+
+msgid "Anzeigen"
+msgstr "Show"
+
+msgid "Mesa-Treiber werden umgestellt …"
+msgstr "Switching Mesa drivers …"
+
+msgid "Neu in Frametide OS"
+msgstr "New in Frametide OS"
+
+msgid "Schließen"
+msgstr "Close"
+
+msgid "Alle Änderungen"
+msgstr "All changes"
+
+msgid "Alles klar"
+msgstr "Got it"
+
+msgid "UPDATE"
+msgstr "UPDATE"

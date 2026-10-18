@@ -39,6 +39,11 @@ DRIVER_RE = re.compile(r"^nvidia-driver-(\d+)(-open|-server|-server-open)?$")
 FAN_DRIVERS = {"it87-dkms", "nct6687d-dkms"}
 OPTIONS = {"AMD64V3", "AMD_OVERDRIVE", "SMBUS_LAX", "MITIGATIONS_OFF", "AC_PERFORMANCE"}
 CONF = "/etc/frametide/hwsetup.conf"
+# Optionale neueste Mesa-Treiber (Kisak-PPA, enthält auch 32-Bit-Pakete für Steam)
+MESA_SOURCE = "/etc/apt/sources.list.d/frametide-mesa-latest.sources"
+MESA_KEY = "/usr/share/frametide/keyrings/kisak-mesa.gpg"
+MESA_URL = "https://ppa.launchpadcontent.net/kisak/kisak-mesa/ubuntu"
+MESA_PIN = "/etc/apt/preferences.d/frametide-mesa-revert"
 APT = ["apt-get", "-y", "-o", "DPkg::Lock::Timeout=300", "-o", "Dpkg::Options::=--force-confold",
        "-o", "APT::Status-Fd=1"]  # Fortschritt als "dlstatus:/pmstatus:" für Store und Center
 ENV = {"PATH": "/usr/sbin:/usr/bin:/sbin:/bin", "DEBIAN_FRONTEND": "noninteractive", "LANG": "C.UTF-8"}
@@ -64,6 +69,8 @@ EN = {
     "gespeichert, Einstellungen werden angewendet": "saved, applying settings",
     "Fertig": "Done",
     "wird aktualisiert": "updating",
+    "Neueste Mesa-Treiber werden eingerichtet": "Setting up latest Mesa drivers",
+    "Mesa-Treiber von Ubuntu werden wiederhergestellt": "Restoring Ubuntu's Mesa drivers",
 }
 
 
@@ -242,6 +249,43 @@ def set_option(key, value):
     run(["/usr/sbin/frametide-hwsetup", "--apply"])
 
 
+def ubuntu_codename():
+    for line in open("/etc/os-release"):
+        if line.startswith("UBUNTU_CODENAME="):
+            return line.split("=", 1)[1].strip().strip('"')
+    raise SystemExit("UBUNTU_CODENAME fehlt in /etc/os-release")
+
+
+def mesa_latest(enable):
+    """Neueste Mesa-Version (Kisak-PPA) ein- oder ausschalten. Beim Ausschalten werden alle
+    Pakete aus der PPA auf die Ubuntu-Version zurückgesetzt."""
+    if enable:
+        say(t("Neueste Mesa-Treiber werden eingerichtet"))
+        with open(MESA_SOURCE, "w") as f:
+            f.write("# Frametide: neueste Mesa-Treiber (Steuerung → Treiber)\n"
+                    f"Types: deb\nURIs: {MESA_URL}\nSuites: {ubuntu_codename()}\nComponents: main\n"
+                    f"Signed-By: {MESA_KEY}\n")
+        run(["apt-get", "-o", "DPkg::Lock::Timeout=300", "update"])
+        run(APT + ["full-upgrade"])
+        return
+    say(t("Mesa-Treiber von Ubuntu werden wiederhergestellt"))
+    out = subprocess.run(["dpkg-query", "-W", "-f=${Package}\t${Version}\n"],
+                         capture_output=True, text=True, env=ENV).stdout
+    kisak = sorted({line.split("\t")[0] for line in out.splitlines() if "kisak" in line})
+    if os.path.exists(MESA_SOURCE):
+        os.remove(MESA_SOURCE)
+    if kisak:
+        with open(MESA_PIN, "w") as f:
+            f.write(f"Package: {' '.join(kisak)}\nPin: release o=Ubuntu\nPin-Priority: 1001\n")
+    try:
+        run(["apt-get", "-o", "DPkg::Lock::Timeout=300", "update"])
+        if kisak:
+            run(APT + ["--allow-downgrades", "full-upgrade"])
+    finally:
+        if os.path.exists(MESA_PIN):
+            os.remove(MESA_PIN)
+
+
 def main(argv):
     if os.geteuid() != 0:
         raise SystemExit("frametide-helper muss über pkexec laufen")
@@ -305,6 +349,8 @@ def main(argv):
         say(t("Firmware-Updates (fwupd)"))
         run(["fwupdmgr", "refresh", "--force"], check=False)
         run(["fwupdmgr", "update", "-y", "--no-reboot-check"], check=False)
+    elif cmd == "mesa-latest" and args in (["on"], ["off"]):
+        mesa_latest(args[0] == "on")
     elif cmd == "set-option" and len(args) == 2:
         set_option(*args)
     else:

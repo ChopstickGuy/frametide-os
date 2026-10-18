@@ -41,6 +41,18 @@ install_artwork() {
         install -d "$dir/usr/share/sounds/frametide/stereo"
         install -m644 "$root/artwork/sounds/index.theme" "$dir/usr/share/sounds/frametide/"
         install -m644 "$root"/artwork/sounds/stereo/*.wav "$dir/usr/share/sounds/frametide/stereo/"
+        # Fenster-Layouts (Tiling Assistant aus Ubuntu 26.10) unter eigener UUID
+        local ext="$dir/usr/share/gnome-shell/extensions/tiling-assistant@frametide"
+        install -d "$ext"
+        cp -a "$root/vendor/tiling-assistant/tiling-assistant@leleat-on-github/." "$ext/"
+        python3 - "$ext/metadata.json" <<'PY'
+import json, sys
+path = sys.argv[1]
+meta = json.load(open(path))
+meta.update(uuid="tiling-assistant@frametide", name="Frametide Tiling",
+            url="https://github.com/ChopstickGuy/frametide-os/tree/main/vendor/tiling-assistant")
+json.dump(meta, open(path, "w"), indent=2)
+PY
         # Startbildschirm-Theme: Grafiken aus artwork/plymouth
         install -m644 "$root"/artwork/plymouth/*.png "$dir/usr/share/plymouth/themes/frametide/"
         # Boot-Logo (Plymouth-Wasserzeichen) als PNG

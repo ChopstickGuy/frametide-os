@@ -436,6 +436,15 @@
      "icon": "org.gnome.World.Secrets",
      "source": "flatpak",
      "ref": "org.gnome.World.Secrets"
+    },
+    {
+     "id": "speechnote",
+     "name": "Speech Note",
+     "summary": "Sprache zu Text, Vorlesen und Übersetzen – komplett offline",
+     "icon": "net.mkiol.SpeechNote",
+     "source": "flatpak",
+     "ref": "net.mkiol.SpeechNote",
+     "summary_en": "Speech to text, text to speech and translation – fully offline"
     }
    ],
    "name_en": "Office"

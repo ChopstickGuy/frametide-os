@@ -32,6 +32,9 @@ Darunter ist es weiterhin Ubuntu: dieselben Pakete, dieselbe Dokumentation und f
 - **Abgestimmt, aber nichts Exotisches.** zram, I/O-Scheduler je Laufwerkstyp, `preempt=full`,
   `noatime`, BBR, höhere Dateilimits. Updates laufen mit niedrigster Priorität.
 - **Kein Snap, keine Telemetrie.** Apps kommen aus apt und Flathub.
+- **Fenster-Layouts.** Fenster an den oberen Rand ziehen und ein Layout wählen (aus Ubuntu 26.10).
+- **Updates ohne Neuinstallation.** Frametides eigene Apps und Einstellungen kommen über
+  *Steuerung → Updates*; ein kurzes „Was ist neu“-Fenster zeigt die Neuerungen.
 - **Schneller Start.** Bootmenü ausgeblendet, kein Warten aufs Netzwerk, ein ruhiger
   Startbildschirm.
 - **Ruhiger Desktop.** Dunkles GNOME mit Petrol-Akzent, festes Dock, klassisches
@@ -44,7 +47,7 @@ Darunter ist es weiterhin Ubuntu: dieselben Pakete, dieselbe Dokumentation und f
 | | |
 |---|---|
 | **App Store** | Rund 150 ausgewählte Apps mit echten Icons, dazu Suche in ganz Flathub. Quellen: apt, Flathub, ArtCraft und einige Hersteller-Pakete. |
-| **Steuerung** | Updates (System, Flatpak, ArtCraft, Firmware), Grafiktreiber, **Spiele-Check** (ProtonDB + Anti-Cheat-Status), **Audio**, RGB & Lüfter und Leistungsoptionen. |
+| **Steuerung** | Updates (System, Flatpak, ArtCraft, Firmware), Grafiktreiber inkl. optional neuester Mesa, **Spiele-Check** (ProtonDB + Anti-Cheat-Status), **Audio**, RGB & Lüfter und Leistungsoptionen. |
 | **Entwickeln** | Git, SSH-Schlüssel und GitHub-Anmeldung; Sprachen über `mise`; PostgreSQL, MySQL, Redis u. a. als lokale Container; Live-Liste der Ports von Dev-Servern; Projekt-Starter mit Vorlagen. |
 | **PC-Umzug** | Holt Dokumente, Fotos, Lesezeichen, WLAN-Netze und Steam-Spiele von einem Windows-Laufwerk. Windows wird dabei nur gelesen, nie verändert. |
 | **Bench** | Wiederholbarer Benchmark (CPU, Speicher, Latenz, SSD, GPU, Startzeit) mit JSON-Ergebnis zum Vergleichen. |
@@ -83,6 +86,7 @@ testest dein Mikrofon und schaltest die **Rauschunterdrückung** ein. Sie läuft
 | **Gaming** | Steam, Proton, GameMode, MangoHud, Gamescope, Lutris |
 | **Office** | ArtCraft: WordCraft, GridCraft, DeckCraft, PdfCraft |
 | **Entwicklung** | GitHub Desktop, GitHub CLI, mise, Podman, Distrobox |
+| **Medien** | Video-Codecs (GStreamer libav/ugly/bad, FFmpeg) |
 | **Hardware** | OpenRGB, CoolerControl, lm-sensors, fwupd |
 | **Handy** | GSConnect – koppelt sich mit der App KDE Connect (Android/iOS) |
 | **Beim ersten Start** | Google Chrome und VS Code, direkt von Google und Microsoft (deren Lizenzen erlauben keine Weitergabe auf der ISO) |

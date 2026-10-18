@@ -11,6 +11,11 @@ if [ "$1" = configure ]; then
         flatpak remote-add --system --if-not-exists flathub \
             https://dl.flathub.org/repo/flathub.flatpakrepo || true
     fi
+    # dbus-broker statt dbus-daemon (wie Ubuntu 26.10, Fedora, Arch) – greift ab dem nächsten Start
+    if [ -e /usr/lib/systemd/system/dbus-broker.service ] || [ -e /lib/systemd/system/dbus-broker.service ]; then
+        systemctl enable --quiet dbus-broker.service 2>/dev/null || true
+        systemctl --global enable --quiet dbus-broker.service 2>/dev/null || true
+    fi
     # Laptops: „Leistung“ am Netzteil, „Ausgewogen“ im Akkubetrieb
     systemctl enable --quiet frametide-power-profile.service 2>/dev/null || true
     # Laufendes System (nicht im Image-Build): Tuning sofort aktivieren

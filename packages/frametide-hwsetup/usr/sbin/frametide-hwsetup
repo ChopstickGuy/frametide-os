@@ -131,7 +131,7 @@ def build_plan(gpus, cpu, conf):
         plan.kernel_params += ["nvidia-drm.modeset=1", "nvidia-drm.fbdev=1"]
         plan.modprobe.append(
             "options nvidia NVreg_PreserveVideoMemoryAllocations=1 NVreg_TemporaryFilePath=/var/tmp "
-            "NVreg_UsePageAttributeTable=1")
+            "NVreg_UsePageAttributeTable=1 NVreg_InitializeSystemMemoryAllocations=0")
         plan.services += ["nvidia-suspend.service", "nvidia-resume.service", "nvidia-hibernate.service"]
         if len(gpus) > 1:
             plan.services += ["nvidia-powerd.service", "switcheroo-control.service"]

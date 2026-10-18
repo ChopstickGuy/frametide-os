@@ -113,7 +113,7 @@ msgstr ""
 msgid "Nicht installiert (Tests übersprungen): {tools}"
 msgstr ""
 
-#: center.py:574
+#: center.py:594
 msgid "bei Secure Boot einmalig MOK-Bestätigung"
 msgstr ""
 
@@ -145,123 +145,123 @@ msgstr ""
 msgid "Updates werden installiert …"
 msgstr ""
 
-#: center.py:185
+#: center.py:196
 msgid "Grafikkarten"
 msgstr ""
 
-#: center.py:186
+#: center.py:197
 msgid "Frametide richtet den passenden Treiber beim ersten Start automatisch ein."
 msgstr ""
 
-#: center.py:215
+#: center.py:226
 msgid "Grafik-Stack"
 msgstr ""
 
-#: center.py:216
+#: center.py:227
 msgid "installiert"
 msgstr ""
 
-#: center.py:216
+#: center.py:227
 msgid "fehlt"
 msgstr ""
 
-#: center.py:228
+#: center.py:248
 msgid "radeon (alt – Vulkan erst nach Einrichtung)"
 msgstr ""
 
-#: center.py:230
+#: center.py:250
 msgid "nouveau (offen, eingeschränkt)"
 msgstr ""
 
-#: center.py:287
+#: center.py:307
 msgid "Spiel prüfen"
 msgstr ""
 
-#: center.py:288
+#: center.py:308
 msgid "Läuft mein Spiel unter Linux? Daten von ProtonDB und AreWeAntiCheatYet."
 msgstr ""
 
-#: center.py:294
+#: center.py:314
 msgid "Ergebnis"
 msgstr ""
 
-#: center.py:298
+#: center.py:318
 msgid "Deine installierten Steam-Spiele"
 msgstr ""
 
-#: center.py:383
+#: center.py:403
 msgid "Ausgabe"
 msgstr ""
 
-#: center.py:383
+#: center.py:403
 msgid "Wohin der Ton geht – Kopfhörer, Headset oder Lautsprecher."
 msgstr ""
 
-#: center.py:384
+#: center.py:404
 msgid "Mikrofon"
 msgstr ""
 
-#: center.py:389
+#: center.py:409
 msgid "Rauschunterdrückung"
 msgstr ""
 
-#: center.py:390
+#: center.py:410
 msgid "Entfernt Tastatur, Lüfter und Hintergrundgeräusche aus deinem Mikrofon – für Discord, Teams und Spiele-Chat. Läuft direkt im Audiosystem, ohne Zusatzprogramm."
 msgstr ""
 
-#: center.py:405
+#: center.py:425
 msgid "Mikrofon testen"
 msgstr ""
 
-#: center.py:408
+#: center.py:428
 msgid "Test starten"
 msgstr ""
 
-#: center.py:499
+#: center.py:519
 msgid "Sprich jetzt … (4 Sekunden)"
 msgstr ""
 
-#: center.py:525
+#: center.py:545
 msgid "Temperaturen"
 msgstr ""
 
-#: center.py:526
+#: center.py:546
 msgid "Lüfter und Pumpen"
 msgstr ""
 
-#: center.py:527
+#: center.py:547
 msgid "Kurven, Profile und AIO-Kühler stellst du in CoolerControl ein."
 msgstr ""
 
-#: center.py:538
+#: center.py:558
 msgid "RGB-Beleuchtung"
 msgstr ""
 
-#: center.py:539
+#: center.py:559
 msgid "Mainboard, RAM, Grafikkarte, Lüfter, Tastatur und Maus – herstellerübergreifend über OpenRGB."
 msgstr ""
 
-#: center.py:565
+#: center.py:585
 msgid "Erweitert"
 msgstr ""
 
-#: center.py:565
+#: center.py:585
 msgid "Nur nötig, wenn Geräte oder Lüfter oben fehlen."
 msgstr ""
 
-#: center.py:663
+#: center.py:683
 msgid "Suche läuft … (kann einige Sekunden dauern)"
 msgstr ""
 
-#: center.py:698
+#: center.py:718
 msgid "Über dieses System"
 msgstr ""
 
-#: center.py:708
+#: center.py:728
 msgid "Leistung"
 msgstr ""
 
-#: center.py:735
+#: center.py:755
 msgid "Werkzeuge"
 msgstr ""
 
@@ -313,243 +313,263 @@ msgstr ""
 msgid "Installiert im Hintergrund – du kannst weiterarbeiten oder spielen."
 msgstr ""
 
-#: center.py:177
+#: center.py:188
 msgid "Treiber"
 msgstr ""
 
-#: center.py:197
+#: center.py:208
 msgid "Treiber automatisch einrichten"
 msgstr ""
 
-#: center.py:198
+#: center.py:209
 msgid "Erkennt die Hardware erneut und installiert die empfohlenen Treiber."
 msgstr ""
 
-#: center.py:199
+#: center.py:210
 msgid "Ausführen"
 msgstr ""
 
-#: center.py:207
+#: center.py:218
 msgid "NVIDIA-Treiberversion"
 msgstr ""
 
-#: center.py:208
+#: center.py:219
 msgid "„open“ = offene Kernel-Module (empfohlen ab RTX 20/GTX 16). Nach einem Wechsel bitte neu starten."
 msgstr ""
 
-#: center.py:217
+#: center.py:228
 msgid "Mesa (AMD/Intel)"
 msgstr ""
 
-#: center.py:218
+#: center.py:229
 msgid "Vulkan 32-Bit (Steam)"
 msgstr ""
 
-#: center.py:226
+#: center.py:231
+msgid "Neueste Mesa-Treiber"
+msgstr ""
+
+#: center.py:232
+msgid "Für AMD- und Intel-Grafik: aktuelle Mesa-Version statt der LTS-Version – oft mehr FPS in neuen Spielen. Quelle: Kisak-PPA. Ausschalten stellt Ubuntus Version wieder her."
+msgstr ""
+
+#: center.py:246
 msgid "NVIDIA-Treiber"
 msgstr ""
 
-#: center.py:283
+#: center.py:303
 msgid "Spiele"
 msgstr ""
 
-#: center.py:289
+#: center.py:309
 msgid "Spielname, z. B. Elden Ring"
 msgstr ""
 
-#: center.py:299
+#: center.py:319
 msgid "Bibliothek wird gelesen …"
 msgstr ""
 
-#: center.py:316
+#: center.py:336
 msgid "Keine installierten Steam-Spiele gefunden"
 msgstr ""
 
-#: center.py:317
+#: center.py:337
 msgid "Installiere Spiele in Steam oder prüfe oben ein Spiel nach Namen."
 msgstr ""
 
-#: center.py:378
+#: center.py:398
 msgid "Audio"
 msgstr ""
 
-#: center.py:392
+#: center.py:412
 msgid "Hintergrundgeräusche entfernen"
 msgstr ""
 
-#: center.py:393
+#: center.py:413
 msgid "Beim Umschalten ist der Ton kurz weg."
 msgstr ""
 
-#: center.py:395
+#: center.py:415
 msgid "Automatische Mikrofon-Lautstärke"
 msgstr ""
 
-#: center.py:396
+#: center.py:416
 msgid "Gleicht leises und lautes Sprechen aus."
 msgstr ""
 
-#: center.py:406
+#: center.py:426
 msgid "Aufnehmen und anhören"
 msgstr ""
 
-#: center.py:407
+#: center.py:427
 msgid "Nimmt 4 Sekunden auf und spielt sie dir vor."
 msgstr ""
 
-#: center.py:431
+#: center.py:451
 msgid "Kein Ausgabegerät gefunden"
 msgstr ""
 
-#: center.py:432
+#: center.py:452
 msgid "Kein Mikrofon gefunden"
 msgstr ""
 
-#: center.py:465
+#: center.py:485
 msgid "Lautstärke"
 msgstr ""
 
-#: center.py:473
+#: center.py:493
 msgid "Stumm"
 msgstr ""
 
-#: center.py:491
+#: center.py:511
 msgid "Rauschunterdrückung aktiv – „Mikrofon mit Rauschunterdrückung“ ist jetzt Standard."
 msgstr ""
 
-#: center.py:508
+#: center.py:528
 msgid "Wiedergabe …"
 msgstr ""
 
-#: center.py:520
+#: center.py:540
 msgid "RGB & Lüfter"
 msgstr ""
 
-#: center.py:529
+#: center.py:549
 msgid "Lüfterkurven, Pumpen, AIO-Wasserkühlungen"
 msgstr ""
 
-#: center.py:531
+#: center.py:551
 msgid "Öffnen"
 msgstr ""
 
-#: center.py:546
+#: center.py:566
 msgid "Farbe für alle Geräte"
 msgstr ""
 
-#: center.py:547
+#: center.py:567
 msgid "Statische Farbe auf alle erkannten Geräte"
 msgstr ""
 
-#: center.py:550
+#: center.py:570
 msgid "Anwenden"
 msgstr ""
 
-#: center.py:552
+#: center.py:572
 msgid "Beleuchtung ausschalten"
 msgstr ""
 
-#: center.py:553
+#: center.py:573
 msgid "Aus"
 msgstr ""
 
-#: center.py:556
+#: center.py:576
 msgid "Erkannte Geräte"
 msgstr ""
 
-#: center.py:559
+#: center.py:579
 msgid "Effekte, Zonen, Profile und Geräte im Detail"
 msgstr ""
 
-#: center.py:566
+#: center.py:586
 msgid "Erweiterter SMBus-Zugriff"
 msgstr ""
 
-#: center.py:567
+#: center.py:587
 msgid "Für RGB auf manchen Mainboards und RAM-Riegeln (acpi_enforce_resources=lax). Neustart nötig."
 msgstr ""
 
-#: center.py:575
+#: center.py:595
 msgid "Lüftertreiber für ITE-Chips"
 msgstr ""
 
-#: center.py:576
+#: center.py:596
 msgid "Gigabyte und viele andere Mainboards"
 msgstr ""
 
-#: center.py:577
+#: center.py:597
 msgid "Lüftertreiber für Nuvoton NCT6687"
 msgstr ""
 
-#: center.py:578
+#: center.py:598
 msgid "Viele MSI-Mainboards"
 msgstr ""
 
-#: center.py:583
+#: center.py:603
 msgid "Sensoren neu erkennen"
 msgstr ""
 
-#: center.py:631
+#: center.py:651
 msgid "Keine Temperatursensoren gefunden"
 msgstr ""
 
-#: center.py:632
+#: center.py:652
 msgid "Keine Lüftersensoren gefunden – siehe „Erweitert“"
 msgstr ""
 
-#: center.py:693
+#: center.py:713
 msgid "System"
 msgstr ""
 
-#: center.py:700
+#: center.py:720
 msgid "Basis"
 msgstr ""
 
-#: center.py:702
+#: center.py:722
 msgid "Prozessor"
 msgstr ""
 
-#: center.py:703
+#: center.py:723
 msgid "Arbeitsspeicher"
 msgstr ""
 
-#: center.py:710
+#: center.py:730
 msgid "x86-64-v3-optimierte Pakete"
 msgstr ""
 
-#: center.py:711
+#: center.py:731
 msgid "Schnellere Pakete für CPUs ab Intel Haswell / AMD Zen (experimentell)"
 msgstr ""
 
-#: center.py:712
+#: center.py:732
 msgid "AMD-GPU-Übertaktung freischalten"
 msgstr ""
 
-#: center.py:713
+#: center.py:733
 msgid "Erlaubt Übertakten und Undervolting in CoreCtrl. Neustart nötig."
 msgstr ""
 
-#: center.py:714
+#: center.py:734
 msgid "CPU-Sicherheitsbremsen abschalten"
 msgstr ""
 
-#: center.py:715
+#: center.py:735
 msgid "Mehr Leistung v. a. auf älteren CPUs, aber weniger Schutz vor Spectre & Co. Nur für reine Gaming-PCs. Neustart nötig."
 msgstr ""
 
-#: center.py:737
+#: center.py:756
+msgid "Was ist neu"
+msgstr ""
+
+#: center.py:756
+msgid "Die Neuerungen des letzten Frametide-Updates"
+msgstr ""
+
+#: center.py:757
+msgid "Anzeigen"
+msgstr ""
+
+#: center.py:761
 msgid "Misst CPU, Speicher, Latenz, SSD und GPU (ca. 4 Minuten). Ergebnis: ~/.local/share/frametide-bench"
 msgstr ""
 
-#: center.py:739
+#: center.py:763
 msgid "Starten"
 msgstr ""
 
-#: center.py:742
+#: center.py:766
 msgid "Windows-Umzug"
 msgstr ""
 
-#: center.py:743
+#: center.py:767
 msgid "Dateien, Lesezeichen, WLAN und Steam-Spiele von Windows übernehmen"
 msgstr ""
 
@@ -561,47 +581,51 @@ msgstr ""
 msgid "Aktuell"
 msgstr ""
 
-#: center.py:231
+#: center.py:237
+msgid "Mesa-Treiber werden umgestellt …"
+msgstr ""
+
+#: center.py:251
 msgid "Treiber: {driver}"
 msgstr ""
 
-#: center.py:325
+#: center.py:345
 msgid "{n} Spiele geprüft"
 msgstr ""
 
-#: center.py:326
+#: center.py:346
 msgid "{good} laufen gut · {ok} mit Einschränkungen · {bad} blockiert/defekt · {unknown} unbekannt"
 msgstr ""
 
-#: center.py:336
+#: center.py:356
 msgid "Ergebnis für „{term}“"
 msgstr ""
 
-#: center.py:493
+#: center.py:513
 msgid "Rauschunterdrückung konnte nicht gestartet werden."
 msgstr ""
 
-#: center.py:571
+#: center.py:591
 msgid "Einstellung wird angewendet …"
 msgstr ""
 
-#: center.py:580
+#: center.py:600
 msgid "Installieren"
 msgstr ""
 
-#: center.py:660
+#: center.py:680
 msgid "Farbe #{color} angewendet"
 msgstr ""
 
-#: center.py:677
+#: center.py:697
 msgid "Keine Geräte gefunden – evtl. „Erweiterter SMBus-Zugriff“ aktivieren"
 msgstr ""
 
-#: center.py:723
+#: center.py:743
 msgid "Am Netzteil volle Leistung"
 msgstr ""
 
-#: center.py:724
+#: center.py:744
 msgid "Laptop: Energieprofil „Leistung“, solange das Netzteil steckt – Lüfter und Leistungsgrenzen erlauben höhere Takte. Im Akkubetrieb „Ausgewogen“."
 msgstr ""
 
@@ -621,59 +645,59 @@ msgstr ""
 msgid "{n} Updates verfügbar"
 msgstr ""
 
-#: center.py:196
+#: center.py:207
 msgid "Keine Grafikkarte erkannt"
 msgstr ""
 
-#: center.py:200
+#: center.py:211
 msgid "Treiber werden eingerichtet …"
 msgstr ""
 
-#: center.py:210
+#: center.py:221
 msgid "Verfügbare Treiber werden ermittelt …"
 msgstr ""
 
-#: center.py:226
+#: center.py:246
 msgid "NVIDIA-Treiber {version}"
 msgstr ""
 
-#: center.py:231
+#: center.py:251
 msgid "keiner"
 msgstr ""
 
-#: center.py:251
+#: center.py:271
 msgid "Empfohlen"
 msgstr ""
 
-#: center.py:264
+#: center.py:284
 msgid "Keine Treiber gefunden"
 msgstr ""
 
-#: center.py:265
+#: center.py:285
 msgid "Sehr alte Karten laufen mit dem offenen nouveau/NVK-Treiber."
 msgstr ""
 
-#: center.py:357
+#: center.py:377
 msgid "Keine Verbindung"
 msgstr ""
 
-#: center.py:357
+#: center.py:377
 msgid "Für den Spiele-Check wird Internet benötigt."
 msgstr ""
 
-#: center.py:365
+#: center.py:385
 msgid "Nichts gefunden"
 msgstr ""
 
-#: center.py:554
+#: center.py:574
 msgid "Beleuchtung aus"
 msgstr ""
 
-#: center.py:585
+#: center.py:605
 msgid "Sensoren werden erkannt …"
 msgstr ""
 
-#: center.py:740
+#: center.py:764
 msgid "Benchmark läuft – bitte nichts anderes starten …"
 msgstr ""
 
@@ -681,15 +705,15 @@ msgstr ""
 msgid "{n} Updates"
 msgstr ""
 
-#: center.py:192
+#: center.py:203
 msgid "Primär"
 msgstr ""
 
-#: center.py:676
+#: center.py:696
 msgid "{n} Geräte"
 msgstr ""
 
-#: center.py:686
+#: center.py:706
 msgid "Konnte {app} nicht starten: {error}"
 msgstr ""
 
@@ -697,15 +721,15 @@ msgstr ""
 msgid "Fehlgeschlagen (Code {code}) – Details unten"
 msgstr ""
 
-#: center.py:257
+#: center.py:277
 msgid "{pkg} wird installiert …"
 msgstr ""
 
-#: center.py:620
+#: center.py:640
 msgid "Lüfter"
 msgstr ""
 
-#: center.py:612
+#: center.py:632
 msgid "{rpm} U/min"
 msgstr ""
 
@@ -1439,5 +1463,25 @@ msgstr ""
 
 #: welcome.py:55
 msgid "Alles Wichtige ist nur einen Klick entfernt."
+msgstr ""
+
+#: whats_new.py:137
+msgid "Neu in Frametide OS"
+msgstr ""
+
+#: whats_new.py:156
+msgid "Schließen"
+msgstr ""
+
+#: whats_new.py:177
+msgid "Alle Änderungen"
+msgstr ""
+
+#: whats_new.py:179
+msgid "Alles klar"
+msgstr ""
+
+#: whats_new.py:146
+msgid "UPDATE"
 msgstr ""
 

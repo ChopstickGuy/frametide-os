@@ -47,9 +47,10 @@ check-alive-timeout=uint32 20000
 
 [org.gnome.shell]
 favorite-apps=['org.gnome.Nautilus.desktop','google-chrome.desktop','firefox.desktop','steam.desktop','ai.storyteller.wordcraft.desktop','code.desktop','org.gnome.Ptyxis.desktop','org.frametide.Store.desktop','org.frametide.Center.desktop']
-enabled-extensions=['apps-menu@gnome-shell-extensions.gcampax.github.com', 'gsconnect@andyholmes.github.io']
+enabled-extensions=['apps-menu@gnome-shell-extensions.gcampax.github.com', 'gsconnect@andyholmes.github.io', 'tiling-assistant@frametide']
 app-picker-layout=[{'org.frametide.Store.desktop': <{'position': <0>}>, 'org.frametide.Center.desktop': <{'position': <1>}>, 'org.frametide.Welcome.desktop': <{'position': <2>}>, 'org.frametide.Migrate.desktop': <{'position': <3>}>, 'org.frametide.Dev.desktop': <{'position': <4>}>, 'org.frametide.TaskManager.desktop': <{'position': <5>}>, 'org.gnome.Settings.desktop': <{'position': <6>}>}]
-disabled-extensions=['ding@rastersoft.com','web-search-provider@ubuntu.com','snapd-prompting@canonical.com','snapd-search-provider@canonical.com']
+# tiling-assistant@ubuntu.com → ersetzt durch tiling-assistant@frametide (Layout-Auswahl aus Ubuntu 26.10)
+disabled-extensions=['ding@rastersoft.com','web-search-provider@ubuntu.com','snapd-prompting@canonical.com','snapd-search-provider@canonical.com','tiling-assistant@ubuntu.com']
 
 [org.gnome.shell.extensions.dash-to-dock]
 dock-position='BOTTOM'
@@ -117,9 +118,10 @@ check-alive-timeout=uint32 20000
 
 [org.gnome.shell:ubuntu]
 favorite-apps=['org.gnome.Nautilus.desktop','google-chrome.desktop','firefox.desktop','steam.desktop','ai.storyteller.wordcraft.desktop','code.desktop','org.gnome.Ptyxis.desktop','org.frametide.Store.desktop','org.frametide.Center.desktop']
-enabled-extensions=['apps-menu@gnome-shell-extensions.gcampax.github.com', 'gsconnect@andyholmes.github.io']
+enabled-extensions=['apps-menu@gnome-shell-extensions.gcampax.github.com', 'gsconnect@andyholmes.github.io', 'tiling-assistant@frametide']
 app-picker-layout=[{'org.frametide.Store.desktop': <{'position': <0>}>, 'org.frametide.Center.desktop': <{'position': <1>}>, 'org.frametide.Welcome.desktop': <{'position': <2>}>, 'org.frametide.Migrate.desktop': <{'position': <3>}>, 'org.frametide.Dev.desktop': <{'position': <4>}>, 'org.frametide.TaskManager.desktop': <{'position': <5>}>, 'org.gnome.Settings.desktop': <{'position': <6>}>}]
-disabled-extensions=['ding@rastersoft.com','web-search-provider@ubuntu.com','snapd-prompting@canonical.com','snapd-search-provider@canonical.com']
+# tiling-assistant@ubuntu.com → ersetzt durch tiling-assistant@frametide (Layout-Auswahl aus Ubuntu 26.10)
+disabled-extensions=['ding@rastersoft.com','web-search-provider@ubuntu.com','snapd-prompting@canonical.com','snapd-search-provider@canonical.com','tiling-assistant@ubuntu.com']
 
 [org.gnome.shell.extensions.dash-to-dock:ubuntu]
 dock-position='BOTTOM'

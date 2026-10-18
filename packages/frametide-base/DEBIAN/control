@@ -6,7 +6,7 @@ Section: metapackages
 Priority: optional
 Depends: linux-generic-hwe-26.04, linux-firmware, intel-microcode, amd64-microcode,
  ubuntu-drivers-common, fwupd, systemd-zram-generator, power-profiles-daemon,
- switcheroo-control, flatpak, ufw, base-files
+ switcheroo-control, flatpak, ufw, base-files, dbus-broker
 Recommends: virtualbox-guest-utils, virtualbox-guest-x11, spice-vdagent, open-vm-tools-desktop,
  qemu-guest-agent
 Description: Frametide OS – Basissystem und Leistungs-Tuning

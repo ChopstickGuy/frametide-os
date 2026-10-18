@@ -2,4 +2,12 @@
 set -e
 if [ "$1" = configure ]; then
     gtk-update-icon-cache -q -f /usr/share/icons/hicolor 2>/dev/null || true
+    # Nach einem Update (nicht bei Neuinstallation): „Was ist neu“ beim nächsten Anmelden zeigen
+    if [ -n "$2" ]; then
+        id="$(python3 -c 'import json; print(json.load(open("/usr/share/frametide/whats-new.json"))["releases"][0]["id"])' 2>/dev/null || true)"
+        if [ -n "$id" ]; then
+            mkdir -p /var/lib/frametide
+            echo "$id" > /var/lib/frametide/whats-new-pending
+        fi
+    fi
 fi

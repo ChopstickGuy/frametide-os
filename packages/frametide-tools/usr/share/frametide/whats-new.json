@@ -1,0 +1,54 @@
+{
+ "releases": [
+  {
+   "id": "2026-10-18",
+   "date": "18.10.2026",
+   "title": "Oktober-Update",
+   "title_en": "October update",
+   "items": [
+    {
+     "icon": "view-grid-symbolic",
+     "title": "Fenster-Layouts",
+     "title_en": "Window layouts",
+     "text": "Fenster an den oberen Rand ziehen und ein Layout wählen – aus Ubuntu 26.10.",
+     "text_en": "Drag a window to the top edge and pick a layout – from Ubuntu 26.10."
+    },
+    {
+     "icon": "power-profile-performance-symbolic",
+     "title": "Volle Leistung am Netzteil",
+     "title_en": "Full power when plugged in",
+     "text": "Laptops schalten am Netzteil automatisch auf „Leistung“, im Akku auf „Ausgewogen“.",
+     "text_en": "Laptops switch to “Performance” on the charger and “Balanced” on battery."
+    },
+    {
+     "icon": "video-display-symbolic",
+     "title": "Neueste Mesa-Treiber",
+     "title_en": "Latest Mesa drivers",
+     "text": "Für AMD und Intel optional unter Steuerung → Treiber.",
+     "text_en": "Optional for AMD and Intel under Control → Drivers."
+    },
+    {
+     "icon": "media-playback-start-symbolic",
+     "title": "Videos spielen sofort",
+     "title_en": "Videos just play",
+     "text": "MP4, H.264 und andere Formate sind jetzt vorinstalliert.",
+     "text_en": "MP4, H.264 and other formats are now included."
+    },
+    {
+     "icon": "audio-input-microphone-symbolic",
+     "title": "Speech Note im App Store",
+     "title_en": "Speech Note in the App Store",
+     "text": "Sprache zu Text und Vorlesen – komplett offline.",
+     "text_en": "Speech to text and read-aloud – fully offline."
+    },
+    {
+     "icon": "emblem-system-symbolic",
+     "title": "Schneller unter der Haube",
+     "title_en": "Faster under the hood",
+     "text": "dbus-broker wie in Ubuntu 26.10, schnelleres Herunterfahren und Feinschliff von CachyOS.",
+     "text_en": "dbus-broker as in Ubuntu 26.10, quicker shutdown and tuning borrowed from CachyOS."
+    }
+   ]
+  }
+ ]
+}

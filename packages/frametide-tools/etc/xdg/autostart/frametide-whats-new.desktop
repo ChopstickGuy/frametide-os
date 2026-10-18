@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=What's new
+Name[de]=Was ist neu
+Comment=Shows what changed after a Frametide update
+Comment[de]=Zeigt nach einem Frametide-Update die Neuerungen
+Exec=frametide-whats-new --if-pending
+Icon=frametide-logo
+Terminal=false
+NoDisplay=true
+X-GNOME-Autostart-Delay=6

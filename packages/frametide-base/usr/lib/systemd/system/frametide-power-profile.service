@@ -1,8 +1,7 @@
 [Unit]
-Description=Frametide: Energieprofil passend zum Netzteil (Laptops)
-After=power-profiles-daemon.service
+Description=Frametide: Energieprofil und Audio-Stromsparen passend zur Stromquelle
+After=power-profiles-daemon.service sound.target
 Wants=power-profiles-daemon.service
-ConditionPathExistsGlob=/sys/class/power_supply/BAT*
 
 [Service]
 Type=oneshot

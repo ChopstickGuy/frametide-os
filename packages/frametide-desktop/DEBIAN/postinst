@@ -2,6 +2,8 @@
 set -e
 if [ "$1" = configure ]; then
     glib-compile-schemas /usr/share/glib-2.0/schemas || true
+    # Eigenes Schema der Fenster-Layout-Erweiterung (neuer als Ubuntus Systemschema)
+    glib-compile-schemas /usr/share/gnome-shell/extensions/tiling-assistant@frametide/schemas || true
     dconf update 2>/dev/null || true
     gtk-update-icon-cache -q /usr/share/icons/hicolor 2>/dev/null || true
     # Frametide-Startbildschirm als Standard (die Initramfs wird beim Build/Installieren neu erzeugt)

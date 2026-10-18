@@ -5,5 +5,8 @@ if [ "$1" = remove ] || [ "$1" = purge ]; then
         --divert /usr/share/plymouth/themes/spinner/watermark.png.ubuntu \
         /usr/share/plymouth/themes/spinner/watermark.png
     glib-compile-schemas /usr/share/glib-2.0/schemas || true
+    rm -f /usr/share/gnome-shell/extensions/tiling-assistant@frametide/schemas/gschemas.compiled
+    rmdir --ignore-fail-on-non-empty /usr/share/gnome-shell/extensions/tiling-assistant@frametide/schemas \
+        /usr/share/gnome-shell/extensions/tiling-assistant@frametide 2>/dev/null || true
     update-alternatives --quiet --remove default.plymouth /usr/share/plymouth/themes/frametide/frametide.plymouth || true
 fi

@@ -4,7 +4,8 @@ Architecture: all
 Maintainer: Frametide OS <205694622+ChopstickGuy@users.noreply.github.com>
 Section: metapackages
 Priority: optional
-Depends: frametide-base, gdm3, ubuntu-session, gnome-shell-ubuntu-extensions,
+Depends: frametide-base, gdm3,
+ gstreamer1.0-libav, gstreamer1.0-plugins-ugly, gstreamer1.0-plugins-bad, ffmpeg, ubuntu-session, gnome-shell-ubuntu-extensions,
  yaru-theme-gtk, yaru-theme-gnome-shell, papirus-icon-theme,
  fonts-inter-variable, fonts-jetbrains-mono, plymouth-theme-spinner,
  gnome-software, gnome-software-plugin-flatpak, gnome-tweaks,

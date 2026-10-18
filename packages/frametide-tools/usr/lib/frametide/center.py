@@ -166,11 +166,22 @@ class UpdatesPage(Adw.PreferencesPage):
 
     def upgrade(self):
         self.upgrade_btn.set_sensitive(False)
-        self.task.start(_("Updates werden installiert …"), ft.helper_argv("upgrade"),
-                        lambda _s: (self.upgrade_btn.set_sensitive(True), self.check()))
+        self.task.start(_("Updates werden installiert …"), ft.helper_argv("upgrade"), self.upgraded)
+
+    def upgraded(self, _status):
+        self.upgrade_btn.set_sensitive(True)
+        self.check()
+        # Neue Frametide-Version? Dann kurz zeigen, was neu ist
+        try:
+            Gio.Subprocess.new(["frametide-whats-new", "--if-pending"], Gio.SubprocessFlags.NONE)
+        except GLib.Error:
+            pass
 
 
 # ======================================================================= Treiber
+
+MESA_SOURCE = "/etc/apt/sources.list.d/frametide-mesa-latest.sources"
+
 
 class DriversPage(Adw.PreferencesPage):
     def __init__(self):
@@ -217,6 +228,15 @@ class DriversPage(Adw.PreferencesPage):
         for title, value in (("Kernel", platform.release()), (_("Mesa (AMD/Intel)"), mesa or "–"),
                              (_("Vulkan 32-Bit (Steam)"), vulkan32)):
             info.add(Adw.ActionRow(title=title, subtitle=value, css_classes=["property"]))
+        latest = Adw.SwitchRow(title=_("Neueste Mesa-Treiber"),
+                               subtitle=_("Für AMD- und Intel-Grafik: aktuelle Mesa-Version statt der "
+                                          "LTS-Version – oft mehr FPS in neuen Spielen. Quelle: Kisak-PPA. "
+                                          "Ausschalten stellt Ubuntus Version wieder her."),
+                               active=os.path.exists(MESA_SOURCE))
+        latest.connect("notify::active", lambda r, _p: self.task.start(
+            _("Mesa-Treiber werden umgestellt …"),
+            ft.helper_argv("mesa-latest", "on" if r.get_active() else "off")))
+        info.add(latest)
         self.add(info)
 
     @staticmethod
@@ -733,6 +753,10 @@ class SystemPage(Adw.PreferencesPage):
         self.add(perf)
 
         tools = group(_("Werkzeuge"))
+        news = Adw.ActionRow(title=_("Was ist neu"), subtitle=_("Die Neuerungen des letzten Frametide-Updates"))
+        news.add_suffix(button(_("Anzeigen"), "flat",
+                               lambda: Gio.Subprocess.new(["frametide-whats-new"], Gio.SubprocessFlags.NONE)))
+        tools.add(news)
         bench = Adw.ActionRow(title="Frametide Bench",
                               subtitle=_("Misst CPU, Speicher, Latenz, SSD und GPU (ca. 4 Minuten). "
                                          "Ergebnis: ~/.local/share/frametide-bench"))

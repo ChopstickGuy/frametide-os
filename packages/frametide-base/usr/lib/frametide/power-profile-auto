@@ -1,19 +1,30 @@
 #!/bin/sh
-# Laptops: am Netzteil Energieprofil „Leistung“, im Akkubetrieb „Ausgewogen“.
-# Unter Last bleibt der Laptop so kühler und hält höhere Takte (Lüfter und Leistungsgrenzen
-# des Herstellers hängen am Profil). Ein bewusst gewählter Stromsparmodus bleibt unangetastet.
-# Abschaltbar in Steuerung → System bzw. mit AC_PERFORMANCE=no in /etc/frametide/hwsetup.conf.
+# Energie passend zur Stromquelle (läuft beim Start und beim Ein-/Ausstecken des Netzteils):
+#  • Laptops: Energieprofil „Leistung“ am Netzteil, „Ausgewogen“ im Akkubetrieb. Unter Last
+#    bleibt der Laptop so kühler und hält höhere Takte (Lüfter und Leistungsgrenzen des
+#    Herstellers hängen am Profil). Ein bewusst gewählter Stromsparmodus bleibt unangetastet.
+#    Abschaltbar in Steuerung → System bzw. mit AC_PERFORMANCE=no in /etc/frametide/hwsetup.conf.
+#  • Alle Geräte: Stromsparen des Soundchips am Netzteil aus – kein Knacken und keine
+#    Verzögerung, wenn Ton startet (wie CachyOS). Im Akkubetrieb wieder an.
 conf=/etc/frametide/hwsetup.conf
-grep -qsi '^AC_PERFORMANCE=no' "$conf" && exit 0
-ls -d /sys/class/power_supply/BAT* >/dev/null 2>&1 || exit 0   # Desktops: frametide-hwsetup
-command -v powerprofilesctl >/dev/null 2>&1 || exit 0
-
+battery=0
+ls -d /sys/class/power_supply/BAT* >/dev/null 2>&1 && battery=1
 online=0
 for supply in /sys/class/power_supply/*; do
     case "$(cat "$supply/type" 2>/dev/null)" in Mains | USB) ;; *) continue ;; esac
     [ "$(cat "$supply/online" 2>/dev/null)" = 1 ] && online=1
 done
+on_ac=0
+{ [ "$battery" = 0 ] || [ "$online" = 1 ]; } && on_ac=1
 
+audio=/sys/module/snd_hda_intel/parameters/power_save
+if [ -w "$audio" ]; then
+    if [ "$on_ac" = 1 ]; then echo 0 > "$audio"; else echo 1 > "$audio"; fi
+fi
+
+[ "$battery" = 1 ] || exit 0   # Desktops: Profil setzt frametide-hwsetup
+grep -qsi '^AC_PERFORMANCE=no' "$conf" && exit 0
+command -v powerprofilesctl >/dev/null 2>&1 || exit 0
 current="$(powerprofilesctl get 2>/dev/null)" || exit 0
 [ "$current" = power-saver ] && exit 0
 want=balanced
