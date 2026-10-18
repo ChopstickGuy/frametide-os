@@ -10,6 +10,7 @@ if [ "$1" = configure ]; then
         ufw allow GSConnect >/dev/null 2>&1 || true
     fi
     gtk-update-icon-cache -q /usr/share/icons/hicolor 2>/dev/null || true
+    gtk-update-icon-cache -q /usr/share/icons/Yaru 2>/dev/null || true
     # Frametide-Startbildschirm als Standard (die Initramfs wird beim Build/Installieren neu erzeugt)
     update-alternatives --quiet --install /usr/share/plymouth/themes/default.plymouth default.plymouth \
         /usr/share/plymouth/themes/frametide/frametide.plymouth 200

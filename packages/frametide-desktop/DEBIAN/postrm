@@ -9,6 +9,10 @@ if [ "$1" = remove ] || [ "$1" = purge ]; then
     dpkg-divert --package frametide-desktop --remove --rename \
         --divert /usr/share/applications/org.gnome.Ptyxis.desktop.ubuntu \
         /usr/share/applications/org.gnome.Ptyxis.desktop
+    dpkg-divert --package frametide-desktop --remove --rename \
+        --divert /usr/share/icons/Yaru/scalable/actions/view-app-grid-ubuntu-symbolic.svg.ubuntu \
+        /usr/share/icons/Yaru/scalable/actions/view-app-grid-ubuntu-symbolic.svg
+    gtk-update-icon-cache -q /usr/share/icons/Yaru 2>/dev/null || true
     glib-compile-schemas /usr/share/glib-2.0/schemas || true
     rm -f /usr/share/gnome-shell/extensions/tiling-assistant@frametide/schemas/gschemas.compiled
     rmdir --ignore-fail-on-non-empty /usr/share/gnome-shell/extensions/tiling-assistant@frametide/schemas \
