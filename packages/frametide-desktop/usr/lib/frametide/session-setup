@@ -1,0 +1,56 @@
+#!/usr/bin/python3
+"""Frametide – Einstellungen beim Anmelden nachziehen (einmal pro Schritt und Benutzer).
+
+Systemvoreinstellungen (gschema-Overrides) greifen nur, solange ein Benutzer einen Schlüssel nie
+selbst geändert hat. Neue Frametide-Erweiterungen schaltet dieses Skript deshalb einmalig in der
+Benutzerliste ein – spätere eigene Entscheidungen des Benutzers bleiben unangetastet.
+"""
+import os
+
+from gi.repository import Gio, GLib
+
+STATE = os.path.join(GLib.get_user_config_dir(), "frametide", "session-steps")
+
+# Schritt-ID: (einschalten, ausschalten)
+STEPS = {
+    "2026-10-tiling-layouts": (["tiling-assistant@frametide"], ["tiling-assistant@ubuntu.com"]),
+}
+
+
+def installed(uuid):
+    return any(os.path.isdir(os.path.join(d, "gnome-shell", "extensions", uuid))
+               for d in [GLib.get_user_data_dir(), *GLib.get_system_data_dirs()])
+
+
+def main():
+    try:
+        with open(STATE) as f:
+            done = set(f.read().split())
+    except OSError:
+        done = set()
+    todo = [s for s in STEPS if s not in done]
+    if not todo:
+        return
+    shell = Gio.Settings(schema_id="org.gnome.shell")
+    enabled, disabled = shell.get_strv("enabled-extensions"), shell.get_strv("disabled-extensions")
+    for step in todo:
+        turn_on, turn_off = STEPS[step]
+        for uuid in turn_on:
+            if installed(uuid):
+                enabled = [u for u in enabled if u != uuid] + [uuid]
+                disabled = [u for u in disabled if u != uuid]
+        for uuid in turn_off:
+            enabled = [u for u in enabled if u != uuid]
+            if uuid not in disabled:
+                disabled.append(uuid)
+        done.add(step)
+    shell.set_strv("enabled-extensions", enabled)
+    shell.set_strv("disabled-extensions", disabled)
+    Gio.Settings.sync()
+    os.makedirs(os.path.dirname(STATE), exist_ok=True)
+    with open(STATE, "w") as f:
+        f.write("\n".join(sorted(done)) + "\n")
+
+
+if __name__ == "__main__":
+    main()
