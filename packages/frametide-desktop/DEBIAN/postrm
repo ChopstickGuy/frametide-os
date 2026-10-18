@@ -1,9 +1,14 @@
 #!/bin/sh
 set -e
 if [ "$1" = remove ] || [ "$1" = purge ]; then
+    # BEGIN watermark
     dpkg-divert --package frametide-desktop --remove --rename \
         --divert /usr/share/plymouth/themes/spinner/watermark.png.ubuntu \
         /usr/share/plymouth/themes/spinner/watermark.png
+    # END watermark
+    dpkg-divert --package frametide-desktop --remove --rename \
+        --divert /usr/share/applications/org.gnome.Ptyxis.desktop.ubuntu \
+        /usr/share/applications/org.gnome.Ptyxis.desktop
     glib-compile-schemas /usr/share/glib-2.0/schemas || true
     rm -f /usr/share/gnome-shell/extensions/tiling-assistant@frametide/schemas/gschemas.compiled
     rmdir --ignore-fail-on-non-empty /usr/share/gnome-shell/extensions/tiling-assistant@frametide/schemas \

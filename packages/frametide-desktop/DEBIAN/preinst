@@ -1,7 +1,13 @@
 #!/bin/sh
 set -e
 if [ "$1" = install ] || [ "$1" = upgrade ]; then
+    # BEGIN watermark
     dpkg-divert --package frametide-desktop --add --rename \
         --divert /usr/share/plymouth/themes/spinner/watermark.png.ubuntu \
         /usr/share/plymouth/themes/spinner/watermark.png
+    # END watermark
+    # Terminal mit Frametide-Logo: eigene Startdatei, Ubuntus Original bleibt als .ubuntu erhalten
+    dpkg-divert --package frametide-desktop --add --rename \
+        --divert /usr/share/applications/org.gnome.Ptyxis.desktop.ubuntu \
+        /usr/share/applications/org.gnome.Ptyxis.desktop
 fi

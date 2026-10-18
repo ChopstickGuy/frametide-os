@@ -1,6 +1,35 @@
 {
  "releases": [
   {
+   "id": "2026-10-18-4",
+   "date": "18.10.2026",
+   "title": "Feinschliff",
+   "title_en": "Polish",
+   "items": [
+    {
+     "icon": "utilities-terminal-symbolic",
+     "title": "Terminal im Frametide-Look",
+     "title_en": "Terminal in the Frametide look",
+     "text": "Eigenes Farbschema in Petrol, Indigo und Violett und ein neues Logo.",
+     "text_en": "Its own colour scheme in teal, indigo and violet, plus a new logo."
+    },
+    {
+     "icon": "view-app-grid-symbolic",
+     "title": "Apps-Knopf ohne Ubuntu-Logo",
+     "title_en": "Apps button without the Ubuntu logo",
+     "text": "Der Knopf für alle Apps im Dock zeigt wieder das neutrale Raster.",
+     "text_en": "The all-apps button in the dock shows the neutral grid again."
+    },
+    {
+     "icon": "media-playback-stop-symbolic",
+     "title": "Benchmark stoppen",
+     "title_en": "Stop the benchmark",
+     "text": "Frametide Bench lässt sich jetzt jederzeit abbrechen.",
+     "text_en": "Frametide Bench can now be stopped at any time."
+    }
+   ]
+  },
+  {
    "id": "2026-10-18-3",
    "date": "18.10.2026",
    "title": "Admin & Netzwerk",

@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""Frametide – Einstellungen beim Anmelden nachziehen (einmal pro Schritt und Benutzer).
+"""Frametide – Einstellungen beim Anmelden nachziehen (einmal pro Schritt und Benutzer)
+und Dateien wie das Terminal-Farbschema in den Benutzerordner legen.
 
 Systemvoreinstellungen (gschema-Overrides) greifen nur, solange ein Benutzer einen Schlüssel nie
 selbst geändert hat. Neue Frametide-Erweiterungen schaltet dieses Skript deshalb einmalig in der
@@ -22,7 +23,23 @@ def installed(uuid):
                for d in [GLib.get_user_data_dir(), *GLib.get_system_data_dirs()])
 
 
+def sync_files():
+    """Dateien, die Programme nur im Benutzerordner suchen, bei jeder Anmeldung aktuell halten."""
+    src = "/usr/share/frametide/ptyxis/frametide.palette"
+    dst_dir = os.path.join(GLib.get_user_data_dir(), "org.gnome.Ptyxis", "palettes")
+    try:
+        data = open(src, "rb").read()
+        dst = os.path.join(dst_dir, "frametide.palette")
+        if not os.path.exists(dst) or open(dst, "rb").read() != data:
+            os.makedirs(dst_dir, exist_ok=True)
+            with open(dst, "wb") as f:
+                f.write(data)
+    except OSError:
+        pass
+
+
 def main():
+    sync_files()
     try:
         with open(STATE) as f:
             done = set(f.read().split())

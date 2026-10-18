@@ -24,6 +24,7 @@ install_artwork() {
         install -Dm644 "$root/artwork/wordmark.png" "$dir/usr/share/pixmaps/frametide-wordmark.png"
         # Apps-Knopf im Dock: Ubuntus Dock sucht zuerst „view-app-grid-ubuntu-symbolic“ und fände sonst
         # das Ubuntu-Logo aus Yaru – unser neutrales Raster liegt in hicolor und wird vorher gefunden
+        install -Dm644 "$root/artwork/icon-terminal.svg" "$dir/usr/share/icons/hicolor/scalable/apps/frametide-terminal.svg"
         install -Dm644 "$root/artwork/icons/view-app-grid-symbolic.svg" \
             "$dir/usr/share/icons/hicolor/scalable/actions/view-app-grid-ubuntu-symbolic.svg"
         install -d "$dir/usr/share/backgrounds/frametide" "$dir/usr/share/gnome-background-properties"
@@ -65,8 +66,7 @@ PY
             rsvg-convert -w 112 -h 112 "$root/artwork/logo.svg" -o "$dir/usr/share/plymouth/themes/spinner/watermark.png"
         else
             echo "WARNUNG: rsvg-convert fehlt – Ubuntu-Boot-Logo bleibt erhalten" >&2
-            rm -f "$dir/DEBIAN/preinst"
-            sed -i '/dpkg-divert/,/watermark.png$/d' "$dir/DEBIAN/postrm"
+            sed -i '/# BEGIN watermark/,/# END watermark/d' "$dir/DEBIAN/preinst" "$dir/DEBIAN/postrm"
         fi
         ;;
     frametide-tools)

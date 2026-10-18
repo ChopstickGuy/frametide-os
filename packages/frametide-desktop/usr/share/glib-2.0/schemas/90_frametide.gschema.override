@@ -146,3 +146,7 @@ show-delete-permanently=true
 # Anmeldebildschirm (GDM): Frametide-Schriftzug statt Ubuntu-Logo
 [org.gnome.login-screen]
 logo='/usr/share/pixmaps/frametide-wordmark.png'
+
+# Terminal (Ptyxis): Frametide-Farbschema (Datei kommt beim Anmelden nach ~/.local/share/org.gnome.Ptyxis/palettes)
+[org.gnome.Ptyxis.Profile]
+palette='frametide'
