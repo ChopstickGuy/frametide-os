@@ -21,7 +21,7 @@ if [ "$1" = configure ]; then
     # Laufendes System (nicht im Image-Build): Tuning sofort aktivieren
     if [ -d /run/systemd/system ]; then
         systemctl daemon-reload || true
-        sysctl --system >/dev/null || true
+        /usr/lib/systemd/systemd-sysctl 2>/dev/null || sysctl --system >/dev/null 2>&1 || true
         udevadm trigger --subsystem-match=block --action=change || true
         udevadm control --reload-rules || true
         systemctl start --no-block frametide-power-profile.service 2>/dev/null || true
