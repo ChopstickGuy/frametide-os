@@ -5,4 +5,3 @@ Comment=Applies new Frametide defaults once per user
 Exec=/usr/lib/frametide/session-setup
 Terminal=false
 NoDisplay=true
-X-GNOME-Autostart-Phase=Applications
