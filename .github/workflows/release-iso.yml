@@ -1,0 +1,77 @@
+name: Release ISO
+
+# Veröffentlicht eine schon gebaute und getestete ISO (Artefakt eines „Build ISO“-Laufs) auf
+# SourceForge und als GitHub-Release – ohne erneuten Build (ca. 10 statt 60 Minuten).
+#   Actions → Release ISO → Run workflow → Lauf-ID und Version eintragen
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: "ID des erfolgreichen Build-ISO-Laufs (aus der URL …/actions/runs/<ID>)"
+        required: true
+      version:
+        description: "Version ohne v, z. B. 1.0.0-alpha2"
+        required: true
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  release:
+    runs-on: ubuntu-24.04
+    env:
+      SF_USER: ${{ secrets.SF_USER }}
+      SF_PROJECT: ${{ secrets.SF_PROJECT }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check the build run
+        id: run
+        run: |
+          [[ "${{ inputs.version }}" =~ ^[0-9]+\.[0-9]+\.[0-9]+(-[a-z0-9.]+)?$ ]] || { echo "::error::Ungültige Version"; exit 1; }
+          info=$(gh run view "${{ inputs.run_id }}" --json workflowName,conclusion,headSha)
+          [ "$(jq -r .workflowName <<<"$info")" = "Build ISO" ] || { echo "::error::Kein Build-ISO-Lauf"; exit 1; }
+          [ "$(jq -r .conclusion <<<"$info")" = "success" ] || { echo "::error::Lauf war nicht erfolgreich"; exit 1; }
+          echo "sha=$(jq -r .headSha <<<"$info")" >> "$GITHUB_OUTPUT"
+      - uses: actions/download-artifact@v4
+        with:
+          name: frametide-os-iso
+          path: out
+          run-id: ${{ inputs.run_id }}
+          github-token: ${{ github.token }}
+      - name: Verify checksum
+        run: cd out && ls -lh && sha256sum -c *.sha256
+      - name: Upload to SourceForge
+        if: env.SF_USER != ''
+        env:
+          SF_SSH_KEY: ${{ secrets.SF_SSH_KEY }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$SF_SSH_KEY" > ~/.ssh/sourceforge && chmod 600 ~/.ssh/sourceforge
+          ssh-keyscan frs.sourceforge.net >> ~/.ssh/known_hosts
+          version="${{ inputs.version }}"
+          rsync -av -e "ssh -i ~/.ssh/sourceforge" out/*.iso out/*.sha256 \
+            "$SF_USER@frs.sourceforge.net:/home/frs/project/$SF_PROJECT/$version/"
+          rsync -av -e "ssh -i ~/.ssh/sourceforge" README.md \
+            "$SF_USER@frs.sourceforge.net:/home/frs/project/$SF_PROJECT/"
+          echo "SF_URL=https://sourceforge.net/projects/$SF_PROJECT/files/$version/" >> "$GITHUB_ENV"
+      - name: GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ inputs.version }}
+          target_commitish: ${{ steps.run.outputs.sha }}
+          name: Frametide OS ${{ inputs.version }}
+          prerelease: true
+          files: out/*.sha256
+          body: |
+            ## Frametide OS v${{ inputs.version }}
+
+            **Download:** ${{ env.SF_URL }}
+
+            The SHA256 checksum is attached to this release. Please verify after downloading:
+            `sha256sum -c frametide-os-*.iso.sha256`
+
+            Already running Frametide? No need to reinstall – updates arrive through Control → Updates.
+
+            ⚠️ Alpha – please test in a VM or on a spare machine first.

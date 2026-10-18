@@ -14,6 +14,13 @@
    The pipeline builds again, uploads the ISO and README to SourceForge and creates a
    GitHub pre-release with the checksum and download link.
 
+## Releasing an ISO that was already built
+
+A successful *Build ISO* run (manual or tag) keeps its ISO as an artifact for 30 days. To publish
+exactly that ISO without building again: *Actions → Release ISO → Run workflow*, enter the run
+ID (from the run's URL) and the version (e.g. `1.0.0-alpha2`). It verifies the checksum, uploads
+to SourceForge and creates the GitHub pre-release with the tag – about 10 minutes.
+
 ## Package updates (without a new ISO)
 
 Frametide's own packages (App Store, Control, Develop, design, tuning, store catalog) are
