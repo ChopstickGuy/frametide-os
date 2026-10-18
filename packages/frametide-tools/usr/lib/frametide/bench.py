@@ -16,6 +16,7 @@ import os
 import platform
 import re
 import shutil
+import signal
 import subprocess
 import sys
 import tempfile
@@ -117,6 +118,20 @@ def wakeup_latency(seconds=15, interval_us=500):
         samples.append((time.perf_counter_ns() - t0) / 1000 - interval_us)
     samples.sort()
     return round(sum(samples) / len(samples), 1), round(samples[int(len(samples) * 0.99)], 1)
+
+
+class Cancelled(Exception):
+    """Benutzer hat „Stoppen“ gedrückt (SIGTERM) oder Strg+C (SIGINT)."""
+
+
+def cancel(_signum, _frame):
+    signal.signal(signal.SIGTERM, signal.SIG_IGN)
+    signal.signal(signal.SIGINT, signal.SIG_IGN)
+    try:
+        os.killpg(os.getpgrp(), signal.SIGTERM)  # laufende Testprogramme (stress-ng, fio, vkmark …) mit beenden
+    except OSError:
+        pass
+    raise Cancelled()
 
 
 def start_load():
@@ -228,12 +243,22 @@ def main():
         print_table(new["results"], old["results"])
         return 0
 
+    # Eigene Prozessgruppe (wenn nicht im Terminal): „Stoppen“ beendet so auch alle Testprogramme
+    if not sys.stdin.isatty():
+        os.setpgrp()
+    signal.signal(signal.SIGTERM, cancel)
+    signal.signal(signal.SIGINT, cancel)
     results = {}
     tests = [test_sysbench, test_7zip, test_zstd, test_latency, test_boot]
     if not args.quick:
         tests += [test_disk, test_gpu]
-    for test in tests:
-        test(results)
+    try:
+        for test in tests:
+            test(results)
+    except Cancelled:
+        say(_("Benchmark abgebrochen – es wurde nichts gespeichert."))
+        return 130
+    signal.signal(signal.SIGTERM, signal.SIG_DFL)
 
     report = {"version": 1, "date": datetime.datetime.now().isoformat(timespec="seconds"),
               "system": system_info(), "results": results}

@@ -1190,3 +1190,9 @@ msgstr "Log out and back in once – then it shows up in Quick Settings at the t
 
 msgid "{app} ist installiert"
 msgstr "{app} is installed"
+
+msgid "Wird gestoppt …"
+msgstr "Stopping …"
+
+msgid "Benchmark abgebrochen – es wurde nichts gespeichert."
+msgstr "Benchmark stopped – nothing was saved."

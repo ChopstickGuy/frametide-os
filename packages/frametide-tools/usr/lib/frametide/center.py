@@ -51,20 +51,37 @@ class TaskPanel(Gtk.Box):
 
     def __init__(self):
         super().__init__(orientation=Gtk.Orientation.VERTICAL, spacing=8, visible=False)
-        self.status = Gtk.Label(xalign=0, css_classes=["heading"])
+        self.status = Gtk.Label(xalign=0, css_classes=["heading"], hexpand=True)
         self.bar = Gtk.ProgressBar()
         expander, self.append_log = ft.log_view()
-        self.append(self.status)
+        self.stop_btn = Gtk.Button(label=_("Stoppen"), css_classes=["destructive-action"], visible=False,
+                                   valign=Gtk.Align.CENTER)
+        self.stop_btn.connect("clicked", lambda _b: self.stop())
+        head = Gtk.Box(spacing=12)
+        head.append(self.status)
+        head.append(self.stop_btn)
+        self.append(head)
         self.append(self.bar)
         self.append(expander)
         self.running = False
+        self.job = None
 
-    def start(self, title, argv, on_done=None):
+    def stop(self):
+        proc = getattr(self.job, "proc", None)
+        if self.running and proc is not None:
+            self.stop_btn.set_sensitive(False)
+            self.status.set_label(_("Wird gestoppt …"))
+            proc.send_signal(15)
+
+    def start(self, title, argv, on_done=None, cancellable=False):
+        """cancellable: „Stoppen“-Knopf zeigen (nur für Aufgaben, die SIGTERM sauber behandeln)."""
         if self.running:
             return
         self.running = True
         self.set_visible(True)
         self.status.set_label(title)
+        self.stop_btn.set_visible(cancellable)
+        self.stop_btn.set_sensitive(True)
         state = {"pulse": True}
         pulse = GLib.timeout_add(120, lambda: (state["pulse"] and self.bar.pulse(), True)[1])
 
@@ -81,16 +98,17 @@ class TaskPanel(Gtk.Box):
         def done(status):
             GLib.source_remove(pulse)
             self.running = False
+            self.stop_btn.set_visible(False)
             self.bar.set_fraction(1.0 if status == 0 else 0.0)
             if status == 0:
                 self.status.set_label(_("Erledigt ✓"))
-            elif status in (126, 127):
+            elif status in (126, 127, 130, 143):
                 self.status.set_label(_("Abgebrochen"))
             else:
                 self.status.set_label(_("Fehlgeschlagen (Code {code}) – Details unten").format(code=status))
             if on_done:
                 on_done(status)
-        ft.Task(argv, on_line=line, on_done=done)
+        self.job = ft.Task(argv, on_line=line, on_done=done)
 
 
 # ======================================================================= Updates
@@ -761,7 +779,7 @@ class SystemPage(Adw.PreferencesPage):
                               subtitle=_("Misst CPU, Speicher, Latenz, SSD und GPU (ca. 4 Minuten). "
                                          "Ergebnis: ~/.local/share/frametide-bench"))
         bench.add_suffix(button(_("Starten"), "flat", lambda: self.task.start(
-            _("Benchmark läuft – bitte nichts anderes starten …"), ["frametide-bench"])))
+            _("Benchmark läuft – bitte nichts anderes starten …"), ["frametide-bench"], cancellable=True)))
         tools.add(bench)
         move = Adw.ActionRow(title=_("Windows-Umzug"),
                              subtitle=_("Dateien, Lesezeichen, WLAN und Steam-Spiele von Windows übernehmen"))
