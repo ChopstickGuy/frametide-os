@@ -105,7 +105,22 @@ def flatpak_installed():
     return {line.strip() for line in out.splitlines() if line.strip()}
 
 
-def apt_upgradable():
+def refresh_package_lists():
+    """Paketlisten frisch vom Server holen – über PackageKit, also ohne Passwort (wie GNOME
+    Software). Ohne diesen Schritt sieht `apt list --upgradable` neue Versionen erst nach dem
+    nächsten automatischen Abgleich (apt-daily, ein- bis zweimal täglich)."""
+    try:
+        gi.require_version("PackageKitGlib", "1.0")
+        from gi.repository import PackageKitGlib
+        PackageKitGlib.Client().refresh_cache(False, None, lambda *_a: None, None)
+        return True
+    except Exception:
+        return False
+
+
+def apt_upgradable(refresh=False):
+    if refresh:
+        refresh_package_lists()
     out = run(["apt", "list", "--upgradable"], timeout=120)
     result = []
     for line in out.splitlines():

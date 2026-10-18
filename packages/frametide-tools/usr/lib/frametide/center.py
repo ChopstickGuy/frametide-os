@@ -135,7 +135,7 @@ class UpdatesPage(Adw.PreferencesPage):
     def check(self):
         self.summary_row.set_subtitle(_("Suche läuft …"))
         self.check_btn.set_sensitive(False)
-        ft.in_thread(lambda: {"apt": ft.apt_upgradable(), "flatpak": ft.flatpak_upgradable(),
+        ft.in_thread(lambda: {"apt": ft.apt_upgradable(refresh=True), "flatpak": ft.flatpak_upgradable(),
                               "craft": ft.craft_upgradable()}, self.show)
 
     def show(self, result):
