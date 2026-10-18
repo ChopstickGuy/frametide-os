@@ -259,7 +259,7 @@ def installed_nvidia_branches():
 
 
 def apply(plan):
-    apt = ["apt-get", "-y", "-o", "Dpkg::Options::=--force-confold"]
+    apt = ["apt-get", "-y", "-o", "DPkg::Lock::Timeout=300", "-o", "Dpkg::Options::=--force-confold"]
 
     if "i386" not in run(["dpkg", "--print-foreign-architectures"]).stdout.split():
         run(["dpkg", "--add-architecture", "i386"])
@@ -267,7 +267,7 @@ def apply(plan):
     if plan.amd64v3:
         write_file(APT_V3_FILE, 'APT::Architecture-Variants "amd64v3";\n')
 
-    run(["apt-get", "update"])
+    run(["apt-get", "-o", "DPkg::Lock::Timeout=300", "update"])
 
     if plan.ubuntu_drivers:
         run(["ubuntu-drivers", "install"])

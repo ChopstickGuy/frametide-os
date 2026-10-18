@@ -1,0 +1,3 @@
+// Frametide: Läuft gerade schon eine Paketverwaltung (Updates, Store, Treiber-Einrichtung),
+// bis zu 5 Minuten warten statt sofort mit „Could not get lock“ abzubrechen.
+DPkg::Lock::Timeout "300";

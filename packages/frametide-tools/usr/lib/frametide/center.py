@@ -743,6 +743,7 @@ class SystemPage(Adw.PreferencesPage):
         self.add(info)
 
         conf = hw_conf()
+        self.option_rows, self.reverting = [], False
         perf = group(_("Leistung"))
         for key, title, subtitle in (
                 ("AMD64V3", _("x86-64-v3-optimierte Pakete"),
@@ -753,9 +754,8 @@ class SystemPage(Adw.PreferencesPage):
                  _("Mehr Leistung v. a. auf älteren CPUs, aber weniger Schutz vor Spectre & Co. "
                    "Nur für reine Gaming-PCs. Neustart nötig."))):
             row = Adw.SwitchRow(title=title, subtitle=subtitle, active=conf.get(key) == "yes")
-            row.connect("notify::active", lambda r, _p, k=key: self.task.start(
-                _("Einstellung wird angewendet …"),
-                ft.helper_argv("set-option", k, "yes" if r.get_active() else "no")))
+            row.connect("notify::active", self.option_changed, key)
+            self.option_rows.append(row)
             perf.add(row)
         if glob.glob("/sys/class/power_supply/BAT*"):
             ac = Adw.SwitchRow(title=_("Am Netzteil volle Leistung"),
@@ -763,9 +763,8 @@ class SystemPage(Adw.PreferencesPage):
                                           "Lüfter und Leistungsgrenzen erlauben höhere Takte. "
                                           "Im Akkubetrieb „Ausgewogen“."),
                                active=conf.get("AC_PERFORMANCE", "yes") != "no")
-            ac.connect("notify::active", lambda r, _p: self.task.start(
-                _("Einstellung wird angewendet …"),
-                ft.helper_argv("set-option", "AC_PERFORMANCE", "yes" if r.get_active() else "no")))
+            ac.connect("notify::active", self.option_changed, "AC_PERFORMANCE")
+            self.option_rows.append(ac)
             perf.add(ac)
         perf.add(self.task)
         self.add(perf)
@@ -787,6 +786,29 @@ class SystemPage(Adw.PreferencesPage):
                                lambda: Gio.Subprocess.new(["frametide-migrate"], Gio.SubprocessFlags.NONE)))
         tools.add(move)
         self.add(tools)
+
+    def option_changed(self, row, _param, key):
+        """Einstellung anwenden; solange sie läuft, sind die anderen Schalter gesperrt.
+        Schlägt sie fehl, springt der Schalter zurück."""
+        if self.reverting:
+            return
+        if self.task.running:
+            self.reverting = True
+            row.set_active(not row.get_active())
+            self.reverting = False
+            return
+        for r in self.option_rows:
+            r.set_sensitive(False)
+
+        def done(status):
+            for r in self.option_rows:
+                r.set_sensitive(True)
+            if status != 0:
+                self.reverting = True
+                row.set_active(not row.get_active())
+                self.reverting = False
+        self.task.start(_("Einstellung wird angewendet …"),
+                        ft.helper_argv("set-option", key, "yes" if row.get_active() else "no"), done)
 
 
 class CenterWindow(Adw.ApplicationWindow):
