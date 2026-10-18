@@ -49,9 +49,12 @@ jobs:
           sudo apt-get update && sudo apt-get install -y librsvg2-bin meson ninja-build libglib2.0-dev libbluetooth-dev
           FRAMETIDE_REQUIRE_EARPORT=1 ./packages/build-debs.sh
 
+  # Der volle ISO-Build (Installation + Boot in QEMU) läuft nur für Releases (v*-Tags) und auf
+  # Knopfdruck (Actions → Build ISO → Run workflow). Bei normalen Pushes reicht die Prüfung oben –
+  # Updates gehen ohnehin als Pakete raus (Publish packages).
   iso:
     needs: check
-    if: github.event_name != 'pull_request'
+    if: github.event_name == 'workflow_dispatch' || startsWith(github.ref, 'refs/tags/v')
     runs-on: ubuntu-24.04
     timeout-minutes: 150
     env:

@@ -2,9 +2,10 @@
 
 ## Workflow
 
-1. Push to `main`. GitHub Actions checks the code, builds the ISO and boots it in QEMU
-   (UEFI and BIOS). The ISO and the boot screenshots are kept for 30 days under
-   *Actions → Build ISO → Artifacts*.
+1. Push to `main`. GitHub Actions checks the code and builds the packages (a few minutes).
+   The full ISO build – install and boot in QEMU (UEFI and BIOS) – runs for `v*` tags or
+   on demand via *Actions → Build ISO → Run workflow*; use it for installer or system
+   changes. The ISO and the boot screenshots are kept for 30 days under *Artifacts*.
 2. Test the ISO in a VM.
 3. When everything looks good, push a tag:
    ```bash
