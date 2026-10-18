@@ -30,6 +30,12 @@ jobs:
           python3 -c "import ast,sys; [ast.parse(open(f).read()) for f in sys.argv[1:]]" \
             packages/frametide-hwsetup/usr/sbin/frametide-hwsetup \
             packages/frametide-tools/usr/lib/frametide/frametide-helper
+      - name: Check autostart entries
+        run: |
+          # GNOME 50 starts XDG autostart entries via systemd, which skips entries with a startup phase
+          if grep -rln "X-GNOME-Autostart-Phase" packages/*/etc/xdg/autostart; then
+            echo "::error::X-GNOME-Autostart-Phase disables the entry under systemd" && exit 1
+          fi
       - name: Check shell scripts
         run: |
           for f in build.sh scripts/chroot-install.sh packages/build-debs.sh; do bash -n "$f"; done
