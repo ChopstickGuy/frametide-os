@@ -73,7 +73,6 @@ jobs:
       - name: Install build tools
         run: |
           sudo apt-get update
-          sudo apt-get update
           sudo apt-get install -y debootstrap squashfs-tools xorriso dosfstools mtools curl librsvg2-bin meson ninja-build libglib2.0-dev libbluetooth-dev
       - name: Build ISO image
         run: sudo FRAMETIDE_REQUIRE_EARPORT=1 ./build.sh
