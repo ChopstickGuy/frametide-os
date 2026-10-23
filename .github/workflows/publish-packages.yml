@@ -27,7 +27,7 @@ jobs:
         with:
           fetch-depth: 0   # Paketversion = Anzahl der Commits
       - name: Tools
-        run: sudo apt-get install -y apt-utils librsvg2-bin meson ninja-build libglib2.0-dev libbluetooth-dev
+        run: sudo apt-get update && sudo apt-get install -y apt-utils librsvg2-bin meson ninja-build libglib2.0-dev libbluetooth-dev
       - name: Build packages
         run: FRAMETIDE_REQUIRE_EARPORT=1 bash packages/build-debs.sh out/debs
       - name: Import signing key
