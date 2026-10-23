@@ -137,10 +137,13 @@ def service_states():
 def service_start_argv(service):
     sid, _name, image, port, env, data, _url = service
     name = container_name(sid)
-    if sid in service_states():
-        return ["podman", "start", name]
     inner = 8080 if sid == "adminer" else port if sid != "mariadb" else 3306
-    argv = ["podman", "run", "-d", "--name", name, "-p", f"127.0.0.1:{port}:{inner}"]
+    # Bei jedem Start neu anlegen und das Image auffrischen (--pull=newer): so kommen
+    # Sicherheitsupdates (z. B. PHP in Adminer) automatisch an. Die Images sind auf eine
+    # Hauptversion festgelegt, die Daten liegen im eigenen Volume und bleiben erhalten.
+    # Ohne Internet nimmt podman einfach das vorhandene Image.
+    argv = ["podman", "run", "-d", "--replace", "--pull=newer", "--name", name,
+            "-p", f"127.0.0.1:{port}:{inner}"]
     for key, value in env.items():
         argv += ["-e", f"{key}={value}"]
     if data:
