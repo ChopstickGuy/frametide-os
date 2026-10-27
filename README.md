@@ -125,6 +125,7 @@ cat /var/log/frametide-hwsetup.log
 
 - Steam launch option: `gamemoderun %command%`, with an FPS overlay `gamemoderun mangohud %command%`
 - Proton-GE: ProtonPlus from the App Store
+- Battle.net / WoW: Faugus Launcher from the App Store – step by step in [docs/BATTLENET.md](docs/BATTLENET.md) (German)
 - Options live in `/etc/frametide/hwsetup.conf` (or Control → System), e.g.
   `AMD_OVERDRIVE=yes` to unlock overclocking/undervolting on AMD graphics
 

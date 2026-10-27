@@ -27,6 +27,16 @@
      "summary_en": "Epic Games, GOG and Amazon Prime Gaming"
     },
     {
+     "id": "faugus",
+     "name": "Faugus Launcher",
+     "summary": "Battle.net (WoW, Diablo, Overwatch) und andere Windows-Launcher mit Proton starten – einfach",
+     "summary_en": "Run Battle.net (WoW, Diablo, Overwatch) and other Windows launchers with Proton – simple",
+     "icon": "io.github.Faugus.faugus-launcher",
+     "source": "flatpak",
+     "ref": "io.github.Faugus.faugus-launcher",
+     "featured": true
+    },
+    {
      "id": "lutris",
      "name": "Lutris",
      "summary": "Alle Spiele und Launcher an einem Ort",

@@ -1,6 +1,35 @@
 {
  "releases": [
   {
+   "id": "2026-10-27",
+   "date": "27.10.2026",
+   "title": "Battle.net & Sicherheit",
+   "title_en": "Battle.net & security",
+   "items": [
+    {
+     "icon": "input-gaming-symbolic",
+     "title": "Battle.net und WoW Forever",
+     "title_en": "Battle.net and WoW Forever",
+     "text": "Mit dem Faugus Launcher aus dem App Store (Gaming). Anleitung: github.com/ChopstickGuy/frametide-os → docs/BATTLENET.md",
+     "text_en": "With Faugus Launcher from the App Store (Gaming). Guide: github.com/ChopstickGuy/frametide-os → docs/BATTLENET.md"
+    },
+    {
+     "icon": "security-high-symbolic",
+     "title": "Dienste bleiben aktuell",
+     "title_en": "Services stay up to date",
+     "text": "Datenbanken und Adminer in „Entwickeln“ holen beim Start Sicherheitsupdates (z. B. PHP2Shell).",
+     "text_en": "Databases and Adminer in “Develop” pick up security updates when started (e.g. PHP2Shell)."
+    },
+    {
+     "icon": "emblem-ok-symbolic",
+     "title": "Einstellungen zuverlässiger",
+     "title_en": "More reliable settings",
+     "text": "Leistungsoptionen warten, wenn gerade ein Update läuft, statt abzubrechen.",
+     "text_en": "Performance options wait for a running update instead of failing."
+    }
+   ]
+  },
+  {
    "id": "2026-10-18-4",
    "date": "18.10.2026",
    "title": "Feinschliff",
