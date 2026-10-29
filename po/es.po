@@ -1,0 +1,1197 @@
+# Frametide OS – Spanish translation
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8\n"
+
+msgid "Mikrofon mit Rauschunterdrückung"
+msgstr "Micrófono con supresión de ruido"
+
+msgid "CPU Single-Core"
+msgstr "CPU un núcleo"
+
+msgid "CPU Multi-Core"
+msgstr "CPU multinúcleo"
+
+msgid "7-Zip (Kompression/Dekompression)"
+msgstr "7-Zip (compresión/descompresión)"
+
+msgid "Speicherbandbreite"
+msgstr "Ancho de banda de memoria"
+
+msgid "zstd Kompression"
+msgstr "Compresión zstd"
+
+msgid "zstd Dekompression"
+msgstr "Descompresión zstd"
+
+msgid "Latenz im Leerlauf (Ø)"
+msgstr "Latencia en reposo (media)"
+
+msgid "Latenz im Leerlauf (99 %)"
+msgstr "Latencia en reposo (percentil 99)"
+
+msgid "Latenz unter Volllast (Ø)"
+msgstr "Latencia a plena carga (media)"
+
+msgid "Latenz unter Volllast (99 %)"
+msgstr "Latencia a plena carga (percentil 99)"
+
+msgid "SSD sequentiell lesen"
+msgstr "SSD lectura secuencial"
+
+msgid "SSD 4K zufällig lesen"
+msgstr "SSD lectura aleatoria 4K"
+
+msgid "GPU Vulkan (vkmark)"
+msgstr "GPU Vulkan (vkmark)"
+
+msgid "GPU OpenGL (glmark2)"
+msgstr "GPU OpenGL (glmark2)"
+
+msgid "Startzeit"
+msgstr "Tiempo de arranque"
+
+msgid "CPU (sysbench)"
+msgstr "CPU (sysbench)"
+
+msgid "7-Zip-Benchmark"
+msgstr "Benchmark de 7-Zip"
+
+msgid "zstd-Kompression"
+msgstr "Compresión zstd"
+
+msgid "Latenz im Leerlauf"
+msgstr "Latencia en reposo"
+
+msgid "Latenz unter Volllast (alle Kerne ausgelastet)"
+msgstr "Latencia a plena carga (todos los núcleos ocupados)"
+
+msgid "Datenträger (fio, 1 GB Testdatei)"
+msgstr "Almacenamiento (fio, archivo de prueba de 1 GB)"
+
+msgid "GPU-Tests übersprungen (keine grafische Sitzung)"
+msgstr "Pruebas de GPU omitidas (sin sesión gráfica)"
+
+msgid "Frametide Bench – Leistungstest"
+msgstr "Frametide Bench – prueba de rendimiento"
+
+msgid "ohne GPU- und Datenträgertests"
+msgstr "sin pruebas de GPU ni de almacenamiento"
+
+msgid "zwei Ergebnisse vergleichen"
+msgstr "comparar dos resultados"
+
+msgid "Benchmark abgebrochen – es wurde nichts gespeichert."
+msgstr "Benchmark detenido – no se ha guardado nada."
+
+msgid "Ergebnis gespeichert: {path}"
+msgstr "Resultado guardado: {path}"
+
+msgid "Nicht installiert (Tests übersprungen): {tools}"
+msgstr "No instalado (pruebas omitidas): {tools}"
+
+msgid "bei Secure Boot einmalig MOK-Bestätigung"
+msgstr "confirmación MOK única con Secure Boot"
+
+msgid "Suchen"
+msgstr "Buscar"
+
+msgid "Alles aktualisieren"
+msgstr "Actualizar todo"
+
+msgid "Verfügbare Updates"
+msgstr "Actualizaciones disponibles"
+
+msgid "Firmware"
+msgstr "Firmware"
+
+msgid "BIOS-, SSD- und Geräte-Firmware über fwupd (Hersteller-Updates)."
+msgstr "Firmware de BIOS, SSD y dispositivos mediante fwupd (actualizaciones del fabricante)."
+
+msgid "Suche läuft …"
+msgstr "Buscando …"
+
+msgid "Updates werden installiert …"
+msgstr "Instalando actualizaciones …"
+
+msgid "Grafikkarten"
+msgstr "Tarjetas gráficas"
+
+msgid "Frametide richtet den passenden Treiber beim ersten Start automatisch ein."
+msgstr "Frametide configura automáticamente el controlador adecuado en el primer arranque."
+
+msgid "Grafik-Stack"
+msgstr "Pila gráfica"
+
+msgid "installiert"
+msgstr "instalado"
+
+msgid "fehlt"
+msgstr "falta"
+
+msgid "radeon (alt – Vulkan erst nach Einrichtung)"
+msgstr "radeon (antiguo – Vulkan tras la configuración)"
+
+msgid "nouveau (offen, eingeschränkt)"
+msgstr "nouveau (libre, limitado)"
+
+msgid "Spiel prüfen"
+msgstr "Comprobar un juego"
+
+msgid "Läuft mein Spiel unter Linux? Daten von ProtonDB und AreWeAntiCheatYet."
+msgstr "¿Funciona mi juego en Linux? Datos de ProtonDB y AreWeAntiCheatYet."
+
+msgid "Ergebnis"
+msgstr "Resultado"
+
+msgid "Deine installierten Steam-Spiele"
+msgstr "Tus juegos de Steam instalados"
+
+msgid "Ausgabe"
+msgstr "Salida"
+
+msgid "Wohin der Ton geht – Kopfhörer, Headset oder Lautsprecher."
+msgstr "Adónde va el sonido: auriculares, headset o altavoces."
+
+msgid "Mikrofon"
+msgstr "Micrófono"
+
+msgid "Rauschunterdrückung"
+msgstr "Supresión de ruido"
+
+msgid "Entfernt Tastatur, Lüfter und Hintergrundgeräusche aus deinem Mikrofon – für Discord, Teams und Spiele-Chat. Läuft direkt im Audiosystem, ohne Zusatzprogramm."
+msgstr "Elimina el ruido del teclado, de los ventiladores y del fondo de tu micrófono – para Discord, Teams y el chat de juegos. Funciona dentro del sistema de audio, sin aplicaciones adicionales."
+
+msgid "Mikrofon testen"
+msgstr "Probar micrófono"
+
+msgid "Test starten"
+msgstr "Iniciar prueba"
+
+msgid "Sprich jetzt … (4 Sekunden)"
+msgstr "Habla ahora … (4 segundos)"
+
+msgid "Temperaturen"
+msgstr "Temperaturas"
+
+msgid "Lüfter und Pumpen"
+msgstr "Ventiladores y bombas"
+
+msgid "Kurven, Profile und AIO-Kühler stellst du in CoolerControl ein."
+msgstr "Configura curvas, perfiles y refrigeraciones líquidas AIO en CoolerControl."
+
+msgid "RGB-Beleuchtung"
+msgstr "Iluminación RGB"
+
+msgid "Mainboard, RAM, Grafikkarte, Lüfter, Tastatur und Maus – herstellerübergreifend über OpenRGB."
+msgstr "Placa base, RAM, tarjeta gráfica, ventiladores, teclado y ratón – de todos los fabricantes con OpenRGB."
+
+msgid "Erweitert"
+msgstr "Avanzado"
+
+msgid "Nur nötig, wenn Geräte oder Lüfter oben fehlen."
+msgstr "Solo es necesario si faltan dispositivos o ventiladores arriba."
+
+msgid "Suche läuft … (kann einige Sekunden dauern)"
+msgstr "Buscando … (puede tardar unos segundos)"
+
+msgid "Über dieses System"
+msgstr "Acerca de este sistema"
+
+msgid "Leistung"
+msgstr "Rendimiento"
+
+msgid "Werkzeuge"
+msgstr "Herramientas"
+
+msgid "Einstellung wird angewendet …"
+msgstr "Aplicando ajuste …"
+
+msgid "Stoppen"
+msgstr "Detener"
+
+msgid "Wird gestoppt …"
+msgstr "Deteniendo …"
+
+msgid "Updates"
+msgstr "Actualizaciones"
+
+msgid "Updates prüfen"
+msgstr "Buscar actualizaciones"
+
+msgid "Noch nicht gesucht"
+msgstr "Aún no se ha buscado"
+
+msgid "System und Programme"
+msgstr "Sistema y programas"
+
+msgid "Flatpak-Apps"
+msgstr "Aplicaciones Flatpak"
+
+msgid "ArtCraft-Apps"
+msgstr "Aplicaciones ArtCraft"
+
+msgid "Firmware aktualisieren"
+msgstr "Actualizar firmware"
+
+msgid "Nur bei Netzstrom ausführen – der Rechner startet ggf. neu."
+msgstr "Ejecutar solo con el cargador conectado – el equipo puede reiniciarse."
+
+msgid "Prüfen und installieren"
+msgstr "Comprobar e instalar"
+
+msgid "Alles aktuell"
+msgstr "Todo actualizado"
+
+msgid "Dein System ist auf dem neuesten Stand."
+msgstr "Tu sistema está al día."
+
+msgid "Installiert im Hintergrund – du kannst weiterarbeiten oder spielen."
+msgstr "Se instala en segundo plano – puedes seguir trabajando o jugando."
+
+msgid "Treiber"
+msgstr "Controladores"
+
+msgid "Treiber automatisch einrichten"
+msgstr "Configurar controladores automáticamente"
+
+msgid "Erkennt die Hardware erneut und installiert die empfohlenen Treiber."
+msgstr "Detecta de nuevo tu hardware e instala los controladores recomendados."
+
+msgid "Ausführen"
+msgstr "Ejecutar"
+
+msgid "NVIDIA-Treiberversion"
+msgstr "Versión del controlador NVIDIA"
+
+msgid "„open“ = offene Kernel-Module (empfohlen ab RTX 20/GTX 16). Nach einem Wechsel bitte neu starten."
+msgstr "«open» = módulos de kernel abiertos (recomendado para RTX 20/GTX 16 y posteriores). Reinicia tras cambiar."
+
+msgid "Mesa (AMD/Intel)"
+msgstr "Mesa (AMD/Intel)"
+
+msgid "Vulkan 32-Bit (Steam)"
+msgstr "Vulkan 32 bits (Steam)"
+
+msgid "Neueste Mesa-Treiber"
+msgstr "Controladores Mesa más recientes"
+
+msgid "Für AMD- und Intel-Grafik: aktuelle Mesa-Version statt der LTS-Version – oft mehr FPS in neuen Spielen. Quelle: Kisak-PPA. Ausschalten stellt Ubuntus Version wieder her."
+msgstr "Para gráficos AMD e Intel: la versión actual de Mesa en lugar de la LTS – a menudo más FPS en juegos nuevos. Fuente: Kisak PPA. Al desactivarlo se restaura la versión de Ubuntu."
+
+msgid "NVIDIA-Treiber"
+msgstr "Controlador NVIDIA"
+
+msgid "Spiele"
+msgstr "Juegos"
+
+msgid "Spielname, z. B. Elden Ring"
+msgstr "Nombre del juego, p. ej. Elden Ring"
+
+msgid "Bibliothek wird gelesen …"
+msgstr "Leyendo biblioteca …"
+
+msgid "Keine installierten Steam-Spiele gefunden"
+msgstr "No se han encontrado juegos de Steam instalados"
+
+msgid "Installiere Spiele in Steam oder prüfe oben ein Spiel nach Namen."
+msgstr "Instala juegos en Steam o comprueba un juego por su nombre arriba."
+
+msgid "Audio"
+msgstr "Audio"
+
+msgid "Hintergrundgeräusche entfernen"
+msgstr "Eliminar ruido de fondo"
+
+msgid "Beim Umschalten ist der Ton kurz weg."
+msgstr "El sonido se corta brevemente al cambiar."
+
+msgid "Automatische Mikrofon-Lautstärke"
+msgstr "Nivel automático del micrófono"
+
+msgid "Gleicht leises und lautes Sprechen aus."
+msgstr "Equilibra la voz baja y la alta."
+
+msgid "Aufnehmen und anhören"
+msgstr "Grabar y escuchar"
+
+msgid "Nimmt 4 Sekunden auf und spielt sie dir vor."
+msgstr "Graba 4 segundos y te los reproduce."
+
+msgid "Kein Ausgabegerät gefunden"
+msgstr "No se ha encontrado ningún dispositivo de salida"
+
+msgid "Kein Mikrofon gefunden"
+msgstr "No se ha encontrado ningún micrófono"
+
+msgid "Lautstärke"
+msgstr "Volumen"
+
+msgid "Stumm"
+msgstr "Silenciar"
+
+msgid "Rauschunterdrückung aktiv – „Mikrofon mit Rauschunterdrückung“ ist jetzt Standard."
+msgstr "Supresión de ruido activa – «Micrófono con supresión de ruido» es ahora el predeterminado."
+
+msgid "Wiedergabe …"
+msgstr "Reproduciendo …"
+
+msgid "RGB & Lüfter"
+msgstr "RGB y ventiladores"
+
+msgid "Lüfterkurven, Pumpen, AIO-Wasserkühlungen"
+msgstr "Curvas de ventiladores, bombas, refrigeraciones líquidas AIO"
+
+msgid "Öffnen"
+msgstr "Abrir"
+
+msgid "Farbe für alle Geräte"
+msgstr "Color para todos los dispositivos"
+
+msgid "Statische Farbe auf alle erkannten Geräte"
+msgstr "Color fijo en todos los dispositivos detectados"
+
+msgid "Anwenden"
+msgstr "Aplicar"
+
+msgid "Beleuchtung ausschalten"
+msgstr "Apagar la iluminación"
+
+msgid "Aus"
+msgstr "Apagar"
+
+msgid "Erkannte Geräte"
+msgstr "Dispositivos detectados"
+
+msgid "Effekte, Zonen, Profile und Geräte im Detail"
+msgstr "Efectos, zonas, perfiles y dispositivos en detalle"
+
+msgid "Erweiterter SMBus-Zugriff"
+msgstr "Acceso SMBus ampliado"
+
+msgid "Für RGB auf manchen Mainboards und RAM-Riegeln (acpi_enforce_resources=lax). Neustart nötig."
+msgstr "Para RGB en algunas placas base y módulos de RAM (acpi_enforce_resources=lax). Requiere reinicio."
+
+msgid "Lüftertreiber für ITE-Chips"
+msgstr "Controlador de ventiladores para chips ITE"
+
+msgid "Gigabyte und viele andere Mainboards"
+msgstr "Gigabyte y muchas otras placas base"
+
+msgid "Lüftertreiber für Nuvoton NCT6687"
+msgstr "Controlador de ventiladores para Nuvoton NCT6687"
+
+msgid "Viele MSI-Mainboards"
+msgstr "Muchas placas base MSI"
+
+msgid "Sensoren neu erkennen"
+msgstr "Detectar sensores de nuevo"
+
+msgid "Keine Temperatursensoren gefunden"
+msgstr "No se han encontrado sensores de temperatura"
+
+msgid "Keine Lüftersensoren gefunden – siehe „Erweitert“"
+msgstr "No se han encontrado sensores de ventilador – consulta «Avanzado»"
+
+msgid "System"
+msgstr "Sistema"
+
+msgid "Basis"
+msgstr "Base"
+
+msgid "Prozessor"
+msgstr "Procesador"
+
+msgid "Arbeitsspeicher"
+msgstr "Memoria"
+
+msgid "x86-64-v3-optimierte Pakete"
+msgstr "Paquetes optimizados para x86-64-v3"
+
+msgid "Schnellere Pakete für CPUs ab Intel Haswell / AMD Zen (experimentell)"
+msgstr "Paquetes más rápidos para CPU Intel Haswell / AMD Zen y posteriores (experimental)"
+
+msgid "AMD-GPU-Übertaktung freischalten"
+msgstr "Desbloquear el overclocking de GPU AMD"
+
+msgid "Erlaubt Übertakten und Undervolting in CoreCtrl. Neustart nötig."
+msgstr "Permite overclocking y undervolting en CoreCtrl. Requiere reinicio."
+
+msgid "CPU-Sicherheitsbremsen abschalten"
+msgstr "Desactivar las mitigaciones de seguridad de la CPU"
+
+msgid "Mehr Leistung v. a. auf älteren CPUs, aber weniger Schutz vor Spectre & Co. Nur für reine Gaming-PCs. Neustart nötig."
+msgstr "Más rendimiento, sobre todo en CPU antiguas, pero menos protección frente a Spectre y similares. Solo para PC dedicados a juegos. Requiere reinicio."
+
+msgid "Was ist neu"
+msgstr "Novedades"
+
+msgid "Die Neuerungen des letzten Frametide-Updates"
+msgstr "Qué ha cambiado en la última actualización de Frametide"
+
+msgid "Anzeigen"
+msgstr "Mostrar"
+
+msgid "Misst CPU, Speicher, Latenz, SSD und GPU (ca. 4 Minuten). Ergebnis: ~/.local/share/frametide-bench"
+msgstr "Mide CPU, memoria, latencia, SSD y GPU (unos 4 minutos). Resultados: ~/.local/share/frametide-bench"
+
+msgid "Starten"
+msgstr "Iniciar"
+
+msgid "Windows-Umzug"
+msgstr "Migrar desde Windows"
+
+msgid "Dateien, Lesezeichen, WLAN und Steam-Spiele von Windows übernehmen"
+msgstr "Trae archivos, marcadores, Wi-Fi y juegos de Steam desde Windows"
+
+msgid "Erledigt ✓"
+msgstr "Hecho ✓"
+
+msgid "Aktuell"
+msgstr "Actualizado"
+
+msgid "Mesa-Treiber werden umgestellt …"
+msgstr "Cambiando controladores Mesa …"
+
+msgid "Treiber: {driver}"
+msgstr "Controlador: {driver}"
+
+msgid "{n} Spiele geprüft"
+msgstr "{n} juegos comprobados"
+
+msgid "{good} laufen gut · {ok} mit Einschränkungen · {bad} blockiert/defekt · {unknown} unbekannt"
+msgstr "{good} funcionan bien · {ok} con problemas · {bad} bloqueados/no funcionan · {unknown} desconocidos"
+
+msgid "Ergebnis für „{term}“"
+msgstr "Resultados para «{term}»"
+
+msgid "Rauschunterdrückung konnte nicht gestartet werden."
+msgstr "No se ha podido iniciar la supresión de ruido."
+
+msgid "Installieren"
+msgstr "Instalar"
+
+msgid "Farbe #{color} angewendet"
+msgstr "Color #{color} aplicado"
+
+msgid "Keine Geräte gefunden – evtl. „Erweiterter SMBus-Zugriff“ aktivieren"
+msgstr "No se han encontrado dispositivos – prueba a activar «Acceso SMBus ampliado»"
+
+msgid "Am Netzteil volle Leistung"
+msgstr "Máxima potencia con el cargador"
+
+msgid "Laptop: Energieprofil „Leistung“, solange das Netzteil steckt – Lüfter und Leistungsgrenzen erlauben höhere Takte. Im Akkubetrieb „Ausgewogen“."
+msgstr "Portátil: modo de energía «Rendimiento» mientras el cargador está conectado – ventiladores y límites de potencia permiten frecuencias más altas. «Equilibrado» con batería."
+
+msgid "Abgebrochen"
+msgstr "Cancelado"
+
+msgid "Firmware …"
+msgstr "Firmware …"
+
+msgid "Suche fehlgeschlagen: {error}"
+msgstr "La búsqueda ha fallado: {error}"
+
+msgid "{n} Updates verfügbar"
+msgstr "{n} actualizaciones disponibles"
+
+msgid "Keine Grafikkarte erkannt"
+msgstr "No se ha detectado ninguna tarjeta gráfica"
+
+msgid "Treiber werden eingerichtet …"
+msgstr "Configurando controladores …"
+
+msgid "Verfügbare Treiber werden ermittelt …"
+msgstr "Buscando controladores disponibles …"
+
+msgid "NVIDIA-Treiber {version}"
+msgstr "Controlador NVIDIA {version}"
+
+msgid "keiner"
+msgstr "ninguno"
+
+msgid "Empfohlen"
+msgstr "Recomendado"
+
+msgid "Keine Treiber gefunden"
+msgstr "No se han encontrado controladores"
+
+msgid "Sehr alte Karten laufen mit dem offenen nouveau/NVK-Treiber."
+msgstr "Las tarjetas muy antiguas funcionan con el controlador libre nouveau/NVK."
+
+msgid "Keine Verbindung"
+msgstr "Sin conexión"
+
+msgid "Für den Spiele-Check wird Internet benötigt."
+msgstr "La comprobación de juegos necesita conexión a internet."
+
+msgid "Nichts gefunden"
+msgstr "No se ha encontrado nada"
+
+msgid "Beleuchtung aus"
+msgstr "Iluminación apagada"
+
+msgid "Sensoren werden erkannt …"
+msgstr "Detectando sensores …"
+
+msgid "Benchmark läuft – bitte nichts anderes starten …"
+msgstr "Benchmark en curso – no inicies nada más …"
+
+msgid "{n} Updates"
+msgstr "{n} actualizaciones"
+
+msgid "Primär"
+msgstr "Principal"
+
+msgid "{n} Geräte"
+msgstr "{n} dispositivos"
+
+msgid "Konnte {app} nicht starten: {error}"
+msgstr "No se ha podido iniciar {app}: {error}"
+
+msgid "Fehlgeschlagen (Code {code}) – Details unten"
+msgstr "Ha fallado (código {code}) – detalles abajo"
+
+msgid "{pkg} wird installiert …"
+msgstr "Instalando {pkg} …"
+
+msgid "Lüfter"
+msgstr "Ventilador"
+
+msgid "{rpm} U/min"
+msgstr "{rpm} RPM"
+
+msgid "Projekte"
+msgstr "Proyectos"
+
+msgid "Git"
+msgstr "Git"
+
+msgid "Name und E-Mail erscheinen in deinen Commits."
+msgstr "Tu nombre y correo aparecen en tus commits."
+
+msgid "SSH-Schlüssel & GitHub"
+msgstr "Clave SSH y GitHub"
+
+msgid "Programmiersprachen"
+msgstr "Lenguajes de programación"
+
+msgid "Über mise: immer die neueste Version, mehrere Versionen parallel, ohne das System zu verändern. Pro Projekt lassen sich Versionen in einer mise.toml festlegen."
+msgstr "Con mise: siempre la última versión, varias versiones en paralelo, sin tocar el sistema. Fija versiones por proyecto en un mise.toml."
+
+msgid "Git ist eingerichtet."
+msgstr "Git está configurado."
+
+msgid "Datenbanken & Dienste"
+msgstr "Bases de datos y servicios"
+
+msgid "Laufen als Container nur auf diesem Rechner (127.0.0.1). Daten bleiben beim Stoppen erhalten. Benutzer „dev“, Passwort „frametide“."
+msgstr "Se ejecutan como contenedores solo en este equipo (127.0.0.1). Los datos se conservan al detenerlos. Usuario «dev», contraseña «frametide»."
+
+msgid "Laufende Server"
+msgstr "Servidores en ejecución"
+
+msgid "Deine Programme, die gerade auf einem Port lauschen."
+msgstr "Tus programas que escuchan ahora en un puerto."
+
+msgid "Neues Projekt"
+msgstr "Nuevo proyecto"
+
+msgid "Mit Git, .gitignore, Dev-Container, VS-Code-Empfehlungen und README."
+msgstr "Con Git, .gitignore, dev container, recomendaciones de VS Code y README."
+
+msgid "Deine Projekte"
+msgstr "Tus proyectos"
+
+msgid "Einrichtung"
+msgstr "Configuración"
+
+msgid "Name"
+msgstr "Nombre"
+
+msgid "E-Mail"
+msgstr "Correo electrónico"
+
+msgid "Git einrichten"
+msgstr "Configurar Git"
+
+msgid "Setzt auch „main“ als Standard-Branch und sinnvolle Push-/Pull-Vorgaben."
+msgstr "También establece «main» como rama predeterminada y valores razonables para push/pull."
+
+msgid "Speichern"
+msgstr "Guardar"
+
+msgid "SSH-Schlüssel"
+msgstr "Clave SSH"
+
+msgid "mise ist nicht installiert – im App Store oder mit „sudo apt install mise“."
+msgstr "mise no está instalado – obtenlo en la tienda de aplicaciones o con «sudo apt install mise»."
+
+msgid "Bitte Name und eine gültige E-Mail eingeben."
+msgstr "Introduce un nombre y un correo válido."
+
+msgid "Vorhanden (ed25519)"
+msgstr "Presente (ed25519)"
+
+msgid "Kopieren"
+msgstr "Copiar"
+
+msgid "Noch kein Schlüssel – nötig für GitHub, GitLab und Server."
+msgstr "Aún no hay clave – necesaria para GitHub, GitLab y servidores."
+
+msgid "Erstellen"
+msgstr "Crear"
+
+msgid "Schlüssel hochladen"
+msgstr "Subir clave"
+
+msgid "Nicht angemeldet – Anmeldung im Browser, lädt den SSH-Schlüssel mit hoch."
+msgstr "Sin iniciar sesión – inicia sesión en el navegador, también sube tu clave SSH."
+
+msgid "Anmelden"
+msgstr "Iniciar sesión"
+
+msgid "SSH-Schlüssel erstellt"
+msgstr "Clave SSH creada"
+
+msgid "Dienste & Ports"
+msgstr "Servicios y puertos"
+
+msgid "Podman fehlt – „sudo apt install podman“."
+msgstr "Falta Podman – «sudo apt install podman»."
+
+msgid "Stoppt …"
+msgstr "Deteniendo …"
+
+msgid "Startet …"
+msgstr "Iniciando …"
+
+msgid "Projektname"
+msgstr "Nombre del proyecto"
+
+msgid "Vorlage"
+msgstr "Plantilla"
+
+msgid "Ort"
+msgstr "Ubicación"
+
+msgid "Ändern"
+msgstr "Cambiar"
+
+msgid "Git-Repository anlegen"
+msgstr "Crear repositorio Git"
+
+msgid "Dev-Container-Konfiguration"
+msgstr "Configuración de dev container"
+
+msgid "Projekt erstellen"
+msgstr "Crear proyecto"
+
+msgid "Öffnet danach VS Code im Projekt."
+msgstr "Después abre VS Code en el proyecto."
+
+msgid "Ort für Projekte"
+msgstr "Ubicación de los proyectos"
+
+msgid "Bitte einen Projektnamen eingeben."
+msgstr "Introduce un nombre de proyecto."
+
+msgid "Entwicklerzentrale"
+msgstr "Centro de desarrollo"
+
+msgid "Nicht installiert"
+msgstr "No instalado"
+
+msgid "Aktualisieren"
+msgstr "Actualizar"
+
+msgid "{tool} wird installiert – das kann ein paar Minuten dauern …"
+msgstr "Instalando {tool} – puede tardar unos minutos …"
+
+msgid "Fertig ✓ – in neuen Terminals verfügbar."
+msgstr "Hecho ✓ – disponible en terminales nuevas."
+
+msgid "Kopiert: {text}"
+msgstr "Copiado: {text}"
+
+msgid "Beenden"
+msgstr "Detener"
+
+msgid "Gerade läuft kein Server"
+msgstr "No hay ningún servidor en ejecución"
+
+msgid "Starte z. B. „npm run dev“ – er erscheint dann hier."
+msgstr "Inicia p. ej. «npm run dev» – aparecerá aquí."
+
+msgid "Projekt erstellt: {path}"
+msgstr "Proyecto creado: {path}"
+
+msgid "Terminal"
+msgstr "Terminal"
+
+msgid "Noch keine Projekte"
+msgstr "Aún no hay proyectos"
+
+msgid "Öffentlicher Schlüssel kopiert"
+msgstr "Clave pública copiada"
+
+msgid "Angemeldet als {user}"
+msgstr "Sesión iniciada como {user}"
+
+msgid "Fehlgeschlagen"
+msgstr "Ha fallado"
+
+msgid "Version {v}"
+msgstr "Versión {v}"
+
+msgid "Der Ordner {path} existiert bereits."
+msgstr "La carpeta {path} ya existe."
+
+msgid "Projekt angelegt"
+msgstr "Commit inicial"
+
+msgid "Erstellt mit Frametide OS ({template})."
+msgstr "Creado con Frametide OS ({template})."
+
+msgid "Details anzeigen"
+msgstr "Mostrar detalles"
+
+msgid "Native Linux-Version"
+msgstr "Versión nativa para Linux"
+
+msgid "Läuft perfekt"
+msgstr "Funciona perfectamente"
+
+msgid "Läuft sehr gut"
+msgstr "Funciona muy bien"
+
+msgid "Läuft mit kleinen Problemen"
+msgstr "Funciona con pequeños problemas"
+
+msgid "Läuft, aber mit Problemen"
+msgstr "Funciona, pero con problemas"
+
+msgid "Läuft nicht"
+msgstr "No funciona"
+
+msgid "Noch keine Bewertung"
+msgstr "Aún sin valorar"
+
+msgid "Anti-Cheat blockiert"
+msgstr "El antitrampas bloquea Linux"
+
+msgid "Anti-Cheat läuft unter Linux"
+msgstr "El antitrampas funciona en Linux"
+
+msgid "vom Hersteller blockiert"
+msgstr "bloqueado por el editor"
+
+msgid "funktioniert nicht unter Linux"
+msgstr "no funciona en Linux"
+
+msgid "ProtonDB: {n} Berichte"
+msgstr "ProtonDB: {n} informes"
+
+msgid "Anti-Cheat: {names} – unterstützt"
+msgstr "Antitrampas: {names} – compatible"
+
+msgid "Dokumente"
+msgstr "Documentos"
+
+msgid "Bilder"
+msgstr "Imágenes"
+
+msgid "Musik"
+msgstr "Música"
+
+msgid "Videos"
+msgstr "Vídeos"
+
+msgid "Schreibtisch"
+msgstr "Escritorio"
+
+msgid "Downloads"
+msgstr "Descargas"
+
+msgid "Partition konnte nicht eingehängt werden"
+msgstr "No se ha podido montar la partición"
+
+msgid "Lesezeichen aus Windows"
+msgstr "Marcadores de Windows"
+
+msgid "Wird eingehängt …"
+msgstr "Montando …"
+
+msgid "OK"
+msgstr "Aceptar"
+
+msgid "Willkommen beim Umzug von Windows"
+msgstr "Bienvenido a la migración desde Windows"
+
+msgid "Wähle die Windows-Partition aus. Sie wird nur gelesen – an Windows wird nichts verändert."
+msgstr "Elige tu partición de Windows. Solo se lee – no se cambia nada en Windows."
+
+msgid "Gefundene Windows-Partitionen"
+msgstr "Particiones de Windows encontradas"
+
+msgid "Tipp"
+msgstr "Consejo"
+
+msgid "Wenn Windows „Schnellstart“ nutzt, ist die Partition gesperrt. Fahre Windows dann einmal über „Neu starten“ herunter oder schalte Schnellstart in den Energieoptionen aus."
+msgstr "Si Windows usa el «Inicio rápido», la partición está bloqueada. Apaga Windows una vez mediante «Reiniciar» o desactiva el Inicio rápido en las opciones de energía."
+
+msgid "Weiter"
+msgstr "Siguiente"
+
+msgid "Kein Benutzerkonto gefunden"
+msgstr "No se ha encontrado ninguna cuenta de usuario"
+
+msgid "Unter „Users“ wurden keine Benutzerordner gefunden."
+msgstr "No se han encontrado carpetas de usuario en «Users»."
+
+msgid "Windows-Benutzer"
+msgstr "Usuario de Windows"
+
+msgid "Benutzer"
+msgstr "Usuario"
+
+msgid "Umzug starten"
+msgstr "Empezar la migración"
+
+msgid "Was soll übernommen werden?"
+msgstr "¿Qué quieres migrar?"
+
+msgid "Dateien"
+msgstr "Archivos"
+
+msgid "Vorhandene Dateien unter Linux werden nie überschrieben."
+msgstr "Los archivos existentes en Linux nunca se sobrescriben."
+
+msgid "Browser-Lesezeichen"
+msgstr "Marcadores del navegador"
+
+msgid "WLAN"
+msgstr "Wi-Fi"
+
+msgid "Windows speichert WLAN-Passwörter verschlüsselt. Für die Übernahme vorher in Windows ausführen: netsh wlan export profile key=clear folder=%USERPROFILE%\\Desktop"
+msgstr "Windows guarda las contraseñas Wi-Fi cifradas. Para migrarlas, ejecuta primero en Windows: netsh wlan export profile key=clear folder=%USERPROFILE%\\Desktop"
+
+msgid "Steam-Spiele"
+msgstr "Juegos de Steam"
+
+msgid "Installierte Spiele werden kopiert statt neu heruntergeladen. Steam prüft sie beim nächsten Start."
+msgstr "Los juegos instalados se copian en lugar de volver a descargarse. Steam los verifica en el próximo inicio."
+
+msgid "Umzug läuft"
+msgstr "Migrando"
+
+msgid "Fertig"
+msgstr "Hecho"
+
+msgid "Mit BitLocker verschlüsselt – bitte in Windows vorher entschlüsseln oder die Dateien auf einen USB-Stick kopieren."
+msgstr "Cifrada con BitLocker – descífrala primero en Windows o copia tus archivos a una memoria USB."
+
+msgid "Partition konnte nicht gelesen werden"
+msgstr "No se ha podido leer la partición"
+
+msgid "Größe wird berechnet …"
+msgstr "Calculando tamaño …"
+
+msgid "Keine gefunden"
+msgstr "No se ha encontrado nada"
+
+msgid "Ohne Export keine Passwörter verfügbar"
+msgstr "Sin contraseñas disponibles sin exportar"
+
+msgid "Lesezeichen"
+msgstr "Marcadores"
+
+msgid "WLAN-Netzwerke"
+msgstr "Redes Wi-Fi"
+
+msgid "Umzug abgeschlossen"
+msgstr "Migración completada"
+
+msgid "Umzug mit Problemen abgeschlossen"
+msgstr "Migración terminada con problemas"
+
+msgid "Willkommen bei Frametide OS!"
+msgstr "¡Bienvenido a Frametide OS!"
+
+msgid "Details siehe unten."
+msgstr "Consulta los detalles abajo."
+
+msgid "Lesezeichen importieren"
+msgstr "Importar marcadores"
+
+msgid "Im Browser: Lesezeichen → Lesezeichen importieren → HTML-Datei. Die Datei liegt hier:"
+msgstr "En tu navegador: Marcadores → Importar marcadores → archivo HTML. El archivo está aquí:"
+
+msgid "Keine Windows-Partition gefunden"
+msgstr "No se ha encontrado ninguna partición de Windows"
+
+msgid "Ist Windows auf einer anderen Festplatte, schließe sie an und starte den Umzug erneut."
+msgstr "Si Windows está en otra unidad, conéctala y vuelve a empezar."
+
+msgid "Keine Windows-Installation"
+msgstr "Sin instalación de Windows"
+
+msgid "Auf dieser Partition wurde kein Windows gefunden."
+msgstr "No se ha encontrado Windows en esta partición."
+
+msgid "{n} Lesezeichen"
+msgstr "{n} marcadores"
+
+msgid "{n} WLAN-Netzwerke mit Passwort"
+msgstr "{n} redes Wi-Fi con contraseña"
+
+msgid "Steam zuerst einmal starten und anmelden"
+msgstr "Inicia Steam una vez e inicia sesión primero"
+
+msgid "Danach den Umzug erneut öffnen, um Spiele zu übernehmen."
+msgstr "Después vuelve a abrir este asistente para migrar tus juegos."
+
+msgid "Keine Steam-Spiele auf dieser Partition"
+msgstr "No hay juegos de Steam en esta partición"
+
+msgid "Kopiere {name}"
+msgstr "Copiando {name}"
+
+msgid "Kopiere Spiel {name}"
+msgstr "Copiando el juego {name}"
+
+msgid "Schritt {i} von {n}"
+msgstr "Paso {i} de {n}"
+
+msgid "{ok} von {n} WLAN-Netzwerken"
+msgstr "{ok} de {n} redes Wi-Fi"
+
+msgid "Weiter zur Installation"
+msgstr "Continuar con la instalación"
+
+msgid "Abbrechen"
+msgstr "Cancelar"
+
+msgid "Verbinden"
+msgstr "Conectar"
+
+msgid "Mit dem Internet verbinden"
+msgstr "Conectarse a internet"
+
+msgid "Suche nach Netzwerken …"
+msgstr "Buscando redes …"
+
+msgid "Erneut suchen"
+msgstr "Buscar de nuevo"
+
+msgid "Verstecktes Netzwerk oder Firmen-WLAN …"
+msgstr "Red oculta o Wi-Fi empresarial …"
+
+msgid "Ohne Internet fortfahren"
+msgstr "Continuar sin internet"
+
+msgid "Verbunden über Kabel"
+msgstr "Conectado por cable"
+
+msgid "Alles bereit – du kannst weitermachen."
+msgstr "Todo listo – puedes continuar."
+
+msgid "WLAN-Passwort eingeben"
+msgstr "Introduce la contraseña de la Wi-Fi"
+
+msgid "Passwort"
+msgstr "Contraseña"
+
+msgid "Empfohlen: Frametide lädt dann beim ersten Start sofort Grafiktreiber und Updates. Die Verbindung wird ins installierte System übernommen."
+msgstr "Recomendado: así Frametide descarga controladores gráficos y actualizaciones en el primer arranque. La conexión se traslada al sistema instalado."
+
+msgid "Verbinde mit {ssid} …"
+msgstr "Conectando con {ssid} …"
+
+msgid "Noch kein Internet – evtl. Anmeldeseite im Browser nötig."
+msgstr "Aún sin internet – puede que la red necesite una página de inicio de sesión en el navegador."
+
+msgid "Nicht verbunden"
+msgstr "Sin conexión"
+
+msgid "Verbindung fehlgeschlagen – Passwort richtig?"
+msgstr "La conexión ha fallado – ¿es correcta la contraseña?"
+
+msgid "Vor der Installation"
+msgstr "Antes de instalar"
+
+msgid "Verbunden mit {ssid}"
+msgstr "Conectado a {ssid}"
+
+msgid "Wähle dein WLAN aus der Liste."
+msgstr "Elige tu Wi-Fi de la lista."
+
+msgid "Keine WLAN-Netze gefunden. Kabel anschließen oder erneut suchen."
+msgstr "No se han encontrado redes Wi-Fi. Conecta un cable o busca de nuevo."
+
+msgid "Verbunden"
+msgstr "Conectado"
+
+msgid "Hersteller"
+msgstr "Fabricante"
+
+msgid "Später"
+msgstr "Más tarde"
+
+msgid "Jetzt abmelden"
+msgstr "Cerrar sesión ahora"
+
+msgid "Trotzdem installieren"
+msgstr "Instalar de todos modos"
+
+msgid "Entfernen"
+msgstr "Eliminar"
+
+msgid "Suche"
+msgstr "Buscar"
+
+msgid "Entdecken"
+msgstr "Descubrir"
+
+msgid "Installiert"
+msgstr "Instaladas"
+
+msgid "Apps suchen – auch auf ganz Flathub"
+msgstr "Buscar aplicaciones – también en todo Flathub"
+
+msgid "Einmal ab- und wieder anmelden – danach erscheint es oben rechts in den Schnelleinstellungen."
+msgstr "Cierra sesión y vuelve a entrar una vez – después aparece arriba a la derecha en los ajustes rápidos."
+
+msgid "Deine eigenen Dateien bleiben erhalten."
+msgstr "Tus archivos se conservan."
+
+msgid "Im Store"
+msgstr "En la tienda"
+
+msgid "Weitere Apps von Flathub"
+msgstr "Más aplicaciones de Flathub"
+
+msgid "Aus dem Store installierte Apps. Updates gibt es im Frametide Center."
+msgstr "Aplicaciones instaladas desde la tienda. Las actualizaciones están en Control."
+
+msgid "{app} wurde installiert"
+msgstr "{app} se ha instalado"
+
+msgid "{app} wurde entfernt"
+msgstr "{app} se ha eliminado"
+
+msgid "Kein Terminal gefunden"
+msgstr "No se ha encontrado ninguna terminal"
+
+msgid "Diese Software ist noch sehr neu. Sie kann Fehler haben – bei Problemen einfach wieder entfernen."
+msgstr "Este software es todavía muy nuevo y puede tener errores – si algo falla, simplemente elimínalo."
+
+msgid "Experimentell"
+msgstr "Experimental"
+
+msgid "Willkommen im Frametide Store"
+msgstr "Bienvenido a la tienda de Frametide"
+
+msgid "Spiele, Kreativ-Apps, Office und Werkzeuge – geprüft und mit einem Klick installiert."
+msgstr "Juegos, aplicaciones creativas, ofimática y herramientas – seleccionadas e instaladas con un clic."
+
+msgid "Komplettes ArtCraft-Paket installieren"
+msgstr "Instalar la suite ArtCraft completa"
+
+msgid "Alle installieren"
+msgstr "Instalar todo"
+
+msgid "{app} ist installiert"
+msgstr "{app} está instalado"
+
+msgid "{app} ist experimentell"
+msgstr "{app} es experimental"
+
+msgid "{app} entfernen?"
+msgstr "¿Eliminar {app}?"
+
+msgid "Wartet"
+msgstr "En cola"
+
+msgid "Versuch einen anderen Suchbegriff."
+msgstr "Prueba con otro término de búsqueda."
+
+msgid "Läuft …"
+msgstr "Trabajando …"
+
+msgid "{n} weitere Craft-Apps (Foto, Video, Vektor, Audio, CAD …)"
+msgstr "{n} aplicaciones Craft más (foto, vídeo, vectores, audio, CAD …)"
+
+msgid "Fehlercode {code}"
+msgstr "Código de error {code}"
+
+msgid "Treiber, Chrome und VS Code werden im Hintergrund eingerichtet, sobald Internet da ist. Du kannst schon loslegen."
+msgstr "Los controladores, Chrome y VS Code se configuran en segundo plano en cuanto tengas conexión. Puedes empezar ya."
+
+msgid "Apps & Spiele"
+msgstr "Aplicaciones y juegos"
+
+msgid "Steam, Discord, Office, Kreativ-Apps …"
+msgstr "Steam, Discord, ofimática, aplicaciones creativas …"
+
+msgid "Updates & Treiber"
+msgstr "Actualizaciones y controladores"
+
+msgid "System aktuell halten, Grafiktreiber"
+msgstr "Mantén tu sistema al día, controladores gráficos"
+
+msgid "Spiele-Check"
+msgstr "Comprobar juegos"
+
+msgid "Läuft mein Spiel unter Linux?"
+msgstr "¿Funciona mi juego en Linux?"
+
+msgid "Von Windows umziehen"
+msgstr "Migrar desde Windows"
+
+msgid "Dateien, Lesezeichen, WLAN, Spiele"
+msgstr "Archivos, marcadores, Wi-Fi, juegos"
+
+msgid "Entwickeln"
+msgstr "Desarrollar"
+
+msgid "Git, Sprachen, Datenbanken, Projekte"
+msgstr "Git, lenguajes, bases de datos, proyectos"
+
+msgid "Beleuchtung und Lüfterkurven"
+msgstr "Iluminación y curvas de ventiladores"
+
+msgid "Einstellungen"
+msgstr "Ajustes"
+
+msgid "Bildschirm, Ton, Konten, Design"
+msgstr "Pantalla, sonido, cuentas, apariencia"
+
+msgid "✓ Treiber eingerichtet · Chrome und VS Code installiert"
+msgstr "✓ Controladores configurados · Chrome y VS Code instalados"
+
+msgid "Willkommen bei Frametide OS"
+msgstr "Bienvenido a Frametide OS"
+
+msgid "Beim Anmelden anzeigen"
+msgstr "Mostrar al iniciar sesión"
+
+msgid "Los geht's"
+msgstr "Empezar"
+
+msgid "Alles Wichtige ist nur einen Klick entfernt."
+msgstr "Todo lo importante a un solo clic."
+
+msgid "Neu in Frametide OS"
+msgstr "Novedades en Frametide OS"
+
+msgid "Schließen"
+msgstr "Cerrar"
+
+msgid "Alle Änderungen"
+msgstr "Todos los cambios"
+
+msgid "Alles klar"
+msgstr "Entendido"
+
+msgid "UPDATE"
+msgstr "ACTUALIZACIÓN"

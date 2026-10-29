@@ -2,8 +2,14 @@
 Type=Application
 Name=Develop
 Name[de]=Entwickeln
+Name[es]=Desarrollar
+Name[it]=Sviluppo
+Name[pt]=Desenvolver
 Comment=Git & SSH setup, languages, local databases, ports and new projects
 Comment[de]=Git & SSH, Programmiersprachen, lokale Datenbanken, Ports und neue Projekte
+Comment[es]=Git y SSH, lenguajes, bases de datos locales, puertos y proyectos nuevos
+Comment[it]=Git e SSH, linguaggi, database locali, porte e nuovi progetti
+Comment[pt]=Git e SSH, linguagens, bases de dados locais, portas e novos projetos
 Exec=frametide-dev
 Icon=frametide-dev
 Terminal=false

@@ -2,8 +2,14 @@
 Type=Application
 Name=PC Move
 Name[de]=PC-Umzug
+Name[es]=Migración
+Name[it]=Trasloco PC
+Name[pt]=Mudança de PC
 Comment=Bring files, bookmarks, Wi-Fi and Steam games over from Windows
 Comment[de]=Dateien, Lesezeichen, WLAN und Steam-Spiele von Windows übernehmen
+Comment[es]=Trae archivos, marcadores, Wi-Fi y juegos de Steam desde Windows
+Comment[it]=Porta file, segnalibri, Wi-Fi e giochi Steam da Windows
+Comment[pt]=Traz ficheiros, favoritos, Wi-Fi e jogos Steam do Windows
 Exec=frametide-migrate
 Icon=frametide-logo
 Terminal=false

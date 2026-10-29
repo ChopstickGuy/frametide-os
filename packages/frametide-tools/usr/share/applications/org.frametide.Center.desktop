@@ -2,8 +2,14 @@
 Type=Application
 Name=Control
 Name[de]=Steuerung
+Name[es]=Control
+Name[it]=Controllo
+Name[pt]=Controlo
 Comment=Updates, drivers, RGB lighting and fans
 Comment[de]=Updates, Treiber, RGB-Beleuchtung und Lüfter
+Comment[es]=Actualizaciones, controladores, iluminación RGB y ventiladores
+Comment[it]=Aggiornamenti, driver, illuminazione RGB e ventole
+Comment[pt]=Atualizações, controladores, iluminação RGB e ventoinhas
 Exec=frametide-center %u
 Icon=frametide-center
 Terminal=false
@@ -15,19 +21,31 @@ Actions=updates;drivers;audio;hardware;
 
 [Desktop Action updates]
 Name=Updates
+Name[es]=Actualizaciones
+Name[it]=Aggiornamenti
+Name[pt]=Atualizações
 Exec=frametide-center updates
 
 [Desktop Action drivers]
 Name=Drivers
 Name[de]=Treiber
+Name[es]=Controladores
+Name[it]=Driver
+Name[pt]=Controladores
 Exec=frametide-center drivers
 
 [Desktop Action audio]
 Name=Audio & Microphone
 Name[de]=Audio & Mikrofon
+Name[es]=Audio y micrófono
+Name[it]=Audio e microfono
+Name[pt]=Áudio e microfone
 Exec=frametide-center audio
 
 [Desktop Action hardware]
 Name=RGB & Fans
 Name[de]=RGB & Lüfter
+Name[es]=RGB y ventiladores
+Name[it]=RGB e ventole
+Name[pt]=RGB e ventoinhas
 Exec=frametide-center hardware

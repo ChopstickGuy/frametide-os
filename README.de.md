@@ -40,7 +40,9 @@ Darunter ist es weiterhin Ubuntu: dieselben Pakete, dieselbe Dokumentation und f
 - **Ruhiger Desktop.** Dunkles GNOME mit Petrol-Akzent, festes Dock, klassisches
   Anwendungsmenü, App-Ordner, leise, tiefe Systemklänge und ein Lade-Zeiger als Welle.
 - **10 Sprachen offline.** Deutsch, Englisch, Französisch, Spanisch, Italienisch, Polnisch,
-  Portugiesisch, Niederländisch, Türkisch und Russisch.
+  Portugiesisch, Niederländisch, Türkisch und Russisch. Frametides eigene Apps gibt es auf
+  Deutsch, Englisch, Spanisch, Italienisch und Portugiesisch. Die ISO startet auf Englisch, andere
+  Sprachen stehen im Startmenü.
 
 ## Die Apps
 

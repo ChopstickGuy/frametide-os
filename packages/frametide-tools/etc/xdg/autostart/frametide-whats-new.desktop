@@ -2,8 +2,14 @@
 Type=Application
 Name=What's new
 Name[de]=Was ist neu
+Name[es]=Novedades
+Name[it]=Novità
+Name[pt]=Novidades
 Comment=Shows what changed after a Frametide update
 Comment[de]=Zeigt nach einem Frametide-Update die Neuerungen
+Comment[es]=Muestra los cambios tras una actualización de Frametide
+Comment[it]=Mostra le novità dopo un aggiornamento di Frametide
+Comment[pt]=Mostra o que mudou após uma atualização do Frametide
 Exec=frametide-whats-new --if-pending
 Icon=frametide-logo
 Terminal=false

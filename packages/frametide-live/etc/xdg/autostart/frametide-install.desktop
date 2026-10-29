@@ -2,8 +2,14 @@
 Type=Application
 Name=Install Frametide OS
 Name[de]=Frametide OS installieren
+Name[es]=Instalar Frametide OS
+Name[it]=Installa Frametide OS
+Name[pt]=Instalar o Frametide OS
 Comment=Install Frametide OS on this computer
 Comment[de]=Frametide OS auf diesem Computer installieren
+Comment[es]=Instalar Frametide OS en este equipo
+Comment[it]=Installa Frametide OS su questo computer
+Comment[pt]=Instalar o Frametide OS neste computador
 Exec=/usr/lib/frametide/start-installer
 Icon=frametide-logo
 Terminal=false

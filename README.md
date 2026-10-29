@@ -39,7 +39,8 @@ updates.
 - **Calm desktop.** Dark GNOME with a teal accent, a fixed dock, a classic applications menu,
   app folders, soft low system sounds and a wave-shaped loading cursor.
 - **10 languages offline.** English, German, French, Spanish, Italian, Polish, Portuguese,
-  Dutch, Turkish and Russian.
+  Dutch, Turkish and Russian. Frametide's own apps speak English, German, Spanish, Italian and
+  Portuguese. The ISO starts in English; other languages are in its boot menu.
 
 ## The apps
 

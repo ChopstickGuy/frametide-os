@@ -2,8 +2,14 @@
 Type=Application
 Name=App Store
 Name[de]=App Store
+Name[es]=Tienda de apps
+Name[it]=App Store
+Name[pt]=Loja de apps
 Comment=Install apps and games with one click
 Comment[de]=Apps und Spiele mit einem Klick installieren
+Comment[es]=Instala aplicaciones y juegos con un clic
+Comment[it]=Installa app e giochi con un clic
+Comment[pt]=Instala apps e jogos com um clique
 Exec=frametide-store
 Icon=frametide-store
 Terminal=false

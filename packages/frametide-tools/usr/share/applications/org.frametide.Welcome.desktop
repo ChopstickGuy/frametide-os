@@ -2,8 +2,14 @@
 Type=Application
 Name=Welcome
 Name[de]=Willkommen
+Name[es]=Bienvenida
+Name[it]=Benvenuto
+Name[pt]=Boas-vindas
 Comment=First steps with Frametide OS
 Comment[de]=Erste Schritte mit Frametide OS
+Comment[es]=Primeros pasos con Frametide OS
+Comment[it]=Primi passi con Frametide OS
+Comment[pt]=Primeiros passos com o Frametide OS
 Exec=frametide-welcome
 Icon=frametide-logo
 Terminal=false

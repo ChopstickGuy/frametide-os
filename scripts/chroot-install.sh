@@ -76,7 +76,7 @@ apt-get -y full-upgrade
 echo ">>> Locales"
 sed -i -E 's/^# *((de_DE|en_US|en_GB|fr_FR|es_ES|it_IT|pl_PL|pt_PT|pt_BR|nl_NL|tr_TR|ru_RU)\.UTF-8)/\1/' /etc/locale.gen
 locale-gen
-update-locale LANG=de_DE.UTF-8
+update-locale LANG=en_US.UTF-8   # Standard Englisch; die Sprache wählt man beim Start bzw. im Installer
 
 echo ">>> Steam-Lizenz vorab akzeptieren"
 echo "steam steam/question select I AGREE" | debconf-set-selections

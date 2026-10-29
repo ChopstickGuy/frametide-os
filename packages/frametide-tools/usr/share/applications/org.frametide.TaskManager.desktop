@@ -2,8 +2,14 @@
 Type=Application
 Name=Tasks
 Name[de]=Tasks
+Name[es]=Tareas
+Name[it]=Attività
+Name[pt]=Tarefas
 Comment=Task Manager – see and end running programs, CPU, GPU, memory and network usage (Ctrl+Shift+Esc)
 Comment[de]=Task-Manager – laufende Programme sehen und beenden, CPU-, GPU-, Speicher- und Netzwerkauslastung (Strg+Umschalt+Esc)
+Comment[es]=Administrador de tareas – ver y cerrar programas, uso de CPU, GPU, memoria y red (Ctrl+Mayús+Esc)
+Comment[it]=Gestione attività – vedi e chiudi i programmi, uso di CPU, GPU, memoria e rete (Ctrl+Maiusc+Esc)
+Comment[pt]=Gestor de tarefas – ver e terminar programas, uso de CPU, GPU, memória e rede (Ctrl+Shift+Esc)
 Exec=resources
 Icon=net.nokyan.Resources
 Terminal=false
