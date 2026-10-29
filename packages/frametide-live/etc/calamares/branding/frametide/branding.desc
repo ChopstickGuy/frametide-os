@@ -13,7 +13,7 @@ strings:
     shortProductName:    "Frametide"
     version:             "@VERSION@"
     shortVersion:        "@VERSION@"
-    versionedName:       "Frametide OS @VERSION@ „@CODENAME_PRETTY@“"
+    versionedName:       "Frametide OS @VERSION@ “@CODENAME_PRETTY@”"
     shortVersionedName:  "Frametide @VERSION@"
     bootloaderEntryName: "Frametide OS"
     productUrl:          "@URL@"

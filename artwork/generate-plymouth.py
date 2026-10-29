@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Erzeugt die Grafiken des Frametide-Startbildschirms (Plymouth) nach
 artwork/plymouth/: Hintergrund (Wallpaper), Logo, Wellen-Ladeanimation und den
-Hinweis „basiert auf Ubuntu“.
+Hinweis „based on Ubuntu“ (englisch – erscheint, bevor eine Sprache gewählt ist).
 
   python3 artwork/generate-plymouth.py      (braucht resvg oder rsvg-convert)
 """
@@ -62,7 +62,7 @@ def main():
     render(os.path.join(HERE, "logo.svg"), os.path.join(OUT, "logo.png"), 200)
     render(f'<svg xmlns="http://www.w3.org/2000/svg" width="520" height="40"><text x="260" y="27" '
            f'text-anchor="middle" {FONT} font-size="20" fill="#C9D1E3" fill-opacity="0.75" letter-spacing="1">'
-           f'basiert auf Ubuntu 26.04 LTS</text></svg>', os.path.join(OUT, "based-on.png"), 520)
+           f'based on Ubuntu 26.04 LTS</text></svg>', os.path.join(OUT, "based-on.png"), 520)
     for k in range(FRAMES):
         render(wave_frame(k), os.path.join(OUT, f"wave-{k}.png"), 64)
     print(f"{len(os.listdir(OUT))} Dateien in {OUT}")

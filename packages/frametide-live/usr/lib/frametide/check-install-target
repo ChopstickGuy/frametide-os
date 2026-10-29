@@ -1,19 +1,35 @@
 #!/bin/sh
 # Prüft vor dem Entpacken, ob das Installationsziel eine echte, große genug Partition ist.
+# Meldung auf Deutsch, wenn der Installer auf Deutsch läuft, sonst auf Englisch.
 root="$1"
+case "${LANG:-}${LANGUAGE:-}" in de*|*:de*) de=1 ;; *) de=0 ;; esac
 if ! mountpoint -q "$root"; then
-    echo "Es wurde keine Partition für das System festgelegt."
-    echo ""
-    echo "Bitte den Installer neu starten und im Schritt „Partitionen“ „Festplatte löschen“ wählen –"
-    echo "dann legt der Installer alles automatisch an."
-    echo ""
-    echo "Bei „Manueller Partitionierung“ braucht es eine Partition mit dem Einhängepunkt „/“ (ext4)"
-    echo "und bei UEFI zusätzlich eine FAT32-Partition mit dem Einhängepunkt „/boot/efi“."
+    if [ "$de" = 1 ]; then
+        echo "Es wurde keine Partition für das System festgelegt."
+        echo ""
+        echo "Bitte den Installer neu starten und im Schritt „Partitionen“ „Festplatte löschen“ wählen –"
+        echo "dann legt der Installer alles automatisch an."
+        echo ""
+        echo "Bei „Manueller Partitionierung“ braucht es eine Partition mit dem Einhängepunkt „/“ (ext4)"
+        echo "und bei UEFI zusätzlich eine FAT32-Partition mit dem Einhängepunkt „/boot/efi“."
+    else
+        echo "No partition was chosen for the system."
+        echo ""
+        echo "Please restart the installer and choose \"Erase disk\" in the \"Partitions\" step –"
+        echo "the installer then sets everything up automatically."
+        echo ""
+        echo "With \"Manual partitioning\" you need a partition with the mount point \"/\" (ext4)"
+        echo "and, on UEFI, also a FAT32 partition with the mount point \"/boot/efi\"."
+    fi
     exit 1
 fi
 avail_kb=$(df -Pk "$root" | awk 'NR==2 {print $4}')
 if [ "${avail_kb:-0}" -lt 15000000 ]; then
-    echo "Die Systempartition ist zu klein: $((avail_kb / 1024 / 1024)) GB frei, mindestens 15 GB nötig."
+    if [ "$de" = 1 ]; then
+        echo "Die Systempartition ist zu klein: $((avail_kb / 1024 / 1024)) GB frei, mindestens 15 GB nötig."
+    else
+        echo "The system partition is too small: $((avail_kb / 1024 / 1024)) GB free, at least 15 GB needed."
+    fi
     exit 1
 fi
-echo "Ziel in Ordnung: $(findmnt -no SOURCE,FSTYPE "$root"), $((avail_kb / 1024 / 1024)) GB frei"
+echo "Target OK: $(findmnt -no SOURCE,FSTYPE "$root"), $((avail_kb / 1024 / 1024)) GB free"

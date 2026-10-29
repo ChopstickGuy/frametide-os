@@ -3,22 +3,29 @@
   {
    "id": "2026-10-29",
    "date": "29.10.2026",
-   "title": "Mehr Sprachen",
-   "title_en": "More languages",
+   "title": "Danke an alle Neuen!",
+   "title_en": "Thank you, newcomers!",
    "items": [
+    {
+     "icon": "emblem-favorite-symbolic",
+     "title": "Mehr Sprachen – wegen euch",
+     "title_en": "More languages – because of you",
+     "text": "Als Ersteller von Frametide habe ich gesehen, wie viele neue Nutzer aus ganz Europa dazugekommen sind. Deshalb gibt es Frametide jetzt auch auf Spanisch, Italienisch und Portugiesisch.",
+     "text_en": "As the creator of Frametide I've seen how many new users from all over Europe have joined. That's why Frametide now also speaks Spanish, Italian and Portuguese."
+    },
     {
      "icon": "preferences-desktop-locale-symbolic",
      "title": "Español, Italiano, Português",
      "title_en": "Español, Italiano, Português",
-     "text": "App Store, Steuerung, Entwickeln, PC-Umzug und alle Frametide-Apps gibt es jetzt auch auf Spanisch, Italienisch und Portugiesisch.",
-     "text_en": "App Store, Control, Develop, PC Move and all Frametide apps now also speak Spanish, Italian and Portuguese."
+     "text": "App Store, Steuerung, Entwickeln, PC-Umzug und alle anderen Frametide-Apps sind komplett übersetzt.",
+     "text_en": "App Store, Control, Develop, PC Move and all other Frametide apps are fully translated."
     },
     {
      "icon": "media-optical-symbolic",
-     "title": "Installation startet auf Englisch",
-     "title_en": "Installation starts in English",
-     "text": "Neue ISOs starten auf Englisch; Deutsch und weitere Sprachen stehen im Startmenü und im Installer.",
-     "text_en": "New ISOs start in English; German and other languages are in the boot menu and the installer."
+     "title": "Neue ISO komplett auf Englisch",
+     "title_en": "New ISO fully in English",
+     "text": "Die neue ISO startet auf Englisch – Deutsch und weitere Sprachen wählst du im Startmenü oder im Installer.",
+     "text_en": "The new ISO starts in English – pick German or another language in the boot menu or the installer."
     }
    ]
   },
